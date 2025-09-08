@@ -207,7 +207,11 @@ Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 
 
 \subsection{Morfología de una impresión FDM}
 
-En FDM, cada pieza se construye siguiendo un esquema capa por capa. En cada nivel, el extrusor dibuja primero los perímetros o paredes, que definen la silueta y las dimensiones finales de la pieza. A continuación deposita material en el interior, cuya estrategia varía según la ubicación de la capa dentro del volumen. Entre las características más notorias del proceso FDM se encuentra la rugosidad superficial inherente, derivada de la deposición capa a capa del material fundido.
+Si bien la tecnología de fabricación por deposición fundida (FDM) admite múltiples estrategias de deposición, el método convencional consiste en generar la pieza de forma estratificada: el extrusor deposita cada capa sobre el plano XY y, al completarse, el sistema aumenta su posición en el eje Z para continuar la construcción hasta finalizar la pieza. Esta corresponde a una estrategia \textbf{planar}.
+
+Una estrategia \textbf{no planar} extiende la deposición de filamento más allá de las capas horizontales, trazando trayectorias tridimensionales curvadas que se adaptan con precisión a la geometría del modelo y preservan el detalle que habitualmente se pierde por la altura de capa. No obstante, esta técnica demanda un cálculo de toolpaths mucho más complejo y algoritmos de slicing adaptativos, y requiere planificar con cuidado los movimientos para evitar colisiones entre el extrusor y la pieza.
+
+En la estrategia planar estándar, el extrusor dibuja primero los perímetros o paredes, que definen la silueta y las dimensiones finales de la pieza. A continuación deposita material en el interior, cuya estrategia varía según la ubicación de la capa dentro del volumen. Entre las características más notorias del proceso FDM se encuentra la rugosidad superficial inherente, derivada de la deposición capa a capa del material fundido.
 
 Las capas iniciales (base) y finales (tapas superior e inferior) se imprimen sólidas para garantizar rigidez y un acabado uniforme. Entre ellas, las capas intermedias emplean un patrón de relleno (infill) de densidad controlada: este entramado interno aporta soporte a las paredes y capas superiores, reduce el consumo de material y acorta los tiempos de impresión sin comprometer críticamente la rigidez general. Este paradigma proviene del prototipado rápido, en el que la forma externa y la velocidad de fabricación eran prioritarias.
 
@@ -233,9 +237,9 @@ Un escenario menos favorable ocurre cuando la carga se aplica en dirección perp
 
 Finalmente, el escenario más crítico desde el punto de vista estructural es aquel en el que la carga se aplica en dirección normal al plano de las capas (es decir, a lo largo del eje Z), o cuando se trata de una fuerza de corte interlaminar. En este caso, la resistencia mecánica depende casi exclusivamente de la adherencia entre capas sucesivas, las cuales se enfrían parcialmente antes de recibir la siguiente capa, lo que reduce notablemente la capacidad de difusión entre cadenas y genera zonas de alta vulnerabilidad.
 
-Cabe señalar que el fenómeno descrito es aún más complejo, ya que, como se mencionó en la sección anterior, una impresión FDM estándar está compuesta por distintas secciones funcionales, cada una de las cuales se imprime con patrones y estrategias particulares. En consecuencia, el comportamiento mecánico y estructural final de la pieza estará determinado por los parámetros de impresión configurados en el software de laminado (slicer). A su vez, dichas configuraciones deben estar alineadas con las capacidades y limitaciones de la máquina específica con la que se realizará la fabricación, incluyendo aspectos como la precisión del extrusor, el control térmico y el sistema de movimiento.
+Cabe señalar que el fenómeno descrito es aún más complejo, ya que, como se mencionó en la sección anterior, una impresión FDM estándar está compuesta por distintas secciones funcionales, cada una de las cuales se imprime con patrones y estrategias particulares. En consecuencia, el comportamiento mecánico y estructural final de la pieza estará determinado por los parámetros de impresión configurados en el slicer. A su vez, dichas configuraciones deben estar alineadas con las capacidades y limitaciones de la máquina específica con la que se realizará la fabricación, incluyendo aspectos como la precisión del extrusor, el control térmico y el sistema de movimiento.
 
-El uso principal de la tecnología FDM se centra en el prototipado rápido, por lo que en muchos casos las propiedades mecánicas de las piezas generadas no son un factor crítico. Sin embargo, cuando se busca emplearlas en aplicaciones funcionales, surgen limitaciones importantes. Las piezas impresas en 3D mediante FDM presentan una notable sensibilidad térmica y su comportamiento mecánico es difícil de predecir en comparación con materiales de propiedades homogéneas. Esto se debe a que su resistencia está fuertemente influenciada por las condiciones locales de impresión, como la orientación de las capas, la calidad de la adhesión entre filamentos y los acabados de borde. Como resultado, las piezas impresas suelen exhibir una resistencia mecánica inferior frente a sus equivalentes fabricados por moldeo por inyección.
+El uso principal de la tecnología FDM se centra en el prototipado rápido, por lo que en muchos casos las propiedades mecánicas de las piezas generadas no son un factor crítico. Sin embargo, cuando se busca emplearlas en aplicaciones funcionales, surgen limitaciones importantes. Las piezas impresas en 3D mediante FDM presentan una notable sensibilidad térmica y su comportamiento mecánico es difícil de predecir en comparación con materiales de propiedades homogéneas. Esto se debe a que su resistencia está fuertemente influenciada por las condiciones locales de impresión, como la orientación de las capas, la calidad de adhesión entre filamentos y los acabados de borde. Como resultado, las piezas impresas suelen exhibir una resistencia mecánica inferior frente a sus equivalentes fabricados por inyección.
 
 Además, los filamentos utilizados en impresión FDM no están compuestos exclusivamente del polímero base, sino que incluyen una variedad de aditivos y cargas (fillers) destinados a mejorar el proceso de extrusión, la estabilidad térmica y la calidad superficial. Estos compuestos pueden diferir significativamente de los utilizados en plásticos inyectados, lo que también contribuye a las diferencias en comportamiento estructural y desempeño final.
 
@@ -263,17 +267,17 @@ Los parámetros estructurales (Cuadro \ref{tab:param-estructurales}) son aquello
 
 \begin{table}[ht]
   \centering
-  \caption{Ejemplos de parámetros estructurales}
+  \caption{Ejemplos de parámetros estructurales y valores típicos en impresoras de escritorio}
   \label{tab:param-estructurales}
-  \begin{tabular}{@{} l c @{}}
+  \begin{tabular}{@{} l c c @{}}
     \toprule
-    Parámetro                   & Acrónimo            \\
+    Parámetro                   & Acrónimo       & Valor típico     \\
     \midrule
-    Densidad de relleno        & $i_{\%}$          \\
-    Espesor de pared            & $t_{p}$             \\
-    Número de capas superiores            & $n_{\mathrm{top}}$  \\
-    Número de capas inferiores            & $n_{\mathrm{bot}}$  \\
-    Altura de capa           & $h_{l}$                  \\
+    Densidad de relleno        & $i_{\%}$     &     $\mathrm{10-20}$ $\%$\\
+    Espesor de pared            & $t_{p}$        &   $\mathrm{0.8}\,mm$  \\
+    Espesor de tapa superior          & $t_{t}$ & $\mathrm{0.5-1}\,mm$\\
+    Espesor de tapa inferior            & $t_{b}$ & $\mathrm{0.5-1}\, mm$\\
+    Altura de capa           & $h_{l}$            &  $\mathrm{0.1-0.3}\, mm$    \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -282,16 +286,16 @@ Por otro lado, los parámetros de proceso (Cuadro \ref{tab:param-proceso}) está
 
 \begin{table}[ht]
   \centering
-  \caption{Ejemplos de parámetros del proceso}
+  \caption{Ejemplos de parámetros del proceso y valores típicos en impresoras de escritorio}
   \label{tab:param-proceso}
-  \begin{tabular}{@{} l c @{}}
+  \begin{tabular}{@{} l c c @{}}
     \toprule
-    Parámetro                         & Acrónimo    \\
+    Parámetro                         & Acrónimo  & Valor típico  \\
     \midrule
-    Velocidad de impresión            & $V_{f}$     \\
-    Temperatura de extrusión          & $T_{e}$     \\
-    Temperatura de plataforma         & $T_{b}$     \\
-    Porcentaje de ventilación         & $v_{\%}$ \\
+    Velocidad de impresión            & $V_{f}$ &    $\mathrm{30-60}\,mm/s$  \\
+    Temperatura de extrusión          & $T_{e}$  &    $\mathrm{190-220}\, \si{\celsius}$\\
+    Temperatura de plataforma         & $T_{b}$   & $\mathrm{40-60}\, \si{\celsius}$ \\
+    Porcentaje de ventilación         & $v_{\%}$ & $\mathrm{0-100}$ $\%$\\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -300,17 +304,17 @@ Finalmente, los parámetros de la máquina (Cuadro \ref{tab:param-hardware}) est
 
 \begin{table}[ht]
   \centering
-  \caption{Ejemplos de parámetros de hardware}
+  \caption{Ejemplos de parámetros de hardware y valores típicos en impresoras de escritorio}
   \label{tab:param-hardware}
-  \begin{tabular}{@{} l c @{}}
+  \begin{tabular}{@{} l c c@{}}
     \toprule
-    Parámetro                                   & Acrónimo   \\
+    Parámetro                                   & Acrónimo & Valor típico  \\
     \midrule
-    Diámetro de boquilla                        & $d_{\mathrm{noz}}$  \\
-    Diámetro de filamento                       & $d_{\mathrm{fil}}$  \\
-    Volumen de impresión X (ancho)              & $L_{x}$    \\
-    Volumen de impresión Y (profundidad)        & $L_{y}$    \\
-    Volumen de impresión Z (altura)             & $L_{z}$    \\
+    Diámetro de boquilla                        & $d_{\mathrm{noz}}$ &  $\mathrm{0.2-0.8}\,mm$ \\
+    Diámetro de filamento                       & $d_{\mathrm{fil}}$ & $\mathrm{1.75}\,mm$ \\
+    Volumen de impresión X (ancho)              & $L_{x}$   & $\mathrm{200-250}\,mm$\\
+    Volumen de impresión Y (profundidad)        & $L_{y}$   & $\mathrm{200-250}\,mm$ \\
+    Volumen de impresión Z (altura)             & $L_{z}$   & $\mathrm{200-250}\,mm$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -329,11 +333,30 @@ Las piezas fabricadas por FDM son anisotrópicas: la unión intercapas (direcci�
 
 La discretización de superficies curvas mediante capas planas genera un efecto escalonado. Para minimizar este “stepping” en zonas con curvaturas pronunciadas, es preferible orientar la geometría de manera que las curvas principales queden lo más paralelas posible al plano XY, mejorando así la calidad superficial sin necesidad de aumentar excesivamente el número de capas.
 
-Con la orientación definida se procede a configurar los parámetros en el CAM, definiendo además si es que dada la pieza y lo deseado se quieren soportes o estructuras extra de adhesión a la cama. El software entregará una simulación del proceso y de las rutas de fabricación
+Con la orientación definida se procede a configurar los parámetros en el CAM, definiendo además si es que dada la pieza y lo deseado se quieren soportes o estructuras extra de adhesión a la cama. El software entregará una simulación del proceso y de las rutas de fabricación. 
 
-\subsection{Defectos típicos}
+La cantidad de filamento a extruir ($E$) en cada segmento del cuerpo se calcula mediante una conservación de volumen entre lo que entra (filamento) y lo que se quiere construir (segmento):
 
-Existen diferentes formas en las que se presentan los defectos en una impresión 3D. Asumiendo que la
+\begin{equation}
+	V_{segmento}=V_{filamento}\implies l_{s}h_{l}d_{noz}=\frac{d_{fil}^{2}\pi}{4}E\implies E= \frac{4 l_{s}h_{l}d_{noz}}{d_{fil}^{2} \pi}
+\end{equation}
+
+Asumiendo un área aproximadamente rectangular para el segmento.
+
+\subsection{Defectos típicos en FDM}
+
+Existen diversos defectos en la impresión 3D que pueden originarse tanto por el desgaste de componentes como por una configuración inadecuada de los parámetros de proceso. 
+
+Entre los más comunes están el \textit{stringing} y el \textit{oozing}, que se manifiestan cuando el filamento fundido fluye de forma indeseada durante los desplazamientos del extrusor. El stringing genera finos hilos de plástico entre zonas no contiguas de la pieza, mientras que el oozing, o goteo, es la exudación continua de material cuando la extrusión debería estar detenida. Ambos fenómenos se agravan si la temperatura de la boquilla es demasiado alta y la viscosidad del polímero disminuye, pues el material fluye por gravedad o presión residual.
+
+Para mitigar estos efectos, la retracción de filamento es esencial. Al retroceder el filamento una distancia calibrada y a una velocidad adecuada, se crea una presión negativa en la cámara de fusión que impide la fuga de material. Los parámetros para la retracción también son ajustables en el software CAM.
+
+La propia geometría de la pieza puede desencadenar defectos puntuales, como el sobrecalentamiento de detalles altos y delgados, donde la rigidez es podría ser muy baja. Este problema de refrigeración tiene múltiples soluciones, que también pueden presentarse como un ajuste más de parámetros en el CAM, por ejemplo, modificando el tiempo mínimo por capa.
+
+El parámetro \textit{flow} ajusta el caudal de filamento mediante un porcentaje sobre el valor nominal, actuando como un multiplicador del volumen extruido. En la Figura X se observan dos defectos contrapuestos: un \textit{flow} insuficiente provoca huecos y capas discontinuas, mientras que un exceso de flujo deriva en protuberancias y acumulaciones de material. Aunque es posible reducir ambos efectos modificando directamente el \textit{flow}, esta práctica solo enmascara el síntoma, ya que la causa real puede residir en variaciones del diámetro del filamento, una temperatura de boquilla mal calibrada, sobrepresión en el sistema de alimentación o errores de configuración.
+
+El ajuste del caudal puede ser útil para compensar los efectos elásticos de la extrusión ocasionados por el \textbf{die swelling}, un fenómeno directamente ligado a la velocidad de extrusión: a mayores velocidades, la recuperación elástica del polímero al liberarse de la presión en la boquilla es más intensa, ensanchando el segmento por encima del diámetro nominal.
+Este sobredimensionamiento se manifiesta como solapamientos en esquinas y en la uniformidad de las paredes. 
 
 \subsection{Otras tecnologías de deposición}
 
@@ -349,19 +372,86 @@ Una ventaja adicional de esta tecnología es la posibilidad de personalizar el m
 
 No obstante, este método también presenta desafíos importantes. A diferencia del filamento, cuya forma cilíndrica garantiza una extrusión continua y uniforme, la extrusión directa de pellets puede ser más inestable y está fuertemente influenciada por el diseño del tornillo sinfín, responsable de transportar y fundir el material. La eficiencia, homogeneidad del flujo y calidad de impresión final dependen críticamente de este componente, lo que añade complejidad al diseño y operación de las máquinas.
 
+Por esto, no es sencillo definir los pasos del motor del tornillo de extrusión, pues a pesar de que existe un cálculo directo del volumen de extrusión nominal, dependerá de las fluctuaciones de pellets, la velocidad y la elasticidad. Aquí entra en juego el parámetro de flow, calibrándolo para cada material.
+
 \subsubsection{Impresión de pastas}
 
-Mediante un sistema de extrusión similar es que se imprimen pastas en frío, como arcillas y gredas.
+Un sistema de extrusión análogo al de plástico fundido permite imprimir pastas cerámicas en frío, como arcillas o gredas, sin necesidad de un sistema calefactor. Estas suspensiones se preparan ajustando la proporción de agua y aditivos (defloculantes, plastificantes) para lograr un comportamiento reológico que combine fácil flujo bajo presión con cohesión inmediata tras la deposición, de modo que cada cordón mantenga su forma y resista el peso de las capas superiores.
+
+El suministro de material suele ser a través de un estanque donde actúa un émbolo motorizado o una línea de aire comprimido. Bajo presión neumática o mediante un pistón de avance controlado, la pasta se impulsa hasta el cabezal, donde puede encontrarse un tornillo sinfín de precisión que ajusta el caudal real de extrusión. Este arreglo ofrece un control fino del volumen depositado, minimiza la pulsación y permite variar el grosor de línea al cambiar la velocidad de rotación o la presión de alimentación.
+
+Tras la impresión, las piezas cerámicas requieren un postprocesado riguroso. Primero se someten a un secado lento y controlado para evitar grietas o deformaciones por gradientes de humedad. A continuación, pasan a un horno de cocción con un programa de temperatura escalonado, que consolida la estructura, optimiza la densidad y controla la microestructura del material según las propiedades mecánicas y estéticas deseadas.
+
+Bajo este mismo principio es que se imprimen grandes estructuras como casas, usando concretos y morteros especializados, así como grandes brazos robóticos para dar con la escala del proyecto.
 
 \subsubsection{Impresión liquid-on-liquid}
 
-\subsubsection{Impresión de tejidos}
+En la impresión líquido–sobre–líquido, el cabezal inyecta el material de construcción directamente en un baño de soporte líquido, que sostiene cada cordón hasta que adquiere suficiente rigidez. Este medio puede ser un fluido tixotrópico, una suspensión de partículas o un líquido inmiscible; su función es retener la forma sin recurrir a estructuras auxiliares rígidas.
+
+Una vez completada la geometría, el líquido de soporte se retira mediante decantación, lavado o centrifugado, y la pieza impresa sigue un proceso de curado o secado según el material. Gracias a este enfoque, es posible fabricar voladizos pronunciados y detalles complejos con acabados suaves y continuidad superficial.
+
  
 \section{Impresión 3D por fotopolimerización}
 
 \subsection{Fotopolimerización}
 
+La fotopolimerización es una reacción de química en la que monómeros y oligómeros se transforman en una red tridimensional por la acción de luz, normalmente en el rango de 365–405 nm. El proceso arranca cuando un fotón incide sobre un fotoiniciador presente en la mezcla, generando radicales libres. Estos transforman en laces dobles en los monómeros a simples activos, iniciando reacciones en cadena que alargan y entrecruzan las cadenas poliméricas hasta \textbf{curar} el líquido en un sólido termoestable.
+
+La densidad de entrecruzamiento y, por tanto, las propiedades mecánicas y dimensionales finales dependen de la dosis de energía (intensidad y tiempo de exposición), de la concentración de fotoiniciador y de la profundidad de penetración de la luz en el material. Un curado excesivo puede inducir tensiones internas y contracción volumétrica, mientras que una exposición insuficiente deja zonas sin polimerizar, con menor resistencia y rugosidad superficial. Una forma de estimar el tamaño de la zona en fotopolimerización puede ser mediante la ecuación de Jacobs:
+
+\begin{equation}
+	D_{\mathrm{curado}} \;=\; 2\,D_{p}\,\ln\!\Bigl(\frac{P\,t}{A\,E_{c}}\Bigr)
+\end{equation}
+
+donde:
+
+\begin{description}
+	\item[$D_{\mathrm{curado}}$] Diámetro de la zona polimerizada (misma unidad que $D_{p}$, por ejemplo mm).
+	\item[$D_{p}$] Profundidad de penetración de la luz en el fotopolímero (mm).
+	\item[$P$] Potencia de la fuente luminosa sobre el área irradiada (W).
+	\item[$t$] Tiempo de exposición al haz de luz (s).
+	\item[$A$] Área efectiva del haz o región iluminada (cm$^2$).
+	\item[$E_{c}$] Dosis crítica mínima necesaria para iniciar la polimerización (J/cm$^2$).
+\end{description}
+
+Dado que el curado se activa por radiación UV, conviene proteger las piezas fotopolimerizadas de la luz ambiental hasta completar el post-curado. Los fotoiniciadores residuales pueden reaccionar de forma irregular bajo radiación no controlada, alterando la integridad de la red polimérica y modificando las propiedades mecánicas de la pieza.
+
+La foto-oxidación impacta con mayor severidad a los termoestables que a los termoplásticos. En los termoplásticos, el ligero aumento de temperatura facilita la reorganización de las cadenas y atenúa el efecto de la rotura de enlaces. En cambio, la movilidad de las moléculas en un termoestable es muy limitada: la distorsión de la red genera microfisuras que se propagan y conducen a la fragilización prematura del material.
+
+\subsection{Estereolitografía}
+
+La estereolitografía (SLA) fue la primera tecnología de impresión 3D patentada. Su funcionamiento se basa en la solidificación de resinas fotosensibles mediante irradiación láser UV. El término procede del griego stereo (sólido), lithos (piedra) y graphia (escritura), es decir, escritura de sólidos.
+
+La arquitectura clásica de una impresora SLA se ilustra en la Figura. Está formada por un tanque de resina líquida, una plataforma móvil en el eje Z y un sistema de escaneo láser (galvanómetro) que dirige el haz UV sobre la superficie del líquido.
+
+El ciclo de impresión se describe de forma general así:
+\begin{enumerate}
+	\item Se ajusta la altura de la plataforma para dejar una capa de resina de espesor uniforme.
+	\item El láser traza la sección transversal del objeto en la superficie de la resina.
+	\item La resina polimeriza y se adhiere a la plataforma.
+	\item La plataforma desciende el espesor de capa para cubrir la pieza con nueva resina.
+	\item Se repite el trazado en la nueva superficie hasta completar la pieza.
+\end{enumerate}
+
+Tras terminar la impresión, se extrae la pieza de la plataforma y se somete a un post-curado UV para optimizar sus propiedades mecánicas.
+
+La dosis de energía (intensidad y tiempo de exposición) es un parámetro crítico: debe garantizar la rigidez mínima de cada capa sin polimerizar zonas no deseadas y, al mismo tiempo, mantener los tiempos de fabricación al mínimo.
+
+Una limitación de la configuración tradicional es el elevado volumen de resina necesario para cubrir el tanque. Para reducir este consumo, las impresoras modernas emplean un esquema invertido: la pieza se construye boca abajo, adherida a una plataforma que asciende capa a capa (ver Figura~X). De este modo, basta una lámina delgada de resina sobre la ventana transparente para garantizar el curado.
+
+En esta configuración \textbf{bottom-up} se distinguen tres métodos de fotopolimerización:
+
+\begin{itemize}
+	\item SLA: método clásico que utiliza uno o varios haces láser focalizados para trazar cada sección transversal.
+	\item DLP (Direct Light Projection): un proyector digital expone simultáneamente toda la sección mediante un patrón de píxeles.
+	\item MSLA (Masked SLA): una máscara LCD modula la luz UV procedente de una matriz LED, curando selectivamente cada capa.
+\end{itemize}
+
 \subsection{Flujo del proceso}
+
+\subsection{Resinas para 3DP}
+
+\subsection{Comportamiento mecánico}
 
 \section{SLS}
 
