@@ -8,6 +8,8 @@ Al momento de escribir este apunte, el curso asume una formación básica del le
 
 Si bien, el curso trata de los procesos de fabricación, se tocan tangencialmente temas de control de sistemas, mecánica de fluidos, diseño mecánico, electrónica y controladores.
 
+La ultima version del documento puede ser descargada con este [link](https://github.com/jkugalde/Apunte-Fab-Digital/releases/download/latest/main.pdf)
+
 # Indice
 
 - Conceptos básicos de ingenierpia mecánica
