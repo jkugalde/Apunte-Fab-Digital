@@ -5,8 +5,8 @@
 Llamaremos procesos de manufactura aditiva a todas las técnicas en las que el material se \textbf
 {deposita/forma de manera controlada} y capa a capa sobre un volumen de trabajo para construir directamente geometrías tridimensionales. 
 
-La construcción secuencial elimina restricciones de trayectoria (colisiones, cambios de herramienta) propias de máquinas-herramienta convencionales y fusiona varias etapas de fabricación en un único paso. Por ejemplo, en la Figura \ref{roki} se ilustran las ventajas en tiempo y costo al producir una cámara de empuje de cohete mediante manufactura aditiva frente a métodos convencionales. 
-
+La construcción secuencial elimina restricciones de trayectoria (colisiones, cambios de herramienta) propias de máquinas-herramienta convencionales y fusiona varias etapas de fabricación en un único paso. De esta manera, no solo se reducen tiempos y costos de fabricación (Figura \ref{roki}), sino que además abren nuevas posibilidades al diseño (Figura \ref{3pexf}).
+ 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imgs/rocket.png}
@@ -44,7 +44,14 @@ Las tecnologías de manufactura aditiva suelen poseer las siguientes caracterís
     
 \end{description}
 
-Estas características convierten a la manufactura aditiva en una alternativa sumamente atractiva para modelos productivos flexibles: las modificaciones de diseño se incorporan sin alteraciones en la cadena de suministro sin importar su complejidad (Figura \ref{grafsmm}), los inventarios pueden reducirse o eliminarse por completo y el aprovechamiento de la materia prima se maximiza. Sin embargo, su principal desventaja reside en la \textbf{velocidad de fabricación}. Al operar mediante deposición secuencial capa por capa, el tiempo de proceso crece de forma casi lineal con el tamaño y la complejidad de la pieza. Además, tratar de acelerar la tasa de deposición suele comprometer la resolución y la calidad del acabado superficial, lo que atenúa buena parte de la ventaja diferencial de esta tecnología.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/3pex.png}
+	\caption{Figura impresa mediante tecnología de extrusión.\href{https://blog.emb.global/impact-of-3d-printing-in-product-development/}{Fuente}}
+	\label{3pexf}
+\end{figure}
+
+Estas características convierten a la manufactura aditiva en una alternativa óptima modelos productivos flexibles: las modificaciones de diseño en el producto se incorporan sin alterar la cadena de suministro y sin importar su complejidad (Figura \ref{grafsmm}), los inventarios pueden reducirse o eliminarse por completo y el aprovechamiento de la materia prima se maximiza. Sin embargo, su principal desventaja reside en la \textbf{velocidad de fabricación}. Al operar mediante deposición secuencial capa por capa, el tiempo de proceso crece de forma casi lineal con el tamaño. Además, tratar de acelerar la tasa de deposición suele comprometer la resolución y la calidad del acabado superficial, lo que atenúa buena parte de la ventaja diferencial de esta tecnología.
 
 \begin{figure}[h!]
 	\centering
@@ -68,7 +75,7 @@ Aunque la manufactura aditiva presenta ciertas restricciones para su producción
 
 \subsection{Tipos de tecnologías}
 
-Bajo la definición anterior, las familias generales de tecnologías de manufactura aditiva son:
+Bajo la definición anterior, las familias generales de tecnologías de manufactura aditiva son (Figura \ref{3ptecs}):
 
 \begin{itemize}
   \item \textbf{Vat photopolymerization:}  
@@ -93,6 +100,13 @@ Bajo la definición anterior, las familias generales de tecnologías de manufact
     unión de láminas de material (papel, polímero, metal o compuestos) mediante adhesivos, soldadura láser o ultrasonidos, y corte secuencial de cada capa para formar la geometría final. Materiales típicos: acero laminado, aluminio, papel tratado, polímeros.
 \end{itemize}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/3tec.png}
+	\caption{Familias de tecnologías de manufactura aditiva. \href{https://www.voxelmatters.com/3d-hubs-publishes-complete-3d-printing-technologies-infographic/}{Fuente}}
+	\label{3ptecs}
+\end{figure}
+
 Cada una de estas tecnologías de manufactura aditiva presenta atributos particulares que las hacen idóneas para aplicaciones específicas. La selección de la tecnología más adecuada debe fundamentarse en la combinación de parámetros como el tipo de material, la resolución requerida, el coste unitario y el volumen de producción.  
 
 Gran parte de estas máquinas ha experimentado una evolución estructural análoga a la de los computadores: de voluminosos sistemas industriales, costosos y de manejo complejo, a una amplia oferta de modelos de escritorio, asequibles y de operación intuitiva. Esta transformación se ha materializado principalmente en las dos tecnologías aditivas más populares, extrusión y fotopolimerización en vat, impulsadas por el movimiento maker, el desarrollo de plataformas open-source y la diversificación de materiales compatibles.
@@ -103,11 +117,26 @@ En el flujo de trabajo de fabricación aditiva, el software CAM incorpora un mó
 
 La altura de capa es un parámetro crítico: define la resolución y la fidelidad geométrica de la pieza, y condiciona el tiempo total de fabricación. Una capa más delgada mejora el detalle superficial y la precisión dimensional, pero exige más pasadas de extrusión y prolonga el tiempo de impresión. En cambio, capas más gruesas aceleran el proceso a costa de perder definición en detalles finos.
 
-Sobre cada sección transversal generada, el slicer traza la trayectoria de la herramienta (toolpath) y genera el código G correspondiente en función del resto de parámetros operativos a configurar en el CAM.
+Sobre cada sección transversal generada, el slicer traza la trayectoria de la herramienta (toolpath) y genera el código G correspondiente en función del resto de parámetros operativos a configurar en el CAM (Figura \ref{slicerfig}).
 
-El archivo que se importa al slicer rara vez conserva el formato nativo del CAD (por ejemplo, STEP o IGES); en su lugar se convierte la superficie del modelo en una malla poligonal que la aproxima, normalmente mediante un archivo con extensión .stl. En este formato, la geometría 3D se tesela en triángulos: las curvas y detalles se aproximan con facetas planas, pero se pierde por completo la información volumétrica interna (materiales, estructuras huecas o sólidos). El acrónimo STL se interpreta habitualmente como Stereolithography, Standard Tessellation Language o Standard Triangle Language. 
+El archivo que se importa al slicer rara vez conserva el formato nativo del CAD (por ejemplo, STEP o IGES); en su lugar se convierte la superficie del modelo en una malla poligonal que la aproxima, normalmente mediante un archivo con extensión .stl. En este formato, la geometría 3D se tesela en triángulos (Figura \ref{stlfig}): las curvas y detalles se aproximan con facetas planas, pero se pierde por completo la información volumétrica interna (materiales, estructuras huecas o sólidos). El acrónimo STL se interpreta habitualmente como Stereolithography, Standard Tessellation Language o Standard Triangle Language.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/slicer.png}
+	\caption{A la izquierda ,pieza en el ambiente CAM Cura Ultimaker para proceso FDM, a la derecha, segmentación gruesa arriba (capa de 0.28 mm, 50 minutos de impresión), segmentación fina abajo (capa de 0.08 mm, 150 minutos de impresión).}
+	\label{slicerfig}
+\end{figure} 
 
 El grado de refinamiento de esa malla condiciona la fidelidad entre el diseño original y lo que realmente procesa el slicer: una malla demasiado gruesa produce polígonos (facetas) visibles, mientras que una demasiado densa no mejora la calidad de impresión, pues la impresora tiene una resolución limitada. Es clave elegir un nivel de detalle óptimo que equilibre precisión y eficiencia computacional.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/tesel.png}
+	\caption{Esfera teselada en mallla gruesa, media y fina.}
+	\label{stlfig}
+\end{figure} 
+
 
 Este archivo sólo describe la envolvente externa de la pieza; no incluye información sobre su volumen o espesores interiores. Estas características serán definidas mediante los parámetros del CAM a utilizar.
 
