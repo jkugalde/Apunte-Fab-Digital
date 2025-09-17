@@ -1,10 +1,10 @@
 \chapter{Máquinas CNC}
 
-Las máquinas automatizadas de fabricación digital o CNCs son sistemas mecatrónicos programables que ejecutan procesos de manufactura mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado, corte láser y robots industriales. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite fabricar piezas diversas y complejas de manera sencilla.
+Las máquinas automatizadas de fabricación digital o CNCs son \textbf{sistemas mecatrónicos} programables que ejecutan procesos de manufactura mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado, corte láser y robots industriales. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite \textbf{fabricar piezas diversas y complejas de manera sencilla}.
 
 \section{Flujo del proceso de fabricación digital}
 
-Las tecnologías de fabricación digital se fundamentan en un proceso computarizado que abarca desde el diseño hasta la producción de la pieza final (Figura \ref{digfab}). Este proceso comienza con la modelación de la componente deseada mediante un software de diseño asistido por computadora (CAD, Computer-Aided Design). Este tipo de herramientas no solo permite crear y visualizar el modelo tridimensional de la pieza, sino también analizar su integración dentro de un sistema ensamblado y evaluar su desempeño mecánico mediante técnicas como el análisis por elementos finitos (FEA, Finite Element Analysis).
+Las tecnologías de fabricación digital se fundamentan en un \textbf{proceso computarizado} que abarca desde el diseño hasta la producción de la pieza final (Figura \ref{digfab}). Este proceso comienza con la modelación de la componente deseada mediante un software de \textbf{diseño asistido por computadora} (CAD, Computer-Aided Design). Este tipo de herramientas no solo permite crear y visualizar el modelo tridimensional de la pieza, sino también analizar su integración dentro de un sistema ensamblado y evaluar su desempeño mecánico mediante técnicas como el análisis por elementos finitos (FEA, Finite Element Analysis).
 
 \begin{figure}[h!]
     \centering
@@ -13,9 +13,9 @@ Las tecnologías de fabricación digital se fundamentan en un proceso computariz
     \label{digfab}
 \end{figure}
 
-Una vez completado el modelo CAD, este se exporta en un formato de archivo compatible con el software de manufactura asistida por computadora (CAM, Computer-Aided Manufacturing), el cual es específico según el tipo de proceso de fabricación. En el entorno CAM se configuran los parámetros clave del proceso, como velocidades de corte, trayectorias de herramientas y condiciones de operación, con el objetivo de optimizar variables críticas como la calidad del producto final, los costos de producción y el tiempo de fabricación. Además, el software permite simular virtualmente el proceso para verificar su viabilidad, asegurar la compatibilidad con la máquina seleccionada y anticipar posibles errores. Finalmente, el sistema CAM genera un archivo de instrucciones, comúnmente denominado \textbf{código G}, que actúa como entrada para la máquina de fabricación digital, la cual ejecuta el proceso de manera automatizada.
+Una vez completado el modelo CAD, este se exporta en un formato de archivo compatible con el software de \textbf{manufactura asistida por computadora} (CAM, Computer-Aided Manufacturing), el cual es específico según el tipo de proceso de fabricación. En el entorno CAM se configuran los parámetros clave del proceso, como velocidades de corte, trayectorias de herramientas y condiciones de operación, con el objetivo de optimizar variables críticas como la calidad del producto final, los costos de producción y el tiempo de fabricación. Además, el software permite simular virtualmente el proceso para verificar su viabilidad, asegurar la compatibilidad con la máquina seleccionada y anticipar posibles errores. Finalmente, el sistema CAM genera un archivo de instrucciones, comúnmente denominado \textbf{código G}, que actúa como entrada para la máquina de fabricación digital, la cual ejecuta el proceso de manera automatizada.
 
-Una vez ejecutados todos los procesos definidos digitalmente, el flujo de trabajo concluye con la etapa de postprocesamiento. Generalmente, esto implica la remoción de la pieza de la máquina y la realización de operaciones complementarias necesarias para alcanzar las condiciones finales del producto. Estas operaciones pueden incluir tareas como el acabado superficial, la limpieza, o la eliminación de estructuras de soporte. En situaciones donde el control de calidad resulta relevante, también se incorpora una fase de metrología para verificar que la pieza cumpla con las especificaciones dimensionales y funcionales establecidas en el diseño.
+Una vez ejecutados todos los procesos definidos digitalmente, el flujo de trabajo concluye con la etapa de \textbf{postprocesamiento}. Generalmente, esto implica la remoción de la pieza de la máquina y la realización de operaciones complementarias necesarias para alcanzar las condiciones finales del producto. Estas operaciones pueden incluir tareas como el acabado superficial, la limpieza, o la eliminación de estructuras de soporte. En situaciones donde el control de calidad resulta relevante, también se incorpora una fase de metrología para verificar que la pieza cumpla con las especificaciones dimensionales y funcionales establecidas en el diseño.
 
 \section{Sistema}
 
@@ -48,28 +48,28 @@ Entre estos subsistemas primarios se tiene:
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.67\linewidth]{imgs/kins.png}
-    \caption{Ejemplos de arquitecturas cinemáticas.}
+    \includegraphics[width=0.60\linewidth]{imgs/kins.png}
+    \caption{Ejemplos de arquitecturas cinemáticas. \cite{kinematic}}
     \label{kinsfig}
 \end{figure}
 
 \section{Motores stepper}
 
-El control de la posición de un componente o sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un lazo cerrado (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off con la complejidad y costos adquiridos podría no ser conveniente.
+El control de la posición de un componente o sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un \textbf{lazo cerrado} (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off con la complejidad y costos adquiridos podría no ser conveniente.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/controlup.png}
+    \includegraphics[width=1.0\linewidth]{imgs/controlup.png}
     \caption{Diagrama de control cerrado para controlar la posición de un sistema mediante un motor.}
     \label{controlup}
 \end{figure}
 
-Los motores eléctricos de tipo stepper (Figura \ref{stpi}) rotan un arco constante (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de lazo abierto (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla de control. 
+Los motores eléctricos de tipo stepper (Figura \ref{stpi}) rotan un \textbf{arco constante} (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de \textbf{lazo abierto} (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla de control. 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{imgs/stps.png}
-    \caption{Motor paso a paso NEMA17 y diagrama de estructura interna.}
+    \includegraphics[width=0.8\linewidth]{imgs/stps.png}
+    \caption{Motor paso a paso NEMA17, diagrama de estructura interna y esquema eléctrico. \href{https://www.techniker-forum.de/thema/schrittmotor-unipolar-bipolar-parallel-seriell-geschaltet.111747/}{Fuente}}
     \label{stpi}
 \end{figure}
 
@@ -84,7 +84,7 @@ Los motores paso a paso se clasifican comúnmente según un estándar que define
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\linewidth]{imgs/nemas.png}
-    \caption{Motores paso a paso NEMA.}
+    \caption{Motores paso a paso NEMA. \href{https://www.stepperonline.co.uk/stepper-motors.html}{Fuente}}
     \label{nmas}
 \end{figure}
 
@@ -106,12 +106,12 @@ Esta forma de construcción estandarizada brinda flexibilidad al diseño de las 
 \end{tabular}
 \end{table}
 
-Mediante la configuración del driver, dispositivo encargado de transformar las señales del controlador en corriente adecuada para las bobinas del motor, es posible ajustar el modo de operación del motor paso a paso, permitiendo dividir cada paso completo en fracciones más pequeñas, como 1/2, 1/4, 1/8, entre otras. Esta técnica, conocida como \textit{microstepping}, permite mejorar la resolución y suavidad del movimiento. No obstante, a medida que se incrementa el nivel de subdivisión, el torque disponible por micro-paso disminuye, debido a que las corrientes aplicadas no alcanzan los valores máximos en cada fase. Por esta razón, si bien el torque total del motor no se reduce, la capacidad de generar fuerza efectiva por paso se ve limitada, especialmente a bajas velocidades.
+Mediante la configuración del \textit{driver}, dispositivo encargado de transformar las señales del controlador en corriente adecuada para las bobinas del motor, es posible ajustar el modo de operación del motor paso a paso, permitiendo dividir cada paso completo en fracciones más pequeñas, como 1/2, 1/4, 1/8, entre otras. Esta técnica, conocida como \textit{microstepping}, permite mejorar la resolución y suavidad del movimiento. No obstante, a medida que se incrementa el nivel de subdivisión, el torque disponible por micro-paso disminuye, debido a que las corrientes aplicadas no alcanzan los valores máximos en cada fase. Por esta razón, si bien el torque total del motor no se reduce, la capacidad de generar fuerza efectiva por paso se ve limitada, especialmente a bajas velocidades.
 
 En una máquina CNC, los motores están físicamente conectados con una transmisión, luego existe una relación entre su desplazamiento rotacional y el de la estructura objetivo, frecuentemente el cabezal o carro. Para un motor que controla la posición en una dirección del cabezal de manera independiente se tiene que:
 
 \begin{equation}
-    \Delta x = R\Delta \theta = R n s 
+    \Delta x = R\Delta \theta = R n s \,\mathrm{([mm], \,[in]\,o\,[{°}^\circ])} 
 \end{equation}
 
 Donde $\Delta x$ es el desplazamiento en la dirección objetivo, $R$ es la relación de transmisión y $\Delta \theta$ la rotación del eje del motor. Este arco barrido depende de los $n$ pulsos de paso/micropaso que envía el controlador y $s$ el tamaño del paso/micropaso.
@@ -167,38 +167,38 @@ Las instrucciones más comunes son:
 
 \end{description}
 
-En la Figura \ref{g1} se observa un ejemplo sencillo del uso de G1. La herramienta se mueve desde su posición inicial hasta la coordenada (50,100) mediante la instrucción G1 X50 Y100. Al usar G1, en una arreglo cartesiano, por ejemplo, los motores coordinan sus velocidades de acuerdo al parámetro F para detenerse simultáneamente, a pesar de recorrer distancias diferentes. Nótese que el desplazamiento va a depender de si previamente se usó G90 o G91. Si está seleccionado el modo relativo, entonces el desplazamiento será el indicado en G1, pero si el modo es absoluto, el desplazamiento y dirección dependerán de la posición inicial.
+En la Figura \ref{g1} se observa un ejemplo sencillo del uso de G1. La herramienta se mueve desde su posición inicial hasta la coordenada (100,50) mediante la instrucción G1 X100 Y150. Al usar G1, en un arreglo cartesiano, por ejemplo, los motores coordinan sus velocidades de acuerdo al parámetro F para detenerse simultáneamente, a pesar de recorrer distancias diferentes y generando una trayectoria recta. Nótese que el desplazamiento va a depender de si previamente se usó G90 o G91. Si está seleccionado el modo relativo, entonces el desplazamiento será el indicado en G1, pero si el modo es absoluto, el desplazamiento y dirección dependerán de la posición inicial.
 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\linewidth]{imgs/g1.png}
-    \caption{La instrucción: G1 X50 Y100}
+    \caption{La instrucción: G1 X100 Y50, interpolación lineal de velocidades para trayectoria recta}
     \label{g1}
 \end{figure}
 
 
-La instrucción G28 \textit{homing} es fundamental para establecer un punto de referencia absoluto desde el cual se medirán los movimientos de la máquina. Este proceso consiste en el desplazamiento automático del cabezal hacia los extremos de los ejes, donde se ubican los sensores de fin de carrera. Estos sensores, de naturaleza digital, detectan la llegada del cabezal y señalan que se ha alcanzado la posición límite predefinida. Una vez completado el procedimiento de homing, el sistema asigna un conjunto de coordenadas a dicha posición, comúnmente el (0,0,0), que pasa a ser el origen del sistema de coordenadas absolutas. A partir de este punto, es posible establecer orígenes relativos adicionales (G92), lo que resulta útil para optimizar ciertos procesos de fabricación, en particular aquellos que requieren operaciones repetitivas o el uso de dispositivos de montaje. Es posible hacer homing de los ejes de manera independiente, indicándolo en la instrucción (G28 X, por ejemplo).
+La instrucción G28 \textit{homing} es fundamental para establecer un \textbf{punto de referencia absoluto} desde el cual se medirán los movimientos de la máquina. Este proceso consiste en el desplazamiento automático del cabezal hacia los extremos de los ejes, donde se ubican los sensores de fin de carrera. Estos sensores, de naturaleza digital, detectan la llegada del cabezal y señalan que se ha alcanzado la posición límite predefinida. Una vez completado el procedimiento de homing, el sistema asigna un conjunto de coordenadas a dicha posición, comúnmente el (0,0,0), que pasa a ser el origen del sistema de coordenadas absolutas. A partir de este punto, es posible establecer orígenes relativos adicionales (G92), lo que resulta útil para optimizar ciertos procesos de fabricación, en particular aquellos que requieren operaciones repetitivas o el uso de dispositivos de montaje. Es posible hacer homing de los ejes de manera independiente, indicándolo en la instrucción (G28 X, por ejemplo).
 
 El conjunto restante de códigos disponibles dependerá del tipo de proceso de fabricación implementado en cada máquina, así como de sus capacidades específicas y del grado de personalización definido por el fabricante. Estos códigos adicionales permiten ejecutar instrucciones complementarias, tales como el cambio automático de herramientas, el calentamiento de determinados componentes, la activación de sistemas de refrigeración, entre otras funciones necesarias para la operación del equipo.
 
 \section{Capacidades y performance}
 
-Uno de los parámetros más relevantes en la fabricación de una pieza es la velocidad de operación, la cual está condicionada por diferentes factores, como por ejemplo, las capacidades de los motores que componen la cadena cinemática del sistema. Si bien el objetivo suele ser minimizar el tiempo de producción aprovechando al máximo el rendimiento de los motores, un aumento en la velocidad puede generar efectos adversos. En particular, fenómenos de naturaleza mecánica, como las vibraciones o las resonancias estructurales, pueden comprometer la precisión y la calidad superficial de la pieza final.
+Uno de los parámetros de mayor interés en la fabricación de una pieza es la \textbf{velocidad de operación}, la cual está condicionada por diferentes factores, como por ejemplo, las capacidades de los motores que componen la cadena cinemática del sistema. Si bien el objetivo suele ser minimizar el tiempo de producción aprovechando al máximo el rendimiento de los motores, un aumento en la velocidad puede generar efectos adversos. En particular, fenómenos de naturaleza mecánica, como las vibraciones o las resonancias estructurales, pueden comprometer la precisión y la calidad superficial de la pieza final.
 
-Estos fenómenos están directamente relacionados con la construcción de la máquina y las características específicas del proceso. La rigidez global del chasis, la robustez y precisión del sistema de transmisión, la capacidad de amortiguación de la estructura, la alineación correcta entre ejes durante el ensamble, y las inercias asociadas a los componentes móviles determinan en gran medida la \textbf{respuesta dinámica del sistema}. Una estructura con baja rigidez puede experimentar deformaciones ante cargas dinámicas, mientras que transmisiones con \textbf{juego mecánico} o flexibilidad excesiva introducen errores en la trayectoria programada. Asimismo, inercias elevadas dificultan las aceleraciones controladas, y una amortiguación insuficiente puede prolongar oscilaciones no deseadas tras cambios bruscos de velocidad o dirección.
+Estos fenómenos están directamente relacionados con la construcción de la máquina y las características específicas del proceso. La rigidez global del chasis, la robustez y precisión del sistema de transmisión, la capacidad de amortiguación de la estructura, la alineación correcta entre ejes durante el ensamble, y las inercias asociadas a los componentes móviles determinan en gran medida la \textbf{respuesta dinámica del sistema}. Una estructura con baja rigidez puede experimentar deformaciones ante cargas dinámicas, mientras que transmisiones con \textbf{juego mecánico} (Figura \ref{gears}) o flexibilidad excesiva introducen errores en la trayectoria programada. Asimismo, inercias elevadas dificultan las aceleraciones controladas, y una amortiguación insuficiente puede prolongar oscilaciones no deseadas tras cambios bruscos de velocidad o dirección.
 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{imgs/gears.png}
-    \caption{Juego mecánico entre dos engranajes.}
+    \caption{Juego mecánico entre dos engranajes, marcado en rojo.}
     \label{gears}
 \end{figure}
 
 El juego mecánico (backlash, en inglés) se refiere al movimiento relativo no deseado entre dos componentes mecánicos cuando se invierte la dirección del movimiento en un sistema de transmisión. Este fenómeno ocurre, por ejemplo, en engranajes, husillos, tuercas o acoplamientos, y se manifiesta como un pequeño desplazamiento libre antes de que el movimiento se transmita efectivamente. No es viable eliminar completamente el juego mecánico, es consecuencia de \textbf{tolerancias} de fabricación, desgaste o diseño intencional, y puede afectar negativamente la precisión y repetibilidad en sistemas de control numérico y máquinas de fabricación digital. Una característica positiva del juego mecánico es facilitar o hacer posible el ensamble de un sistema.
 
-La tolerancia en un proceso de fabricación se define como la variación dimensional permitida respecto a las especificaciones nominales de una pieza, dentro de la cual el componente aún se considera funcional y conforme al diseño. Representa el rango aceptable de desviaciones en dimensiones lineales, angulares, formas o posiciones, y se establece en función de los requerimientos de ensamblaje, desempeño mecánico y costos de producción. Las tolerancias son un elemento clave en el control de calidad, ya que determinan los límites dentro de los cuales un proceso puede producir piezas sin necesidad de retrabajo o descarte. Por ejemplo, una tolerancia común en impresoras 3D de escritorio tipo FDM es de $\pm 0.5 \,\mathrm{mm}$, lo cual debe tomarse en cuenta al momento del diseño, especialmente para asegurar encajes.
+La tolerancia en un proceso de fabricación se define como la \textbf{variación dimensional permitida} respecto a las especificaciones nominales de una pieza, dentro de la cual el componente aún se considera funcional y conforme al diseño. Representa el rango aceptable de desviaciones en dimensiones lineales, angulares, formas o posiciones, y se establece en función de los requerimientos de ensamblaje, desempeño mecánico y costos de producción. Las tolerancias son un elemento clave en el control de calidad, ya que determinan los límites dentro de los cuales un proceso puede producir piezas sin necesidad de retoques o descarte. Por ejemplo, una tolerancia común en impresoras 3D de escritorio tipo FDM es de $\pm 0.5 \,\mathrm{mm}$, lo cual debe tomarse en cuenta al momento del diseño, especialmente para asegurar encajes.
 
 Otra característica deseada en un proceso de fabricación es la precisión, nuevamente, determinada por la construcción de la máquina y el tipo de operaciones desarrolladas. En el contexto de manufactura, es importante distinguir entre \textbf{precisión} y \textbf{exactitud} (accuracy) (Figura \ref{press1}). La precisión se refiere a la consistencia de los resultados: una máquina es precisa si produce piezas con dimensiones muy similares entre sí, aunque todas estén ligeramente desviadas del valor nominal. En cambio, la exactitud indica qué tan cerca está el resultado del valor deseado o teórico. Por ejemplo, si una impresora 3D fabrica diez piezas de 20 mm y todas miden 19,7 mm, decimos que es precisa (porque es repetitiva), pero no exacta (porque hay un error sistemático).
 
@@ -211,7 +211,7 @@ Otra característica deseada en un proceso de fabricación es la precisión, nue
 
 En una arquitectura cinemática basada en motores paso a paso, el error de exactitud está condicionado por la naturaleza discreta del paso angular. Cada pulso desplaza el eje un ángulo fijo, introduciendo un sesgo sistemático de hasta $\pm \tfrac{1}{2}$ paso o micropaso frente al valor de consigna. De este modo, ciertas posiciones teóricas resultan inalcanzables para el sistema; no obstante, la importancia de este sesgo depende de la tolerancia admitida en el proceso.
 
-Al igual que los motores paso a paso, la instrumentación digital, a través de encoders incrementales o absolutos y convertidores analógico-digitales (ADC), introduce un error de cuantización fijo, determinado por su resolución espacial y digital: la señal analógica se discretiza en incrementos, generando un sesgo máximo de $\pm ½$ LSB (Least Significant Bit). Al mismo tiempo, el sistema de control ejecuta su loop de realimentación con una frecuencia de muestreo y actualización finitas, lo que provoca retardos equivalentes a un periodo de muestreo y variaciones de temporización (jitter) en la emisión de pulsos de actuación. Estos efectos combinados, cuantización de la instrumentación y discretización temporal del controlador, se traducen en errores sistemáticos y aleatorios de seguimiento de trayectoria, limitando la exactitud dinámica y la repetibilidad del proceso.
+Al igual que los motores paso a paso, la instrumentación digital, a través de encoders incrementales o absolutos y convertidores analógico-digitales (ADC), introduce un \textbf{error de cuantización fijo}, determinado por su resolución espacial y digital: la señal analógica se discretiza en incrementos, generando un sesgo máximo de $\pm ½$ LSB (Least Significant Bit). Al mismo tiempo, el sistema de control ejecuta su loop de realimentación con una frecuencia de muestreo y actualización finitas, lo que provoca retardos equivalentes a un periodo de muestreo y variaciones de temporización (jitter) en la emisión de pulsos de actuación. Estos efectos combinados, cuantización de la instrumentación y discretización temporal del controlador, se traducen en errores sistemáticos y aleatorios de seguimiento de trayectoria, limitando la exactitud dinámica y la repetibilidad del proceso.
 
 Finalmente,en la fase operativa de fabricación surgen múltiples fuentes de error inherentes al material y a la herramienta. Por ejemplo, el filamento de impresión 3D puede presentar variaciones de diámetro a lo largo de la bobina, además de absorber humedad o contener impurezas, lo que provoca fluctuaciones en el caudal de extrusión. Por otro lado, las herramientas de corte experimentan dilatación térmica y deflexión mecánica bajo carga y temperatura elevadas, generando desplazamientos sistemáticos en el perfil de la pieza y afectando la rugosidad de la superficie.
 
@@ -219,7 +219,7 @@ Así, en la fabricación por CNC, el componente real rara vez reproduce con exac
 
 \section{Prototipado rápido}
 
-En las primeras fases del desarrollo de un producto, el prototipado transforma ideas y bocetos en modelos físicos de baja fidelidad que evolucionan progresivamente hacia versiones cada vez más representativas. Este proceso culmina en un nivel de confianza suficiente para planificar la producción con seguridad. El prototipado rápido (Figura \ref{propro}) destaca como una metodología ágil al emplear máquinas de fabricación digital capaces de materializar directamente diseños CAD.
+En las primeras fases del desarrollo de un producto, el prototipado transforma ideas y bocetos en modelos físicos de baja fidelidad que evolucionan progresivamente hacia versiones cada vez más representativas. Este proceso culmina en un nivel de confianza suficiente para validar el producto y planificar la producción con seguridad. El prototipado rápido (Figura \ref{propro}) destaca como una metodología ágil al emplear máquinas de fabricación digital capaces de materializar directamente diseños CAD.
 
 \begin{figure}[h!]
     \centering

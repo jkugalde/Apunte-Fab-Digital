@@ -3,9 +3,16 @@
 \section{Introducción}
 
 Llamaremos procesos de manufactura aditiva a todas las técnicas en las que el material se \textbf
-{deposita de forma controlada} y capa a capa sobre un volumen de trabajo para construir directamente geometrías tridimensionales. 
+{deposita/forma de manera controlada} y capa a capa sobre un volumen de trabajo para construir directamente geometrías tridimensionales. 
 
-La construcción secuencial elimina restricciones de trayectoria (colisiones, cambios de herramienta) propias de máquinas-herramienta convencionales y fusiona varias etapas de fabricación en un único paso. Además, como las fuerzas involucradas son muy bajas, los equipos pueden diseñarse con menor tamaño y potencia, reduciendo costes energéticos, de infraestructura y seguridad.
+La construcción secuencial elimina restricciones de trayectoria (colisiones, cambios de herramienta) propias de máquinas-herramienta convencionales y fusiona varias etapas de fabricación en un único paso. Por ejemplo, en la Figura \ref{roki} se ilustran las ventajas en tiempo y costo al producir una cámara de empuje de cohete mediante manufactura aditiva frente a métodos convencionales. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/rocket.png}
+	\caption{Comparación de tiempos y costos de producción para la cámara de empuje de un cohete, de convencional a aditiva.\cite{rokeke}}
+	\label{roki}
+\end{figure}
 
 Las tecnologías de manufactura aditiva suelen poseer las siguientes características en común:
 
@@ -37,9 +44,16 @@ Las tecnologías de manufactura aditiva suelen poseer las siguientes caracterís
     
 \end{description}
 
-Estas características convierten a la manufactura aditiva en una alternativa sumamente atractiva para modelos productivos flexibles: las modificaciones de diseño se incorporan sin alteraciones en la cadena de suministro, los inventarios pueden reducirse o eliminarse por completo y el aprovechamiento de la materia prima se maximiza. Sin embargo, su principal hándicap reside en la \textbf{velocidad de fabricación}. Al operar mediante deposición secuencial capa por capa, el tiempo de proceso crece de forma casi lineal con el tamaño y la complejidad de la pieza. Además, tratar de acelerar la tasa de deposición suele comprometer la resolución y la calidad del acabado superficial, lo que atenúa buena parte de la ventaja diferencial de esta tecnología.
+Estas características convierten a la manufactura aditiva en una alternativa sumamente atractiva para modelos productivos flexibles: las modificaciones de diseño se incorporan sin alteraciones en la cadena de suministro sin importar su complejidad (Figura \ref{grafsmm}), los inventarios pueden reducirse o eliminarse por completo y el aprovechamiento de la materia prima se maximiza. Sin embargo, su principal desventaja reside en la \textbf{velocidad de fabricación}. Al operar mediante deposición secuencial capa por capa, el tiempo de proceso crece de forma casi lineal con el tamaño y la complejidad de la pieza. Además, tratar de acelerar la tasa de deposición suele comprometer la resolución y la calidad del acabado superficial, lo que atenúa buena parte de la ventaja diferencial de esta tecnología.
 
-La evolución del volumen de producción de un componente o producto define el punto de equilibrio en el que los sistemas flexibles de manufactura (por ejemplo, centros CNC) dejan de ser competitivos frente a maquinaria altamente especializada. En lotes pequeños o medianos, la ausencia de conjuntos de herramientas y la capacidad de reconfiguración rápida de CNC y manufactura aditiva ofrecen tiempos de respuesta reducidos y bajos costos iniciales. Sin embargo, a medida que el tamaño del lote supera un umbral crítico (\(q^*\)), la inversión en moldes, troqueles o líneas automatizadas amortiza su alto coste inicial mediante ciclos unitarios extremadamente rápidos y costos marginales decrecientes.  
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/grafsmm.png}
+	\caption{Comparaciones entre procesos convencionales y de manufactura aditiva.}
+	\label{grafsmm}
+\end{figure}
+
+La evolución del volumen de producción de un componente o producto define el punto de equilibrio en el que los sistemas flexibles de manufactura (como CNCs) dejan de ser competitivos frente a maquinaria altamente especializada. En lotes pequeños o medianos, la ausencia de conjuntos de herramientas y la capacidad de reconfiguración rápida de CNC y manufactura aditiva ofrecen tiempos de respuesta reducidos y bajos costos iniciales. Sin embargo, a medida que el tamaño del lote supera un umbral crítico, la inversión en moldes, troqueles o líneas automatizadas amortiza su alto coste inicial mediante ciclos unitarios extremadamente rápidos y costos marginales decrecientes.  
 
 En consecuencia, la manufactura aditiva despliega su mayor ventaja competitiva en nichos de mercado caracterizados por:
 
@@ -345,7 +359,7 @@ Asumiendo un área aproximadamente rectangular para el segmento.
 
 \subsection{Defectos típicos en FDM}
 
-Existen diversos defectos en la impresión 3D que pueden originarse tanto por el desgaste de componentes como por una configuración inadecuada de los parámetros de proceso. 
+Fuera de la porosidad, resistencia intercapa y rugosidad intrínseca de las piezas fabricadas mediante el proceso, existen diversos defectos en la impresión 3D que pueden originarse tanto por el desgaste de componentes  del hardware como por una configuración inadecuada de los parámetros de proceso. 
 
 Entre los más comunes están el \textit{stringing} y el \textit{oozing}, que se manifiestan cuando el filamento fundido fluye de forma indeseada durante los desplazamientos del extrusor. El stringing genera finos hilos de plástico entre zonas no contiguas de la pieza, mientras que el oozing, o goteo, es la exudación continua de material cuando la extrusión debería estar detenida. Ambos fenómenos se agravan si la temperatura de la boquilla es demasiado alta y la viscosidad del polímero disminuye, pues el material fluye por gravedad o presión residual.
 
@@ -386,16 +400,20 @@ Bajo este mismo principio es que se imprimen grandes estructuras como casas, usa
 
 \subsubsection{Impresión liquid-on-liquid}
 
-En la impresión líquido–sobre–líquido, el cabezal inyecta el material de construcción directamente en un baño de soporte líquido, que sostiene cada cordón hasta que adquiere suficiente rigidez. Este medio puede ser un fluido tixotrópico, una suspensión de partículas o un líquido inmiscible; su función es retener la forma sin recurrir a estructuras auxiliares rígidas.
+En la impresión líquido–sobre–líquido, el cabezal deposita el material directamente en un volumen de soporte líquido. Este medio puede ser un fluido de comportamiento viscoso no newtoniano, una suspensión densamente cargada o un líquido inmiscible, y su función principal es mantener la forma durante la deposición sin necesidad de estructuras auxiliares sólidas.
 
-Una vez completada la geometría, el líquido de soporte se retira mediante decantación, lavado o centrifugado, y la pieza impresa sigue un proceso de curado o secado según el material. Gracias a este enfoque, es posible fabricar voladizos pronunciados y detalles complejos con acabados suaves y continuidad superficial.
+Existen al menos tres variantes de esta técnica, dependiendo de la relación funcional entre el material impreso y el líquido de soporte. En la modalidad más extendida, la impresión constituye la pieza final y el medio líquido se retira posteriormente mediante decantación, lavado o centrifugado, seguido por un proceso de curado o secado. Una segunda variante invierte esta lógica: el material impreso actúa como un sacrificado que se elimina al final, mientras que el líquido se solidifica y forma parte del objeto final, como ocurre en la fabricación de canales encapsulados. En una tercera modalidad, tanto el líquido como el material impreso se conservan, configurando estructuras multicomponente con funcionalidades diferenciadas, como en sensores blandos.
+
+Una de las aplicaciones más relevantes de esta técnica es la bioimpresión, un proceso de fabricación aditiva orientado a la deposición precisa de materiales biocompatibles, células vivas y factores de crecimiento para construir estructuras funcionales, como tejidos o andamios celulares. La impresión líquido–sobre–líquido resulta especialmente adecuada en este contexto, ya que permite mantener condiciones de baja tensión mecánica durante la deposición y evita la deformación o colapso de geometrías frágiles. Además, la compatibilidad del medio de soporte con soluciones acuosas y matrices extracelulares facilita la conservación de la viabilidad celular, así como la impresión directa en ambientes biológicamente activos.
+
+Para que este proceso sea físicamente viable, deben cumplirse ciertas condiciones: la densidad del medio y del material impreso deben estar equilibradas para evitar flotación o sedimentación relativa, y deben evitarse interacciones que lleven a la formación de agregados o coalescencia entre cordones. Además, el medio debe ofrecer una resistencia suficiente al flujo para sostener la geometría durante la deposición, pero permitir el desplazamiento del cabezal sin perturbaciones significativas.
 
  
 \section{Impresión 3D por fotopolimerización}
 
 \subsection{Fotopolimerización}
 
-La fotopolimerización es una reacción de química en la que monómeros y oligómeros se transforman en una red tridimensional por la acción de luz, normalmente en el rango de 365–405 nm. El proceso arranca cuando un fotón incide sobre un fotoiniciador presente en la mezcla, generando radicales libres. Estos transforman en laces dobles en los monómeros a simples activos, iniciando reacciones en cadena que alargan y entrecruzan las cadenas poliméricas hasta \textbf{curar} el líquido en un sólido termoestable.
+La fotopolimerización es una reacción de química en la que monómeros y oligómeros se transforman en una red tridimensional por la acción de luz, normalmente en el rango de 365–405 nm. El proceso arranca cuando un fotón incide sobre un fotoiniciador presente en la mezcla, generando radicales libres. Estos transforman enlaces dobles en los monómeros a simples activos, iniciando reacciones en cadena que alargan y entrecruzan las cadenas poliméricas hasta \textbf{curar} el líquido en un sólido termoestable.
 
 La densidad de entrecruzamiento y, por tanto, las propiedades mecánicas y dimensionales finales dependen de la dosis de energía (intensidad y tiempo de exposición), de la concentración de fotoiniciador y de la profundidad de penetración de la luz en el material. Un curado excesivo puede inducir tensiones internas y contracción volumétrica, mientras que una exposición insuficiente deja zonas sin polimerizar, con menor resistencia y rugosidad superficial. Una forma de estimar el tamaño de la zona en fotopolimerización puede ser mediante la ecuación de Jacobs:
 
@@ -414,13 +432,10 @@ donde:
 	\item[$E_{c}$] Dosis crítica mínima necesaria para iniciar la polimerización (J/cm$^2$).
 \end{description}
 
-Dado que el curado se activa por radiación UV, conviene proteger las piezas fotopolimerizadas de la luz ambiental hasta completar el post-curado. Los fotoiniciadores residuales pueden reaccionar de forma irregular bajo radiación no controlada, alterando la integridad de la red polimérica y modificando las propiedades mecánicas de la pieza.
-
-La foto-oxidación impacta con mayor severidad a los termoestables que a los termoplásticos. En los termoplásticos, el ligero aumento de temperatura facilita la reorganización de las cadenas y atenúa el efecto de la rotura de enlaces. En cambio, la movilidad de las moléculas en un termoestable es muy limitada: la distorsión de la red genera microfisuras que se propagan y conducen a la fragilización prematura del material.
 
 \subsection{Estereolitografía}
 
-La estereolitografía (SLA) fue la primera tecnología de impresión 3D patentada. Su funcionamiento se basa en la solidificación de resinas fotosensibles mediante irradiación láser UV. El término procede del griego stereo (sólido), lithos (piedra) y graphia (escritura), es decir, escritura de sólidos.
+La estereolitografía (SLA) fue la primera tecnología de impresión 3D patentada. Su funcionamiento se basa en la solidificación de resinas fotosensibles mediante irradiación láser UV, o fotopolimerización. El término procede del griego stereo (sólido), lithos (piedra) y graphia (escritura), es decir, escritura de sólidos.
 
 La arquitectura clásica de una impresora SLA se ilustra en la Figura. Está formada por un tanque de resina líquida, una plataforma móvil en el eje Z y un sistema de escaneo láser (galvanómetro) que dirige el haz UV sobre la superficie del líquido.
 
@@ -433,13 +448,11 @@ El ciclo de impresión se describe de forma general así:
 	\item Se repite el trazado en la nueva superficie hasta completar la pieza.
 \end{enumerate}
 
-Tras terminar la impresión, se extrae la pieza de la plataforma y se somete a un post-curado UV para optimizar sus propiedades mecánicas.
-
 La dosis de energía (intensidad y tiempo de exposición) es un parámetro crítico: debe garantizar la rigidez mínima de cada capa sin polimerizar zonas no deseadas y, al mismo tiempo, mantener los tiempos de fabricación al mínimo.
 
-Una limitación de la configuración tradicional es el elevado volumen de resina necesario para cubrir el tanque. Para reducir este consumo, las impresoras modernas emplean un esquema invertido: la pieza se construye boca abajo, adherida a una plataforma que asciende capa a capa (ver Figura~X). De este modo, basta una lámina delgada de resina sobre la ventana transparente para garantizar el curado.
+Una limitación de la configuración tradicional es el elevado volumen de resina necesario para cubrir el tanque. Para reducir este consumo, las impresoras modernas emplean un esquema invertido: la pieza se construye boca abajo, adherida a una plataforma que asciende capa a capa (ver Figura~X), con un tanque de fondo tránslucido. De este modo, basta una lámina delgada de resina en el tanque para garantizar el curado.
 
-En esta configuración \textbf{bottom-up} se distinguen tres métodos de fotopolimerización:
+En esta configuración \textbf{bottom-up} se distinguen tres tecnologías de fotopolimerización:
 
 \begin{itemize}
 	\item SLA: método clásico que utiliza uno o varios haces láser focalizados para trazar cada sección transversal.
@@ -447,12 +460,81 @@ En esta configuración \textbf{bottom-up} se distinguen tres métodos de fotopol
 	\item MSLA (Masked SLA): una máscara LCD modula la luz UV procedente de una matriz LED, curando selectivamente cada capa.
 \end{itemize}
 
+Es importante destacar que tanto DLP como MSLA, al proyectar cada sección completa de la pieza, alcanzan velocidades de impresión superiores a las de un láser focalizado, pues el tiempo por capa no depende ni del tamaño ni de la cantidad de objetos. De este modo, a diferencia de FDM, imprimir múltiples piezas en un solo lote reduce directamente el tiempo de fabricación por pieza.
+
+No obstante, la precisión de DLP y MSLA está limitada por la resolución y el número de píxeles de la fuente luminosa, mientras que un láser puede ofrecer definición micrométrica. Sin embargo, los proyectores y pantallas LCD actuales proporcionan una calidad de superficie prácticamente indistinguible de la de una pieza inyectada estándar. Por esta razón, la tecnología láser resulta especialmente atractiva en aplicaciones de microfabricación o en entornos de investigación donde se requiera personalizar finamente los parámetros del proceso.
+
+En los sistemas bottom-up, gran parte del tiempo de impresión no corresponde a la polimerización de la resina, sino a la operación de despegar cada capa del fondo del tanque, donde la resina tiende a adherirse. Así, aunque se fabrique con láser, de todas formas es óptimo imprimir varias piezas de una sola vez. La fuerza de adherencia puede modelarse de forma aproximada a través de la ecuación de Stefan:
+
+\begin{equation} 
+F_{\mathrm{visc}} 	= \frac{3\pi\,\eta\,R^4}{2\,h^3}\;v_{\mathrm{sep}} 
+\end{equation}
+
+donde $\eta$ es la viscosidad de la resina, $R$ el radio efectivo de la sección, $h$ el espesor de la película y $v_{\mathrm{sep}}$ la velocidad de separación. Este término muestra que la fuerza de despego crece de forma $h^{-3}$, de modo que incluso ligeras variaciones en el grosor o la tensión del film impactan drásticamente el tiempo de peel.
+
+Por tanto, la velocidad de elevación debe ajustarse para que $F_{\mathrm{visc}}$ permanezca por debajo de la resistencia intercapa, para evitar delaminación, y por debajo de la adherencia a la plataforma para que la pieza no caiga.
+
+Una técnica innovadora que vale la pena destacar es el \textbf{CLIP} (Continuous Liquid Interface Production), el cual introduce una modificación significativa. En este sistema, se genera una \textit{zona muerta} cerca del fondo del tanque mediante la difusión controlada de oxígeno a través de una ventana permeable. El oxígeno inhibe localmente la polimerización al reaccionar con los radicales libres, impidiendo la formación de enlaces cruzados en esa región. De este modo, la pieza puede crecer de forma continua hacia arriba sin adherirse al fondo, eliminando la necesidad de ciclos de despegue. Esta inhibición superficial por oxígeno es análoga al mecanismo de fotodegradación observado en polímeros expuestos a radiación UV, donde el oxígeno atmosférico reacciona con radicales generados, interrumpiendo o degradando las cadenas poliméricas. El principio se ilustra en la Figura~\ref{fig:clip_zone}.
+
+\subsection{Soportes y orientación}
+
+Los principios para diseñar y ubicar soportes en SLA comparten nociones generales con FDM, pero difieren en aspectos críticos debido a la física del curado en resina y al mecanismo de separación de cada capa. En SLA las estructuras de soporte cumplen funciones esenciales: sostener voladizos y porciones aisladas durante la construcción capa a capa, fijar la pieza a la plataforma durante las operaciones de despegue y distribuir las fuerzas de separación que se generan entre la capa curada y la película del tanque.
+
+Una isla es la porción del modelo que se genera separada de la estructura principal en una capa determinada; sin soporte, esa porción puede adherirse al fondo del tanque, quedar flotando o deformarse. El soporte debe unir la isla a la estructura principal y, simultáneamente, ofrecer rigidez suficiente para resistir las fuerzas de despegue durante el levantado de la plataforma.
+
+En SLA, la adhesión inicial es más crítica que en FDM, porque una falla no solo implica pérdida de la pieza sino riesgo de contaminación del sistema óptico con resina líquida, comprometiendo la fiabilidad de la máquina. Por ello las primeras capas suelen exponerse con tiempos de curado aumentados para asegurar un anclaje robusto con la plataforma. No obstante, esto provoca aplastamientos y distorsiones geométricas en estas capas y puede incrementar el esfuerzo necesario para la extracción, comprometiendo la calidad de la pieza. 
+
+Así, la práctica habitual en SLA es evitar grandes áreas de contacto directo entre la pieza y la plataforma mediante un raft o base removible sobre la que se construyen los soportes que alcanzan la pieza. El tiempo de impresión no aumenta significativamente al incluir soportes; sin embargo, la presencia de estos puede aumentar la altura total del modelo al elevar la pieza, incrementando así el número de capas y el tiempo total de impresión. Además, más soportes suponen mayor trabajo de postprocesado.
+
+Por otro lado, por consecuencia de las fuerzas de despegue, la pieza no puede ser orientada con una primera capa plana y amplia hacia los soportes que emergen de la plataforma, pues la adhesión sería considerable, pudiendo causar deformaciones en esta primera capa (con un espesor micrométrico) o separación con los soportes. Así, orientar la pieza de forma oblicua es una estrategia efectiva porque la pieza se construye desde una sección transversal pequeña que permite a la impresión autosustentarse. El soporte entonces no solamente evita una impresión fallida, sino que además a que la pieza no se deforme durante el proceso de impresión.
+
+La elección de orientación debe equilibrar la altura final, la accesibilidad de los puntos de soporte y la calidad superficial requerida. Si bien, los soportes se generan de manera automática, en la mayoría de softwares CAM es posible incluirlos o removerlos manualmente indicando en la pieza. El tipo, densidad, diámetro y punto de contacto suelen ser parámetros configurables también. 
+
+Así como sucede con los filmentos FDM, cada fabricante de resina indicará la configuración óptima de los parámetros del proceso (tiempos, velocidades) para hacer la fabricación viable. En sistemas cerrados, simplemente se seleccionará el tipo de material. El material a utilizar también determinará el rango de alturas de capa admisible.
+
 \subsection{Flujo del proceso}
+
+A diferencia del proceso FDM, que es relativamente directo y produce piezas casi finalizadas tras la impresión, el proceso SLA implica múltiples etapas de posprocesamiento para alcanzar que la pieza alcance su forma y propiedades mecánicas finales.
+
+Una vez finalizada la impresión, la pieza obtenida no está completamente curada. La resina fotopolimerizable solo ha reaccionado lo suficiente como para mantener la geometría durante el proceso de construcción. Además, la superficie de la pieza aún presenta restos de resina líquida no polimerizada, que deben ser removidos para evitar alteraciones en el acabado superficial o en las dimensiones finales.
+
+El primer paso del posprocesamiento consiste en \textbf{lavar la pieza con alcohol isopropílico (IPA)} u otro solvente compatible, con el fin de disolver y eliminar estos residuos superficiales. Es fundamental controlar el tiempo de inmersión o agitación, ya que los polímeros curados pueden absorber solventes, lo que puede afectar sus propiedades mecánicas o inducir hinchamiento. Una exposición excesiva al alcohol también puede provocar fragilidad o distorsiones dimensionales.
+
+Tras el lavado, la pieza debe secarse completamente antes del postcurado térmico o UV. Si quedan residuos de alcohol en el interior del material estos pueden vaporizarse rápidamente al aplicar calor, generando \textbf{grietas internas o delaminaciones} debido a la presión del vapor atrapado.
+
+El siguiente paso es el \textbf{postcurado UV}, donde la pieza se expone a radiación ultravioleta bajo condiciones controladas de temperatura y tiempo, habitualmente en un horno especializado. Este tratamiento permite aumentar el grado de entrecruzamiento de la red polimérica, lo que se traduce en una mayor rigidez, dureza superficial y estabilidad térmica. Sin embargo, debido a la baja conductividad térmica del polímero y la limitada penetración de la radiación UV, se genera un \textbf{gradiente de curado}, con una mayor conversión en las capas externas que en el núcleo de la pieza. Este efecto debe considerarse en el diseño estructural y en el análisis de comportamiento mecánico, especialmente en piezas de gran espesor.
+
+El \textbf{retiro de los soportes} suele realizarse después del postcurado, cuando el material ya presenta mayor rigidez y fragilidad, lo que facilita el corte. No obstante, esto también aumenta el riesgo de propagación de grietas si no se realiza con cuidado. En piezas delicadas, puede optarse por cortar parcialmente los soportes antes del curado completo, siempre procurando no deformar la pieza, ya que en ese estado aún mantiene cierta flexibilidad.
+
+Finalmente, se pueden realizar operaciones adicionales de posprocesamiento, como el \textbf{lijado, pulido o recorte fino de soportes residuales}, según los requerimientos estéticos o funcionales de la aplicación.
+
+El manejo de residuos de resina requiere precaución, pues tanto la resina líquida como los restos parcialmente curados y los solventes pueden ser peligrosos para la salud y el medio ambiente. Los residuos líquidos no deben simplemente desecharse; la práctica segura consiste en solidificar completamente la resina mediante exposición UV hasta obtener un material curado que pueda manipularse como residuo sólido y, según la normativa local, disponerse o entregarse a un gestor autorizado.
+
+Los baños de limpieza con alcohol isopropílico u otros solventes deben gestionarse como residuos químicos cuando estén contaminados; no deben dejarse evaporar en espacios cerrados ni verterse a desagües. Durante la manipulación y el curado conviene usar ventilación forzada localizada, guantes de nitrilo, protección ocular y protección de la piel; realizar las operaciones en áreas ventiladas o con extracción puntual y disponer bandejas de contención para evitar derrames.
 
 \subsection{Resinas para 3DP}
 
+En SLA, la resina debe presentar ciertas propiedades físicas y químicas que aseguren un curado preciso, buena adhesión entre capas y estabilidad dimensional en el tiempo.
+
+Uno de los factores más importantes es la \textbf{viscosidad}. La resina debe ser lo suficientemente fluida como para redistribuirse fácilmente después de cada capa curada. Esto es especialmente relevante en impresoras que utilizan mecanismos de separación (como inclinación del tanque o movimiento vertical del eje Z), ya que una resina muy viscosa puede dificultar la formación de la siguiente capa, generar burbujas o producir defectos superficiales.
+
+Otro aspecto clave es la \textbf{compatibilidad óptica} entre la resina y la fuente de luz utilizada. La formulación debe permitir que la luz penetre lo justo en la resina para curar la capa deseada, sin excederse en profundidad (lo que afectaría la resolución vertical) ni dispersarse lateralmente (lo que reduciría la nitidez en el plano). Este equilibrio se logra ajustando la absorción de luz mediante el tipo y la concentración de fotoiniciadores y colorantes presentes en la mezcla.
+
+La \textbf{contracción durante el curado} también debe mantenerse bajo control. Al solidificarse, las cadenas poliméricas se compactan, lo que puede generar deformaciones o tensiones internas en la pieza. Esto es particularmente problemático en piezas con paredes delgadas o geometrías cerradas, donde la precisión dimensional es crítica.
+
+Asimismo, la resina debe ser \textbf{químicamente estable} tanto en almacenamiento como durante el proceso de impresión. No debe presentar sedimentación, separación de fases ni iniciar el curado de forma espontánea ante luz ambiental, especialmente en sistemas con tanques abiertos o tiempos de impresión prolongados.
+
+Finalmente, tras el postcurado, la resina debe alcanzar \textbf{propiedades mecánicas adecuadas} según el uso previsto de la pieza. Esto incluye rigidez, resistencia al impacto, estabilidad térmica o flexibilidad, dependiendo de la aplicación. Estas propiedades son el resultado de la combinación de monómeros, oligómeros y aditivos que conforman la formulación base.
+
+Los monómeros más utilizados en resinas para SLA son los \textbf{metil metacrilatos} y los \textbf{epóxidos acrilados}. Los primeros se emplean por su alta capacidad de reticulación, lo que permite obtener piezas rígidas, dimensionalmente estables y con buen detalle superficial. Sin embargo, presentan una contracción moderada durante el curado, lo que debe compensarse con otros componentes en la formulación.
+
+Por otro lado, los \textbf{epóxidos acrilados} ofrecen una menor contracción y mayor resistencia térmica, además de mejorar la adhesión entre capas y la tenacidad del material curado. Estas propiedades los hacen adecuados para piezas funcionales o sometidas a esfuerzos mecánicos. 
+
 \subsection{Comportamiento mecánico}
 
-\section{SLS}
+El postcurado
 
-\section{Diseño generativo}
+Dado que el curado se activa por radiación UV, conviene proteger las piezas fotopolimerizadas de la luz ambiental hasta completar el post-curado. Los fotoiniciadores residuales pueden reaccionar de forma irregular bajo radiación no controlada, alterando la integridad de la red polimérica y modificando las propiedades mecánicas de la pieza.
+
+La foto-oxidación impacta con mayor severidad a los termoestables que a los termoplásticos. En los termoplásticos, el ligero aumento de temperatura facilita la reorganización de las cadenas y atenúa el efecto de la rotura de enlaces. En cambio, la movilidad de las moléculas en un termoestable es muy limitada: la distorsión de la red genera microfisuras que se propagan y conducen a la fragilización prematura del material. Por otro lado, las resinas para fotopolimerización no cuentan con aditivos para protección UV, pues sería un obstáculo para la reacción. 
+

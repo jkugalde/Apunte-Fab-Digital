@@ -27,17 +27,9 @@
 \usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{siunitx}
-
-
-\usepackage[
-  backend=biber,
-  refsection=chapter,
-  defernumbers=true,
-  sorting=none
-]{biblatex}
+\usepackage{url}
+\usepackage[maxbibnames=99,backend=bibtex,natbib=true,style=ieee,sorting=none]{biblatex}
 \addbibresource{bibliografia.bib}
-
-
 
 % Configuración global para todos los itemize
 \setlist[itemize]{
@@ -84,6 +76,7 @@
 \end{titlepage}
 
 \tableofcontents
+
 \chapter*{Prefacio}
 
 Este apunte es un trabajo en desarrollo, su objetivo es condensar el contenido del curso ME4705 Fabricación Digital del Departamento de Ingeniería Mecánica de la Universidad de Chile en un documento de apoyo. Este curso tiene como objetivo introducir a los estudiantes de ingeniería mecánica en los procesos de manufactura no convencionales, analizando sus principios de funcionamiento, los materiales empleados y la configuración de parámetros de operación, para comprender su influencia en la obtención y las propiedades finales de las piezas.
@@ -103,7 +96,13 @@ Si bien, el curso trata de los procesos de fabricación, se tocan tangencialment
 \include{capitulo1}
 \include{capitulo2}
 \include{capitulo3}
-\include{capitulo4}
 \include{capitulo5}
+\include{capitulo4}
 \include{capitulo6}
+
+\backmatter            % Opcional: para desactivar numeración de capítulos siguientes
+
+
+\printbibliography
+
 \end{document}
