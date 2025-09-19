@@ -71,7 +71,7 @@ En consecuencia, la manufactura aditiva despliega su mayor ventaja competitiva e
   \item \textbf{Piezas de edición limitada} en sectores como automoción de alta gama o diseño industrial, donde el valor añadido justifica tiempos de fabricación superiores.
 \end{itemize}  
 
-Aunque la manufactura aditiva presenta ciertas restricciones para su producción industrial a gran escala, especialmente en términos de tiempos de ciclo y costo unitario, resulta una herramienta inigualable durante la fase de prototipado, razón principal para el nacimiento de estas tecnologías.
+Aunque la manufactura aditiva presenta ciertas restricciones para su producción industrial a gran escala, especialmente en términos de tiempos de ciclo y costo unitario, resulta una herramienta inigualable durante la \textbf{fase de prototipado}, razón principal para el nacimiento de estas tecnologías.
 
 \subsection{Tipos de tecnologías}
 
@@ -113,13 +113,13 @@ Gran parte de estas máquinas ha experimentado una evolución estructural análo
 
 \subsection{Slicer}
 
-En el flujo de trabajo de fabricación aditiva, el software CAM incorpora un módulo slicer que segmenta el modelo 3D en $n$ planos horizontales (paralelos al eje $x-y$). Cada uno de estos cortes tiene un espesor igual al parámetro operativo de \textbf{altura de capa} y será la unidad básica que se apile durante la impresión para reconstruir la geometría del diseño.
+En el flujo de trabajo de fabricación aditiva, el software CAM incorpora un módulo slicer que \textbf{segmenta el modelo 3D} en $n$ planos horizontales (paralelos al eje $x-y$). Cada uno de estos cortes tiene un espesor igual al parámetro operativo de \textbf{altura de capa} y será la unidad básica que se apile durante la impresión para reconstruir la geometría del diseño.
 
-La altura de capa es un parámetro crítico: define la resolución y la fidelidad geométrica de la pieza, y condiciona el tiempo total de fabricación. Una capa más delgada mejora el detalle superficial y la precisión dimensional, pero exige más pasadas de extrusión y prolonga el tiempo de impresión. En cambio, capas más gruesas aceleran el proceso a costa de perder definición en detalles finos.
+La altura de capa es un parámetro crítico: define la resolución y la fidelidad geométrica de la pieza, y condiciona el tiempo total de fabricación. Una capa más delgada mejora el detalle superficial y la precisión dimensional, pero se requieren más para conformar el modelo y prolonga el tiempo de impresión. En cambio, capas más gruesas aceleran el proceso a costa de perder definición en detalles finos.
 
 Sobre cada sección transversal generada, el slicer traza la trayectoria de la herramienta (toolpath) y genera el código G correspondiente en función del resto de parámetros operativos a configurar en el CAM (Figura \ref{slicerfig}).
 
-El archivo que se importa al slicer rara vez conserva el formato nativo del CAD (por ejemplo, STEP o IGES); en su lugar se convierte la superficie del modelo en una malla poligonal que la aproxima, normalmente mediante un archivo con extensión .stl. En este formato, la geometría 3D se tesela en triángulos (Figura \ref{stlfig}): las curvas y detalles se aproximan con facetas planas, pero se pierde por completo la información volumétrica interna (materiales, estructuras huecas o sólidos). El acrónimo STL se interpreta habitualmente como Stereolithography, Standard Tessellation Language o Standard Triangle Language.
+El archivo que se importa al slicer rara vez conserva el formato nativo del CAD (por ejemplo, STEP o IGES); en su lugar se convierte la superficie del modelo en una \textbf{malla poligonal} que la aproxima, normalmente mediante un archivo con extensión .stl. El acrónimo STL se interpreta habitualmente como Stereolithography, Standard Tessellation Language o Standard Triangle Language. En este formato, la geometría 3D se tesela en triángulos (Figura \ref{stlfig}), aproximando las curvas y detalles con facetas planas. Este archivo sólo describe la envolvente externa de la pieza; no incluye información sobre su volumen o espesores interiores. 
 
 \begin{figure}[h!]
 	\centering
@@ -137,20 +137,22 @@ El grado de refinamiento de esa malla condiciona la fidelidad entre el diseño o
 	\label{stlfig}
 \end{figure} 
 
+\section{Modelado por deposición fundida}
 
-Este archivo sólo describe la envolvente externa de la pieza; no incluye información sobre su volumen o espesores interiores. Estas características serán definidas mediante los parámetros del CAM a utilizar.
+\subsection{Introducción}
 
-\section{Impresión 3D por extrusión}
+Esta familia de tecnologías se basa en la deposición controlada de material a través de una boquilla dispensadora. La variante más común es la impresión con filamento termoplástico, el cual es impulsado mediante un motor hacia la boquilla caliente, donde es extruido (Figura \ref{fdmpfig} y \ref{3dpdiagfig}). Una vez depositado el material, este se solidifica casi de inmediato en el lugar donde fue extruido (idealmente), enfriándose y recuperando rigidez. Esto se repite capa a capa hasta construir la geometría deseada. A esta forma de impresión se le conoce como \textbf{FDM} (Fused Deposition Modeling) o \textbf{FFF} (Fused Filament Fabrication).
 
-\subsection{Modelado por deposición fundida}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/fdmp.png}
+	\caption{Impresión FDM, se observa la característica superficie rugosa estratificada en el popular modelo de calibración \textit{3D Benchy}. \href{https://www.ultratec3d.ae/blogs/fdm-3d-printing-everything-you-need-to-know/}{Fuente}}
+	\label{fdmpfig}
+\end{figure} 
 
-Esta tecnología de manufactura se basa en la deposición controlada de material a través de una boquilla dispensadora. Su aplicación más común es la impresión con filamento termoplástico: un motor impulsa el hilo hacia un módulo de calentamiento que aplica un perfil térmico preciso. De este modo, el polímero permanece rígido durante el avance y se ablanda al atravesar la zona caliente, alcanzando la viscosidad óptima para su extrusión controlada.
+La impresora emplea una arquitectura cinemática tridimensional, diseñada para mover el cabezal sin necesidad de fuerzas elevadas, más allá de las requeridas para vencer su propia inercia. La masa del cabezal depende en gran medida de la posición del motor de extrusión, que puede situarse dentro del cabezal (\textbf{extrusión directa}) o en un soporte externo (\textbf{sistema Bowden}).
 
-Una vez depositado el material, este se solidifica casi de inmediato en el lugar donde fue extruido (idealmente), enfriándose y recuperando rigidez. Esto se repite capa a capa hasta construir la geometría deseada.
-
-La impresora emplea una arquitectura cinemática tridimensional, diseñada para mover el cabezal sin necesidad de fuerzas elevadas, más allá de las requeridas para vencer su propia inercia. La masa móvil depende de la posición del motor de extrusión, que puede situarse dentro del cabezal (\textbf{extrusión directa}) o en un soporte externo (\textbf{sistema Bowden}).
-
-El sistema Bowden reduce significativamente la masa del cabezal, disminuye la inercia y permite mayores aceleraciones con menos vibraciones. En cambio, el extrusor directo, al llevar el motor integrado en el cabezal, minimiza el roce y la deformación del filamento, mejorando la calidad de la extrusión, especialmente con materiales flexibles.
+El sistema Bowden reduce significativamente la masa del cabezal, disminuye la inercia y permite mayores aceleraciones con menos vibraciones. En cambio, el extrusor directo, al llevar el motor integrado en el cabezal, minimiza el roce y la deformación durante el desplazamiento del filamento, mejorando la calidad de la extrusión, especialmente con materiales flexibles.
 
 El cabezal cuenta con diversas componentes, encargadas de dirigir el filamento y otorgar el gradiente térmico:
 
@@ -166,15 +168,34 @@ El cabezal cuenta con diversas componentes, encargadas de dirigir el filamento y
   \item \textbf{Boquilla}: punta de latón, acero o acero endurecido con un orificio calibrado (generalmente de 0.4 mm). Controla el flujo de material fundido y define la resolución, el ancho de línea y el volumen de extrusión de cada capa.
 \end{itemize}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/3dpdiag.png}
+	\caption{Diagrama simplificado del mecanismo FDM. \href{https://manufactur3dmag.com/working-fdm-3d-printing-technology/}{Fuente}}
+	\label{3dpdiagfig}
+\end{figure} 
+
 Esta técnica de impresión es actualmente la más popular, pues la simplicidad de la máquina y el costo de los materiales permite que existan modelos de escritorio de alrededor de unos cien dólares.
 
-En la impresión FDM, el plástico se deposita sobre una \textbf{plataforma o cama}, que puede ser fija o móvil según la arquitectura cinemática de la impresora. La adhesión de la primera capa es crítica, pues de ella depende la estabilidad de todo el conjunto; el fallo más habitual es el despegue de la pieza durante la impresión. Para optimizar el contacto, la boquilla debe quedar perfectamente perpendicular a la superficie de la cama. Esta nivelación se logra mediante calibración manual, sistemas de nivelación automática o ajustes adaptativos por sensores, según el modelo de impresora. 
+En la impresión FDM, el plástico se deposita sobre una \textbf{plataforma o cama}, que puede ser fija o móvil según la arquitectura cinemática de la impresora. La \textbf{adhesión de la primera capa} es crítica, pues de ella depende la estabilidad de todo el conjunto; el fallo más habitual es el despegue de la pieza durante la impresión. Para optimizar el contacto, la boquilla debe quedar perfectamente perpendicular a la superficie de la cama. Esta nivelación se logra mediante calibración manual, sistemas de nivelación automática o ajustes adaptativos por sensores, según el modelo de impresora. 
 
-La adhesión del plástico ocurre al fluir el plástico caliente entre los micro relieves de la cama, anclándose mecánicamente. Además, esta adhesión podría ser favorecida cuando existe afinidad química o polar entre el polímero y el material de la base. La plataforma de impresión puede presentar distintas rugosidades: una superficie texturizada favorece la adherencia del filamento, pero está sujeta a desgaste, mientras que el vidrio liso proporciona un acabado más pulido y durabilidad, pero es más difícil la adhesión.
+El plástico caliente se ancla mecánicamente a la superficie de la base, al fluir entre los micro relieves. Esta adhesión es favorecida cuando existe afinidad química o polar entre el polímero y el material de la base. La plataforma de impresión puede presentar distintas rugosidades: una superficie texturizada favorece la adherencia del filamento, pero está sujeta a desgaste, mientras que el vidrio liso proporciona un acabado más pulido y durabilidad, pero hace más difícil la adhesión.
 
-El despegue de la pieza suele originarse por \textbf{warping}, un fenómeno en el que los gradientes térmicos durante el enfriamiento generan tensiones internas que deforman y curvan los bordes, separándolos de la cama. Para contrarrestar este efecto, la plataforma se calienta hasta una temperatura cercana al punto de transición vítrea del polímero. Así, la pieza se enfría de forma más gradual y permanece más flexible, reduciendo las tensiones por contracción térmica. Algunos modelos de impresoras presentan un \textbf{ambiente cerrado}, el cual puede incluso contar con control de temperatura, controlando mejor los gradientes térmicos generados durante el proceso.
+El despegue de la pieza suele originarse por \textbf{warping}, un fenómeno en el que los gradientes térmicos durante el enfriamiento generan tensiones internas que deforman y curvan los bordes, separándolos de la cama. Para contrarrestar este efecto, la plataforma se calienta hasta una temperatura cercana al punto de transición vítrea del polímero. Así, la pieza se enfría de forma más gradual y permanece más flexible, reduciendo las tensiones por contracción térmica. Algunos modelos de impresoras presentan un ambiente cerrado, el cual puede incluso contar con control de temperatura, controlando mejor los gradientes térmicos generados durante el proceso.
 
-Al elegir un material para impresión FDM, resulta fundamental entonces que su \textbf{coeficiente de dilatación térmica} sea bajo. Esta característica minimiza el warping y refuerza la precisión dimensional al reducir la variación de volumen durante el enfriamiento. Por ello, el coeficiente de dilatación es un parámetro clave para la facilidad de impresión o \textbf{imprimibilidad} de un polímero. Existen otras propiedades mecánicas que influyen en el proceso, pero suelen requerir compromisos, cada una tiene una ventana óptima de funcionamiento en lugar de un valor extremo universal.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/warpi.png}
+	\caption{Warping en impresión FDM. \href{https://www.3dnatives.com/es/warping-impresion-3d-que-hacer-100120232/}{Fuente}}
+	\label{warpifig}
+\end{figure} 
+
+
+Al elegir un material para impresión FDM, resulta fundamental entonces que su \textbf{coeficiente de dilatación térmica} sea bajo. Esta característica minimiza el warping y refuerza la precisión dimensional al reducir la variación de volumen durante el enfriamiento. Por ello, el coeficiente de dilatación es un parámetro clave para la facilidad de impresión o \textbf{imprimibilidad} de un polímero. Existen otras propiedades mecánicas que influyen en el proceso, pero suelen requerir compromisos, cada una tiene una ventana óptima de funcionamiento en lugar de un valor extremo universal (Cuadro \ref{3param}).
+
+El control de la viscosidad del polímero fundido es el mecanismo central en FDM. Durante la extrusión la viscosidad debe ser lo bastante baja para garantizar un flujo estable y evitar sobrepresiones en el extrusor, pero no tan baja que provoque goteo por gravedad desde la boquilla. Además, inmediatamente después de la deposición la viscosidad debe aumentar rápidamente para que la geometría depositada mantenga su forma y no \comillas{escurra}. 
+
+Este \textbf{comportamiento reológico} viene gobernado por la dependencia temperatura‑esfuerzo de la viscosidad $\eta(T,\,\dot\gamma)$, los tiempos de relajación viscoelástica $\tau(T)$ y, en polímeros semicristalinos, por la cinética de cristalización. De esta manera, imponer una temperatura precisa de extrusión y un flujo convectivo óptimo será clave para obtener piezas de calidad.
 
 \begin{table}[h]
   \centering
@@ -213,12 +234,14 @@ Al elegir un material para impresión FDM, resulta fundamental entonces que su \
     \hline
   \end{tabular}
   \caption{Propiedades termomecánicas críticas para la imprimibilidad en FDM.}
-  \label{tab:propiedades_fdm}
+  \label{3param}
 \end{table}
 
-Una limitante en los sistemas de impresión suele ser la temperatura de fusión del material, pues temperaturas muy altas implican un mejor diseño y selección en las componentes que podrían verse degradadas por el flujo de calor. Típicamente, los materiales que presentan mejores propiedades mecánicas tienden a ser imprimidos a temperaturas más altas, requiriendo más prestaciones en la máquina. Los materiales tradicionales básicos se imprimen cerca de los 200.
+Una limitante en los sistemas de impresión suele ser la temperatura de fusión del material, pues las componentes de la máquina podrían ser degradadas por el flujo de calor. Típicamente, los materiales que presentan mejores propiedades mecánicas tienden a ser impresos a temperaturas más altas, requiriendo más prestaciones en la máquina. Los materiales tradicionales básicos se imprimen cerca de los $200^{\circ}C$ .
 
-Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 kg con diámetros estándar de 1,75 mm (también existen versiones de 2,85 mm). Se envasan al vacío junto a paquetes de gel de sílice para controlar la humedad, ya que la mayoría de los polímeros son higroscópicos. Por ello, resulta crucial que un material de impresión muestre baja higroscopicidad: el agua absorbida no solo puede alterar sus propiedades mecánicas y térmicas, sino que al vaporizarse durante la extrusión provoca burbujas y discontinuidades en el flujo, comprometiendo la calidad y la fiabilidad de cada pieza.
+Considerando lo descrito anteriormente, parece entonces ideal imprimir en las condiciones más \comillas{frías} posibles. Una temperatura baja de extrusión disminuirá la dilatación térmica y el escurrimiento viscoso, mientras que un flujo convectivo alto permitirá alcanzar una mayor fidelidad respecto al modelo. Esta conclusión no es correcta, puesto que el gradiente térmico alto por el enfriamiento puede ocasionar esfuerzos residuales que propiciarían delaminación entre capas, y además, una mala unión o \comillas{soldadura} entre estas, como veremos más adelante.
+
+Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 kg con diámetros estándar de 1,75 mm (también existen versiones de 2,85 mm). Se envasan al vacío junto a paquetes de gel de sílice para controlar la humedad, ya que la mayoría de los polímeros son \textbf{higroscópicos}. Por ello, resulta crucial que un material de impresión muestre baja higroscopicidad: el agua absorbida no solo puede alterar sus propiedades mecánicas y térmicas, sino que al vaporizarse durante la extrusión provoca burbujas y discontinuidades en el flujo, comprometiendo la calidad y la fiabilidad de cada pieza. En el Cuadro \ref{tab:materiales_fdm} se observa una comparación entre los principales materiales de impresión FDM.
 
 \begin{table}[h]
   \centering
@@ -248,17 +271,50 @@ Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 
   \label{tab:materiales_fdm}
 \end{table}
 
+Existen variantes del diseño estándar de impresoras FDM que permiten realizar el proceso de \textbf{fabricación con más de un filamento} (Figura \ref{printersfig}), generando piezas con materiales diferentes, colores múltiples, geometrías funcionales (refuerzos, zonas de distinto relleno) y estructuras de soporte o interfaces optimizadas para mejorar propiedades mecánicas, térmicas o estéticas. Estas variantes pueden ser:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/printers.png}
+	\caption{Impresoras multifilamento. A la izquierda, de un bloque calefactor (\href{https://3dprint.com/144414/rova4d-full-color-blender-printer/}{Fuente}), al centro, de doble cabezal  (\href{https://printingatoms.com/3d-printers/best-dual-extruder-3d-printer/}{Fuente}), a la derecha, equipada con sistema de cambio de filamento  (\href{https://bambulab.com/es/a1}{Fuente}).}
+	\label{printersfig}
+\end{figure} 
+
+\begin{itemize}
+	\item Un bloque calefactor alimentado por múltiples filamentos: Para impresoras que requieren un alto flujo másico, o mezclar colores primarios para generar piezas multicolor, o usar distintos materiales (no simultáneamente), valiéndose de sólo un cabezal.
+	\item Varios bloques calefactores: Similar al caso anterior, pero con boquillas dedicadas a cada filamento, por lo que no permite mezclar, pero sí imprimir modelos en paralelo si es que no se generan choques de trayectoria. La máquina puede tener un gran cabezal con todas las boquillas, o bien, más de un cabezal móvil (típicamente uno extra), para otorgar más opciones.
+	\item Cabezal o filamento intercambiable: La máquina posee una rutina para cambiar de herramienta (el bloque calefactor completo asociado a un filamento), o bien, para descargar y cargar automáticamente otro filamento. 
+\end{itemize}
+
 \subsection{Morfología de una impresión FDM}
 
-Si bien la tecnología de fabricación por deposición fundida (FDM) admite múltiples estrategias de deposición, el método convencional consiste en generar la pieza de forma estratificada: el extrusor deposita cada capa sobre el plano XY y, al completarse, el sistema aumenta su posición en el eje Z para continuar la construcción hasta finalizar la pieza. Esta corresponde a una estrategia \textbf{planar}.
+La tecnología de fabricación por deposición fundida (FDM) admite múltiples estrategias de deposición, donde el método convencional consiste en generar la pieza de forma estratificada: el extrusor deposita cada capa sobre el plano XY y, al completarse, el sistema aumenta su posición en el eje Z para continuar la construcción hasta finalizar la pieza. Esta corresponde a una estrategia \textbf{planar}.
 
 Una estrategia \textbf{no planar} extiende la deposición de filamento más allá de las capas horizontales, trazando trayectorias tridimensionales curvadas que se adaptan con precisión a la geometría del modelo y preservan el detalle que habitualmente se pierde por la altura de capa. No obstante, esta técnica demanda un cálculo de toolpaths mucho más complejo y algoritmos de slicing adaptativos, y requiere planificar con cuidado los movimientos para evitar colisiones entre el extrusor y la pieza.
 
-En la estrategia planar estándar, el extrusor dibuja primero los perímetros o paredes, que definen la silueta y las dimensiones finales de la pieza. A continuación deposita material en el interior, cuya estrategia varía según la ubicación de la capa dentro del volumen. Entre las características más notorias del proceso FDM se encuentra la rugosidad superficial inherente, derivada de la deposición capa a capa del material fundido.
+En la estrategia planar estándar, el extrusor dibuja primero los \textbf{perímetros o paredes}, que definen la silueta y las dimensiones finales de la pieza. A continuación deposita material en el interior, cuya estrategia varía según la ubicación de la capa dentro del volumen (Figura \ref{fdmfig}). Entre las características más notorias del proceso FDM se encuentra la rugosidad superficial inherente, derivada de la deposición capa a capa del material fundido.
 
-Las capas iniciales (base) y finales (tapas superior e inferior) se imprimen sólidas para garantizar rigidez y un acabado uniforme. Entre ellas, las capas intermedias emplean un patrón de relleno (infill) de densidad controlada: este entramado interno aporta soporte a las paredes y capas superiores, reduce el consumo de material y acorta los tiempos de impresión sin comprometer críticamente la rigidez general. Este paradigma proviene del prototipado rápido, en el que la forma externa y la velocidad de fabricación eran prioritarias.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/fdm.png}
+	\caption{Cubo en ambiente CAM Cura Ultimaker. A la izquierda, el modelo 3D, al centro, un corte transversal medio donde se observan las paredes y el relleno de triángulos, a la derecha, las capas apiladas formando la pieza}
+	\label{fdmfig}
+\end{figure} 
 
-De este modo, una pieza impresa se organiza en paredes (shells), relleno (infill) y tapas superior e inferior (top y bottom), aunque el proceso puede requerir estructuras auxiliares. En FDM se asume que cada capa descansa sobre la anterior, pero cuando aparece un voladizo, es decir, un tramo suspendido más allá de lo que admite la viscosidad del plástico fundido, el material tiende a colapsar, provocando imprecisiones geométricas o incluso interrumpiendo la impresión. Para evitarlo, el software CAM puede generar automáticamente \textbf{soportes} que sostienen estas zonas en voladizo, garantizando la continuidad y la precisión dimensional del proceso.
+Las capas iniciales y finales (tapas superiores e inferiores) se imprimen sólidas para garantizar rigidez y un acabado uniforme. Entre ellas, las capas intermedias emplean un \textbf{patrón de relleno o infill} de densidad controlada: este entramado interno aporta soporte a las paredes y capas superiores, reduce el consumo de material y acorta los tiempos de impresión sin comprometer críticamente la rigidez general. Este paradigma proviene del prototipado rápido, en el que la forma y la velocidad de fabricación son prioritarias.
+
+De este modo, una pieza impresa se organiza en paredes, relleno y tapas superior e inferior (Figura \ref{morfofig}), y además, estructuras auxiliares en caso de ser necesarias. 
+
+En FDM se asume que cada capa descansa sobre la anterior, pero cuando aparece un voladizo, es decir, un tramo suspendido más allá de lo que admite la viscosidad del plástico fundido, el material tiende a colapsar, provocando imprecisiones geométricas o incluso interrumpiendo la impresión (Figura \ref{soportresfig}). Para evitarlo, el software CAM puede generar automáticamente \textbf{soportes} que sostienen estas zonas en voladizo, garantizando la continuidad y la precisión dimensional del proceso.
+
+Como se observa en la Figura \ref{soportesfig}, este material de soporte puede ser fabricado usando otro material durante el proceso, con el objetivo de facilitar su remoción, por ejemplo, usando PVA. La necesidad de soporte dependerá entonces de las condiciones de los voladizos a fabricar, las propiedades del filamento y los parámetros de fabricación. Cabe destacar que las características del soporte son modificables en el CAM.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/morfo.png}
+	\caption{Partes de un cubo impreso.}
+	\label{morfofig}
+\end{figure} 
 
 Otras estructuras auxiliares aportan a la adhesión de la primera capa, como por ejemplo:
 
@@ -268,17 +324,55 @@ Otras estructuras auxiliares aportan a la adhesión de la primera capa, como por
   \item \textbf{Skirt}: contorno exterior impreso en vacío antes de la pieza, usado para cebar el flujo y validar temperatura y presión sin afectar la adhesión directa.  
 \end{itemize}
 
-\subsection{Comportamiento mecánico de piezas impresas}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/soportres.png}
+	\caption{Efecto de la longitud del voladizo en una impresión FDM. \href{https://3dprinting.eng.unimelb.edu.au/pdf/3D-printing-tips-and-tricks.pdf}{Fuente}}
+	\label{soportresfig}
+\end{figure} 
 
-Por lo anterior, la forma en que se generan las piezas mediante impresión FDM da lugar a estructuras inherentemente no homogéneas, y por lo tanto, anisotrópicas. Como se observa en la Figura \ref{segmens}, que muestra un corte transversal de una pieza impresa, es evidente que existen diferencias tanto en el área de contacto entre los segmentos de material extruido como en la calidad de la unión entre ellos, la cual depende de la difusión de cadenas poliméricas entre segmentos adyacentes.
+Es importante reconocer que las estructuras auxiliares son \textbf{indeseadas}, pues consumen tiempo y material, además, podrían afectar la calidad superficial de la pieza. Estas pueden ser evitadas con un correcto diseño para el proceso, o manipulando el CAM.
 
-La efectividad de esta soldadura intersegmental depende en gran medida de que la temperatura en la zona de unión se mantenga dentro de un rango adecuado durante un tiempo mínimo. Esta condición térmica es la que permite la movilidad molecular necesaria para que ocurra la difusión de cadenas entre segmentos depositados en momentos distintos. Sin embargo, temperaturas excesivamente altas pueden comprometer la integridad de la pieza, ya que el material puede entrar en un régimen de flujo viscoso, afectando negativamente la geometría y las tolerancias dimensionales.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/soportes.png}
+	\caption{Soporte en FDM. \href{https://www.bcn3d.com/technology/}{Fuente}}
+	\label{soportesfig}
+\end{figure} 
 
-Desde un punto de vista mecánico, el escenario más favorable se presenta cuando una fuerza externa se aplica en dirección paralela a los segmentos de material más extensos (por ejemplo, a lo largo de una línea de extrusión continua). En este caso, el esfuerzo se distribuye a lo largo de una trayectoria donde el material ha sido depositado de manera continua y homogénea, presentando una unión interna más sólida.
 
-Un escenario menos favorable ocurre cuando la carga se aplica en dirección perpendicular a la orientación principal de los filamentos. En este caso, el área bajo tracción corresponde a las uniones entre segmentos que fueron extruidos en momentos distintos, lo que puede implicar diferencias térmicas significativas durante su deposición y, en consecuencia, una menor difusión entre cadenas y una unión más débil.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/adesion.png}
+	\caption{Estructuras auxiliares de adhesión. \href{https://support.makerbot.com/s/article/1667417985477}{Fuente}}
+	\label{adesionfig}
+\end{figure} 
 
-Finalmente, el escenario más crítico desde el punto de vista estructural es aquel en el que la carga se aplica en dirección normal al plano de las capas (es decir, a lo largo del eje Z), o cuando se trata de una fuerza de corte interlaminar. En este caso, la resistencia mecánica depende casi exclusivamente de la adherencia entre capas sucesivas, las cuales se enfrían parcialmente antes de recibir la siguiente capa, lo que reduce notablemente la capacidad de difusión entre cadenas y genera zonas de alta vulnerabilidad.
+\subsection{Comportamiento mecánico de piezas FDM}
+
+La forma en que se generan las piezas mediante impresión FDM da lugar a estructuras inherentemente no homogéneas, y por lo tanto, anisotrópicas. Como se observa en la Figura \ref{porofig}, que muestra un corte transversal de la sección \comillas{maciza} de una pieza impresa, es evidente que existen diferencias tanto en el área de contacto entre los segmentos de material extruido como en la calidad de la unión entre ellos, la cual depende de la difusión de cadenas poliméricas entre segmentos adyacentes. Esta \textbf{porosidad} por lo general es indeseada, pues perjudica el desempeño mecánico de la pieza. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/poro.png}
+	\caption{Corte transversal de sección maciza en pieza impresa por FDM, con altura de capa a) 0.1 mm b) 0.2 mm y c) 0.3 mm. \cite{porob}}
+	\label{porofig}
+\end{figure} 
+
+La efectividad de esta soldadura intersegmental depende en gran medida de que la temperatura en la zona de unión se mantenga dentro de un rango adecuado durante un tiempo mínimo. Esta condición térmica es la que permite la movilidad molecular necesaria para que ocurra la difusión de cadenas entre segmentos depositados en momentos distintos (Figura \ref{leyerfig}). Sin embargo, temperaturas excesivamente altas pueden comprometer la integridad de la pieza, ya que el material puede entrar en un régimen de flujo viscoso, afectando negativamente la geometría y las tolerancias dimensionales.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/leyer.png}
+	\caption{Representación de la unión entre segmentos impresos. \cite{leyerb}}
+	\label{leyerfig}
+\end{figure} 
+
+En términos de resistencia mecánica, el escenario más favorable se presenta cuando una fuerza externa se aplica en dirección paralela a los segmentos de material más extensos (por ejemplo, a lo largo de una línea de extrusión continua). En este caso, el esfuerzo se distribuye a lo largo de una trayectoria donde el material ha sido depositado de manera continua y homogénea, presentando una unión interna más sólida.
+
+Un escenario menos favorable ocurre cuando la carga se aplica en dirección perpendicular a la orientación principal de los filamentos. En este caso, el área bajo tracción corresponde a las uniones entre segmentos que fueron extruidos en momentos distintos (intercapa), lo que puede implicar diferencias térmicas significativas durante su deposición y, en consecuencia, una menor difusión entre cadenas y una unión más débil.
+
+Finalmente, el escenario más crítico desde el punto de vista estructural es aquel en el que la carga se aplica en dirección normal al plano de las capas (intracapa), o cuando se trata de una fuerza de corte interlaminar. En este caso, la resistencia mecánica depende casi exclusivamente de la adherencia entre capas sucesivas, las cuales se enfrían parcialmente antes de recibir la siguiente capa, lo que reduce notablemente la capacidad de difusión entre cadenas y genera zonas de alta vulnerabilidad.
 
 Cabe señalar que el fenómeno descrito es aún más complejo, ya que, como se mencionó en la sección anterior, una impresión FDM estándar está compuesta por distintas secciones funcionales, cada una de las cuales se imprime con patrones y estrategias particulares. En consecuencia, el comportamiento mecánico y estructural final de la pieza estará determinado por los parámetros de impresión configurados en el slicer. A su vez, dichas configuraciones deben estar alineadas con las capacidades y limitaciones de la máquina específica con la que se realizará la fabricación, incluyendo aspectos como la precisión del extrusor, el control térmico y el sistema de movimiento.
 

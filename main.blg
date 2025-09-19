@@ -12,9 +12,9 @@ A level-1 auxiliary file: capitulo2.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo3.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
-A level-1 auxiliary file: capitulo4.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo5.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: capitulo4.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo6.aux
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
@@ -37,44 +37,44 @@ Database file #2: bibliografia.bib
 Biblatex version: 3.19
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 8 entries,
+You've used 10 entries,
             6399 wiz_defined-function locations,
-            1256 strings with 10586 characters,
-and the built_in function-call counts, 71854 in all, are:
-= -- 6060
-> -- 973
-< -- 217
-+ -- 2376
-- -- 414
-* -- 5185
-:= -- 8970
+            1267 strings with 10996 characters,
+and the built_in function-call counts, 91653 in all, are:
+= -- 7740
+> -- 1233
+< -- 275
++ -- 2993
+- -- 523
+* -- 6670
+:= -- 11378
 add.period$ -- 0
-call.type$ -- 8
-change.case$ -- 75
-chr.to.int$ -- 68
-cite$ -- 14
-duplicate$ -- 7596
-empty$ -- 5869
-format.name$ -- 577
-if$ -- 14115
+call.type$ -- 10
+change.case$ -- 89
+chr.to.int$ -- 80
+cite$ -- 18
+duplicate$ -- 9625
+empty$ -- 7532
+format.name$ -- 740
+if$ -- 18025
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 20
 missing$ -- 0
-newline$ -- 295
-num.names$ -- 296
-pop$ -- 2751
+newline$ -- 367
+num.names$ -- 372
+pop$ -- 3517
 preamble$ -- 1
-purify$ -- 134
+purify$ -- 165
 quote$ -- 0
-skip$ -- 1364
+skip$ -- 1716
 stack$ -- 0
-substring$ -- 11405
-swap$ -- 1147
-text.length$ -- 230
+substring$ -- 14690
+swap$ -- 1454
+text.length$ -- 291
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 260
+type$ -- 328
 warning$ -- 0
-while$ -- 1149
+while$ -- 1442
 width$ -- 0
-write$ -- 288
+write$ -- 358

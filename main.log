@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  17 SEP 2025 12:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  19 SEP 2025 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -978,7 +978,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...Fotopolimerización}{55}{subsection.3.3.1}
+l.37 ...Fotopolimerización}{59}{subsection.3.3.1}
                                                   % [1])
 \tf@toc=\write5
 \openout5 = `main.toc'.
@@ -1630,8 +1630,8 @@ File: imgs/tesel.png Graphic file (type png)
 <use imgs/tesel.png>
 Package pdftex.def Info: imgs/tesel.png  used on input line 135.
 (pdftex.def)             Requested size: 377.62642pt x 106.45187pt.
-LaTeX Info: Redefining \. on input line 142.
-LaTeX Info: Redefining \% on input line 142.
+LaTeX Info: Redefining \. on input line 145.
+LaTeX Info: Redefining \% on input line 145.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1641,8 +1641,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [42 <./imgs/slicer.png> <./imgs/tesel.png>]
-LaTeX Info: Redefining \. on input line 170.
-LaTeX Info: Redefining \% on input line 170.
+<imgs/fdmp.png, id=646, 608.87476pt x 349.305pt>
+File: imgs/fdmp.png Graphic file (type png)
+<use imgs/fdmp.png>
+Package pdftex.def Info: imgs/fdmp.png  used on input line 148.
+(pdftex.def)             Requested size: 330.42041pt x 189.56528pt.
+LaTeX Info: Redefining \. on input line 163.
+LaTeX Info: Redefining \% on input line 163.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1651,46 +1656,74 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[43]
-Underfull \hbox (badness 1264) in paragraph at lines 191--192
+[43 <./imgs/fdmp.png>]
+<imgs/3dpdiag.png, id=656, 802.197pt x 481.19775pt>
+File: imgs/3dpdiag.png Graphic file (type png)
+<use imgs/3dpdiag.png>
+Package pdftex.def Info: imgs/3dpdiag.png  used on input line 173.
+(pdftex.def)             Requested size: 377.62642pt x 226.51541pt.
+LaTeX Info: Redefining \. on input line 183.
+LaTeX Info: Redefining \% on input line 183.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[44 <./imgs/3dpdiag.png>]
+<imgs/warpi.png, id=664, 616.704pt x 346.896pt>
+File: imgs/warpi.png Graphic file (type png)
+<use imgs/warpi.png>
+Package pdftex.def Info: imgs/warpi.png  used on input line 188.
+(pdftex.def)             Requested size: 330.42041pt x 185.86542pt.
+
+Overfull \hbox (15.19446pt too wide) in paragraph at lines 198--199
+[]\OT1/cmr/m/n/12 Este \OT1/cmr/bx/n/12 com-por-ta-mien-to reol^^Sogi-co \OT1/c
+mr/m/n/12 vie-ne go-ber-na-do por la de-pen-den-cia temperatura[]esfuerzo
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 212--213
 []|\OT1/cmr/m/n/10 Gradientes t^^Sermi-cos mar-ca-dos,
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 195--196
+Underfull \hbox (badness 2343) in paragraph at lines 216--217
 \OT1/cmr/m/n/10 co-lap-so de vo-la-di-zos y go-teo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 []|\OT1/cmr/m/n/10 Adhesi^^Son in-ter-ca-
  []
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 199--200
+Underfull \hbox (badness 2103) in paragraph at lines 220--221
 []|\OT1/cmr/m/n/10 Delaminaci^^Son, ba-ja re-sis-ten-cia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
 []|\OT1/cmr/m/n/10 Deformaciones post-im-pre-si^^Son,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 []|\OT1/cmr/m/n/10 Temperatura de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 \OT1/cmr/m/n/10 transici^^Son v^^S^^Ptrea
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 222.
-LaTeX Info: Redefining \% on input line 222.
+LaTeX Info: Redefining \. on input line 241.
+LaTeX Info: Redefining \% on input line 241.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.71667pt, for example:
@@ -1698,29 +1731,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[44]
-Underfull \hbox (badness 3148) in paragraph at lines 234--234
+[45 <./imgs/warpi.png>]
+Underfull \hbox (badness 3148) in paragraph at lines 257--257
 []|\OT1/cmr/m/n/10.95 Excelente adhe-si^^Son in-ter-ca-
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 260.
-LaTeX Info: Redefining \% on input line 260.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.71667pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.71667pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
-
-[45]
-
-LaTeX Warning: Reference `segmens' on page 46 undefined on input line 273.
-
-LaTeX Info: Redefining \. on input line 274.
-LaTeX Info: Redefining \% on input line 274.
+LaTeX Info: Redefining \. on input line 275.
+LaTeX Info: Redefining \% on input line 275.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.71667pt, for example:
@@ -1729,6 +1749,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [46]
+<imgs/printers.png, id=685, 1015.3935pt x 390.258pt>
+File: imgs/printers.png Graphic file (type png)
+<use imgs/printers.png>
+Package pdftex.def Info: imgs/printers.png  used on input line 278.
+(pdftex.def)             Requested size: 472.03123pt x 181.42044pt.
 LaTeX Info: Redefining \. on input line 286.
 LaTeX Info: Redefining \% on input line 286.
 
@@ -1739,9 +1764,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[47]
-LaTeX Info: Redefining \. on input line 302.
-LaTeX Info: Redefining \% on input line 302.
+[47 <./imgs/printers.png>]
+<imgs/fdm.png, id=700, 869.649pt x 281.25075pt>
+File: imgs/fdm.png Graphic file (type png)
+<use imgs/fdm.png>
+Package pdftex.def Info: imgs/fdm.png  used on input line 299.
+(pdftex.def)             Requested size: 377.62642pt x 122.1285pt.
+LaTeX Info: Redefining \. on input line 305.
+LaTeX Info: Redefining \% on input line 305.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1750,9 +1780,49 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[48]
-LaTeX Info: Redefining \. on input line 347.
-LaTeX Info: Redefining \% on input line 347.
+[48 <./imgs/fdm.png>]
+<imgs/morfo.png, id=711, 1095.49275pt x 433.62pt>
+File: imgs/morfo.png Graphic file (type png)
+<use imgs/morfo.png>
+Package pdftex.def Info: imgs/morfo.png  used on input line 314.
+(pdftex.def)             Requested size: 377.62642pt x 149.47334pt.
+<imgs/soportres.png, id=712, 890.72775pt x 319.1925pt>
+File: imgs/soportres.png Graphic file (type png)
+<use imgs/soportres.png>
+Package pdftex.def Info: imgs/soportres.png  used on input line 329.
+(pdftex.def)             Requested size: 424.82523pt x 152.23656pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<imgs/soportes.png, id=715, 478.78876pt x 230.0595pt>
+File: imgs/soportes.png Graphic file (type png)
+<use imgs/soportes.png>
+Package pdftex.def Info: imgs/soportes.png  used on input line 338.
+(pdftex.def)             Requested size: 377.62642pt x 181.45013pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<imgs/adesion.png, id=718, 1005.7575pt x 348.70274pt>
+File: imgs/adesion.png Graphic file (type png)
+<use imgs/adesion.png>
+Package pdftex.def Info: imgs/adesion.png  used on input line 346.
+(pdftex.def)             Requested size: 377.62642pt x 130.92282pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 354.
+LaTeX Info: Redefining \% on input line 354.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[49 <./imgs/morfo.png>]
+LaTeX Info: Redefining \. on input line 354.
+LaTeX Info: Redefining \% on input line 354.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1761,9 +1831,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[49]
-LaTeX Info: Redefining \. on input line 376.
-LaTeX Info: Redefining \% on input line 376.
+[50 <./imgs/soportres.png> <./imgs/soportes.png> <./imgs/adesion.png>]
+<imgs/poro.png, id=738, 862.422pt x 255.354pt>
+File: imgs/poro.png Graphic file (type png)
+<use imgs/poro.png>
+Package pdftex.def Info: imgs/poro.png  used on input line 357.
+(pdftex.def)             Requested size: 472.03123pt x 139.76326pt.
+<imgs/leyer.png, id=742, 882.29625pt x 389.65575pt>
+File: imgs/leyer.png Graphic file (type png)
+<use imgs/leyer.png>
+Package pdftex.def Info: imgs/leyer.png  used on input line 366.
+(pdftex.def)             Requested size: 424.82523pt x 187.62125pt.
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1772,20 +1852,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[50]
-LaTeX Info: Redefining \. on input line 398.
-LaTeX Info: Redefining \% on input line 398.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.71667pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.71667pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
-
-[51]
-LaTeX Info: Redefining \. on input line 415.
-LaTeX Info: Redefining \% on input line 415.
+[51 <./imgs/poro.png> <./imgs/leyer.png>]
+LaTeX Info: Redefining \. on input line 386.
+LaTeX Info: Redefining \% on input line 386.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1795,8 +1864,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [52]
-LaTeX Info: Redefining \. on input line 433.
-LaTeX Info: Redefining \% on input line 433.
+LaTeX Info: Redefining \. on input line 400.
+LaTeX Info: Redefining \% on input line 400.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1806,8 +1875,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [53]
-LaTeX Info: Redefining \. on input line 447.
-LaTeX Info: Redefining \% on input line 447.
+LaTeX Info: Redefining \. on input line 462.
+LaTeX Info: Redefining \% on input line 462.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1817,8 +1886,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [54]
-LaTeX Info: Redefining \. on input line 481.
-LaTeX Info: Redefining \% on input line 481.
+LaTeX Info: Redefining \. on input line 475.
+LaTeX Info: Redefining \% on input line 475.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1828,8 +1897,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [55]
-LaTeX Info: Redefining \. on input line 504.
-LaTeX Info: Redefining \% on input line 504.
+LaTeX Info: Redefining \. on input line 497.
+LaTeX Info: Redefining \% on input line 497.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1839,12 +1908,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [56]
+LaTeX Info: Redefining \. on input line 513.
+LaTeX Info: Redefining \% on input line 513.
 
-LaTeX Warning: Reference `fig:clip_zone' on page 57 undefined on input line 506
-.
-
-LaTeX Info: Redefining \. on input line 519.
-LaTeX Info: Redefining \% on input line 519.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.71667pt, for example:
@@ -1853,8 +1919,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [57]
-LaTeX Info: Redefining \. on input line 535.
-LaTeX Info: Redefining \% on input line 535.
+LaTeX Info: Redefining \. on input line 529.
+LaTeX Info: Redefining \% on input line 529.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1864,8 +1930,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
 [58]
-LaTeX Info: Redefining \. on input line 552.
-LaTeX Info: Redefining \% on input line 552.
+LaTeX Info: Redefining \. on input line 551.
+LaTeX Info: Redefining \% on input line 551.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1874,7 +1940,65 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[59])
+[59]
+LaTeX Info: Redefining \. on input line 583.
+LaTeX Info: Redefining \% on input line 583.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[60]
+
+LaTeX Warning: Reference `fig:clip_zone' on page 61 undefined on input line 600
+.
+
+LaTeX Info: Redefining \. on input line 601.
+LaTeX Info: Redefining \% on input line 601.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[61]
+LaTeX Info: Redefining \. on input line 617.
+LaTeX Info: Redefining \% on input line 617.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[62]
+LaTeX Info: Redefining \. on input line 634.
+LaTeX Info: Redefining \% on input line 634.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[63]
+LaTeX Info: Redefining \. on input line 651.
+LaTeX Info: Redefining \% on input line 651.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.71667pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.71667pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
+
+[64])
 LaTeX Info: Redefining \. on input line 98.
 LaTeX Info: Redefining \% on input line 98.
 
@@ -1885,12 +2009,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.71667pt}.
 
-[60]
+[65]
 \openout2 = `capitulo5.aux'.
 
  (capitulo5.tex
 Cap\'{\i }tulo 4.
-) [61
+) [66
 
 
 
@@ -1900,7 +2024,7 @@ Cap\'{\i }tulo 4.
 
  (capitulo4.tex
 Cap\'{\i }tulo 5.
-) [62
+) [67
 
 
 
@@ -1910,12 +2034,12 @@ Cap\'{\i }tulo 5.
 
  (capitulo6.tex
 Cap\'{\i }tulo 6.
-) [63
+) [68
 
 
 
 
-] [64
+] [69
 
 
 
@@ -1938,7 +2062,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F5741D5D88A87D02C94865A6864E58B3;8214.
+(rerunfilecheck)             Checksum: 0EC443ECDF6463F89C9CAD4E661D4F06;8107.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1949,10 +2073,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26534 strings out of 474486
- 517964 string characters out of 5753571
- 1947542 words of memory out of 5000000
- 48291 multiletter control sequences out of 15000+600000
+ 26647 strings out of 474486
+ 520277 string characters out of 5753571
+ 1948542 words of memory out of 5000000
+ 48386 multiletter control sequences out of 15000+600000
  571526 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,13n,81p,1885b,2897s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1974,9 +2098,9 @@ type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/c
 msy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:
 /Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (65 pages, 7635115 bytes).
+Output written on main.pdf (70 pages, 15528937 bytes).
 PDF statistics:
- 895 PDF objects out of 1000 (max. 8388607)
- 194 named destinations out of 1000 (max. 500000)
- 579 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 989 PDF objects out of 1000 (max. 8388607)
+ 212 named destinations out of 1000 (max. 500000)
+ 634 words of extra memory for PDF output out of 10000 (max. 10000000)
 

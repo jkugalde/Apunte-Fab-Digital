@@ -299,5 +299,80 @@
     \field{month}{03}
     \field{year}{2021}
   \endentry
+
+  \entry{porob}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=AMA}{%
+         family={Alam},
+         familyi={A\bibinitperiod},
+         given={Md\bibnamedelima Aftab},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=TM}{%
+         family={Taufik},
+         familyi={T\bibinitperiod},
+         given={Mohammad},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AMATM1}
+    \strng{fullhash}{AMATM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Thermal Analysis for Enhancement of Mechanical
+  Characteristics in Fused Filament Fabricated Parts}
+    \field{month}{02}
+    \field{year}{2022}
+  \endentry
+
+  \entry{leyerb}{article}{}
+    \name{author}{5}{}{%
+      {{hash=PGA}{%
+         family={Payami\bibnamedelima Golhin},
+         familyi={P\bibinitperiod\bibinitdelim G\bibinitperiod},
+         given={Ali},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TR}{%
+         family={Tonello},
+         familyi={T\bibinitperiod},
+         given={Riccardo},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FJ}{%
+         family={Frisvad},
+         familyi={F\bibinitperiod},
+         given={Jeppe},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Grammatikos},
+         familyi={G\bibinitperiod},
+         given={Sotirios},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Strandlie},
+         familyi={S\bibinitperiod},
+         given={Are},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PGA+1}
+    \strng{fullhash}{PGATRFJGSSA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/s00170-023-11566-z
+    \endverb
+    \field{pages}{1\bibrangedash 57}
+    \field{title}{Surface roughness of as-printed polymers: a comprehensive
+  review}
+    \field{volume}{127}
+    \field{journaltitle}{The International Journal of Advanced Manufacturing
+  Technology}
+    \field{month}{05}
+    \field{year}{2023}
+  \endentry
 \enddatalist
 \endinput
