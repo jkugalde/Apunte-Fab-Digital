@@ -264,6 +264,39 @@
     \field{year}{2008}
   \endentry
 
+  \entry{escaninb}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RA}{%
+         family={Rajurkar},
+         familyi={R\bibinitperiod},
+         given={Avadhoot},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CS}{%
+         family={Chinchanikar},
+         familyi={C\bibinitperiod},
+         given={Satish},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RACS1}
+    \strng{fullhash}{RACS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/s12008-023-01258-z
+    \endverb
+    \field{pages}{7021\bibrangedash 7038}
+    \field{title}{Investigation on the effect of laser parameters and hatch
+  patterns on the dimensional accuracy of micro-dimple and micro-channel
+  texture geometries}
+    \field{volume}{18}
+    \field{journaltitle}{International Journal on Interactive Design and
+  Manufacturing (IJIDeM)}
+    \field{month}{03}
+    \field{year}{2023}
+  \endentry
+
   \entry{rokeke}{article}{}
     \name{author}{3}{}{%
       {{hash=KF}{%
@@ -373,6 +406,52 @@
   Technology}
     \field{month}{05}
     \field{year}{2023}
+  \endentry
+
+  \entry{strenb}{article}{}
+    \name{author}{4}{}{%
+      {{hash=PB}{%
+         family={Podsiadly},
+         familyi={P\bibinitperiod},
+         given={Bartłomiej},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Skalski},
+         familyi={S\bibinitperiod},
+         given={Andrzej},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=RW}{%
+         family={Rozpiórski},
+         familyi={R\bibinitperiod},
+         given={Wiktor},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Sloma},
+         familyi={S\bibinitperiod},
+         given={Marcin},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PB+1}
+    \strng{fullhash}{PBSARWSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.3390/app11156946
+    \endverb
+    \field{issn}{2076-3417}
+    \field{title}{Are We Able to Print Components as Strong as Injection
+  Molded?—Comparing the Properties of 3D Printed and Injection Molded
+  Components Made from ABS Thermoplastic}
+    \verb{url}
+    \verb https://www.mdpi.com/2076-3417/11/15/6946
+    \endverb
+    \field{volume}{11}
+    \field{journaltitle}{Applied Sciences}
+    \field{year}{2021}
   \endentry
 \enddatalist
 \endinput

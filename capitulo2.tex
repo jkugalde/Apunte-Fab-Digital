@@ -114,7 +114,78 @@ En una máquina CNC, los motores están físicamente conectados con una transmis
     \Delta x = R\Delta \theta = R n s \,\mathrm{([mm], \,[in]\,o\,[{°}^\circ])} 
 \end{equation}
 
-Donde $\Delta x$ es el desplazamiento en la dirección objetivo, $R$ es la relación de transmisión y $\Delta \theta$ la rotación del eje del motor. Este arco barrido depende de los $n$ pulsos de paso/micropaso que envía el controlador y $s$ el tamaño del paso/micropaso.
+Donde $\Delta x$ es el desplazamiento en la dirección objetivo, $R$ es la relación de transmisión y $\Delta \theta$ la rotación del eje del motor. Este arco barrido depende de los $n$ pulsos de paso/micropaso que envía el controlador y $s$ el tamaño del paso/micropaso. El parámetro $R$ se asocia en el firmware de una máquina al parámetro \textit{steps/mm} o \textit{steps/grado}.
+
+\section{Parámetros}
+
+Los procesos de fabricación digital ejecutan una serie de operaciones destinadas a conformar las piezas requeridas. Cada operación se implementa mediante trayectorias de herramienta o toolpaths, las que a su vez se definen por los parámetros configurables en el CAM o definidos en el firmware de la máquina. El grado de control sobre estos parámetros depende del nivel funcional del CAM: algunos sistemas exponen decenas o cientos de variables, mientras que otros ofrecen sólo los parámetros esenciales.
+
+Aunque es posible ajustar finamente la mayoría de esas variables para optimizar la salida del proceso, en la práctica suele ser suficiente intervenir un subconjunto reducido para que la operación sea factible y repetible. Agruparemos esos parámetros en las siguientes categorías:
+
+\begin{itemize} 
+	
+	\item \textbf{Parámetros de máquina (hardware)}: vinculados a las capacidades físicas y geométricas del equipo, por ejemplo volumen de trabajo, offsets geométricos, límites de velocidad y aceleración, número de ejes y sistemas de sujeción. 
+	\item \textbf{Parámetros de proceso (operativos)}: definen la ejecución de las operaciones: velocidades de avance, aceleraciones, perfiles de aceleración/jerk, caudal o spindle speed, temperaturas de trabajo y secuencias de movimiento; estos parámetros dependen estrechamente del material y de la herramienta. 
+	\item \textbf{Parámetros de pieza (estructurales)}: específicos de la salida geométrica y funcional, especialmente en aditivo: altura de capa, ancho de pasada, porcentaje y patrón de relleno, espesor de pared y estrategias de soporte. \end{itemize}
+
+Las tres categorías tienen distinta criticidad: los límites y compensaciones del hardware condicionan de forma irrevocable la factibilidad geométrica y la seguridad (p. ej., evitar colisiones); los parámetros de proceso afectan directamente la integridad de la herramienta y el material (p. ej., rotura por avance excesivo, defectos por temperaturas inapropiadas); y los parámetros estructurales gobiernan la calidad final y el rendimiento funcional de la pieza (densidad, rigidez, acabado). 
+
+Por tanto, las modificaciones deben priorizarse en ese orden: primero verificar compatibilidad y seguridad del equipo, después ajustar parámetros de proceso para asegurar unión y estabilidad, y finalmente optimizar parámetros estructurales para alcanzar los requisitos dimensionales y mecánicos.
+
+Cada proceso estará definido por sus propios parámetros relacionados con su tecnología. Naturalmente, existirán términos compartidos dependiendo del tipo de proceso (aditivo/sustractivo) y el principio de funcionamiento (desbaste, térmico, etc.), pero de todas maneras se pueden definir algunos universales, como:
+
+\begin{itemize}
+	\item \textbf{Feed speed} --- \textbf{F}: velocidad lineal de desplazamiento de la herramienta o cabezal; determina la tasa de remoción o deposición y condiciona la transferencia térmica y la calidad dimensional.
+	\item \textbf{Aceleración} --- \textbf{A}: incremento de la velocidad por unidad de tiempo; define la capacidad de la máquina para alcanzar la feed speed sin perder precisión ni inducir vibraciones.
+	\item \textbf{Jerk} --- \textbf{J}: tasa de cambio de la aceleración; afecta la suavidad de las transiciones, la precisión en arranques/paradas y la generación de vibraciones y ruido.
+	\item \textbf{Ancho de pasada} --- \(\mathbf{w}\): anchura efectiva de la huella dejada por una pasada (extrusión, corte o fresa).
+	\item \textbf{Paso / Spacing} --- \(\mathbf{s}\): distancia entre los centros de pasadas contiguas.
+	\item \textbf{Offsets / Compensaciones geométricas} --- \textbf{Off}: correcciones aplicadas a la trayectoria por diámetro de herramienta, backlash, calibración de origen o standoff; garantizan precisión dimensional y evitan colisiones.
+\end{itemize}
+
+\section{Toolpath}
+
+El \textbf{toolpath} es la ruta que seguirá la herramienta para ejecutar las distintas operaciones definidas en el CAM. Estas rutas dependen del principio de funcionamiento del proceso y son específicas de cada tecnología; no obstante, comparten características comunes que permiten su análisis y parametrización. 
+
+Cuando una operación implica añadir o retirar material mediante una herramienta, la conformación del área objetivo suele requerir varias \comillas{pasadas} en el plano para barrerlo o \textbf{escanearlo}. A la descripción y parametrización de ese conjunto de pasadas lineales la denominaremos \textbf{raster} o \textbf{hatch}. Es importante aclarar que esos términos se usan para referirse específicamente al conjunto de pasadas paralelas, mas no a la descripción de algún algoritmo de relleno, como es el caso del infill en fabricación aditiva.
+
+El raster está gobernado por los siguientes parámetros principales:
+
+\begin{itemize}
+	\item \textbf{Hatch distance} (\(s\)): (o tamaño del paso) distancia entre los centros de dos pasadas contiguas en el raster.
+	\item \textbf{Patrón} (pattern): geometría y topología de las pasadas (p. ej. zig‑zag, offset, crosshatch, brick) y la estrategia de secuenciación.
+	\item \textbf{Ángulo} (\(\theta\)): orientación del raster respecto a un sistema de referencia definido; puede variarse por capa para reducir alineamientos de defectos.
+	\item \textbf{Solapamiento} (Ov$\%$): (overlap) porcentaje de solape entre pasadas.
+	\item \textbf{Otros}: ancho efectivo de pasada (\(w\)), orden de recorrido (islas, perímetros primero/último), reglas de entrada/salida de herramienta y parámetros cinemáticos asociados (velocidad de avance, aceleración).
+\end{itemize}
+
+Esta estrategia de relleno o de corte debe optimizar no solo la eficiencia cinemática del trazado, sino también la integridad y la calidad del proceso. En operaciones que generan calor, la distribución de las pasadas condiciona las zonas de concentración térmica y, por ende, la degradación o alteración microestructural del material. En procesos que producen anisotropía (por ejemplo, fabricación aditiva o mecanizado por capas), la geometría y orientación del patrón de relleno influyen directamente en la respuesta mecánica de la pieza, su rigidez y su resistencia a la fatiga, además de otros atributos funcionales y superficiales. Se observan distintas estrategias de escaneo en la Figura \ref{scansfig}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/scans.png}
+	\caption{Distintas estrategias de escaneo. \cite{escaninb}}
+	\label{scansfig}
+\end{figure}
+
+El solapamiento ilustra bien un trade‑off operativo: intuitivamente convendría emplear exactamente el ancho de herramienta para evitar repetir áreas y ahorrar tiempo, pero un solapamiento controlado aporta beneficios relevantes. En fresado, reduce la carga puntual por diente y mejora la estabilidad del corte; en procesos térmicos aditivos, facilita la coalescencia entre pasadas y asegura una unión más homogénea.
+
+En la Figura \ref{hashfig} se observa un patrón de ráster bidireccional (líneas en una dirección y luego en la inversa) para cubrir un área cuadrada. Se observa que dado el diámetro de la herramienta $d$ y el área objetivo, se requieren 3 pasadas, implicando algo de solapamiento. Parte del área no logra cubrirse con esta estrategia dada la forma de la herramienta (redonda) y la del área (rectangular).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/hash.png}
+	\caption{Patrón de ráster bidireccional. Toolpath en negro, superficie objetivo en rojo, herramienta en azul, pasadas en celeste, overlap en verde.}
+	\label{hashfig}
+\end{figure}
+
+En fabricación digital conviene distinguir tres tipos generales de movimiento: los de \textbf{aproximación}, los de \textbf{transición} y los de \textbf{fabricación}. Los movimientos de aproximación (travel o rapids) son desplazamientos rápidos que sitúan la herramienta en una posición segura respecto de la pieza antes de iniciar la operación activa; su objetivo es minimizar tiempos de no‑valor y evitar colisiones, por lo que normalmente se ejecutan a una altura de seguridad o por rutas predefinidas. 
+
+Los movimientos de transición comprenden las maniobras cortas y controladas que enlazan la aproximación con la operación productiva y que preparan la herramienta para entrar o salir del material. 
+
+Los movimientos de fabricación son las trayectorias ejecutadas sobre o dentro de la pieza destinadas a remover o depositar material y a generar la geometría final (perímetros, pockets, raster/hatch, pasadas de desbaste y acabado, deposición de capas, etc.). Se ejecutan a velocidades y perfiles cinemáticos controlados para garantizar precisión geométrica, integridad material y calidad superficial. 
+
+Una vez que se definen operaciones y parámetros, el CAM generará el archivo de fabricación como un compilado de instrucciones, conocido como \textbf{G-Code} o código G.
 
 \section{Código G}
 
@@ -172,8 +243,8 @@ En la Figura \ref{g1} se observa un ejemplo sencillo del uso de G1. La herramien
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\linewidth]{imgs/g1.png}
-    \caption{La instrucción: G1 X100 Y50, interpolación lineal de velocidades para trayectoria recta}
+    \includegraphics[width=0.8\linewidth]{imgs/g1.png}
+    \caption{A la izquierda, la instrucción: G1 X100 Y50, interpolación lineal de velocidades para trayectoria recta. A la derecha, segmento de un código para impresión 3D.}
     \label{g1}
 \end{figure}
 

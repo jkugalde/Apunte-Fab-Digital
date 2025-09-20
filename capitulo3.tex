@@ -350,7 +350,7 @@ Es importante reconocer que las estructuras auxiliares son \textbf{indeseadas}, 
 
 \subsection{Comportamiento mecánico de piezas FDM}
 
-La forma en que se generan las piezas mediante impresión FDM da lugar a estructuras inherentemente no homogéneas, y por lo tanto, anisotrópicas. Como se observa en la Figura \ref{porofig}, que muestra un corte transversal de la sección \comillas{maciza} de una pieza impresa, es evidente que existen diferencias tanto en el área de contacto entre los segmentos de material extruido como en la calidad de la unión entre ellos, la cual depende de la difusión de cadenas poliméricas entre segmentos adyacentes. Esta \textbf{porosidad} por lo general es indeseada, pues perjudica el desempeño mecánico de la pieza. 
+La forma en que se generan las piezas mediante impresión FDM da lugar a estructuras inherentemente no homogéneas, y por lo tanto, anisotrópicas. Como se observa en la Figura \ref{porofig}, que muestra un corte transversal de la sección \comillas{maciza} de una pieza impresa, es evidente que existen diferencias tanto en el área de contacto entre los segmentos de material extruido como en la calidad de la unión entre ellos, la cual depende de la difusión de cadenas poliméricas entre segmentos adyacentes. Esta \textbf{porosidad} por lo general es indeseada, pues los poros actúan como concentradores de esfuerzo e iniciadores de grietas, perjudicando el desempeño mecánico de la pieza. De esta manera, la optimización del parámetro de \textbf{overlap} permite reducir la porosidad, cuidando de no pasar hacia la \textbf{sobreextrusión}.
 
 \begin{figure}[h!]
 	\centering
@@ -359,7 +359,7 @@ La forma en que se generan las piezas mediante impresión FDM da lugar a estruct
 	\label{porofig}
 \end{figure} 
 
-La efectividad de esta soldadura intersegmental depende en gran medida de que la temperatura en la zona de unión se mantenga dentro de un rango adecuado durante un tiempo mínimo. Esta condición térmica es la que permite la movilidad molecular necesaria para que ocurra la difusión de cadenas entre segmentos depositados en momentos distintos (Figura \ref{leyerfig}). Sin embargo, temperaturas excesivamente altas pueden comprometer la integridad de la pieza, ya que el material puede entrar en un régimen de flujo viscoso, afectando negativamente la geometría y las tolerancias dimensionales.
+La efectividad de esta soldadura intersegmental depende en gran medida de que la temperatura en la zona de unión se mantenga dentro de un rango adecuado durante un tiempo mínimo. Esta condición térmica es la que permite la movilidad molecular necesaria para que ocurra la difusión de cadenas entre segmentos depositados en momentos distintos (Figura \ref{leyerfig}). Sin embargo, temperaturas excesivamente altas pueden comprometer la integridad de la pieza, ya que el material puede entrar en un régimen de flujo viscoso, afectando negativamente la geometría y las tolerancias dimensionales. 
 
 \begin{figure}[h!]
 	\centering
@@ -367,6 +367,24 @@ La efectividad de esta soldadura intersegmental depende en gran medida de que la
 	\caption{Representación de la unión entre segmentos impresos. \cite{leyerb}}
 	\label{leyerfig}
 \end{figure} 
+
+Cabe destacar la estrategia de extrusión denominada \textbf{brick sliced layers}, que reduce la porosidad inherente al laminado planar al desplazar alternadamente la posición vertical de los segmentos, como se muestra en la Figura \ref{interlokfig}. Esta técnica estuvo protegida por patentes hasta 2016 y, desde entonces, se ha ido incorporando gradualmente en slicers y flujos de trabajo industriales y de investigación. Ensayos prácticos de usuarios han reportado aumentos en la resistencia mecánica de las piezas de aproximadamente 14$\%$ al aplicar este patrón, aunque el grado de mejora varía según el material y la orientación de carga; por otro lado, la segmentación y generación de trayectorias se vuelve algorítmicamente más compleja.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/interlocking.png}
+	\caption{A la izquierda, laminado estándar, a la derecha, capas intercaladas. Se observa la reducción en porosidad. \href{https://www.cnckitchen.com/blog/brick-layers-make-3d-prints-stronger}{Fuente}}
+	\label{interlokfig}
+\end{figure} 
+
+De esta manera, un polímero conformado por inyección o sustracción será más resistente que su símil impreso, como se observa en la Figura \ref{strengsfig}. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/streng.png}
+	\caption{Ensayos de tracción en probetas impresas en distintas orientaciones e inyectadas. \cite{strenb}}
+	\label{strengsfig}
+\end{figure}
 
 En términos de resistencia mecánica, el escenario más favorable se presenta cuando una fuerza externa se aplica en dirección paralela a los segmentos de material más extensos (por ejemplo, a lo largo de una línea de extrusión continua). En este caso, el esfuerzo se distribuye a lo largo de una trayectoria donde el material ha sido depositado de manera continua y homogénea, presentando una unión interna más sólida.
 
@@ -376,7 +394,7 @@ Finalmente, el escenario más crítico desde el punto de vista estructural es aq
 
 Cabe señalar que el fenómeno descrito es aún más complejo, ya que, como se mencionó en la sección anterior, una impresión FDM estándar está compuesta por distintas secciones funcionales, cada una de las cuales se imprime con patrones y estrategias particulares. En consecuencia, el comportamiento mecánico y estructural final de la pieza estará determinado por los parámetros de impresión configurados en el slicer. A su vez, dichas configuraciones deben estar alineadas con las capacidades y limitaciones de la máquina específica con la que se realizará la fabricación, incluyendo aspectos como la precisión del extrusor, el control térmico y el sistema de movimiento.
 
-El uso principal de la tecnología FDM se centra en el prototipado rápido, por lo que en muchos casos las propiedades mecánicas de las piezas generadas no son un factor crítico. Sin embargo, cuando se busca emplearlas en aplicaciones funcionales, surgen limitaciones importantes. Las piezas impresas en 3D mediante FDM presentan una notable sensibilidad térmica y su comportamiento mecánico es difícil de predecir en comparación con materiales de propiedades homogéneas. Esto se debe a que su resistencia está fuertemente influenciada por las condiciones locales de impresión, como la orientación de las capas, la calidad de adhesión entre filamentos y los acabados de borde. Como resultado, las piezas impresas suelen exhibir una resistencia mecánica inferior frente a sus equivalentes fabricados por inyección.
+El uso principal de la tecnología FDM se centra en el prototipado rápido, por lo que en muchos casos las propiedades mecánicas de las piezas generadas no son un factor crítico. Sin embargo, cuando se busca emplearlas en aplicaciones funcionales, surgen limitaciones importantes. Las piezas impresas en 3D mediante FDM presentan una notable \textbf{sensibilidad térmica} y su comportamiento mecánico es difícil de predecir en comparación con materiales de propiedades homogéneas. Esto se debe a que su resistencia está fuertemente influenciada por las \textbf{condiciones locales de impresión}, como la orientación de las capas, la calidad de adhesión entre filamentos y los acabados de borde. 
 
 Además, los filamentos utilizados en impresión FDM no están compuestos exclusivamente del polímero base, sino que incluyen una variedad de aditivos y cargas (fillers) destinados a mejorar el proceso de extrusión, la estabilidad térmica y la calidad superficial. Estos compuestos pueden diferir significativamente de los utilizados en plásticos inyectados, lo que también contribuye a las diferencias en comportamiento estructural y desempeño final.
 
@@ -386,11 +404,27 @@ Los parámetros de impresión deben definirse en función del objetivo específi
 
 Entre estos parámetros, la velocidad de impresión requiere un análisis particularmente cuidadoso debido a su impacto directo en la calidad y funcionalidad de la pieza.
 
-En general, velocidades de impresión bajas tienden a producir mejores resultados, ya que permiten una deposición más precisa del material y una mejor adhesión entre capas. Por el contrario, al incrementar la velocidad, se introducen diversos problemas: el cabezal puede generar vibraciones mecánicas que afectan la precisión dimensional y el acabado superficial, y se incrementan las demandas sobre el sistema de extrusión, como el torque del motor, el flujo térmico en el cabezal y la capacidad del sistema de enfriamiento.
+En general, velocidades de impresión bajas tienden a producir mejores resultados, ya que permiten una deposición más precisa del material y una mejor adhesión entre capas. Por el contrario, al incrementar la velocidad, se introducen diversos problemas: el cabezal puede generar vibraciones mecánicas que afectan la precisión dimensional y el acabado superficial, y se incrementan las demandas sobre el sistema de extrusión, como el torque del motor, el flujo térmico en el cabezal y la capacidad del sistema de enfriamiento (Figura \ref{3dpvelfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/3dpvel.png}
+	\caption{Efectos de la velocidad en una impresión FDM. \href{https://www.fh-dortmund.de/labore/additive-fertigung.php?loc=en-US}{Fuente}}
+	\label{3dpvelfig}
+\end{figure}
+
 
 Además, velocidades excesivamente altas pueden provocar una acumulación de calor en zonas localizadas, ya que el filamento recién depositado no tiene tiempo suficiente para enfriarse adecuadamente. Esto puede llevar a que el material se mantenga en un estado semifundido durante más tiempo del deseado, volviéndose susceptible a deformaciones térmicas. Estas deformaciones pueden originarse por su propio peso, la acción del ventilador, o incluso el contacto indirecto con el cabezal en movimiento, ya que el filamento aún viscoso en la boquilla puede arrastrar o desplazar partes parcialmente solidificadas de la pieza.
 
-Este fenómeno es particularmente crítico en piezas con detalles finos o geometrías pequeñas, donde el tiempo de exposición térmica acumulada es mayor y el riesgo de distorsión se incrementa notablemente.
+Este fenómeno es particularmente crítico en piezas con detalles finos o geometrías pequeñas, donde el tiempo de exposición térmica acumulada es mayor y el riesgo de distorsión, por falta de rigidez, se incrementa notablemente (Figura \ref{thinfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/thin.png}
+	\caption{Detalles finos distorsionados en pieza FDM. \href{https://www.reddit.com/r/FixMyPrint/comments/1dd9nr5/thin_parts_get_very_inaccurate_after_a_specific/}{Fuente}}
+	\label{thinfig}
+\end{figure}
+
 
 Por esta razón, las zonas superficiales de la pieza suelen imprimirse a menor velocidad, con el fin de asegurar una mayor precisión dimensional y una mejor calidad superficial. En contraste, las secciones internas, que cumplen principalmente una función de soporte estructural, se imprimen a velocidades más altas, ya que no afectan directamente la apariencia ni la precisión de la pieza final.
 
@@ -398,13 +432,11 @@ En particular, la primera capa se imprime significativamente más lenta que el r
 
 En un proceso de impresión 3D, existe una gran cantidad de variables que deben ser definidas para garantizar resultados óptimos. No obstante, la mayoría de los valores funcionales predeterminados suelen estar preconfigurados en el software CAM (slicer) según el modelo específico de impresora y el tipo de material seleccionado, lo que facilita la configuración inicial.
 
-Estos parámetros pueden agruparse en tres grandes categorías: estructurales, de proceso y de máquina. Esta clasificación también refleja, en gran medida, su importancia relativa en la calidad y éxito del proceso de impresión. 
-
-Los parámetros estructurales (Cuadro \ref{tab:param-estructurales}) son aquellos que definen la morfología interna y externa de la pieza, incluyendo aspectos como el número de paredes (o espesor), el patrón y porcentaje de relleno, o la altura de capa. Son los parámetros más comúnmente ajustados al momento de optimizar el balance entre tiempo de impresión, calidad superficial y resistencia mecánica.
+En impresión FDM, los parámetros estructurales (Cuadro \ref{tab:param-estructurales}) son aquellos que definen la morfología interna y externa de la pieza, incluyendo aspectos como el número de paredes (o espesor), el patrón y porcentaje de relleno, o la altura de capa. Son los parámetros más comúnmente ajustados al momento de optimizar el balance entre tiempo de impresión, calidad superficial y resistencia mecánica.
 
 \begin{table}[ht]
   \centering
-  \caption{Ejemplos de parámetros estructurales y valores típicos en impresoras de escritorio}
+  \caption{Ejemplos de parámetros estructurales y valores típicos en impresoras FDM de escritorio}
   \label{tab:param-estructurales}
   \begin{tabular}{@{} l c c @{}}
     \toprule
@@ -419,11 +451,15 @@ Los parámetros estructurales (Cuadro \ref{tab:param-estructurales}) son aquello
   \end{tabular}
 \end{table}
 
-Por otro lado, los parámetros de proceso (Cuadro \ref{tab:param-proceso}) están estrechamente relacionados con las propiedades térmicas y físicas del material utilizado. Variables como la temperatura de extrusión, la temperatura de la cama o la velocidad de enfriamiento deben ser cuidadosamente ajustadas según el tipo de polímero, ya que variaciones inadecuadas pueden comprometer la integridad estructural de la pieza o incluso impedir su correcta fabricación.
+Por otro lado, los parámetros de proceso (Cuadro \ref{tab:param-proceso}) van a depender del material utilizado. Variables como la temperatura de extrusión, la temperatura de la cama o la velocidad de enfriamiento deben ser ajustadas según el tipo de polímero, ya que variaciones inadecuadas pueden comprometer la integridad estructural de la pieza o incluso impedir su correcta fabricación.
+
+
+Debe tenerse en cuenta que todos estos parámetros pueden ser definidos en el CAM, no obstante, las máquinas podrían limitar los valores asignados de acuerdo a la programación de su firmware.
+
 
 \begin{table}[ht]
   \centering
-  \caption{Ejemplos de parámetros del proceso y valores típicos en impresoras de escritorio}
+  \caption{Ejemplos de parámetros del proceso y valores típicos en impresoras FDM de escritorio}
   \label{tab:param-proceso}
   \begin{tabular}{@{} l c c @{}}
     \toprule
@@ -437,7 +473,7 @@ Por otro lado, los parámetros de proceso (Cuadro \ref{tab:param-proceso}) está
   \end{tabular}
 \end{table}
 
-Finalmente, los parámetros de la máquina (Cuadro \ref{tab:param-hardware}) están vinculados a las características físicas del hardware, como el diámetro de la boquilla, el tipo de extrusor o la geometría del cabezal de impresión. Estos valores no deberían ser modificados salvo que se realicen cambios en la configuración física del equipo, ya que influyen directamente en la capacidad de extrusión y en la calidad final del proceso.
+Finalmente, tenemos los parámetros de la máquina (Cuadro \ref{tab:param-hardware}), como el diámetro de la boquilla, el tipo de extrusor o la geometría del cabezal de impresión. 
 
 \begin{table}[ht]
   \centering
@@ -468,32 +504,53 @@ Para asegurar una buena adhesión de la primera capa, es recomendable apoyar la 
 
 Las piezas fabricadas por FDM son anisotrópicas: la unión intercapas (dirección Z) es intrínsecamente menos resistente que la propia capa (plano XY). Por ello, al orientar la pieza conviene alinear las capas con las direcciones de carga para evitar esfuerzos de corte o delaminación que comprometan la resistencia mecánica del objeto.
 
-La discretización de superficies curvas mediante capas planas genera un efecto escalonado. Para minimizar este “stepping” en zonas con curvaturas pronunciadas, es preferible orientar la geometría de manera que las curvas principales queden lo más paralelas posible al plano XY, mejorando así la calidad superficial sin necesidad de aumentar excesivamente el número de capas.
+La discretización de superficies curvas mediante capas planas genera un efecto escalonado. Para minimizar esta pérdida de resolución en zonas con curvaturas pronunciadas, es preferible orientar la geometría de manera que las curvas principales queden lo más paralelas posible al plano XY, mejorando así la calidad superficial sin necesidad de aumentar excesivamente el número de capas.
+
+En la Figura \ref{orientfig}, se observa una pieza que en la orientación por defecto no sólo genera un gran volumen de soporte, sino que además pierde resolución en las curvas. Sin consideraciones extra, es fácil notar que inclinando la pieza 90 grados se evitan soportes, se aumenta el área de contacto con la superficie, y además las curvas mantienen detalle.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/orient.png}
+	\caption{Caso sencillo de orientación óptima en términos de tiempo y calidad.}
+	\label{orientfig}
+\end{figure}
+
 
 Con la orientación definida se procede a configurar los parámetros en el CAM, definiendo además si es que dada la pieza y lo deseado se quieren soportes o estructuras extra de adhesión a la cama. El software entregará una simulación del proceso y de las rutas de fabricación. 
 
 La cantidad de filamento a extruir ($E$) en cada segmento del cuerpo se calcula mediante una conservación de volumen entre lo que entra (filamento) y lo que se quiere construir (segmento):
 
 \begin{equation}
-	V_{segmento}=V_{filamento}\implies l_{s}h_{l}d_{noz}=\frac{d_{fil}^{2}\pi}{4}E\implies E= \frac{4 l_{s}h_{l}d_{noz}}{d_{fil}^{2} \pi}
+	V_{segmento}=V_{filamento}\implies l_{s}h_{l}d_{noz}=\frac{d_{fil}^{2}\pi}{4}E\implies E= \frac{4 l_{s}h_{l}d_{noz}}{d_{fil}^{2} \pi} \cdot (\%f)
 \end{equation}
 
-Asumiendo un área aproximadamente rectangular para el segmento.
+Asumiendo un área aproximadamente rectangular para el segmento, y con $\%f$ el parámetro de \textit{flow percentage}, un elemento de corrección a definir dentro del CAM.
 
-\subsection{Defectos típicos en FDM}
+\subsection{Imprecisiones y defectos en FDM}
 
-Fuera de la porosidad, resistencia intercapa y rugosidad intrínseca de las piezas fabricadas mediante el proceso, existen diversos defectos en la impresión 3D que pueden originarse tanto por el desgaste de componentes  del hardware como por una configuración inadecuada de los parámetros de proceso. 
+Existen diversos fenómenos en la impresión 3D FDM que limitan la fidelidad de la pieza respecto al modelo deseado. Estas diferencias son producto de las características propias del proceso y sus limitaciones (como la segmentación en capas), por una configuración sub-óptima de los parámetros, o por falta de mantención de la maquinaria y sus componentes.
 
-Entre los más comunes están el \textit{stringing} y el \textit{oozing}, que se manifiestan cuando el filamento fundido fluye de forma indeseada durante los desplazamientos del extrusor. El stringing genera finos hilos de plástico entre zonas no contiguas de la pieza, mientras que el oozing, o goteo, es la exudación continua de material cuando la extrusión debería estar detenida. Ambos fenómenos se agravan si la temperatura de la boquilla es demasiado alta y la viscosidad del polímero disminuye, pues el material fluye por gravedad o presión residual.
+Primero, cabe recordar que el software CAM no opera directamente sobre la representación CAD continua, sino sobre su versión teselada (por ejemplo archivos STL). Esa teselación introduce ya una aproximación geométrica (errores de faceteado, desviación de arco y orientación de normales) que condiciona la pieza que el slicer intentará reproducir; en la práctica, parte del sesgo dimensional proviene de esta transformación previa a la segmentación
 
-Para mitigar estos efectos, la retracción de filamento es esencial. Al retroceder el filamento una distancia calibrada y a una velocidad adecuada, se crea una presión negativa en la cámara de fusión que impide la fuga de material. Los parámetros para la retracción también son ajustables en el software CAM.
+A continuación, las estrategias del slicer para generar el toolpath ejercen múltiples efectos sobre la fidelidad final. El slicer decide número y orden de perímetros, tratamiento de paredes finas, ubicación de puntos de inicio/reinicio, secuenciación de islas y trayectorias de relleno; cada una de estas heurísticas puede introducir acumulaciones locales de material, vaciados, discontinuidades térmicas o desplazamientos posicionales que difieren del modelo original.
 
-La propia geometría de la pieza puede desencadenar defectos puntuales, como el sobrecalentamiento de detalles altos y delgados, donde la rigidez es podría ser muy baja. Este problema de refrigeración tiene múltiples soluciones, que también pueden presentarse como un ajuste más de parámetros en el CAM, por ejemplo, modificando el tiempo mínimo por capa.
+La discretización vertical en capas impone una cuantización estricta de la dimensión Z: la altura final debe ser un múltiplo entero de la altura de capa elegida, y ello produce el efecto de escalonamiento en superficies inclinadas. 
 
-El parámetro \textit{flow} ajusta el caudal de filamento mediante un porcentaje sobre el valor nominal, actuando como un multiplicador del volumen extruido. En la Figura X se observan dos defectos contrapuestos: un \textit{flow} insuficiente provoca huecos y capas discontinuas, mientras que un exceso de flujo deriva en protuberancias y acumulaciones de material. Aunque es posible reducir ambos efectos modificando directamente el \textit{flow}, esta práctica solo enmascara el síntoma, ya que la causa real puede residir en variaciones del diámetro del filamento, una temperatura de boquilla mal calibrada, sobrepresión en el sistema de alimentación o errores de configuración.
+La resolución en los planos X–Y está limitada por el diámetro de la boquilla, que aunque puede variar, no suele bajar de 0.2 mm en la práctica, pues los tiempos de impresión suben considerablemente. Además, por consecuencia del orificio redondo en la boquilla, las piezas no pueden tener esquinas completamente rectas, sino que redondeadas.
 
-El ajuste del caudal puede ser útil para compensar los efectos elásticos de la extrusión ocasionados por el \textbf{die swelling}, un fenómeno directamente ligado a la velocidad de extrusión: a mayores velocidades, la recuperación elástica del polímero al liberarse de la presión en la boquilla es más intensa, ensanchando el segmento por encima del diámetro nominal.
-Este sobredimensionamiento se manifiesta como solapamientos en esquinas y en la uniformidad de las paredes. 
+Las condiciones de intercambio térmico varían espacialmente dentro de una pieza por razones geométricas (secciones, voladizos, masas adyacentes) y de flujo de aire local, de modo que un único conjunto de parámetros constantes no puede suprimir de forma general los efectos viscoelásticos indeseados del polímero fundido. Del mismo modo, las deformaciones por dilatación y contracción térmica quedan determinadas por gradientes y por la historia térmica local de cada región, por lo que su aparición y magnitud no son previsibles mediante una regla global simple
+
+Uno de los defectos más comunes y fáciles de reconocer es el escurrimiento, entendido como la deposición no deseada de material sobre la pieza en forma de gotas o hilos (ver Figura \ref{stringingfig}).
+
+Esto ocurre pues el polímero fundido es un fluido viscoelástico que puede permanecer adherido en la punta de la boquilla o/y a la pieza, y fugarse durante los desplazamientos por relajación elástica (al detenerse el motor de extrusión) y gravedad. Al desplazarse la boquilla en movimientos de aproximación, este exceso de material puede estirarse formando hilos o desprenderse en gotas que quedan sobre la pieza.
+
+Es posible mitigar este escurrimiento mediante un movimiento de transición denominado \textbf{retracción}, el cual jala el material hacia atrás, generando una presión negativa que impide la salida del filamento. Complementariamente, aumentar la velocidad de los movimientos de aproximación (travel) reduce el tiempo disponible para que el material fluya y favorece el corte del hilo en lugar de estirarlo.  
+
+La primera capa suele presentar distorsiones geométricas pues pequeñas variaciones en la altura de deposición, por ejemplo, por una calibración inexacta de la plataforma, o en el caudal de extrusión provocan sobreextrusión o subextrusión respecto al espacio disponible. La subextrusión tiende a reducir la adhesión y puede terminar en el despegue de la pieza y la consiguiente falla del proceso, por lo que en la práctica es frecuente observar sobreextrusión en la primera capa. Esto produce el fenómeno denominado \comillas{pata de elefante}. En este caso, la primera capa queda más amplia que su valor nominal, y cualquier cavidad paralela a la cara de apoyo verá reducido su diámetro efectivo. 
+
+ En la Figura X se observan dos defectos contrapuestos: extrusión insuficiente, manifesstada como huecos y capas discontinuas,y sobre extrusión, lo que deriva en protuberancias y acumulaciones de material. El parámetro $\%f$ ajusta el caudal de filamento mediante un porcentaje sobre el valor nominal, actuando como un multiplicador del volumen extruido. Aunque es posible reducir ambos efectos modificando directamente el $\%f$, esta práctica solo enmascara el síntoma, ya que la causa real puede residir en variaciones del diámetro del filamento, una temperatura de boquilla mal calibrada, sobrepresión en el sistema de alimentación o errores de configuración.
+
+El ajuste del caudal puede ser útil para compensar los efectos elásticos de la extrusión ocasionados por el \textbf{die swelling}, un fenómeno directamente ligado a la velocidad de extrusión: a mayores velocidades, la recuperación elástica del polímero al liberarse de la presión en la boquilla es más intensa, ensanchando el segmento por encima del diámetro nominal. Este sobredimensionamiento se manifiesta como solapamientos en esquinas y en la uniformidad de las paredes. 
 
 \subsection{Otras tecnologías de deposición}
 
