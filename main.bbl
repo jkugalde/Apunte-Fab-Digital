@@ -453,5 +453,116 @@
     \field{journaltitle}{Applied Sciences}
     \field{year}{2021}
   \endentry
+
+  \entry{tensiler}{article}{}
+    \name{author}{7}{}{%
+      {{hash=PS}{%
+         family={Pitjamit},
+         familyi={P\bibinitperiod},
+         given={Siwasit},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=VN}{%
+         family={Vichiansan},
+         familyi={V\bibinitperiod},
+         given={Norrapon},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=JP}{%
+         family={Jewpanya},
+         familyi={J\bibinitperiod},
+         given={Parida},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=NP}{%
+         family={Nuangpirom},
+         familyi={N\bibinitperiod},
+         given={Pinit},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=JP}{%
+         family={Jaichomphu},
+         familyi={J\bibinitperiod},
+         given={Pakpoom},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=LK}{%
+         family={Leksakul},
+         familyi={L\bibinitperiod},
+         given={Komgrit},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={Poolperm},
+         familyi={P\bibinitperiod},
+         given={Pattarawadee},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PS+1}
+    \strng{fullhash}{PSVNJPNPJPLKPP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.37385/jaets.v6i1.5119
+    \endverb
+    \field{pages}{206\bibrangedash 224}
+    \field{title}{Investigating Tensile Strength in SLA 3D Printing Enhancement
+  Through Experimentation and Finite Element Analysis}
+    \field{volume}{6}
+    \field{journaltitle}{Journal of Applied Engineering and Technological
+  Science (JAETS)}
+    \field{month}{12}
+    \field{year}{2024}
+  \endentry
+
+  \entry{propb}{article}{}
+    \name{author}{5}{}{%
+      {{hash=MRA}{%
+         family={Martínez\bibnamedelima Raya},
+         familyi={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+         given={Antonio},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ARJ}{%
+         family={Aranda-Ruiz},
+         familyi={A\bibinithyphendelim R\bibinitperiod},
+         given={Josué},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SAG}{%
+         family={Sal\bibnamedelima Anglada},
+         familyi={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+         given={Gastón},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=JS}{%
+         family={Jaureguizahar},
+         familyi={J\bibinitperiod},
+         given={Sebastián},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Braun},
+         familyi={B\bibinitperiod},
+         given={Matias},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MRA+1}
+    \strng{fullhash}{MRAARJSAGJSBM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.3390/app14209529
+    \endverb
+    \field{pages}{9529}
+    \field{title}{Effect of Printing Orientation on the Mechanical Properties
+  of Low-Force Stereolithography-Manufactured Durable Resin}
+    \field{volume}{14}
+    \field{journaltitle}{Applied Sciences}
+    \field{month}{10}
+    \field{year}{2024}
+  \endentry
 \enddatalist
 \endinput

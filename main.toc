@@ -32,28 +32,28 @@
 \contentsline {subsection}{\numberline {3.2.5}Procesamiento en CAM}{60}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Imprecisiones y defectos en FDM}{61}{subsection.3.2.6}%
 \contentsline {subsection}{\numberline {3.2.7}Otras tecnologías de deposición}{65}{subsection.3.2.7}%
-\contentsline {subsubsection}{Impresión FDM con pellets}{65}{section*.70}%
-\contentsline {subsubsection}{Impresión de pastas}{66}{section*.72}%
-\contentsline {subsubsection}{Impresión liquid-on-liquid}{67}{section*.74}%
+\contentsline {subsubsection}{Impresión FDM con pellets}{65}{section*.71}%
+\contentsline {subsubsection}{Impresión de pastas}{66}{section*.73}%
+\contentsline {subsubsection}{Impresión liquid-on-liquid}{67}{section*.75}%
 \contentsline {section}{\numberline {3.3}Impresión 3D por fotopolimerización}{69}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Fotopolimerización}{69}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Estereolitografía}{70}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Soportes y orientación}{74}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Procesamiento en CAM}{76}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Flujo del proceso}{76}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Resinas para 3DP}{77}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Comportamiento mecánico}{78}{subsection.3.3.7}%
-\contentsline {subsection}{\numberline {3.3.8}Casos de uso}{79}{subsection.3.3.8}%
-\contentsline {chapter}{\numberline {4}Corte CNC}{80}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Procesos sustractivos}{80}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Flujo del proceso}{80}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Operaciones comunes}{80}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Procesos láser}{81}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conceptos básicos}{81}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Mecanismos de interacción}{81}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Lásers industriales}{81}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Corte láser}{81}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Procesos no convencionales}{82}{chapter.6}%
-\contentsline {section}{\numberline {6.1}EDM}{82}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Waterjet}{82}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Corte por plasma}{82}{section.6.3}%
+\contentsline {subsection}{\numberline {3.3.4}Procesamiento en CAM}{77}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Flujo del proceso}{78}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Resinas para 3DP}{80}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Comportamiento mecánico}{82}{subsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.3.8}Casos de uso}{84}{subsection.3.3.8}%
+\contentsline {chapter}{\numberline {4}Corte CNC}{87}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Procesos sustractivos}{87}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Flujo del proceso}{87}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Operaciones comunes}{87}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Procesos láser}{88}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conceptos básicos}{88}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Mecanismos de interacción}{88}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Lásers industriales}{88}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Corte láser}{88}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Procesos no convencionales}{89}{chapter.6}%
+\contentsline {section}{\numberline {6.1}EDM}{89}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Waterjet}{89}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Corte por plasma}{89}{section.6.3}%

@@ -166,7 +166,7 @@ La dureza es una propiedad mecánica de los materiales que mide la capacidad de 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\linewidth]{imgs/indent.png}
+    \includegraphics[width=0.5\linewidth]{imgs/indent.png}
     \caption{Ensayo de dureza Brinell, indentador esférico.}
     \label{dur}
 \end{figure}
@@ -178,6 +178,15 @@ Un material de alta dureza evita la deformación plástica localizada y la conce
 Por otro lado, un material frágil presenta baja tenacidad y prácticamente nula ductilidad, de modo que se fractura de forma repentina al superar su límite elástico. Esto conlleva fallos catastróficos sin señal previa, mala absorción de energía ante impactos o vibraciones y alta susceptibilidad a la propagación de grietas, lo que limita su uso en aplicaciones donde la seguridad y la fiabilidad sean críticas.
 
 Dado que estos fenómenos se presentan principalmente en la superficie de un material, se han desarrollado técnicas o \textbf{tratamientos de endurecimiento superficial} que generan una capa externa de elevada dureza y resistencia al desgaste, mientras el núcleo conserva la ductilidad y tenacidad necesarias, optimizando así la durabilidad y seguridad de componentes.
+
+La dureza es una medida especialmente útil para caracterizar elastómeros porque cuantifica su resistencia a la deformación por indentación y, por ende, su facilidad para deformarse bajo carga. Esta propiedad se reporta habitualmente en subescalas de la escala Shore, cada una diseñada para un rango de rigidez diferente: Shore OO para materiales muy blandos como geles y espumas suaves; Shore A para elastómeros blandos a semiduros, gomas y muchos cueros; y Shore D para materiales duros, termoplásticos rígidos y gomas estructurales (Figura \ref{smutfig}). 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\linewidth]{imgs/smut.png}
+	\caption{Escalas de dureza Shore. \href{https://www.smooth-on.com/page/durometer-shore-hardness-scale/}{Fuente}}
+	\label{smutfig}
+\end{figure}
 
 \section{Transferencia de calor}
 
@@ -192,14 +201,14 @@ Se define la temperatura como una magnitud física intensiva, proporcional a la 
 Los fenómenos de transferencia térmica están determinados por las propiedades termofísicas de los materiales. Cuando un flujo de calor atraviesa un sólido, la variación de su temperatura viene definida por:
 
 \begin{itemize}
-  \item Densidad, $rho\,\mathrm{[kg/m^{3}]}$, masa por unidad de volumen.
+  \item Densidad, $\rho\,\mathrm{[kg/m^{3}]}$, masa por unidad de volumen.
   \item Calor específico, $c_p\,\mathrm{[J/(kg\,K)]}$, energía necesaria para elevar 1 K la temperatura de 1 kg.
   \item Conductividad térmica, $k\,\mathrm{[W/(mK)]}$, capacidad de transmitir el flujo de calor por unidad de gradiente de temperatura.
 \end{itemize}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/calor.png}
+    \includegraphics[width=0.85\linewidth]{imgs/calor.png}
     \caption{Mecanismos de transferencia de calor.\cite{incrop}}
     \label{calors}
 \end{figure}
@@ -215,7 +224,7 @@ En la práctica todos los materiales exhiben alguna \textbf{dependencia de sus p
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{imgs/tempgraf.png}
+    \includegraphics[width=0.65\linewidth]{imgs/tempgraf.png}
     \caption{Variación del módulo de Young y el límite elástico para dos aleaciones de acero.\cite{tempyoung}}
     \label{fig:ttt}
 \end{figure}
@@ -232,12 +241,7 @@ Un material de ingeniería es aquel cuya composición y estructura se controlan 
 
 Estos materiales se suelen agrupar en 4 familias en función del \textbf{enlace químico} predominante en su estructura (Figura \ref{bons}), pues esto determinará en gran medida las propiedades mecánicas, térmicas y eléctricas:
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1.0\linewidth]{imgs/bonds.png}
-    \caption{Tipos de enlaces atómicos en materiales de ingeniería.} 
-    \label{bons}
-\end{figure}
+\newpage
 
 \textbf{Materiales metálicos}
     \begin{itemize}
@@ -274,6 +278,13 @@ Estos materiales se suelen agrupar en 4 familias en función del \textbf{enlace 
       \item Versatilidad en forma y aplicación, adaptables a exigencias de diseño.
     \end{itemize}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\linewidth]{imgs/bonds.png}
+	\caption{Tipos de enlaces atómicos en materiales de ingeniería.} 
+	\label{bons}
+\end{figure}
+
 Esta clasificación y las propiedades comunes de cada familia simplifican la selección inicial de materiales para las condiciones operativas. Sin embargo, los \textbf{parámetros de diseño} (restricciones y objetivos que guían el proceso) determinan la idoneidad final de la elección. Por ejemplo, si se necesita una pieza rígida y resistente a la corrosión, un cerámico podría parecer la opción ideal; no obstante, podría resultar incompatible con los procesos de manufactura habituales o disponibles. De esta manera, la selección del material va a seguir los siguientes criterios:
 
 \begin{itemize}
@@ -288,7 +299,7 @@ Dada la composición química y el tipo de enlace, el material adquiere una \tex
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/crist.png}
+    \includegraphics[width=0.8\linewidth]{imgs/crist.png}
     \caption{Esquema de microestructuras: Cristalina, semicristalina y amorfa.}
     \label{cris}
 \end{figure}
@@ -297,27 +308,27 @@ La microestructura del material puede variar en cada etapa del ciclo de vida: du
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.0\linewidth]{imgs/micr.png}
+    \includegraphics[width=0.7\linewidth]{imgs/micr.png}
     \caption{Fotografía de granos en un material a través de microscopio. a) Granos de ferrita en hierro de alta pureza, b) Granos de austenita en acero inoxidable.\cite{acers}}
     \label{mic}
 \end{figure}
 
 \subsection{Materiales y valores típicos}
 
-Como vimos anteriormente, las distintas familias de materiales exhiben rangos característicos de propiedades, pero la elección de un material implica evaluar múltiples criterios de diseño. Para simplificar este proceso, resulta muy útil representar gráficamente las variables clave. En la Figura \ref{props}, por ejemplo, los materiales se sitúan según su rigidez y densidad en un diagrama de Ashby; así, al fijar una rigidez objetivo, podemos identificar de inmediato la opción más ligera que la cumpla.
+Las distintas familias de materiales exhiben rangos característicos de propiedades, pero la elección de un material implica evaluar múltiples criterios de diseño. Para simplificar este proceso, resulta muy útil representar gráficamente las variables clave. En la Figura \ref{props}, por ejemplo, los materiales se sitúan según su rigidez y densidad en un diagrama de Ashby; así, dada una rigidez objetivo, podemos identificar de inmediato la opción más ligera.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\linewidth]{imgs/comp.png}
+    \includegraphics[width=0.55\linewidth]{imgs/comp.png}
     \caption{Diagrama de Ashby de rigidez-densidad para materiales de ingeniería, útil para optimizar la resistencia a la deformación/peso. \href{http://www-materials.eng.cam.ac.uk/mpsite/interactive_charts/}{Fuente}}
     \label{props}
 \end{figure}
 
-Actualmente, este tipo de mapas se da en aplicaciones computacionales interactivas, las cuales permiten hacer el cruce de parámetros y agilizar la selección del material, así como otorgar información relevante respecto a los costos, aplicaciones típicas, procesos de conformado, etc. De esta manera, la labor de ingeniería no es solo identificar el material que cumple con las exigencias mecánicas, sino que además optimizar el desempeño, la economía y la sostenibilidad del diseño en estudio.
+Este tipo de mapas se da en aplicaciones computacionales interactivas, las cuales permiten hacer el cruce de parámetros y agilizar la selección del material, así como otorgar información relevante respecto a los costos, aplicaciones típicas, procesos de conformado, etc. De esta manera, la labor de ingeniería no es solo identificar el material que cumple con las exigencias mecánicas, sino que además optimizar el desempeño, la economía y la sostenibilidad del diseño en estudio.
 
-En la formación de ingeniería mecánica y metalúrgica se presta especial atención a los materiales de uso industrial más extendido. El acero ocupa un lugar central: una \textbf{aleación} (mezcla de elementos en la que al menos uno es metálico) de hierro y carbono. Las variaciones en su composición (contenido de carbono y elementos de aleación) y en los \textbf{procesos de fabricación} (laminado, forja, extrusión, tratamientos térmicos) definen la microestructura resultante y, con ello, sus propiedades mecánicas. Otras aleaciones estudiadas son las de aluminio (aluminio combinado con cobre), bronce (cobre y estaño), y latón (cobre y zinc).
+En la formación de ingeniería se presta especial atención a los materiales de uso industrial más extendido. El acero ocupa un lugar central, \textbf{aleación} (mezcla de elementos en la que al menos uno es metálico) de hierro y carbono. Las variaciones en su composición (contenido de carbono y elementos de aleación) y en los \textbf{procesos de fabricación} (laminado, forja, tratamientos térmicos) definen la microestructura resultante y, con ello, sus propiedades mecánicas. Otras aleaciones estudiadas son las de aluminio, bronce y latón.
 
-\begin{table}[htbp]
+\begin{table}[h!]
   \centering
   \small
   \caption{Composición y costo de familias de materiales}
@@ -342,9 +353,37 @@ En la formación de ingeniería mecánica y metalúrgica se presta especial aten
     Fibra de carbono          & Filamentos de carbono en matriz polim. & 15–50         \\
     Cerámicos (óxidos)        & Al$_2$O$_3$, ZrO$_2$                 & 3.0–6.0       \\
     Cerámicos (carburos)      & SiC, WC                              & 30–50         \\
-    Madera dura               & Celulosa, lignina                    & 0.5–1.0       \\
     \bottomrule
   \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\small
+	\caption{Densidad, conductividad térmica y coeficiente de dilatación de familias de materiales}
+	\label{tab:prop_mat_fisicas_sin_costo}
+	\begin{tabular}{@{} l c c c @{}}
+		\toprule
+		Material                  & $\rho\, \mathrm{(g/cm^{3})}$ & $k$ (W/(mK)) & $\alpha\,\mathrm{(10^{-6}/K)}$ \\
+		\midrule
+		Aceros al carbono         & 7.7–8.1           & 45–60               & 10–13                  \\
+		Aceros de aleación        & 7.7–8.1           & 40–60               & 10–14                  \\
+		Aleaciones de aluminio    & 2.6–2.8           & 120–180             & 22–25                  \\
+		Aleaciones de titanio     & 4.4–4.6           & 6–15                & 8–10                   \\
+		Superaleaciones de níquel & 8.1–8.3           & 8–15                & 12–16                  \\
+		Cobre puro                & 8.9–9.0           & 380–400             & 16–17                  \\
+		Bronce                    & 8.7–8.9           & 40–55               & 17–18                  \\
+		Latón                     & 8.4–8.7           & 100–125             & 19–20                  \\
+		Vidrios                   & 2.4–2.6           & 0.8–1.4             & 8–9                    \\
+		Polímeros termoplásticos  & 0.9–1.5           & 0.1–0.5             & 50–200                 \\
+		Polímeros termoestables   & 1.1–1.4           & 0.2–0.3             & 30–100                 \\
+		Elastómeros               & 0.8–1.4           & 0.15–0.3            & 70–300                 \\
+		Fibra de vidrio           & 1.8–2.0           & 0.3–0.5             & 10–15                  \\
+		Fibra de carbono          & 1.5–1.6           & 5–10                & 0–1                    \\
+		Cerámicos (óxidos)        & 3.8–4.1           & 20–40               & 5–8                    \\
+		Cerámicos (carburos)      & 3.1–3.2           & 80–120              & 3–5                    \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
@@ -372,45 +411,12 @@ En la formación de ingeniería mecánica y metalúrgica se presta especial aten
     Fibra de carbono          & 70–250    & 600–2000         & 70–95 Shore D     & 800–2500          \\
     Cerámicos (óxidos)        & 200–400   & —                & 1000–1500 HV      & 200–500¹          \\
     Cerámicos (carburos)      & 350–450   & —                & 2000–3000 HV      & 400–1000¹         \\
-    Madera dura               & 10–16     & 40–100           & 20–60 Janka       & 80–150            \\
     \bottomrule
   \end{tabular}
 
   \vspace{1mm}
   \footnotesize
   — propiedad no aplicable; ¹ resistencia a flexión en lugar de UTS.
-\end{table}
-
-\newpage
-
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{Densidad, conductividad térmica y coeficiente de dilatación de familias de materiales}
-  \label{tab:prop_mat_fisicas_sin_costo}
-  \begin{tabular}{@{} l c c c @{}}
-    \toprule
-    Material                  & $\rho\, \mathrm{(g/cm^{3})}$ & $k$ (W/(mK)) & $\alpha\,\mathrm{(10^{-6}/K)}$ \\
-    \midrule
-    Aceros al carbono         & 7.7–8.1           & 45–60               & 10–13                  \\
-    Aceros de aleación        & 7.7–8.1           & 40–60               & 10–14                  \\
-    Aleaciones de aluminio    & 2.6–2.8           & 120–180             & 22–25                  \\
-    Aleaciones de titanio     & 4.4–4.6           & 6–15                & 8–10                   \\
-    Superaleaciones de níquel & 8.1–8.3           & 8–15                & 12–16                  \\
-    Cobre puro                & 8.9–9.0           & 380–400             & 16–17                  \\
-    Bronce                    & 8.7–8.9           & 40–55               & 17–18                  \\
-    Latón                     & 8.4–8.7           & 100–125             & 19–20                  \\
-    Vidrios                   & 2.4–2.6           & 0.8–1.4             & 8–9                    \\
-    Polímeros termoplásticos  & 0.9–1.5           & 0.1–0.5             & 50–200                 \\
-    Polímeros termoestables   & 1.1–1.4           & 0.2–0.3             & 30–100                 \\
-    Elastómeros               & 0.8–1.4           & 0.15–0.3            & 70–300                 \\
-    Fibra de vidrio           & 1.8–2.0           & 0.3–0.5             & 10–15                  \\
-    Fibra de carbono          & 1.5–1.6           & 5–10                & 0–1                    \\
-    Cerámicos (óxidos)        & 3.8–4.1           & 20–40               & 5–8                    \\
-    Cerámicos (carburos)      & 3.1–3.2           & 80–120              & 3–5                    \\
-    Madera dura               & 0.6–0.85          & 0.15–0.25           & 3–5                    \\
-    \bottomrule
-  \end{tabular}
 \end{table}
 
 \subsection{Polímeros}

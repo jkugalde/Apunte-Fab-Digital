@@ -251,7 +251,7 @@ Una limitante en los sistemas de impresión suele ser la temperatura de fusión 
 
 Considerando lo descrito anteriormente, parece entonces ideal imprimir en las condiciones más \comillas{frías} posibles. Una temperatura baja de extrusión disminuirá la dilatación térmica y el escurrimiento viscoso, mientras que un flujo convectivo alto permitirá alcanzar una mayor fidelidad respecto al modelo. Esta conclusión no es correcta, puesto que el gradiente térmico alto por el enfriamiento puede ocasionar esfuerzos residuales que propiciarían delaminación entre capas, y además, una mala unión o \comillas{soldadura} entre estas, como veremos más adelante.
 
-Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 kg con diámetros estándar de 1,75 mm (también existen versiones de 2,85 mm). Se envasan al vacío junto a paquetes de gel de sílice para controlar la humedad, ya que la mayoría de los polímeros son \textbf{higroscópicos}. Por ello, resulta crucial que un material de impresión muestre baja higroscopicidad: el agua absorbida no solo puede alterar sus propiedades mecánicas y térmicas, sino que al vaporizarse durante la extrusión provoca burbujas y discontinuidades en el flujo, comprometiendo la calidad y la fiabilidad de cada pieza. En el Cuadro \ref{tab:materiales_fdm} se observa una comparación entre los principales materiales de impresión FDM.
+Los filamentos para impresión 3D se suministran habitualmente en carretes de 1 kg con diámetros estándar de 1,75 mm (también existen versiones de 2,85 mm), a valores promedio de 20 dólares, dependiendo del material. Se envasan al vacío junto a paquetes de gel de sílice para controlar la humedad, ya que la mayoría de los polímeros son \textbf{higroscópicos}. Por ello, resulta crucial que un material de impresión muestre baja higroscopicidad: el agua absorbida no solo puede alterar sus propiedades mecánicas y térmicas, sino que al vaporizarse durante la extrusión provoca burbujas y discontinuidades en el flujo, comprometiendo la calidad y la fiabilidad de cada pieza. En el Cuadro \ref{tab:materiales_fdm} se observa una comparación entre los principales materiales de impresión FDM.
 
 \begin{table}[h]
   \centering
@@ -506,6 +506,8 @@ Finalmente, tenemos los parámetros de la máquina (Cuadro \ref{tab:param-hardwa
 
 El éxito de una impresión FDM no solo depende de los valores de los parámetros en el slicer, sino también de cómo se dispone el objeto dentro del volumen de impresión. La orientación elegida influye en la adhesión a la cama, la generación de soportes, el tiempo total de fabricación, la resistencia mecánica de la pieza y la calidad superficial del modelo.
 
+Todo software CAM de FDM dispondrá de herramientas para mover la pieza dentro del volumen de trabajo, escalar y orientar, además de permitir el ajuste de distintos parámetros y configuraciones de la máquina.
+
 La inclinación del modelo determina dónde y cuántos soportes serán necesarios. Idealmente debe minimizarse la cantidad y la altura de las estructuras de soporte para reducir el consumo de material y el tiempo de impresión, así como para evitar daños en la superficie al retirarlos. Cuando resulte imprescindible emplear soportes, conviene ubicarlos en zonas poco críticas para la unión de partes, la estética o el postprocesado, de modo que su extracción sea más sencilla y afecte lo menos posible al acabado final.
 
 La orientación del objeto también modifica su altura en el eje Z, lo que repercute directamente en el número de capas y, por tanto, en el tiempo de impresión. Al rotar o inclinar el modelo conviene evaluar el efecto en la duración del proceso, ya que una altura más corta en Z suele suponer una reducción significativa del tiempo de fabricación.
@@ -525,8 +527,7 @@ En la Figura \ref{orientfig}, se observa una pieza que en la orientación por de
 	\label{orientfig}
 \end{figure}
 
-
-Con la orientación definida se procede a configurar los parámetros en el CAM, definiendo además si es que dada la pieza y lo deseado se quieren soportes o estructuras extra de adhesión a la cama. El software entregará una simulación del proceso y de las rutas de fabricación. 
+Con la orientación definida se procede a configurar los parámetros en el CAM, definiendo además si es que dada la pieza y lo deseado se quieren soportes o estructuras extra de adhesión a la cama. El software entregará una \textbf{simulación del proceso y del toolpath}, así como de la masa de filamento a consumir y el tiempo total de fabricación. 
 
 La cantidad de filamento a extruir ($E$) en cada segmento del cuerpo se calcula mediante una conservación de volumen entre lo que entra (filamento) y lo que se quiere construir (segmento):
 
@@ -534,7 +535,9 @@ La cantidad de filamento a extruir ($E$) en cada segmento del cuerpo se calcula 
 	V_{segmento}=V_{filamento}\implies l_{s}h_{l}d_{noz}=\frac{d_{fil}^{2}\pi}{4}E\implies E= \frac{4 l_{s}h_{l}d_{noz}}{d_{fil}^{2} \pi} \cdot (\%f)
 \end{equation}
 
-Asumiendo un área aproximadamente rectangular para el segmento, y con $\%f$ el parámetro de \textit{flow percentage}, un elemento de corrección a definir dentro del CAM.
+Asumiendo un área aproximadamente rectangular para el segmento, y con $\%f$ el parámetro de \textit{flow percentage}, un elemento de corrección a definir dentro del CAM. 
+
+Como se mencionó, el software CAM tendrá valores por defecto en cada parámetro del proceso, más precisos si es que es posible seleccionar directamente un modelo de impresora, luego, por lo general, basta definir unos pocos valores para poder obtener una impresión funcional, típicamente: altura de capa, porcentaje de relleno y temperaturas. Debe tomarse en cuenta que las temperaturas, así como otros parámetros, podrían variar de acuerdo al material y las especificaciones del fabricante.
 
 \subsection{Imprecisiones y defectos en FDM}
 
@@ -653,7 +656,7 @@ En la impresión líquido–sobre–líquido, el cabezal deposita el material di
 	\label{likifig}
 \end{figure}
 
-Existen al menos tres variantes de esta técnica, dependiendo de la relación funcional entre el material impreso y el líquido de soporte. En la modalidad más extendida, la impresión constituye la pieza final y el medio líquido se retira posteriormente mediante decantación, lavado o centrifugado, seguido por un proceso de curado o secado. Una segunda variante invierte esta lógica: el material impreso actúa como un sacrificado que se elimina al final, mientras que el líquido se solidifica y forma parte del objeto final, como ocurre en la fabricación de canales encapsulados. En una tercera modalidad, tanto el líquido como el material impreso se conservan, configurando estructuras multicomponente con funcionalidades diferenciadas, como en sensores blandos.
+Existen al menos tres variantes de esta técnica, dependiendo de la relación funcional entre el material impreso y el líquido de soporte. En la modalidad más extendida, la impresión constituye la pieza final y el medio líquido se retira posteriormente mediante decantación, lavado o centrifugado, seguido por un proceso de curado o secado. Una segunda variante invierte esta lógica: el material impreso actúa como un sacrificado que se elimina al final, mientras que el líquido se solidifica y forma parte del objeto final, como ocurre en la fabricación de canales encapsulados. En una tercera modalidad, tanto el líquido como el material impreso se conservan, configurando estructuras multicomponente con funcionalidades diferenciadas, como en sensores blandos (Figura \ref{likiexfig}).
 
 \begin{figure}[h!]
 	\centering
@@ -745,7 +748,7 @@ En esta configuración se distinguen tres tecnologías de fotopolimerización (F
 	\label{topdownsfig}
 \end{figure}
 
-Es importante destacar que tanto DLP como MSLA, al proyectar cada sección completa de la pieza, alcanzan velocidades de impresión superiores a las de un láser focalizado, pues \textbf{el tiempo por capa no depende ni del tamaño ni de la cantidad de objetos}. De este modo, a diferencia de FDM, imprimir múltiples piezas en un solo lote reduce directamente el tiempo de fabricación por pieza. Cabe destacar que los subsistemas mecánicos de este tipo de máquinas son bastante sencillos, ya que el mecanismo tiene pocas partes móviles.
+Tanto DLP como MSLA, al proyectar cada sección completa de la pieza, alcanzan velocidades de impresión superiores a las de un láser focalizado, pues \textbf{el tiempo por capa no depende ni del tamaño ni de la cantidad de objetos}, sino que al \textbf{proceso de despegue}, como se describirá más adelante. De este modo, a diferencia de FDM, imprimir múltiples piezas en un solo lote reduce directamente el tiempo de fabricación por pieza. Cabe destacar que los subsistemas mecánicos de este tipo de máquinas son bastante sencillos, ya que el mecanismo tiene pocas partes móviles. Algunos modelos presentan calefacción para estimular la reactividad de las resinas.
 
 No obstante, la precisión de DLP y MSLA está limitada por la resolución y el número de píxeles de la fuente luminosa (Figura \ref{pixelfig}), mientras que un láser puede ofrecer definición micrométrica. Sin embargo, los proyectores y pantallas LCD actuales proporcionan una calidad de superficie prácticamente indistinguible de la de una pieza inyectada estándar. Por esta razón, la tecnología láser se prefiere en aplicaciones de microfabricación o en entornos de investigación donde se requiera personalizar finamente los parámetros del proceso, y las de proyección en cualquier otro caso. El Cuadro \ref{tab:comparacion-fotopolimerizacion} entrega una breve comparación de estas tecnologías bottom up.
 
@@ -776,7 +779,7 @@ No obstante, la precisión de DLP y MSLA está limitada por la resolución y el 
 	\end{tabular}
 \end{table}
 
-En los sistemas bottom-up, gran parte del tiempo de impresión no corresponde a la polimerización de la resina, sino a la \textbf{operación de despegar} cada capa del fondo del tanque, donde la resina tiende a adherirse. Así, aunque se fabrique con láser, de todas formas es óptimo imprimir varias piezas de una sola vez. La fuerza de adherencia puede modelarse de forma aproximada a través de la ecuación de Stefan:
+Como se mencionó, en los sistemas bottom-up, gran parte del tiempo de impresión no corresponde a la polimerización de la resina, sino a la operación de despegar cada capa del fondo del tanque, donde la resina tiende a adherirse. La fuerza de adherencia puede modelarse de forma aproximada a través de la ecuación de Stefan:
 
 \begin{equation} 
 F_{\mathrm{visc}} 	= \frac{3\pi\,\eta\,R^4}{2\,h^3}\;v_{\mathrm{sep}} 
@@ -793,18 +796,20 @@ Por tanto, la velocidad de elevación debe ajustarse para que $F_{\mathrm{visc}}
 	\label{adhesionfig}
 \end{figure}
 
+El fondo del tanque de resina suele estar constituido por una lámina de FEP (fluorinated ethylene propylene), un copolímero de tetrafluoroetileno y hexafluoropropileno. Esta membrana presenta elevada transparencia, buena resistencia a la fatiga y a la corrosión, y baja reactividad química, además de suficiente flexibilidad para soportar repetidos ciclos de separación entre la pieza curada y el sustrato.
+
 Una técnica innovadora destacable es el \textbf{CLIP} (Continuous Liquid Interface Production), el cual introduce una modificación significativa. En este sistema, se genera una \textit{zona muerta} cerca del fondo del tanque mediante la difusión controlada de oxígeno a través de una ventana permeable. El oxígeno inhibe localmente la polimerización al reaccionar con los radicales libres, impidiendo la formación de enlaces cruzados en esa región. De este modo, la pieza puede crecer de forma continua hacia arriba sin adherirse al fondo, eliminando la necesidad de ciclos de despegue. Esta inhibición superficial por oxígeno es análoga al mecanismo de fotodegradación observado en polímeros expuestos a radiación UV, donde el oxígeno atmosférico reacciona con radicales generados, interrumpiendo o degradando las cadenas poliméricas. 
 
 Debido a la rapidez del curado por capa en los procesos SLA, la estrategia de introducir patrones de relleno con el objetivo de reducir tiempos no resulta tan eficaz como en FDM, pese a que sí permitiría reducir masa y consumo de material. Además, existe una consideración práctica determinante: las cavidades internas tienden a retener resina líquida, que por efecto viscoso y adhesión superficial queda atrapada y compromete la función del relleno, de modo que las piezas fabricadas por SLA se diseñan habitualmente \textbf{macizas}.
 
+No obstante, es factible optimizar la pieza para reducir consumo de material sin introducir cavidades que no puedan ser vaciadas. Mediante preprocesado geométrico o herramientas CAM se puede generar una estructura hueca con un espesor de pared controlado e incorporar orificios de drenaje y ventilación que permitan evacuar la resina no curada tras la impresión (Figura \ref{joloufig}). 
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/jolou.png}
+	\includegraphics[width=0.65\linewidth]{imgs/jolou.png}
 	\caption{Arriba, modelo 3D procesado como pieza maciza, abajo, vaciado usando herramienta del CAM. \href{https://www.reddit.com/r/resinprinting/comments/opsxjc/hollow_or_solid_which_would_you_do_details_in/}{Fuente}.}
 	\label{joloufig}
 \end{figure}
-
-No obstante, es factible optimizar la pieza para reducir consumo de material sin introducir cavidades que no puedan ser vaciadas. Mediante preprocesado geométrico o herramientas CAM se puede generar una estructura hueca con un espesor de pared controlado e incorporar orificios de drenaje y ventilación que permitan evacuar la resina no curada tras la impresión (Figura \ref{joloufig}). 
 
 \subsection{Soportes y orientación}
 
@@ -832,29 +837,98 @@ Por otro lado, por consecuencia de las fuerzas de despegue, la pieza no debiese 
 	\label{hammerfig}
 \end{figure}
 
-La elección de orientación debe equilibrar la altura final, la accesibilidad de los puntos de soporte y la calidad superficial requerida. Si bien, los soportes se generan de manera automática, en la mayoría de softwares CAM es posible incluirlos o removerlos manualmente indicando en la pieza. El tipo, densidad, diámetro y punto de contacto suelen ser parámetros configurables también. 
+La elección de orientación debe equilibrar la altura final, la accesibilidad de los puntos de soporte y la calidad superficial requerida. Si bien, los soportes se generan de manera automática, en la mayoría de softwares CAM es posible incluirlos o removerlos manualmente indicando en la pieza. La distribución y cantidad correcta de soporte suele ser el \textbf{parámetro más crítico} a definir para asegurar la viabilidad de una impresión. El tipo, densidad, diámetro y punto de contacto suelen ser parámetros configurables también. 
 
-Otro fenómeno evaluar durante la orientación de la pieza es el efecto ventosa: cavidades cerradas con la concavidad orientada hacia abajo (hacia el tanque) generan presión negativa y fricción al separarse la plataforma, aumentando las fuerzas de adhesión y elevando el riesgo de desprendimiento o deformación del componente. Por tanto, es necesario observar en la simulación e identificar zonas potencialmente selladas, para elegir una orientación que minimice este efecto. Alternativamente, se puede agregar en el diseño orificios de ventilación en estas cavidades.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/suporpe.png}
+	\caption{Soportes en SLA, arriba, detalle del punto de contacto, abajo, configuración con cantidad insuficiente de soportes, a la derecha, una densidad estándar. \href{https://labs.3dwork.io/guias-impresion-3d/guia-calibracion-impresoras-3d-sla-resina}{Fuente}.}
+	\label{suporpefig}
+\end{figure}
+
+Otro fenómeno evaluar durante la orientación de la pieza es el efecto ventosa (Figura \ref{ventosafig}): cavidades cerradas con la concavidad orientada hacia abajo (hacia el tanque) generan presión negativa y fricción al separarse de la superficie, aumentando las fuerzas de adhesión y elevando el riesgo de desprendimiento o deformación del componente. Por tanto, es necesario observar en la simulación e identificar zonas potencialmente selladas durante la construcción, para elegir una orientación que minimice este efecto. Alternativamente, se puede agregar en el diseño orificios de ventilación en estas cavidades.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ventosa.png}
+	\caption{Pieza con zona orientada generando ventosa mientras se construye vs orientación que disminuye este efecto. Nótese que en esta segunda orientación sí podría generarse una pequeña ventosa a la derecha mientras la pieza es fabricada, pero de menor tamaño.}
+	\label{ventosafig}
+\end{figure}
 
 \subsection{Procesamiento en CAM}
 
-El procesamiento del modelo en el software CAM suele requerir una configuración de parámetros más limitada que en FDM, debido a la simplicidad operacional de la máquina y a la necesidad de mantener condiciones seguras y reproducibles del proceso. Normalmente el CAM permite definir la altura de capa, parametrizar estrategias de soportes y ajustar un conjunto reducido de parámetros críticos (tiempos de exposición, desplazamientos Z y secuencias de separación), delegando en el firmware de la impresora el control fino de la ejecución.
+De la misma forma que en FDM, el CAM del proceso SLA permitirá mover, escalar y orientar modelos, así como definir el valor para ciertos parámetros, los cuales suelen ser los expuestos en el Cuadro \ref{tab:sla-cam-params}. 
 
-Al igual que ocurre con los filamentos en FDM, cada fabricante de resina proporciona recomendaciones para los parámetros (tiempos de exposición, velocidades de separación, parámetros de soporte y tolerancias de postcurado) que hacen viable la fabricación en condiciones óptimas. En sistemas cerrados basta seleccionar la resina en la interfaz para aplicar automáticamente la configuración recomendada. 
+\begin{table}[ht]
+	\centering
+	\small
+	\caption{Parámetros CAM habituales en SLA}
+	\label{tab:sla-cam-params}
+	\begin{tabular}{@{} l l l @{}}
+		\toprule
+		\textbf{Parámetro} & \textbf{Abrev.} & \textbf{Rango / Unidad} \\
+		\midrule
+		Espesor de capa & LT & 0.01--0.20 mm \\
+		Tiempo de exposición por capa & ET & 1--30 s \\
+		Nº de capas base & BL & 3--10 capas \\
+		Tiempo de exposición base & BET & 20--120 s \\
+		Distancia de elevación & LD & 1--10 mm \\
+		Velocidad de elevación & LS & 1--10 mm/s \\
+		Velocidad de retracción & RS & 10--50 mm/s \\
+		Retraso entre capas & DT & 0--5 s \\
+		Potencia / intensidad de luz & P / I & 10--100\% \\
+		Antialiasing (muestreo) & AA & 2--8 muestras \\
+		Densidad de soportes & SD & 10--70\% \\
+		Tamaño de contacto de soporte & SCS & 0.2--1.2 mm \\
+		Ángulo de overhang & OA & 20--60\(^\circ\) \\
+		Temperatura de resina & T & 20--40\(^\circ\)C \\
+		Espaciado entre capas (z offset) & ZO & -0.05--+0.05 mm \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
-Es muy importante destacar que esta tecnología de fabricación \textbf{no usa habitualmente G-Code}, pues las instrucciones son en parte mapas de bits que contienen las secciones transversales a proyectar.
+De todas maneras, la configuración de parámetros suele ser más limitada que en FDM, debido a la simplicidad operacional de la máquina y a la necesidad de mantener condiciones seguras y reproducibles del proceso.
+
+Cada fabricante de resina proporciona recomendaciones para los parámetros (tiempos de exposición, velocidades de separación, parámetros de soporte y tolerancias de postcurado) que hacen viable la fabricación en condiciones óptimas. En sistemas cerrados basta seleccionar la resina en la interfaz para aplicar automáticamente la configuración óptima. 
+
+El CAM generará una simulación de cada capa, así como del tiempo y del volumen de resina a consumir, como se observa en la Figura \ref{preformfig}. El software presentado en esta figura también demarca las zonas que podrían no estar suficientemente soportadas, y además, entrega una evaluación cualitativa de la imprimibilidad de la configuración designada.
+
+Esta tecnología de fabricación \textbf{no usa habitualmente G-Code}, pues las instrucciones son en parte mapas de bits que contienen las secciones transversales a proyectar.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/preform.png}
+	\caption{Screenshot del software Preform de la empresa Formlabs, CAM para proceso SLA. \href{https://forum.formlabs.com/t/preform-keep-your-supports-off-my-goddamn-airblade-designate-areas-to-exlude-from-internal-support-bases/30544/16}{Fuente}}
+	\label{preformfig}
+\end{figure}
 
 \subsection{Flujo del proceso}
 
-A diferencia del proceso FDM, que es relativamente directo y produce piezas casi finalizadas tras la impresión, el proceso SLA implica \textbf{múltiples etapas de postprocesamiento} para alcanzar que la pieza alcance su forma y propiedades mecánicas finales.
+A diferencia del proceso FDM, que es relativamente directo y produce piezas casi finalizadas tras la impresión, el proceso SLA implica \textbf{múltiples etapas de postprocesamiento} para alcanzar que la pieza alcance su forma y propiedades mecánicas finales (Figura \ref{slaflufig}).
 
 Una vez finalizada la impresión, la pieza obtenida no está completamente curada. La resina fotopolimerizable solo ha reaccionado lo suficiente como para mantener la geometría durante el proceso de construcción. Además, la superficie de la pieza aún presenta restos de resina líquida no polimerizada, que deben ser removidos para evitar alteraciones en el acabado superficial o en las dimensiones finales.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/slaflu.png}
+	\caption{Etapas en la fabricación de una pieza por SLA. \href{https://formlabs.com/}{Fuente}.}
+	\label{slaflufig}
+\end{figure}
 
 El primer paso del posprocesamiento consiste en \textbf{lavar la pieza con alcohol isopropílico (IPA)} u otro solvente compatible, con el fin de disolver y eliminar estos residuos superficiales. Es fundamental controlar el tiempo de inmersión o agitación, ya que los polímeros curados pueden absorber solventes, lo que puede afectar sus propiedades mecánicas o inducir hinchamiento. Una exposición excesiva al alcohol también puede provocar fragilidad o distorsiones dimensionales.
 
 Tras el lavado, la pieza debe secarse completamente antes del postcurado térmico o UV. Si quedan residuos de alcohol en el interior del material estos pueden vaporizarse rápidamente al aplicar calor, generando \textbf{grietas internas o delaminaciones} debido a la presión del vapor atrapado.
 
-El siguiente paso es el \textbf{postcurado UV}, donde la pieza se expone a radiación ultravioleta bajo condiciones controladas de temperatura y tiempo, habitualmente en un horno especializado. Este tratamiento permite aumentar el grado de entrecruzamiento de la red polimérica, lo que se traduce en una mayor rigidez, dureza superficial y estabilidad térmica. Sin embargo, debido a la baja conductividad térmica del polímero y la limitada penetración de la radiación UV, se genera un \textbf{gradiente de curado}, con una mayor conversión en las capas externas que en el núcleo de la pieza. Este efecto debe considerarse en el diseño estructural y en el análisis del comportamiento mecánico, especialmente en piezas de gran espesor.
+El siguiente paso es el \textbf{postcurado UV}, donde la pieza se expone a radiación ultravioleta bajo condiciones controladas de temperatura y tiempo, habitualmente en un horno especializado. Este tratamiento permite aumentar el grado de entrecruzamiento de la red polimérica, lo que se traduce en una mayor rigidez (Figura \ref{curingrisinfig}), dureza superficial y estabilidad térmica. Sin embargo, dependiendo de la conductividad térmica del polímero y la penetración de la radiación UV, existirá un \textbf{gradiente de curado}, con una mayor conversión en las capas externas que en el núcleo de la pieza. Este efecto debe considerarse en el diseño estructural y en el análisis del comportamiento mecánico, especialmente en piezas de gran espesor.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/curingrisin.png}
+	\caption{Gráfico de rigidez vs tiempo de curado para un par de resinas de la empresa Formlabs. \href{https://formlabs.com/es/blog/introduccion-poscurado-impresiones-3D-estereolitografia-SLA/}{Fuente}}
+	\label{curingrisinfig}
+\end{figure}
+
+Tanto los tiempos de lavado, como la temperatura y tiempo en el horno UV suelen ser indicados en la recomendación del fabricante de la resina, frecuentemente mencionando las consideraciones extra en el caso de piezas voluminosas o muy delgadas.
 
 El \textbf{retiro de los soportes} suele realizarse después del postcurado, cuando el material ya presenta mayor rigidez y fragilidad, lo que facilita el corte. No obstante, esto también aumenta el riesgo de propagación de grietas si no se realiza con cuidado. En piezas delicadas, puede optarse por cortar parcialmente los soportes antes del curado completo, siempre procurando no deformar la pieza, ya que en ese estado aún mantiene cierta flexibilidad.
 
@@ -878,17 +952,87 @@ Asimismo, la resina debe ser \textbf{químicamente estable} tanto en almacenamie
 
 Finalmente, tras el postcurado, la resina debe alcanzar \textbf{propiedades mecánicas adecuadas} según el uso previsto de la pieza. Esto incluye rigidez, resistencia al impacto, estabilidad térmica o flexibilidad, dependiendo de la aplicación. Estas propiedades son el resultado de la combinación de monómeros, oligómeros y aditivos que conforman la formulación base.
 
+Las formulaciones de resinas para SLA suelen otorgar una mayor diversidad de propiedades mecánicas que las disponibles en FDM, no sólo por la diversidad de formulaciones y aditivos, sino que porque el proceso mismo \textbf{modifica la microestructura de la pieza}. En la Figura \ref{resinsfig} se observan las propiedades de algunas resinas de la empresa Formlabs.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/resins.png}
+	\caption{Mapa comparativo de resinas Formlabs. \href{https://formlabs.com/materials/compare/?compare=RS-CFG-TO15-02&compare=RS-CFG-GPBK-05&compare=RS-CFG-RG10-01}{Fuente}}
+	\label{resinsfig}
+\end{figure}
+
 Los monómeros más utilizados en resinas para SLA son los \textbf{metil metacrilatos} y los \textbf{epóxidos acrilados}. Los primeros se emplean por su alta capacidad de reticulación, lo que permite obtener piezas rígidas, dimensionalmente estables y con buen detalle superficial. Sin embargo, presentan una contracción moderada durante el curado, lo que debe compensarse con otros componentes en la formulación. Por otro lado, los \textbf{epóxidos acrilados} ofrecen una menor contracción y mayor resistencia térmica, además de mejorar la adhesión entre capas y la tenacidad del material curado. 
-
-Las formulaciones de resinas para SLA suelen otorgar una mayor diversidad de propiedades mecánicas que las disponibles en FDM.
-
-\subsection{Comportamiento mecánico}
-
-A diferencia del 
 
 Dado que el curado se activa por radiación UV, conviene proteger las piezas fotopolimerizadas de la luz ambiental hasta completar el post-curado. Los fotoiniciadores residuales pueden reaccionar de forma irregular bajo radiación no controlada, alterando la integridad de la red polimérica y modificando las propiedades mecánicas de la pieza.
 
 La foto-oxidación impacta con mayor severidad a los termoestables que a los termoplásticos. En los termoplásticos, el ligero aumento de temperatura facilita la reorganización de las cadenas y atenúa el efecto de la rotura de enlaces. En cambio, la movilidad de las moléculas en un termoestable es muy limitada: la distorsión de la red genera microfisuras que se propagan y conducen a la fragilización prematura del material. Por otro lado, las resinas para fotopolimerización no cuentan con aditivos para protección UV, pues sería un obstáculo para la reacción. 
 
+Las resinas más estándar para prototipado suelen estar en el rango de 30-100 dólares por litro, mientras que las biocompatibles y dentales desde los 150 hasta los 500 dólares por litro. El resto de las resinas de ingeniería se encontrará en valores intermedios, dependiendo del fabricante.
+
+\subsection{Comportamiento mecánico}
+
+Como cualquier proceso de fabricación aditivo, la construcción del volumen de una pieza de SLA sucede capa por capa, por lo que la adhesión entre estas es fundamental, particularmente en las configuraciones bottom up.
+
+A diferencia del proceso FDM, donde esta soldadura depende fundamentalmente de las temperaturas entre las interfaces (las cuales están cambiando constantemente), la unión de capas en SLA es un proceso más controlado que depende de la exposición.
+
+Esta exposición genera entrecruzamientos en todas las direcciones, y luego es reforzada en el postcurado, por lo que finalmente las piezas no presentan una anisotropía marcada. En la práctica se suelen clasificar como \textbf{isotrópicas}. 
+
+En la Figura \ref{tensileresinfig} se observa el resultado de ensayos de tracción para muestras en distintas orientaciones, donde si bien, es posible concluir que las piezas son más débiles cuando son traccionadas en la dirección normal, no es una diferencia severa como en el caso FDM. Nótese que las impresiones en $0^{\circ}$ resultan tan débiles como las de $90^{\circ}$, pero menos frágiles. Esto podría deberse a las elevadas fuerzas adhesivas que sufren las piezas bajo esta orientación durante la fabricación.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/tensileresin.png}
+	\caption{Ensayos de tracción en probetas \textit{dogbone} en distintas orientaciones respecto a su cara plana y respecto a su costado. \cite{tensiler}}
+	\label{tensileresinfig}
+\end{figure}
+
+Las resinas basadas en metacrilatos suelen ser \textbf{frágiles}; una caída de un poco más de un metro de altura podría causar fácilmente una fractura. Esto no suele suceder en piezas FDM, a menos que el impacto sea en un detalle fino o en contra de la dirección débil. Por otro lado, ya se comentó que las resinas se mueven en un espectro amplio de propiedades mecánicas. En la Figura \ref{propfig} se observan los resultados de un ensayo de resistencia a la fractura sobre piezas en SLA en distintas orientaciones, donde si bien, se aprecian fuerzas distintas, las energías absorbidas son prácticamente equivalentes.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/prop.png}
+	\caption{Ensayo de resistencia a la fractura en muestras impresas por SLA con distintas orientaciones. \cite{propb}}
+	\label{propfig}
+\end{figure}
+
 \subsection{Casos de uso}
 
+La alta resolución de este proceso y la suavidad del acabado superficial, similar al de una pieza inyectada, hacen de esta tecnología una mejor aproximación a un producto durante la fase de prototipado, respecto al FDM (Figura \ref{rotorfig}). Así, una manera óptima del uso de ambas tecnologías es iniciar el prototipado con piezas FDM durante la iterarción de ideas y características (más rápido y barato), y una vez que el modelo converja, pasar al SLA.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/rotor.png}
+	\caption{Modelo impreso por FDM a la izquierda, por SLA a la derecha. \href{https://facfox.com/docs/kb/guide-to-stereolithography-sla-3d-printing}{Fuente}}
+	\label{rotorfig}
+\end{figure}
+
+Diversos procesos de manufactura basados en moldes utilizan esta tecnología, ya que permite obtener piezas de alta definición con mínimos requerimientos de postprocesado, ideales para ser empleadas como \textbf{moldes maestros}. Si bien, puede aplicarse en la producción de series cortas o intermedias utilizando moldes blandos o rígidos, e incluso en procesos de inyección (Figura \ref{usosfig}) con las precauciones adecuadas, su uso es especialmente relevante en el proceso de cera perdida, al emplear resinas con formulaciones que no dejan ceniza al ser fundidas.
+
+El proceso de cera perdida es común en la orfebrería. Consiste en cubrir la joya, utilizada como molde maestro, con un material refractario conocido como investimento. Posteriormente, la cera se funde y se elimina, dejando una cavidad precisa que luego es rellenada con un metal fino.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/usos.png}
+	\caption{Arriba, anillo impreso en cera SLA y su resultado metálico tras el proceso de cera perdida en metal, con pasos de postprocesado pendientes. Abajo, molde para inyección de plástico impreso en resina resistente a la temperatura, con encoframiento de aluminio. \href{https://formlabs.com}{Fuente}}
+	\label{usosfig}
+\end{figure}
+
+Otra disciplina en la que el uso de la tecnología SLA se ha consolidado es la odontología, donde se emplea en la fabricación de modelos dentales, guías quirúrgicas, férulas, provisionales y otros dispositivos clínicos personalizados (Figura \ref{dentalfig}). El SLA permite replicar con alta fidelidad estructuras anatómicas a partir de escaneos intraorales o tomografías, integrándose en flujos de trabajo digitales que optimizan la planificación y ejecución de procedimientos restaurativos, ortodónticos y quirúrgicos. Asimismo, el desarrollo de resinas específicas para uso dental, incluidas opciones biocompatibles e higienizables bajo estándares de salud, ha contribuido a su implementación en laboratorios y clínicas. Como modelo quirúrgico también sirve a cirujanos en la fase pre operatoria.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/dental.png}
+	\caption{A la izquierda, modelos impresos de dentadura, a la derecha, alineador dental. \href{https://formlabs.com}{Fuente}}
+	\label{dentalfig}
+\end{figure}
+
+Las piezas fabricadas mediante tecnología SLA no se limitan a funciones prototípicas o intermedias, sino que, en determinados casos, pueden comercializarse directamente como productos finales. Esto se debe a la alta calidad superficial obtenida en el proceso y a la capacidad de producir geometrías altamente personalizadas de manera sencilla. Un caso destacado es el de los audífonos intraauriculares (Figura \ref{sonovafig}), donde carcasas hechas a medida se imprimen directamente a partir de escaneos del canal auditivo del usuario. Estas piezas, fabricadas con resinas biocompatibles, cumplen con requisitos funcionales, estéticos y ergonómicos, lo que permite su uso final sin necesidad de procesos adicionales complejos.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/sonova.png}
+	\caption{Dispositivo para audición, personalizado e impreso en resina, por la empresa Sonova. \href{https://rapid3d.co.za/sonova-3d-printing-hearing-aids-using-envisiontec-3d-printing-technology/}{Fuente}}
+	\label{sonovafig}
+\end{figure}
+
+Finalmente, como cualquier tecnología de fabricación aditiva, puede ser una opción para la manufactura en serie de un componente o producto, mientras los costos y el volumen lo justifiquen, antes de pasar a métodos más convencionales. El esquema de costos en SLA es más complejo que el caso FDM, por el manejo del material y las etapas en el flujo de fabricación.
