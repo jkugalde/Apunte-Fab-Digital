@@ -1,7 +1,251 @@
 \chapter{Corte CNC}
 
-\section{Procesos sustractivos}
+\textbf{*} Este capítulo estará enfocado en fresado CNC, pues es la tecnología disponible en el Campus.
+
+\section{Fabricación sustractiva por corte}
+
+La fabricación sustractiva por corte se basa en la remoción controlada de material para dar forma a un volumen, utilizando una o varias herramientas con filo.
+
+Este tipo de tecnología es la automatización de máquinas tradicionales de manufactura metalmecánica, principalmente tornos y fresadoras. Un torno produce piezas con simetría cilíndrica mediante la rotación del material base, mientras que una fresadora ofrece una mayor versatilidad en cuanto a las geometrías que puede alcanzar, al usar una herramienta rotativa móvil en varios ejes. Así, las máquinas CNC más comunes son los tornos y fresadoras CNC, o bien los centros de mecanizado, que combinan ambas capacidades en una sola unidad. 
+
+La acción de la herramienta sobre el material puede derivar en 3 mecanismos de corte, dependiendo de las propiedades del material, la herramienta y los parámetros de corte, los cuales son:
+
+\begin{enumerate}
+	\item \textbf{Deformación plástica}: El material es forzado a fluir localmente más allá de su límite elástico, lo que permite la generación de viruta. Este es el mecanismo típico en metales dúctiles.
+	
+	\item \textbf{Fractura frágil}: El material se rompe debido a la propagación de grietas, generalmente sin deformación previa significativa. Común en materiales cerámicos, vidrios, o compuestos duros.
+	
+	\item \textbf{Abrasión}: Remoción superficial del material por desgaste mecánico, sin necesidad de fractura macroscópica o fluencia plástica. Característico de procesos como rectificado o pulido.
+\end{enumerate}
+
+Por lo general, los modelos de corte se referirán al primer mecanismo, pues es más fácil de modelar, y se le denominará \textbf{arranque de viruta} (Figura \ref{virutafig}).
+
+Para que ocurra efectivamente el corte, es decir, la generación de viruta y la penetración de la herramienta en el material, deben cumplirse ciertas condiciones fundamentales, principalmente una \textbf{condición geométrica} y otra de \textbf{resistencia del material}.
+
+La condición geométrica para que se inicie el arranque de viruta, exige que el espesor de corte supere un umbral mínimo que permita activar el mecanismo plástico de corte. En primera aproximación, esta condición se expresa como:
+
+\begin{equation}
+	h > 0
+\end{equation}
+
+donde $h$ es el \textbf{espesor no deformado de la viruta}, que depende del avance y la geometría de la herramienta. Sin embargo, en la práctica (especialmente en procesos de microfabricación) existe un espesor mínimo efectivo, $h_{\text{min}}$, por debajo del cual el material no se corta adecuadamente. En lugar de producirse una viruta, el filo genera:
+
+\begin{itemize}
+	\item \textbf{Rubbing} (frotamiento): contacto superficial sin corte, con generación de calor por fricción.
+	\item \textbf{Ploughing} (arado): desplazamiento plástico del material hacia los lados, sin separación efectiva.
+	\item \textbf{Elastic recovery} (recuperación elástica): deformación reversible del material sin remoción.
+\end{itemize}
+
+Estas condiciones aumentan el desgaste de la herramienta, deterioran la calidad superficial y reducen la eficiencia del proceso de mecanizado. De esta forma, la condición se transforma en:
+
+\begin{equation}
+	h > h_{min}
+\end{equation}
+
+Por otro lado, la herramienta debe aplicar una fuerza tangencial suficiente para vencer la resistencia del material a ser cortado. Esta condición se expresa como:
+
+\begin{equation}
+	F_c \geq \tau_s \cdot A
+\end{equation}
+
+donde:
+
+\begin{itemize}
+	\item $F_c$ es la fuerza de corte aplicada.
+	\item $\tau_s$ es el esfuerzo de corte específico del material.
+	\item $A = h \cdot b$ es el área de corte, siendo $b$ el ancho de contacto de la herramienta con el material.
+\end{itemize}
+
+Estas dos condiciones son las mínimas para que el fenómeno de remoción ocurra, no obstante, no puede ser llevado a cabo por cualquier maquinaria. De esta manera, el proceso va a ser viable además si es que la potencia de la maquinaria lo permite. La potencia de corte requerida se calcula como:
+
+\begin{equation}
+	P_{\text{corte}} = F_c \cdot v_c
+\end{equation}
+
+donde:
+
+\begin{itemize}
+	\item $v_c$ es la velocidad de corte (tangencial),
+	\item $F_c$ es la fuerza de corte.
+\end{itemize}
+
+Así, la condición energética sobre el hardware se expresa como:
+
+\begin{equation}
+	P_{\text{disponible}} \geq P_{\text{corte}}
+\end{equation}
+
+Las condiciones nombradas previamente serán entonces las mínimas para seleccionar una máquina dado un proceso, no obstante, no son suficiente si queremos considerar la calidad de la fabricación. La calidad estará determinada por la respuesta dinámica del sistema (vibraciones) y la transferencia de calor.
+
+La \textbf{estabilidad dinámica del sistema herramienta–pieza–máquina} es fundamental para asegurar una buena calidad de mecanizado y prolongar la vida útil de la herramienta.
+
+Durante la operación, el sistema puede excitarse por perturbaciones externas o internas (como la descomposición del corte en viruta), generando \textbf{vibraciones autoinducidas} conocidas como \textit{chatter}. Este fenómeno ocurre cuando pequeñas oscilaciones en la herramienta se amplifican debido a una realimentación positiva entre las fuerzas de corte y el desplazamiento relativo entre herramienta y pieza.
+
+Estas vibraciones pueden causar:
+
+\begin{itemize}
+	\item Ruido excesivo y pérdida de precisión dimensional.
+	\item Daños en el filo de la herramienta.
+	\item Mal acabado superficial.
+	\item Desgaste prematuro de componentes de la máquina.
+\end{itemize}
+
+Parte del comportamiento dinámico del sistema está determinado por la \textbf{rigidez estructural} de la máquina (incluyendo el chasis, la transmisión y los soportes), así como por la capacidad de \textbf{control de torque} de los motores de la transmisión. En este sentido, incluso si la máquina dispone de la potencia requerida para realizar el corte, una rigidez insuficiente o un control deficiente pueden comprometer la \textbf{precisión dimensional} de la pieza mecanizada.
+
+Otra consideración esencial es la \textbf{transferencia de calor generada por el corte}, ya que una parte importante de la energía consumida se convierte en calor en la zona de corte. Este calor se distribuye entre:
+
+\begin{itemize}
+	\item La herramienta (puede causar pérdida de dureza, desgaste o incluso falla).
+	\item La pieza (afectando tolerancias o propiedades metalúrgicas).
+	\item La viruta (que idealmente debería llevarse la mayor parte del calor).
+\end{itemize}
+
+El exceso de temperatura puede provocar:
+
+\begin{itemize}
+	\item Deformación térmica de la pieza.
+	\item Reducción de la vida útil de la herramienta,
+	\item Cambios microestructurales no deseados en materiales sensibles.
+\end{itemize}
+
+Por esta razón, las máquinas de corte CNC suelen incorporar un subsistema de \textbf{refrigeración activa}. Sin embargo, su función no se limita únicamente a la disipación térmica; el fluido de corte cumple múltiples roles complementarios en el proceso de mecanizado, entre los que destacan:
+
+\begin{itemize}
+	\item \textbf{Evacuación de la viruta}: facilita el despeje continuo de la zona de corte, evitando la acumulación de material y posibles interferencias.
+	\item \textbf{Amortiguación de vibraciones}: contribuye a estabilizar el sistema al reducir pequeñas oscilaciones mecánicas.
+	\item \textbf{Lubricación}: disminuye la fricción entre la herramienta, la viruta y la superficie mecanizada, reduciendo el desgaste.
+	\item \textbf{Protección superficial}: forma una película que ayuda a prevenir la corrosión y el daño en componentes de la máquina y en la pieza de trabajo.
+\end{itemize}
+
+En consecuencia, los procesos de corte CNC deben ser abordados como sistemas multivariables, en los que intervienen de manera interrelacionada las propiedades del material, las características geométricas y dinámicas de la máquina, las condiciones de corte y el tipo de herramienta utilizada. Para un material dado, la elección de los parámetros de operación no puede realizarse de forma aislada, sino que debe considerar la compatibilidad entre todos estos elementos.
+
+Una limitación geométrica inherente al mecanizado CNC con herramientas rotativas es que no pueden producir esquinas internas perfectamente rectas. Debido a la forma cilíndrica de las herramientas, todo borde interno siempre tendrá un radio mínimo igual al del filo de corte 
+
+\section{Subsistemas, herramientas y accesorios}
+
+\subsection{Subsistemas}
+
+Un subsistema esencial en todo sistema CNC es el de \textbf{fijación del material base} (\textit{stock}) que será maquinado. Este subsistema asegura la estabilidad y la precisión del proceso, evitando desplazamientos durante la operación.
+
+ Los dispositivos de fijación pueden variar considerablemente según el tipo de material y la máquina utilizada. En máquinas simples, donde la mesa de trabajo es un consumible, el stock puede fijarse directamente a través tornillos o adhesivos. En cambio, en aplicaciones más exigentes, se emplean dispositivos como prensas de tornillo, mordazas mecánicas o sistemas de fijación neumáticos automatizados, los cuales pueden sincronizarse con el ciclo de operación para evitar interferencias o colisiones con la herramienta.
+ 
+ Deben tomarse dos consideraciones importantes de acuerdo al sistema de fijación:
+ 
+ \begin{itemize}
+ 	\item Considerar los elementos de fijación en la configuración del CAM, para evitar colisiones.
+ 	\item La presión de fijación podría inducir deformaciones en el material.
+ \end{itemize}
+ 
+Cuando las geometrías de las piezas son complejas o requieren alta precisión, se emplean \textbf{fixtures} personalizados para sujeción y posicionamiento. Estos dispositivos aseguran la estabilidad y repetibilidad durante el proceso, minimizando deformaciones y movimientos no deseados. Los fixtures se diseñan específicamente según la pieza o familia de piezas, garantizando una fijación adecuada que permite alcanzar las tolerancias requeridas en la fabricación.
+ 
+ Un componente central del subsistema de corte en una máquina CNC es el \textbf{husillo} (\textit{spindle}), encargado de transmitir el movimiento rotacional a la herramienta. Su función principal es generar y mantener la velocidad de corte requerida en el punto de contacto entre la herramienta y el material. A diferencia de otros actuadores rotacionales presentes en equipos automatizados, el husillo en procesos de mecanizado está sometido a elevadas exigencias dinámicas y estructurales, ya que debe operar a altas velocidades bajo carga, soportando simultáneamente esfuerzos radiales, axiales y térmicos.
+ 
+ Los husillos pueden clasificarse según su fuente de accionamiento (eléctrico o neumático), el rango de velocidad, el sistema de transmisión (directa, por correa o por engranajes) y la capacidad de carga. Los husillos modernos incorporan sensores de temperatura, vibración y velocidad, lo que permite al sistema CNC adaptar dinámicamente las condiciones de corte.
+ 
+El husillo determina la compatibilidad con los \textbf{portaherramientas}, lo que a su vez define la variedad y versatilidad de procesos que la máquina CNC puede ejecutar. 
+
+Dado que los procesos CNC generalmente involucran múltiples herramientas con longitudes distintas, es necesario contar con un método para definir y compensar los \textit{offsets} de cada herramienta en relación con un sistema de coordenadas común. Una técnica frecuente consiste en establecer una referencia inicial mediante una herramienta montada en el husillo, la cual se aproxima hasta hacer contacto con una superficie definida de la pieza o de la máquina. Este contacto puede detectarse mediante el cierre de un circuito eléctrico, utilizando la conductividad del material como mecanismo de detección.
+
+En el caso de materiales no conductores, se emplea una placa auxiliar de espesor conocido que actúa como interfaz de contacto; dicho espesor se considera luego en el cálculo del offset. En sistemas con cambio automático de herramienta (ATC), las herramientas se miden e identifican previamente y sus datos se cargan al sistema de control. De este modo, a partir de una única referencia inicial, la máquina puede operar de forma continua sin requerir pausas para recalibración entre herramientas.
+
+Finalmente, si el sistema de medición automática no está disponible o presenta fallas, como último recurso el procedimiento se realiza manualmente: la herramienta se aproxima cuidadosamente hasta tocar una lámina de espesor conocido ubicada sobre el material base, y se ajusta el offset de forma manual considerando dicho espesor.
+
+\subsection{Herramientas}
+
+Las herramientas de corte utilizadas en máquinas CNC presentan una amplia variedad de tipos, geometrías y materiales, cada uno adecuado para distintas operaciones y condiciones de mecanizado. Según su función principal, pueden clasificarse en \textbf{fresas}, \textbf{brocas} y \textbf{herramientas especializadas}. Las \textbf{fresas} poseen filos de corte distribuidos principalmente en el manto o periferia, lo que las hace adecuadas para operaciones laterales y de desbaste en múltiples ejes. En cambio, las \textbf{brocas} están diseñadas para realizar cortes axiales, generalmente en perforaciones verticales, concentrando el filo en la punta.
+
+Dentro de las fresas, que constituyen las herramientas más utilizadas en centros de mecanizado, se pueden distinguir subtipos según su geometría de corte. Las más comunes son:
+
+\begin{itemize}
+	\item \textbf{Fresas planas} (flat end mills): de uso general, ideales para desbaste y acabado de superficies planas o cavidades con bordes rectos.
+	\item \textbf{Fresas esféricas} (ball end mills): utilizadas principalmente para el mecanizado de superficies 3D, curvas complejas o contornos suaves, donde se requiere alta resolución geométrica.
+	\item \textbf{Fresas toroidales} (bull nose): con una punta redondeada que combina características de las planas y esféricas, útiles para transición suave entre superficies.
+\end{itemize}
+
+Las características principales de una herramienta se ilustran en la Figura \ref{toolfig}. Entre los parámetros más relevantes se encuentran:
+
+\begin{itemize}
+	\item \textbf{Diámetro de corte}: determina tanto la resolución geométrica alcanzable como la tasa máxima de remoción de material.
+	\item \textbf{Longitud total y longitud útil}: definen la profundidad máxima de corte y la rigidez efectiva de la herramienta durante la operación.
+	\item \textbf{Número de filos (flutes)}: influye en la evacuación de viruta, la calidad de superficie y la eficiencia del corte.
+\end{itemize}
+
+El \textbf{ángulo de hélice} en una fresa determina la inclinación de los filos de corte respecto al eje longitudinal de la herramienta, afectando la dirección y eficiencia de la evacuación de viruta, así como las fuerzas generadas durante el mecanizado. 
+
+Un \textbf{ángulo de hélice cero} (fresa recta) produce una carga de corte más brusca, con viruta fragmentada y pobre evacuación, siendo útil solo en aplicaciones específicas como plásticos duros o ciertos compuestos. Ángulos altos (40–45) generan una acción de corte más progresiva y suave, reducen la carga radial y mejoran el acabado superficial, pero disminuyen la rigidez del filo; se prefieren en materiales dúctiles como aluminio. En cambio, ángulos bajos (20–30) aumentan la rigidez de corte, siendo más adecuados para aceros duros y titanio. 
+
+Respecto a la dirección de hélice, las \textbf{hélices derechas} son las más comunes y expulsan la viruta hacia arriba (fuera del corte), mientras que las \textbf{hélices izquierdas} la empujan hacia abajo, siendo preferidas cuando se busca aumentar la estabilidad de la pieza o evitar el levantamiento en piezas delgadas o mal fijadas.
+
+Las herramientas pueden ser fabricadas en una sola pieza o mediante un cuerpo portador con \textbf{insertos de corte reemplazables}. Estos insertos, fabricados generalmente de carburo sinterizado o materiales cerámicos, permiten extender la vida útil del cuerpo de la herramienta y optimizar los costos operativos. En cuanto a materiales, las herramientas suelen estar hechas de acero rápido (HSS), carburo cementado (WC-Co), cerámicos o incluso diamante policristalino (PCD), según los requerimientos de velocidad, durabilidad y resistencia al desgaste.
+
+La rigidez estructural y dureza de la herramienta es fundamental para mantener las condiciones ideales de corte. Una herramienta flexible o inadecuada puede inducir vibraciones, desviaciones geométricas y deterioro prematuro de la pieza y del filo, comprometiendo la precisión del mecanizado.
+
+En procesos que exigen alta estabilidad térmica, pueden emplearse fresas con \textbf{refrigeración interna}, las cuales canalizan el fluido refrigerante directamente hacia la zona de corte, mejorando la evacuación de viruta y el control de temperatura.
+ 
+\subsection{Accesorios}
+
+El portaherramientas (tool holder) es el dispositivo que fija la herramienta de corte al husillo de la máquina CNC, asegurando la sujeción de acuerdo al diámetro y tipo de vástago de la herramienta. Por ejemplo, los sistemas ER utilizan un collet elástico que se ajusta a un rango específico de diámetros, mientras que otros portaherramientas están diseñados para dimensiones estándar de vástagos.
+ 
+En máquinas CNC básicas, el portaherramientas se acopla directamente al husillo, lo que limita la variedad de herramientas disponibles a un solo tipo de sujeción. En cambio, las máquinas más avanzadas emplean un \textbf{portacono}, un adaptador cónico que se monta en el husillo y permite utilizar distintos tipos de portaherramientas intercambiables.
+
+Sistema de medicion de herramienta.
+
+Ventilacion asistida.
+
+Probes.
+
+Ejes. 
+
+\section{Parámetros del proceso}
 
 \section{Flujo del proceso}
 
+La planificación de una operación CNC puede abordarse de distintas maneras, dependiendo de las capacidades de la máquina, el tipo de herramientas disponibles y la materialidad de la pieza. Estas restricciones pueden, en algunos casos, condicionar decisiones de diseño geométrico o de selección de material.
+
+Sin embargo, suponiendo que no existen tales limitaciones, el diseño debe igualmente ser evaluado frente a las condiciones mínimas requeridas por el proceso de mecanizado: evitar bordes internos rectos (que no pueden lograrse con herramientas rotativas), garantizar accesibilidad para las herramientas en todas las zonas a cortar, y considerar la disponibilidad comercial del formato de material deseado.
+
+El formato del material a seleccionar debe tener un espesor ligeramente superior al requerido por la pieza final, con el fin de permitir el mecanizado sin comprometer las dimensiones funcionales y minimizar el tiempo de remoción de material. Alternativamente, el diseño de la pieza puede adaptarse para ajustarse a espesores comerciales estándar. Es importante considerar que, a medida que aumenta el espesor del stock, su costo tiende a crecer significativamente y su disponibilidad en el mercado local puede verse reducida. En particular, planchas de más de 20 mm de ciertas familias de materiales pueden ser difíciles de conseguir, dependiendo del contexto geográfico y de proveedores disponibles.
+
+\subsection{CAM}
+
+La mayoría de los softwares CAD actuales integran un CAM para corte CNC, luego, será sencillo pasar de la revisión del diseño al entorno de manufactura (y viceversa). Los pasos en el CAM tendrán el siguiente orden general:
+
+\begin{enumerate}
+	\item Definir el tamaño del stock y su posición relativa con la pieza.
+	\item Definir el origen y las direcciones del sistema de coordenadas relativo.
+	\item Definir operaciones, herramientas y parámetros de corte.
+	\item Chequear simulaciones.
+	\item Postprocesar el código G respecto a la máquina a utilizar.
+\end{enumerate}
+
+En general, el stock puede representarse como el formato comercial real que se montará en la máquina, o bien como un volumen virtual mínimo que contenga completamente la geometría de la pieza. No obstante, utilizar el formato completo del material disponible es lo más recomendable, ya que obliga a considerar desde el inicio aspectos prácticos del proceso, como la estrategia de fijación y la interacción del stock con el sistema de sujeción. Además, incorporar este volumen en el modelo facilita la simulación y la verificación del mecanizado.
+
+El origen relativo será la referencia en base a la cual se calcularán todas las operaciones. Debe ser un punto alcanzable para la herramienta o los accesorios de sondaje. Frecuentemente se utiliza algún vértice superior del stock. Al indicar las direcciones del sistema, estas deben coincidir con las de la máquina a utilizar.
+
+Con el sistema definido, definir operaciones. (minimizar herramientas distintas), parametros de corte. cada herramienta tendra un ID
+
+Al término de cada definciion de operacion, se visualizara la simulacion y se actualizara el proceso. Así, los siguientes pueden usar de referencia lo realizado en los pasos previos. La simulacion toolpaths, colisiones, iontegrar maquina,fijacion.
+
+El proceso se itera hasta que la simulacion total sea conveneinte de acuerdo a lo observado. superficies, tiempos.
+
+Finalmente se exporta el codigo entero o por series de operaciones.
+
+\subsection{Ejecución}
+
+Fijar material.
+
+Home absoluto, referencias.
+
+Herramientas cargar.
+
+
+
+\subsection{Postprocesado}
+
 \section{Operaciones comunes}
+
+\subsection{Etapas de mecanizado}
+
+\subsection{Operaciones 2D}
+
+\subsection{Operaciones 3D}
