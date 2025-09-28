@@ -1,14 +1,14 @@
 \chapter{Corte CNC}
 
-\textbf{*} Este capítulo estará enfocado en fresado CNC, pues es la tecnología disponible en el Campus.
+\textbf{*}Este capítulo estará enfocado en fresado CNC, pues es la tecnología disponible en el Campus.
 
 \section{Fabricación sustractiva por corte}
 
-La fabricación sustractiva por corte se basa en la remoción controlada de material para dar forma a un volumen, utilizando una o varias herramientas con filo.
+La fabricación sustractiva por corte se basa en la remoción controlada de material para dar forma a un volumen, utilizando una o varias \textbf{herramientas de corte}
 
 Este tipo de tecnología es la automatización de máquinas tradicionales de manufactura metalmecánica, principalmente tornos y fresadoras. Un torno produce piezas con simetría cilíndrica mediante la rotación del material base, mientras que una fresadora ofrece una mayor versatilidad en cuanto a las geometrías que puede alcanzar, al usar una herramienta rotativa móvil en varios ejes. Así, las máquinas CNC más comunes son los tornos y fresadoras CNC, o bien los centros de mecanizado, que combinan ambas capacidades en una sola unidad. 
 
-La acción de la herramienta sobre el material puede derivar en 3 mecanismos de corte, dependiendo de las propiedades del material, la herramienta y los parámetros de corte, los cuales son:
+La acción de la herramienta sobre el material puede derivar en 3 mecanismos de corte, dependiendo de las propiedades del material, la herramienta y los \textbf{parámetros de corte}, los cuales son:
 
 \begin{enumerate}
 	\item \textbf{Deformación plástica}: El material es forzado a fluir localmente más allá de su límite elástico, lo que permite la generación de viruta. Este es el mecanismo típico en metales dúctiles.
@@ -20,7 +20,7 @@ La acción de la herramienta sobre el material puede derivar en 3 mecanismos de 
 
 Por lo general, los modelos de corte se referirán al primer mecanismo, pues es más fácil de modelar, y se le denominará \textbf{arranque de viruta} (Figura \ref{virutafig}).
 
-Para que ocurra efectivamente el corte, es decir, la generación de viruta y la penetración de la herramienta en el material, deben cumplirse ciertas condiciones fundamentales, principalmente una \textbf{condición geométrica} y otra de \textbf{resistencia del material}.
+Para que ocurra efectivamente el corte, es decir, la generación de viruta y la penetración de la herramienta en el material, deben cumplirse ciertas condiciones fundamentales, principalmente una \textbf{condición geométrica}, una \textbf{cinemática} y otra de \textbf{resistencia del material}.
 
 La condición geométrica para que se inicie el arranque de viruta, exige que el espesor de corte supere un umbral mínimo que permita activar el mecanismo plástico de corte. En primera aproximación, esta condición se expresa como:
 
@@ -42,6 +42,24 @@ Estas condiciones aumentan el desgaste de la herramienta, deterioran la calidad 
 	h > h_{min}
 \end{equation}
 
+Esta penetración está determinada por la \textbf{cinemática del corte}, es decir, por la relación entre la velocidad de avance de la herramienta y su velocidad de rotación. Esta relación se expresa a través del parámetro conocido como \textbf{avance por diente}, definido como:
+
+\begin{equation}
+	f_z = \frac{v_c}{z \cdot N}
+\end{equation}
+
+donde:
+\begin{itemize}
+	\item $f_z$ es el \textbf{avance por diente} [mm/diente],
+	\item $v_c$ es la \textbf{velocidad de avance} de la herramienta [mm/min],
+	\item $z$ es el \textbf{número de dientes activos} de la herramienta,
+	\item $N$ es la \textbf{velocidad de rotación} [rpm].
+\end{itemize}
+
+Este parámetro representa la distancia que avanza cada diente en una revolución, y por tanto determina el \textbf{espesor no deformado de viruta} $h$. Si $f_z$ es menor que el espesor mínimo de corte $h_{\text{min}}$, no se genera viruta adecuadamente, y el proceso entra en los regímenes no deseados de \textit{rubbing}, \textit{ploughing} o \textit{elastic recovery}, ya mencionados.
+
+En consecuencia, el avance por diente debe mantenerse por encima de ese umbral mínimo, el cual depende del material, la geometría del filo y las condiciones de corte. No obstante, $f_z$ también está limitado por la capacidad de la herramienta y por los requisitos de \textbf{calidad superficial} y \textbf{tolerancias}. Un avance excesivo puede generar virutas muy gruesas, sobrecargar el filo y deteriorar la precisión del mecanizado. Por tanto, se debe encontrar un equilibrio adecuado que permita un corte efectivo sin comprometer la calidad ni la integridad de la herramienta.
+
 Por otro lado, la herramienta debe aplicar una fuerza tangencial suficiente para vencer la resistencia del material a ser cortado. Esta condición se expresa como:
 
 \begin{equation}
@@ -56,7 +74,7 @@ donde:
 	\item $A = h \cdot b$ es el área de corte, siendo $b$ el ancho de contacto de la herramienta con el material.
 \end{itemize}
 
-Estas dos condiciones son las mínimas para que el fenómeno de remoción ocurra, no obstante, no puede ser llevado a cabo por cualquier maquinaria. De esta manera, el proceso va a ser viable además si es que la potencia de la maquinaria lo permite. La potencia de corte requerida se calcula como:
+Estas condiciones son las mínimas para que el fenómeno de remoción ocurra, no obstante, no puede ser llevado a cabo por cualquier maquinaria. De esta manera, el proceso va a ser viable además si es que la potencia de la maquinaria lo permite. La potencia de corte requerida se calcula como:
 
 \begin{equation}
 	P_{\text{corte}} = F_c \cdot v_c
@@ -77,9 +95,7 @@ Así, la condición energética sobre el hardware se expresa como:
 
 Las condiciones nombradas previamente serán entonces las mínimas para seleccionar una máquina dado un proceso, no obstante, no son suficiente si queremos considerar la calidad de la fabricación. La calidad estará determinada por la respuesta dinámica del sistema (vibraciones) y la transferencia de calor.
 
-La \textbf{estabilidad dinámica del sistema herramienta–pieza–máquina} es fundamental para asegurar una buena calidad de mecanizado y prolongar la vida útil de la herramienta.
-
-Durante la operación, el sistema puede excitarse por perturbaciones externas o internas (como la descomposición del corte en viruta), generando \textbf{vibraciones autoinducidas} conocidas como \textit{chatter}. Este fenómeno ocurre cuando pequeñas oscilaciones en la herramienta se amplifican debido a una realimentación positiva entre las fuerzas de corte y el desplazamiento relativo entre herramienta y pieza.
+La \textbf{estabilidad dinámica del sistema herramienta–pieza–máquina} es fundamental para asegurar una buena calidad de mecanizado y prolongar la vida útil de la herramienta. Durante la operación, el sistema puede excitarse por perturbaciones externas o internas (como la descomposición del corte en viruta), generando \textbf{vibraciones autoinducidas} conocidas como \textit{chatter}. Este fenómeno ocurre cuando pequeñas oscilaciones en la herramienta se amplifican debido a una realimentación positiva entre las fuerzas de corte y el desplazamiento relativo entre herramienta y pieza.
 
 Estas vibraciones pueden causar:
 
@@ -103,9 +119,9 @@ Otra consideración esencial es la \textbf{transferencia de calor generada por e
 El exceso de temperatura puede provocar:
 
 \begin{itemize}
-	\item Deformación térmica de la pieza.
-	\item Reducción de la vida útil de la herramienta,
-	\item Cambios microestructurales no deseados en materiales sensibles.
+	\item Deformación térmica de la pieza y de la herramienta.
+	\item Reducción de la vida útil de la herramienta.
+	\item Cambios microestructurales (luego, en las propiedades) no deseados en la pieza y en la herramienta.
 \end{itemize}
 
 Por esta razón, las máquinas de corte CNC suelen incorporar un subsistema de \textbf{refrigeración activa}. Sin embargo, su función no se limita únicamente a la disipación térmica; el fluido de corte cumple múltiples roles complementarios en el proceso de mecanizado, entre los que destacan:
@@ -119,7 +135,19 @@ Por esta razón, las máquinas de corte CNC suelen incorporar un subsistema de \
 
 En consecuencia, los procesos de corte CNC deben ser abordados como sistemas multivariables, en los que intervienen de manera interrelacionada las propiedades del material, las características geométricas y dinámicas de la máquina, las condiciones de corte y el tipo de herramienta utilizada. Para un material dado, la elección de los parámetros de operación no puede realizarse de forma aislada, sino que debe considerar la compatibilidad entre todos estos elementos.
 
-Una limitación geométrica inherente al mecanizado CNC con herramientas rotativas es que no pueden producir esquinas internas perfectamente rectas. Debido a la forma cilíndrica de las herramientas, todo borde interno siempre tendrá un radio mínimo igual al del filo de corte 
+La selección del tipo de herramienta está estrechamente vinculada al tipo de operación que se desea realizar. Estas operaciones pueden estar orientadas al maquinado primario o al refinamiento de superficies, así como también a estrategias específicas de desbaste de la geometría.
+
+Es importante destacar que una limitación geométrica inherente al mecanizado CNC con herramientas rotativas es la imposibilidad de generar esquinas internas perfectamente rectas. Debido a la forma cilíndrica de estas herramientas, todo borde interno presentará inevitablemente un radio mínimo, determinado por el radio del filo de corte.
+
+El tiempo total del proceso de mecanizado estará determinado por la suma de distintos componentes que no solo dependen del tiempo efectivo de corte, sino también de factores logísticos, preparativos y auxiliares. Estos se pueden clasificar en tres grandes grupos:
+
+\begin{enumerate}
+	\item \textbf{Tiempos de operación}: Corresponden al tiempo efectivo de corte durante cada trayecto programado en el CAM, según las estrategias seleccionadas y los parámetros de mecanizado.
+	
+	\item \textbf{Tiempos de preparación y montaje}: Incluyen el tiempo requerido para fijar/remover el stock a la mesa de trabajo, instalar sistemas de sujeción, alinear y referenciar la pieza, cambiar herramientas entre operaciones, realizar inspecciones intermedias y reorientar la pieza si es necesario.
+	
+	\item \textbf{Tiempos auxiliares e improductivos}: Agrupan todas aquellas pausas o actividades que, sin formar parte directa del mecanizado, afectan la duración total del proceso. Esto puede incluir tiempos de espera entre operaciones, limpieza de viruta, calibraciones, tiempos de calentamiento de la máquina, movimientos rápidos fuera de corte (reposicionamiento) y otros tiempos muertos asociados al entorno de trabajo.
+\end{enumerate}
 
 \section{Subsistemas, herramientas y accesorios}
 
@@ -146,9 +174,13 @@ El husillo determina la compatibilidad con los \textbf{portaherramientas}, lo qu
 
 Dado que los procesos CNC generalmente involucran múltiples herramientas con longitudes distintas, es necesario contar con un método para definir y compensar los \textit{offsets} de cada herramienta en relación con un sistema de coordenadas común. Una técnica frecuente consiste en establecer una referencia inicial mediante una herramienta montada en el husillo, la cual se aproxima hasta hacer contacto con una superficie definida de la pieza o de la máquina. Este contacto puede detectarse mediante el cierre de un circuito eléctrico, utilizando la conductividad del material como mecanismo de detección.
 
-En el caso de materiales no conductores, se emplea una placa auxiliar de espesor conocido que actúa como interfaz de contacto; dicho espesor se considera luego en el cálculo del offset. En sistemas con cambio automático de herramienta (ATC), las herramientas se miden e identifican previamente y sus datos se cargan al sistema de control. De este modo, a partir de una única referencia inicial, la máquina puede operar de forma continua sin requerir pausas para recalibración entre herramientas.
+En el caso de materiales no conductores, se emplea una placa auxiliar de espesor conocido que actúa como interfaz de contacto; dicho espesor se considera luego en el cálculo del offset. En sistemas con cambio automático de herramienta, las herramientas se miden e identifican previamente y sus datos se cargan al sistema de control. De este modo, a partir de una única referencia inicial, la máquina puede operar de forma continua sin requerir pausas para recalibración entre herramientas.
 
 Finalmente, si el sistema de medición automática no está disponible o presenta fallas, como último recurso el procedimiento se realiza manualmente: la herramienta se aproxima cuidadosamente hasta tocar una lámina de espesor conocido ubicada sobre el material base, y se ajusta el offset de forma manual considerando dicho espesor.
+
+El subsistema de \textbf{evacuación de viruta} en máquinas CNC puede adoptar diferentes configuraciones según el tipo de material y las características de la máquina. En equipos que procesan materiales con baja higroscopicidad, como metales, es común el uso de canales por los que circula el refrigerante, el cual arrastra las virutas hacia un sistema de filtrado. Allí, los residuos sólidos se separan y el refrigerante puede recircular en el sistema.
+
+En cambio, cuando se trabaja con materiales que absorben humedad, como la madera o polímeros espumosos, o bien en máquinas de menor porte, se prefiere la aspiración por vacío como método de recolección, ya que estos materiales pueden degradarse o hincharse en contacto con fluidos refrigerantes.
 
 \subsection{Herramientas}
 
@@ -184,19 +216,46 @@ En procesos que exigen alta estabilidad térmica, pueden emplearse fresas con \t
  
 \subsection{Accesorios}
 
-El portaherramientas (tool holder) es el dispositivo que fija la herramienta de corte al husillo de la máquina CNC, asegurando la sujeción de acuerdo al diámetro y tipo de vástago de la herramienta. Por ejemplo, los sistemas ER utilizan un collet elástico que se ajusta a un rango específico de diámetros, mientras que otros portaherramientas están diseñados para dimensiones estándar de vástagos.
- 
-En máquinas CNC básicas, el portaherramientas se acopla directamente al husillo, lo que limita la variedad de herramientas disponibles a un solo tipo de sujeción. En cambio, las máquinas más avanzadas emplean un \textbf{portacono}, un adaptador cónico que se monta en el husillo y permite utilizar distintos tipos de portaherramientas intercambiables.
+El portaherramientas (tool holder) es el componente que fija la herramienta de corte al husillo de una máquina CNC, y su compatibilidad depende del tipo de vástago de la herramienta. Existen diversos sistemas de sujeción; por ejemplo, el sistema ER utiliza un collet elástico que puede adaptarse a un rango específico de diámetros de vástago. Otros portaherramientas, como los diseñados para brocas con vástago cilíndrico o cónico, se ajustan a dimensiones fijas. En el caso de herramientas con cambio rápido, se emplean portabrocas específicos como el portabrocas de cierre rápido (keyless chuck).
 
-Sistema de medicion de herramienta.
+En máquinas CNC básicas, el portaherramientas se acopla directamente al husillo, lo que limita la versatilidad del sistema a un único tipo de sujeción. En cambio, las máquinas de mayor gama utilizan un sistema de portacono (taper adapter), que actúa como interfaz entre el husillo y diversos portaherramientas intercambiables. Este sistema permite cambiar herramientas de forma más eficiente, sin necesidad de desmontar el portaherramientas completo.
 
-Ventilacion asistida.
+Cuando se utilizan múltiples herramientas durante un proceso, es necesario definir un offset (desfase) para cada herramienta, ya que sus longitudes y geometrías pueden variar. Realizar este ajuste manualmente en cada arranque puede resultar ineficiente y propenso a errores. Por ello, muchas máquinas CNC modernas incorporan sistemas automáticos de medición de herramienta, capaces de identificar la longitud y el diámetro de la herramienta montada, integrando estos datos en la memoria del sistema. Si el programa CAM está correctamente configurado con las identificaciones de cada herramienta, la asignación de offsets se realiza automáticamente al iniciar la operación.
 
-Probes.
+Además, el uso de instrucciones G-code y desplazamientos manuales permite redefinir las referencias de trabajo para distintas operaciones. Sin embargo, cuando se requiere mayor precisión, se pueden emplear accesorios especializados como sondas táctiles o herramientas excéntricas de detección, que permiten establecer con exactitud el punto de contacto entre la herramienta y la superficie de trabajo, facilitando así la definición de los cero piezas o referencias de trabajo.
 
-Ejes. 
+Por último, algunas máquinas CNC permiten la incorporación de un eje adicional (normalmente un cuarto eje), que puede ser de rotación o basculante. Esta expansión convierte una máquina de 3 ejes en una de 4 ejes, lo que amplía significativamente las posibilidades geométricas del mecanizado. Entre sus ventajas se incluyen: facilitar el mecanizado de piezas con simetría cilíndrica, reducir el número de fijaciones requeridas, y permitir el uso de stocks redondeados sin necesidad de adaptadores complejos para mesas planas.
 
 \section{Parámetros del proceso}
+
+La cantidad de variables necesarias para definir una trayectoria de herramienta (\textit{toolpath}) en CNC es considerablemente mayor que en procesos como la impresión 3D. Esto se debe a que el mecanizado implica un contacto directo y forzado entre herramienta y material, lo que exige un control más fino sobre parámetros mecánicos, térmicos y dinámicos. Además, aspectos como la dirección del corte —por ejemplo, el corte en sentido convencional (\textit{conventional milling}) versus el corte en sentido inverso o de trepado (\textit{climb milling})— influyen directamente en la calidad del mecanizado, el esfuerzo sobre la herramienta y el acabado superficial.
+
+En el \textit{corte convencional}, la herramienta avanza en dirección opuesta a la rotación del filo, lo cual es más estable para máquinas con juego mecánico, pero genera mayor fricción. En el \textit{corte en trepado}, el filo avanza en la misma dirección que gira, produciendo mejor acabado y menor desgaste, aunque requiere mayor rigidez de la máquina para evitar vibraciones.
+
+Los dos parámetros cinemáticos fundamentales en el control de una operación CNC son las \textbf{revoluciones del husillo} ($N$) y la \textbf{velocidad de avance lineal} ($F$, \textit{feed speed}). Ambos están relacionados mediante el parámetro de \textbf{avance por diente} ($f_z$), definido como la distancia que avanza la herramienta por cada diente que entra en contacto con el material. Este parámetro condiciona directamente la carga sobre cada filo de corte (\textit{chip load}), y a partir de él se derivan otras velocidades relevantes del proceso, como el avance en rampas o penetraciones verticales.
+
+En operaciones donde la herramienta penetra en el material de forma \textbf{vertical}, se utiliza la llamada \textbf{plunge speed}, que define la velocidad de avance exclusivamente en el eje Z. Este tipo de entrada puede ser agresivo y debe reservarse para herramientas con capacidad de corte axial.
+
+Una alternativa más suave es la \textbf{entrada en rampa}, donde la herramienta desciende gradualmente mientras avanza en los ejes XY. Esta estrategia proporciona mejores condiciones de corte inicial y se controla mediante la \textbf{ramp speed}, que es la velocidad de avance durante dicha trayectoria inclinada o helicoidal.
+
+A partir del avance por diente y de la profundidad efectiva de corte, se puede estimar el \textbf{volumen de material removido por unidad de tiempo}, lo cual define la \textbf{carga sobre el diente} (\textit{chip load total}). Este volumen determina la carga mecánica sobre la herramienta y la máquina, y condiciona la elección de parámetros como la \textbf{profundidad de corte} y el \textbf{sobrepaso lateral} (\textit{stepover}). A mayor volumen de desbaste, se requieren máquinas más rígidas, mayor torque y mejor evacuación de calor, pero también se logra una reducción en los tiempos de producción.
+
+Estos parámetros también afectan la distribución térmica del proceso. Aunque la mayor parte del calor generado en el corte se transfiere a la viruta, una fracción significativa permanece en la herramienta y en la pieza. Incrementar la porción de la herramienta en contacto con el material puede ayudar a distribuir el calor sobre una mayor área, reduciendo los gradientes térmicos locales; sin embargo, las herramientas suelen ser de materiales con baja conductividad térmica, por lo que la disipación sigue siendo limitada.
+
+Por ello, otro parámetro importante a considerar es el \textbf{control del refrigerante}, que aunque limitado desde el software CAM, puede activarse o desactivarse y configurarse en distintos modos de expulsión: refrigeración por inundación (\textit{flood}), nebulización (\textit{mist}), aire comprimido o refrigeración interna a través del husillo (\textit{through spindle coolant}, \textit{TSC}).
+
+Finalmente, el \textit{toolpath} completo está compuesto por distintas fases de movimiento:
+\begin{itemize}
+	\item \textbf{Movimientos rápidos} (G0), utilizados para ubicar la herramienta en posición, fuera de contacto con la pieza;
+	\item \textbf{Movimientos de aproximación o transición}, con velocidades reducidas para entrar en contacto con el material de forma controlada;
+	\item \textbf{Movimientos de corte} (G1), donde se aplican los parámetros calculados para remover material.
+\end{itemize}
+
+Una consideración importante al momento de definir la estrategia de mecanizado en el entorno CAM es el uso de \textbf{tabs}, especialmente en el trabajo con planchas o placas delgadas. Un \textit{tab} es una pequeña porción del material que no se corta durante la operación, con el fin de mantener temporalmente un segmento de la pieza unido al stock. En la práctica, actúa como un punto de fijación pasivo.
+
+El uso de tabs permite conservar la rigidez del sistema durante el mecanizado, evitando desplazamientos no deseados a medida que disminuye el área de contacto entre la pieza y el material base. Además, en muchos casos, elimina la necesidad de sistemas de fijación adicionales, simplificando el montaje.
+
+Sin embargo, su utilización implica ciertas desventajas: aumenta el tiempo total de mecanizado y requiere operaciones de \textbf{postprocesado} manual, tales como la remoción del tab y la rectificación o acabado de la zona afectada para restaurar la geometría o el acabado superficial deseado.
 
 \section{Flujo del proceso}
 
@@ -220,32 +279,146 @@ La mayoría de los softwares CAD actuales integran un CAM para corte CNC, luego,
 
 En general, el stock puede representarse como el formato comercial real que se montará en la máquina, o bien como un volumen virtual mínimo que contenga completamente la geometría de la pieza. No obstante, utilizar el formato completo del material disponible es lo más recomendable, ya que obliga a considerar desde el inicio aspectos prácticos del proceso, como la estrategia de fijación y la interacción del stock con el sistema de sujeción. Además, incorporar este volumen en el modelo facilita la simulación y la verificación del mecanizado.
 
-El origen relativo será la referencia en base a la cual se calcularán todas las operaciones. Debe ser un punto alcanzable para la herramienta o los accesorios de sondaje. Frecuentemente se utiliza algún vértice superior del stock. Al indicar las direcciones del sistema, estas deben coincidir con las de la máquina a utilizar.
+El \textbf{origen relativo} (también llamado \textit{punto cero de pieza} o \textit{workpiece zero}) es la referencia a partir de la cual se calcularán todas las trayectorias de herramienta en el entorno CAM. Este debe ser un punto físicamente alcanzable por la herramienta o por los accesorios de sondaje utilizados para la referencia en la máquina CNC. Comúnmente, se selecciona un vértice del stock debido a su facilidad de acceso y consistencia geométrica. 
 
-Con el sistema definido, definir operaciones. (minimizar herramientas distintas), parametros de corte. cada herramienta tendra un ID
+Es fundamental que el sistema de coordenadas definido en el software CAM coincida con la orientación real del sistema de la máquina CNC a utilizar. Una mala correspondencia entre ambos sistemas puede derivar en errores de simulación, colisiones o cortes fuera de la pieza. 
 
-Al término de cada definciion de operacion, se visualizara la simulacion y se actualizara el proceso. Así, los siguientes pueden usar de referencia lo realizado en los pasos previos. La simulacion toolpaths, colisiones, iontegrar maquina,fijacion.
+Una vez definido el sistema de coordenadas, se procede a establecer las distintas \textbf{operaciones de mecanizado}, seleccionando para cada una:
+\begin{itemize}
+	\item La estrategia de corte 
+	\item Los parámetros de corte apropiados (avances, profundidades, velocidades).
+	\item La herramienta correspondiente, intentando reducir al mínimo el número total de herramientas diferentes, lo cual optimiza los tiempos de cambio. 
+\end{itemize}
 
-El proceso se itera hasta que la simulacion total sea conveneinte de acuerdo a lo observado. superficies, tiempos.
+A cada herramienta se le asigna un identificador único (ID), el cual será reconocido por el control de la máquina y permitirá realizar cambios automáticos o manuales de manera organizada. Idealmente, se agrupan en secuencia todas las operaciones que involucren a la misma herramienta.
 
-Finalmente se exporta el codigo entero o por series de operaciones.
+Al finalizar la definición de cada operación, se ejecuta una \textbf{simulación parcial} del trayecto de herramienta, lo que permite:
+\begin{itemize}
+	\item Verificar visualmente la trayectoria generada.
+	\item Detectar colisiones potenciales con el stock, fijaciones o la propia herramienta.
+	\item Confirmar el volumen de material removido, que será tenido en cuenta para las operaciones posteriores.
+\end{itemize}
+
+Estas simulaciones pueden mejorarse al incorporar modelos del portaherramientas, del husillo e incluso del sistema de sujeción, lo cual permite realizar simulaciones más fieles al entorno real de trabajo. También es posible integrar parámetros específicos de la máquina seleccionada, lo que ayuda a predecir comportamientos dinámicos como límites de velocidad, aceleraciones y movimientos de seguridad.
+
+El proceso se repite iterativamente hasta que la simulación global sea coherente con los objetivos de calidad superficial, precisión y tiempo de mecanizado estimado.
+
+Finalmente, se genera el \textbf{código G}, ya sea como un archivo único o como una serie de bloques independientes según las operaciones programadas. Es fundamental asegurarse de utilizar el \textbf{postprocesador correcto}, que adapta el código generado al dialecto específico del controlador CNC correspondiente (como Fanuc, Haas, Siemens, etc.), garantizando así la compatibilidad y el correcto funcionamiento en la máquina de destino.
+
+\subsection{Preparación del corte}
+
+Antes de ejecutar cualquier trayecto de herramienta en la máquina CNC, es necesario llevar a cabo una serie de actividades fundamentales que permiten garantizar la precisión, seguridad y repetibilidad del proceso. Esta etapa se conoce como la \textbf{preparación del corte} o \textbf{set-up del proceso}, y puede involucrar tanto tareas físicas en la máquina como procedimientos de medición y calibración.
+
+El primer paso es montar correctamente la materia prima (\textbf{stock}) sobre la mesa de trabajo de la máquina. Para ello se emplea un \textbf{sistema de fijación} adecuado a la geometría y características del material: mordazas, placas de vacío, bridas, sistemas modulares, tornillos de sujeción o fijaciones personalizadas. Es crucial que la fijación:
+\begin{itemize}
+	\item Sea suficientemente rígida para evitar desplazamientos durante el mecanizado.
+	\item No interfiera con las trayectorias de la herramienta.
+	\item Permita el acceso a las caras que deben ser trabajadas.
+\end{itemize}
+
+En caso de requerirse múltiples operaciones o cambios de orientación de la pieza, deben planificarse también los métodos de realineación y fijación secundaria.
+
+Cada herramienta de corte debe montarse sobre su correspondiente portaherramientas (collet, pinza ER, mandril hidráulico, etc.), y luego en el husillo o en el almacén automático de la máquina (ATC). Es fundamental identificar correctamente cada herramienta con un número de herramienta (T) correspondiente al ID asignado en el programa CAM.
+
+A continuación, se deben \textbf{calibrar los offsets de herramienta}, es decir, registrar la longitud efectiva de cada herramienta con respecto a un punto de referencia fijo. Esta operación se puede realizar:
+
+\begin{itemize}
+	\item Manualmente, tocando con la herramienta una superficie de referencia y registrando la distancia.
+	\item Usando un \textbf{dispositivo de medición automática} (tool setter), que mide la longitud y opcionalmente el diámetro de forma automatizada.
+\end{itemize}
+
+Para que el programa de mecanizado se ejecute correctamente, es necesario alinear el sistema de coordenadas del programa con el de la máquina. Esto se logra a través de un procedimiento de \textbf{sondaje} o \textbf{referenciación}, donde se determina el \textbf{cero pieza} o \textit{workpiece zero}.
+
+Este punto de origen debe coincidir con el definido en el CAM y puede ubicarse en:
+\begin{itemize}
+	\item Una esquina del stock (común en fresado).
+	\item El centro de una cara (común en torneado).
+	\item Una superficie intermedia determinada por una sonda táctil o medidor de altura.
+\end{itemize}
+
+El cero pieza se define normalmente utilizando una sonda, un reloj comparador o métodos manuales de aproximación con herramientas de referencia (papel, bloques patrón, etc.).
+
+Una vez completado el montaje y la referenciación, se recomienda realizar una \textbf{simulación en seco} o \textit{dry run}, es decir, una ejecución del programa sin contacto con la pieza (con la herramienta elevada), para verificar:
+
+\begin{itemize}
+	\item Que no existan colisiones.
+	\item Que los desplazamientos y cambios de herramienta sean correctos.
+	\item Que el origen y los offsets estén correctamente definidos.
+\end{itemize}
+
+Esta etapa es crítica para prevenir errores que puedan dañar la pieza, la herramienta o la máquina.
+
 
 \subsection{Ejecución}
 
-Fijar material.
+Una vez que la máquina ha sido preparada, se procede a cargar el programa de mecanizado (código G) mediante la interfaz del controlador. Antes de iniciar, se verifica que los identificadores de las herramientas utilizados en el CAM correspondan con los efectivamente montados en la máquina, tanto en términos de posición como de offset. Confirmada esta correspondencia, se puede ejecutar la primera operación.
 
-Home absoluto, referencias.
+El nivel de automatización de la máquina determina el grado de intervención del operador. En sistemas manuales o semiautomáticos, el operador puede estar encargado de:
 
-Herramientas cargar.
+\begin{itemize}
+	\item Realizar el cambio de herramientas entre operaciones.
+	\item Marcar o redefinir el origen de coordenadas tras cada reconfiguración.
+	\item Reorientar la pieza de trabajo según sea necesario para acceder a otras caras.
+\end{itemize}
 
+En sistemas con cambiadores automáticos de herramientas (ATC) y sondas de palpado, estas tareas pueden realizarse sin intervención directa. Sin embargo, se debe seguir asegurando la correcta correspondencia entre el programa y los elementos montados.
+
+Durante la ejecución, la interfaz HMI permite el monitoreo de variables relevantes como:
+
+\begin{itemize}
+	\item Avance del programa (línea actual del código G).
+	\item Estados del husillo, ejes y refrigeración.
+	\item Alarmas o advertencias del sistema.
+\end{itemize}
+
+En ciertos controladores es posible modificar parámetros en tiempo real, como la velocidad de avance (\texttt{Feed Override}) o la velocidad del husillo (\texttt{Spindle Override}). Estas modificaciones pueden utilizarse para ajustar el comportamiento del proceso frente a condiciones no previstas o cambios en el material.
+
+En caso de detectar inconsistencias durante la ejecución —ya sea visuales, sonoras o mediante advertencias del sistema— el operador puede pausar o detener el proceso mediante los controles disponibles, según el protocolo de operación de la máquina.
 
 
 \subsection{Postprocesado}
+
+Las operaciones de \textbf{postprocesado} en una pieza mecanizada tienen como objetivo ajustar sus características finales, especialmente cuando el mecanizado principal no alcanza por sí solo los requisitos dimensionales, funcionales o estéticos especificados.
+
+Entre las tareas más comunes de postprocesado se incluyen:
+
+\begin{itemize}
+	\item \textbf{Rectificación}: proceso de remoción fina de material mediante abrasivos, utilizado para alcanzar tolerancias dimensionales estrictas, corregir deformaciones menores o mejorar la geometría final de la pieza.
+	
+	\item \textbf{Acabado superficial}: se aplican técnicas como lijado, pulido o chorro abrasivo para alcanzar el nivel de rugosidad requerido, ya sea por motivos funcionales (fricción, contacto, adherencia) o estéticos.
+	
+	\item \textbf{Suavizado de bordes}: mediante operaciones como biselado o redondeo (manual o automatizado), se eliminan aristas vivas que podrían generar problemas de ensamblaje, acumulación de tensiones o riesgo de corte.
+	
+	\item \textbf{Remoción de rebabas y \textit{tabs}}: especialmente comunes en procesos de corte 2D o en piezas fijadas mediante \textit{tabs}, estas protuberancias deben eliminarse mediante corte secundario, limado o fresado puntual, seguido de una corrección local del acabado superficial.
+	
+	\item \textbf{Limpieza}: se retiran residuos como viruta, refrigerante, polvo metálico o aceites de corte, mediante métodos mecánicos, térmicos o químicos, dependiendo del material de la pieza y los requerimientos del proceso posterior (como pintura, ensamblaje o control dimensional).
+\end{itemize}
+
+Un aspecto fundamental del postprocesado es el \textbf{control metrológico}, el cual permite verificar que la pieza final cumpla con las tolerancias y especificaciones dimensionales establecidas en el diseño. Para ello, se emplean instrumentos como calibres, micrómetros, relojes comparadores, proyectores de perfiles o sistemas de medición por coordenadas (CMM, \textit{Coordinate Measuring Machines}).
+
 
 \section{Operaciones comunes}
 
 \subsection{Etapas de mecanizado}
 
+El proceso de mecanizado generalmente se divide en tres etapas principales que permiten optimizar la eficiencia, la precisión y la calidad superficial de la pieza fabricada: \textbf{desbaste} (\textit{roughing}), \textbf{semifinishing} y \textbf{acabado} (\textit{finishing}).
+
+En el desbaste se realiza la remoción de grandes volúmenes de material con el objetivo de aproximar la forma final de la pieza. Las condiciones de corte son agresivas, con profundidades y avances altos, buscando maximizar la tasa de arranque de material. Debido a la alta carga sobre la herramienta y las mayores vibraciones presentes, la precisión dimensional y el acabado superficial no son prioritarios en esta fase. Se emplean herramientas robustas y estrategias que priorizan la rapidez y la eficiencia en la eliminación del material sobrante.
+
+El semifinishing busca refinar la geometría aproximada obtenida durante el desbaste, eliminando las irregularidades y preparando la pieza para la etapa final. Los parámetros de corte se ajustan para reducir la carga sobre la herramienta y mejorar la precisión dimensional. Se disminuyen las profundidades y avances para disminuir la generación de vibraciones y mejorar la estabilidad del proceso. El acabado superficial comienza a mejorar, aunque aún no se alcanzan los niveles de calidad requeridos para el producto final.
+
+Finalmente, en el acabado se realizan cortes con profundidades muy pequeñas y velocidades de avance reducidas para obtener la máxima precisión dimensional y un acabado superficial óptimo. Se emplean herramientas especializadas, generalmente con filos afilados y geometrías que favorecen un corte limpio y sin marcas. El objetivo principal es cumplir con las tolerancias más estrictas y obtener superficies lisas que cumplan con los requerimientos funcionales y estéticos de la pieza.
+
+Cada una de estas etapas es fundamental para lograr un balance adecuado entre productividad y calidad, optimizando el ciclo de mecanizado y prolongando la vida útil de las herramientas.
+
 \subsection{Operaciones 2D}
 
+Contorneado
+
+Careado Facing
+
+Drilling
+
 \subsection{Operaciones 3D}
+
+\subsection{Calidad}

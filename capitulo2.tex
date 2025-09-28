@@ -1,6 +1,6 @@
 \chapter{Máquinas CNC}
 
-Las máquinas automatizadas de fabricación digital o CNCs son \textbf{sistemas mecatrónicos} programables que ejecutan procesos de manufactura mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado, corte láser y robots industriales. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite \textbf{fabricar piezas diversas y complejas de manera sencilla}.
+Las máquinas automatizadas de fabricación digital o CNCs son \textbf{sistemas mecatrónicos} programables que ejecutan procesos de fabricación mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado y corte láser, entre otros. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite \textbf{fabricar piezas diversas y complejas de manera sencilla}. En este capítulo se tratarán las características generales de una máquina de este tipo.
 
 \section{Flujo del proceso de fabricación digital}
 
@@ -17,7 +17,7 @@ Una vez completado el modelo CAD, este se exporta en un formato de archivo compa
 
 Una vez ejecutados todos los procesos definidos digitalmente, el flujo de trabajo concluye con la etapa de \textbf{postprocesamiento}. Generalmente, esto implica la remoción de la pieza de la máquina y la realización de operaciones complementarias necesarias para alcanzar las condiciones finales del producto. Estas operaciones pueden incluir tareas como el acabado superficial, la limpieza, o la eliminación de estructuras de soporte. En situaciones donde el control de calidad resulta relevante, también se incorpora una fase de metrología para verificar que la pieza cumpla con las especificaciones dimensionales y funcionales establecidas en el diseño.
 
-Las principales tecnologías CNC se dividen en dos tipos: \textbf{aditivas y sustractivas}. Las primeras crean un volumen agregando material, mientras que las segundas lo obtienen mediante la remoción de material a partir de un formato comercial. Cabe destacar que también existen máquinas \textbf{híbridas}, que combinan ambos enfoques e incluso integran procesos de conformado ()como estampado, plegado o forja), así como operaciones de ensamble.
+Las principales tecnologías CNC se dividen en dos tipos: \textbf{aditivas y sustractivas}. Las primeras crean un volumen agregando material, mientras que las segundas lo obtienen mediante la remoción de material a partir de un formato comercial. Cabe destacar que existen máquinas \textbf{híbridas} que combinan ambos enfoques, y además, otras que realizan procesos de conformado (como estampado, plegado o forja), así como operaciones de ensamble.
 
 \section{Sistema}
 
@@ -30,7 +30,7 @@ Cualquier máquina CNC está compuesta de un conjunto de subsistemas primarios (
     \label{cncsis}
 \end{figure}
 
-El proceso de fabricación estará determinado por la \textbf{herramienta} o \textbf{portaherramienta} que posea la máquina. Por ejemplo, si se monta un extrusor de plástico la máquina podría funcionar como impresora 3D, y si se cambia por un \textbf{spindle} (portaherramienta rotatorio) la misma máquina podría actuar como fresadora. Si bien, la máquina podría llevar a cabo ambos procesos, la naturaleza de sus subsistemas la hará más idónea para uno de estos.
+La operación de de fabricación estará determinada por la \textbf{herramienta} equipada en la máquina. Por ejemplo, si se monta un extrusor de plástico la máquina podría funcionar como impresora 3D, y si se cambia por un \textbf{spindle} (portaherramienta rotatorio) la misma máquina podría actuar como fresadora. Si bien, esta máquina podría llevar a cabo ambos procesos, la naturaleza de sus subsistemas la hará más idónea para uno de estos.
 
 Entre estos subsistemas primarios se tiene:
 
@@ -57,7 +57,7 @@ Entre estos subsistemas primarios se tiene:
 
 \section{Motores stepper}
 
-El control de la posición de un componente o sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un \textbf{lazo cerrado} (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off con la complejidad y costos adquiridos podría no ser conveniente.
+El control de la posición de un componente o sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un \textbf{lazo cerrado} (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off por la complejidad y costos adquiridos podría no ser conveniente.
 
 \begin{figure}[h!]
     \centering
@@ -66,7 +66,7 @@ El control de la posición de un componente o sistema electromecánico suele ser
     \label{controlup}
 \end{figure}
 
-Los motores eléctricos de tipo stepper (Figura \ref{stpi}) rotan un \textbf{arco constante} (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de \textbf{lazo abierto} (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla de control. 
+El eje de un motor eléctrico de tipo \textbf{stepper} (Figura \ref{stpi}) rotan un \textbf{arco constante} (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de \textbf{lazo abierto} (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla de control. 
 
 \begin{figure}[h!]
     \centering
@@ -255,12 +255,44 @@ La instrucción G28 \textit{homing} es fundamental para establecer un \textbf{pu
 
 El conjunto restante de códigos disponibles dependerá del tipo de proceso de fabricación implementado en cada máquina, así como de sus capacidades específicas y del grado de personalización definido por el fabricante. Estos códigos adicionales permiten ejecutar instrucciones complementarias, tales como el cambio automático de herramientas, el calentamiento de determinados componentes, la activación de sistemas de refrigeración, entre otras funciones necesarias para la operación del equipo.
 
-\section{Capacidades y performance}
+\section{Capacidades y calidad}
 
-Uno de los parámetros de mayor interés en la fabricación de una pieza es la \textbf{velocidad de operación}, la cual está condicionada por diferentes factores, como por ejemplo, las capacidades de los motores que componen la cadena cinemática del sistema. Si bien el objetivo suele ser minimizar el tiempo de producción aprovechando al máximo el rendimiento de los motores, un aumento en la velocidad puede generar efectos adversos. En particular, fenómenos de naturaleza mecánica, como las vibraciones o las resonancias estructurales, pueden comprometer la precisión y la calidad superficial de la pieza final.
+En general, en los procesos de fabricación, un aumento en los requisitos de \textbf{calidad} de un componente tiende a provocar un incremento \textit{no lineal} en el tiempo de procesamiento (Figura \ref{qualfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/qual.png}
+	\caption{La inversión en tiempo crece de manera no lineal con la calidad en un proceso de fabricación.}
+	\label{qualfig}
+\end{figure}
+
+Para argumentar tal afirmación, empecemos definiendo calidad. La calidad es un concepto amplio que abarca múltiples dimensiones. Para los fines de este texto, se entenderá principalmente como el grado en que un proceso de fabricación logra producir componentes que cumplen con los siguientes criterios:
+
+\begin{enumerate}
+	\item Las dimensiones generales del componente se ajustan a las especificaciones requeridas.
+	\item El componente cumple con las normas o estándares técnicos aplicables.
+	\item El acabado superficial se encuentra dentro de los límites establecidos por los requisitos de diseño.
+\end{enumerate}
+
+El primero punto corresponde a la \textbf{tolerancia}. Se define entonces como la \textbf{variación dimensional permitida} respecto a las especificaciones nominales de una pieza (Figura \ref{tolerfig}), dentro de la cual el componente aún se considera funcional y conforme al diseño. Representa el rango aceptable de desviaciones en dimensiones lineales, angulares, formas o posiciones, y se establece en función de los requerimientos de ensamblaje, desempeño mecánico y costos de producción. Por ejemplo, una tolerancia común en impresoras 3D de escritorio tipo FDM es de $\pm 0.5 \,\mathrm{mm}$, lo cual debe tomarse en cuenta al momento del diseño, especialmente para asegurar encajes.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/toler.png}
+	\caption{Tolerancia para diámetros en un eje. Se acepta una variación mayor o menor a 0.01 unidades en la sección izquierda, mientras que en la derecha es de 0.02 unidades.}
+	\label{tolerfig}
+\end{figure}
+
+
+Por ejemplo, un engranaje fabricado mediante mecanizado CNC presenta un diámetro de 50.05 mm, una dureza de 60 HRC y una rugosidad superficial de 0.8 $\mu$m Ra. Estas características se encuentran dentro de los rangos especificados por el diseño (50.00$\pm$0.10 mm, dureza mínima de 60 HRC, y rugosidad máxima de 1.0$\mu$m Ra), por lo que el componente cumple con los criterios de conformidad establecidos en cuanto a dimensiones, propiedades mecánicas y calidad superficial.
+
+Definir márgenes más estrechos para las características de los componentes fabricados, es decir, exigir mayor calidad, conlleva dos consecuencias principales: por un lado, se incrementa la probabilidad de obtener componentes no conformes (y, por tanto, descartados); por otro, se requiere un \textbf{control más riguroso del proceso}. En consecuencia, será necesario un mayor esfuerzo para mantener los \textit{set-points} de los parámetros operativos dentro de límites precisos. Esta exigencia se vuelve aún más desafiante a medida que aumenta la velocidad o complejidad de los fenómenos físicos involucrados en el proceso, lo cual dificulta la estabilización de las condiciones de operación.
+
+Por ejemplo, durante el mecanizado de una pieza con una herramienta de corte, se genera calor de forma inherente debido a la fricción y la deformación plástica del material. A bajas velocidades de corte, el aumento de temperatura suele ser moderado y la disipación térmica es suficiente para evitar efectos significativos. Sin embargo, al incrementar la velocidad del proceso, la energía por unidad de tiempo (potencia de corte) también aumenta, mientras que el tiempo disponible para disipar el calor disminuye. Como resultado, se produce una acumulación térmica en la zona de corte, lo que puede provocar dilataciones térmicas no deseadas en la pieza e incluso modificaciones en la microestructura del material, afectando la calidad dimensional y mecánica del componente.
+
+Ciertamente, la velocidad del proceso es uno de los atributos clave al seleccionar sistemas para conformar una cadena productiva, ya que se busca maximizar la producción. La velocidad máxima de una máquina está determinada por el hardware, específicamente por la capacidad de los motores que integran la cadena cinemática y los sistemas de transmisión. Sin embargo, esta velocidad está limitada por las exigencias de calidad del proceso, ya que aceleraciones demasiado altas pueden generar vibraciones que comprometan la precisión y consistencia del producto final.
 
 Estos fenómenos están directamente relacionados con la construcción de la máquina y las características específicas del proceso. La rigidez global del chasis, la robustez y precisión del sistema de transmisión, la capacidad de amortiguación de la estructura, la alineación correcta entre ejes durante el ensamble, y las inercias asociadas a los componentes móviles determinan en gran medida la \textbf{respuesta dinámica del sistema}. Una estructura con baja rigidez puede experimentar deformaciones ante cargas dinámicas, mientras que transmisiones con \textbf{juego mecánico} (Figura \ref{gears}) o flexibilidad excesiva introducen errores en la trayectoria programada. Asimismo, inercias elevadas dificultan las aceleraciones controladas, y una amortiguación insuficiente puede prolongar oscilaciones no deseadas tras cambios bruscos de velocidad o dirección.
-
 
 \begin{figure}[h!]
     \centering
@@ -269,9 +301,7 @@ Estos fenómenos están directamente relacionados con la construcción de la má
     \label{gears}
 \end{figure}
 
-El juego mecánico (backlash, en inglés) se refiere al movimiento relativo no deseado entre dos componentes mecánicos cuando se invierte la dirección del movimiento en un sistema de transmisión. Este fenómeno ocurre, por ejemplo, en engranajes, husillos, tuercas o acoplamientos, y se manifiesta como un pequeño desplazamiento libre antes de que el movimiento se transmita efectivamente. No es viable eliminar completamente el juego mecánico, es consecuencia de \textbf{tolerancias} de fabricación, desgaste o diseño intencional, y puede afectar negativamente la precisión y repetibilidad en sistemas de control numérico y máquinas de fabricación digital. Una característica positiva del juego mecánico es facilitar o hacer posible el ensamble de un sistema.
-
-La tolerancia en un proceso de fabricación se define como la \textbf{variación dimensional permitida} respecto a las especificaciones nominales de una pieza, dentro de la cual el componente aún se considera funcional y conforme al diseño. Representa el rango aceptable de desviaciones en dimensiones lineales, angulares, formas o posiciones, y se establece en función de los requerimientos de ensamblaje, desempeño mecánico y costos de producción. Las tolerancias son un elemento clave en el control de calidad, ya que determinan los límites dentro de los cuales un proceso puede producir piezas sin necesidad de retoques o descarte. Por ejemplo, una tolerancia común en impresoras 3D de escritorio tipo FDM es de $\pm 0.5 \,\mathrm{mm}$, lo cual debe tomarse en cuenta al momento del diseño, especialmente para asegurar encajes.
+El juego mecánico (backlash, en inglés) se refiere al movimiento relativo no deseado entre dos componentes mecánicos cuando se invierte la dirección del movimiento en un sistema de transmisión. Este fenómeno ocurre, por ejemplo, en engranajes, husillos, tuercas o acoplamientos, y se manifiesta como un pequeño desplazamiento libre antes de que el movimiento se transmita efectivamente. No es viable eliminar completamente el juego mecánico, es consecuencia de tolerancias de fabricación, desgaste o diseño intencional, y puede afectar negativamente la precisión y repetibilidad en sistemas de control numérico y máquinas de fabricación digital. Una característica positiva del juego mecánico es facilitar o hacer posible el ensamble de un sistema.
 
 Otra característica deseada en un proceso de fabricación es la precisión, nuevamente, determinada por la construcción de la máquina y el tipo de operaciones desarrolladas. En el contexto de manufactura, es importante distinguir entre \textbf{precisión} y \textbf{exactitud} (accuracy) (Figura \ref{press1}). La precisión se refiere a la consistencia de los resultados: una máquina es precisa si produce piezas con dimensiones muy similares entre sí, aunque todas estén ligeramente desviadas del valor nominal. En cambio, la exactitud indica qué tan cerca está el resultado del valor deseado o teórico. Por ejemplo, si una impresora 3D fabrica diez piezas de 20 mm y todas miden 19,7 mm, decimos que es precisa (porque es repetitiva), pero no exacta (porque hay un error sistemático).
 
@@ -288,7 +318,9 @@ Al igual que los motores paso a paso, la instrumentación digital, a través de 
 
 Finalmente,en la fase operativa de fabricación surgen múltiples fuentes de error inherentes al material y a la herramienta. Por ejemplo, el filamento de impresión 3D puede presentar variaciones de diámetro a lo largo de la bobina, además de absorber humedad o contener impurezas, lo que provoca fluctuaciones en el caudal de extrusión. Por otro lado, las herramientas de corte experimentan dilatación térmica y deflexión mecánica bajo carga y temperatura elevadas, generando desplazamientos sistemáticos en el perfil de la pieza y afectando la rugosidad de la superficie.
 
-Así, en la fabricación por CNC, el componente real rara vez reproduce con exactitud el modelo diseñado debido a la confluencia de múltiples fuentes de imprecisión inherentes al proceso. Estas desviaciones, que emergen de la interacción entre la respuesta dinámica de la máquina, la resolución del sistema de control y la instrumentación digital y las condiciones operativas del mecanizado, deben anticiparse desde la fase de diseño geométrico y de tolerancias hasta la selección y ajuste de la máquina. De este modo, se asegura que las tolerancias dimensionales y la calidad superficial esperadas sean coherentes con el comportamiento efectivo del sistema CNC.
+Así, en la fabricación por CNC, el componente real rara vez reproduce con exactitud el modelo diseñado debido a la confluencia de múltiples fuentes de imprecisión inherentes al proceso. Estas desviaciones, que emergen de la interacción entre la respuesta dinámica de la máquina, la resolución del sistema de control y la instrumentación digital, y las condiciones operativas del mecanizado, deben anticiparse desde la fase de diseño geométrico y de tolerancias hasta la selección y ajuste de la máquina. De este modo, se asegura que las tolerancias dimensionales y la calidad superficial esperadas sean coherentes con el comportamiento efectivo del sistema CNC.
+
+Finalmente, la elección entre una tecnología u otra depende de la estructura de costos de la empresa y del equilibrio que esta desee lograr entre el nivel de calidad requerido (y su valor agregado) y el volumen de producción alcanzable. Esta decisión implica considerar no solo los aspectos técnicos del proceso, sino también su viabilidad económica, de modo que se maximice la eficiencia sin comprometer los estándares del producto ni la competitividad en el mercado.
 
 \section{Prototipado rápido}
 
