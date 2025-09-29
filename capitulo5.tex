@@ -257,6 +257,38 @@ El uso de tabs permite conservar la rigidez del sistema durante el mecanizado, e
 
 Sin embargo, su utilización implica ciertas desventajas: aumenta el tiempo total de mecanizado y requiere operaciones de \textbf{postprocesado} manual, tales como la remoción del tab y la rectificación o acabado de la zona afectada para restaurar la geometría o el acabado superficial deseado.
 
+\section{Materiales y comportamiento frente al fresado}
+
+Durante el fresado, la resistencia del material al corte se manifiesta principalmente como esfuerzo de cizalladura sobre el filo activo. Este esfuerzo depende del módulo de corte, la dureza, la ductilidad, la abrasividad y la capacidad de conducción térmica del material.
+
+\begin{itemize}
+	\item \textbf{Dureza y resistencia a la deformación plástica:} Materiales con alta resistencia mecánica, como el acero inoxidable AISI 304 o el titanio grado 5, generan mayores fuerzas de corte y temperaturas en zona activa. Esto acelera el desgaste por abrasión y adhesión, y puede inducir vibraciones o flexión en herramientas de pequeño diámetro.
+	
+	\item \textbf{Tenacidad y ductilidad:} En materiales dúctiles como el nylon 6 o el polietileno de alta densidad (HDPE), se produce una viruta continua con tendencia a la adhesión sobre el filo de corte. Esta acumulación puede modificar la geometría efectiva de corte y deteriorar la calidad superficial.
+	
+	\item \textbf{Abrasividad:} Compuestos con cargas minerales, como ciertos plásticos reforzados con fibra de vidrio (GF30) o matrices poliméricas con sílice, provocan desgaste abrasivo severo, especialmente en herramientas sin recubrimiento. Esto es crítico en operaciones prolongadas o de producción continua.
+	
+	\item \textbf{Conductividad térmica:} Materiales con baja conductividad térmica, como el acero inoxidable o los composites termoestables, concentran el calor en la zona de corte. Esto favorece el ablandamiento localizado, pero también puede generar tensiones térmicas, deformaciones y deterioro del filo de herramienta por difusión o oxidación.
+	
+	\item \textbf{Coeficiente de dilatación térmica:} En materiales como el aluminio 6061, con alto coeficiente de expansión térmica, pueden observarse cambios dimensionales durante el mecanizado prolongado, especialmente en piezas de gran volumen o cuando no se emplea refrigeración efectiva.
+\end{itemize}
+
+La acumulación de viruta sobre el filo de corte, también conocida como formación de borde de aportación (built-up edge), representa una condición crítica en el fresado, especialmente en materiales dúctiles como aleaciones de aluminio o termoplásticos. Esta acumulación modifica la geometría efectiva de la herramienta, alterando el ángulo de ataque y reduciendo la capacidad de corte. Como consecuencia, se generan fuerzas de corte inestables, incremento en la generación de calor y deterioro de la calidad superficial de la pieza. Además, el desprendimiento intermitente del material adherido puede producir defectos en la superficie mecanizada y acelerar el desgaste por impacto en el filo activo. La acumulación de viruta puede minimizarse mediante el uso de herramientas con recubrimientos de baja adhesión, control de la temperatura mediante refrigeración, y ajustes en los parámetros de corte para evitar el régimen de corte discontinuo que favorece este fenómeno.
+
+Las propiedades anteriores se traducen en decisiones concretas sobre herramientas, geometrías, recubrimientos y parámetros de corte. A continuación, se presentan algunos ajustes representativos:
+
+\begin{itemize}
+	\item \textbf{Acero al carbono (AISI 1045):} Se mecaniza con fresas de carburo con recubrimiento TiAlN o similar. Velocidades de corte típicas entre 90 y 140 m/min, con avances por diente de 0{,}05--0{,15} mm. Requiere refrigeración continua para controlar el calor y prolongar la vida de la herramienta.
+	
+	\item \textbf{Acero inoxidable (AISI 304):} Material austenítico con baja conductividad térmica y tendencia a la deformación por endurecimiento. Se recomiendan herramientas de carburo recubiertas con geometrías de corte positivas. Velocidades de corte más bajas (60--100 m/min) y avances moderados. La refrigeración es obligatoria para evitar acumulación térmica.
+	
+	\item \textbf{Aluminio 6061:} Permite altas velocidades de corte (300--600 m/min) debido a su baja dureza y alta conductividad térmica. Se recomiendan fresas de 2 o 3 filos, sin recubrimiento o con recubrimientos que reduzcan la adhesión (ZrN, DLC). El uso de refrigerante depende de la velocidad y de la evacuación de viruta.
+	
+	\item \textbf{Nylon (PA6):} Material blando, de baja rigidez y alta tenacidad. Requiere filos agudos, avances reducidos y velocidades intermedias (80--150 m/min). El mecanizado en seco puede generar acumulación de viruta por electrificación o fusión localizada; se recomienda aire comprimido o refrigeración con MQL.
+	
+	\item \textbf{Composites reforzados (GF30, CFRP):} Presentan abrasividad alta. Se emplean herramientas PCD o fresas de carburo con recubrimientos duros. Velocidades de corte bajas, avances moderados, y mínima profundidad de corte para evitar delaminación o desintegración del material.
+\end{itemize}
+
 \section{Flujo del proceso}
 
 La planificación de una operación CNC puede abordarse de distintas maneras, dependiendo de las capacidades de la máquina, el tipo de herramientas disponibles y la materialidad de la pieza. Estas restricciones pueden, en algunos casos, condicionar decisiones de diseño geométrico o de selección de material.
@@ -371,9 +403,9 @@ Durante la ejecución, la interfaz HMI permite el monitoreo de variables relevan
 	\item Alarmas o advertencias del sistema.
 \end{itemize}
 
-En ciertos controladores es posible modificar parámetros en tiempo real, como la velocidad de avance (\texttt{Feed Override}) o la velocidad del husillo (\texttt{Spindle Override}). Estas modificaciones pueden utilizarse para ajustar el comportamiento del proceso frente a condiciones no previstas o cambios en el material.
+En ciertos controladores es posible modificar parámetros en tiempo real, como la velocidad de avance o la velocidad del husillo. Estas modificaciones pueden utilizarse para ajustar el comportamiento del proceso frente a condiciones no previstas o cambios en el material.
 
-En caso de detectar inconsistencias durante la ejecución —ya sea visuales, sonoras o mediante advertencias del sistema— el operador puede pausar o detener el proceso mediante los controles disponibles, según el protocolo de operación de la máquina.
+En caso de detectar inconsistencias durante la ejecución, ya sea visuales, sonoras o mediante advertencias del sistema, el operador puede pausar o detener el proceso mediante los controles disponibles, según el protocolo de operación de la máquina.
 
 
 \subsection{Postprocesado}
@@ -396,7 +428,6 @@ Entre las tareas más comunes de postprocesado se incluyen:
 
 Un aspecto fundamental del postprocesado es el \textbf{control metrológico}, el cual permite verificar que la pieza final cumpla con las tolerancias y especificaciones dimensionales establecidas en el diseño. Para ello, se emplean instrumentos como calibres, micrómetros, relojes comparadores, proyectores de perfiles o sistemas de medición por coordenadas (CMM, \textit{Coordinate Measuring Machines}).
 
-
 \section{Operaciones comunes}
 
 \subsection{Etapas de mecanizado}
@@ -405,20 +436,72 @@ El proceso de mecanizado generalmente se divide en tres etapas principales que p
 
 En el desbaste se realiza la remoción de grandes volúmenes de material con el objetivo de aproximar la forma final de la pieza. Las condiciones de corte son agresivas, con profundidades y avances altos, buscando maximizar la tasa de arranque de material. Debido a la alta carga sobre la herramienta y las mayores vibraciones presentes, la precisión dimensional y el acabado superficial no son prioritarios en esta fase. Se emplean herramientas robustas y estrategias que priorizan la rapidez y la eficiencia en la eliminación del material sobrante.
 
-El semifinishing busca refinar la geometría aproximada obtenida durante el desbaste, eliminando las irregularidades y preparando la pieza para la etapa final. Los parámetros de corte se ajustan para reducir la carga sobre la herramienta y mejorar la precisión dimensional. Se disminuyen las profundidades y avances para disminuir la generación de vibraciones y mejorar la estabilidad del proceso. El acabado superficial comienza a mejorar, aunque aún no se alcanzan los niveles de calidad requeridos para el producto final.
+El semifinishing busca refinar la geometría aproximada obtenida durante el desbaste, eliminando las irregularidades y preparando la pieza para la etapa final. Los parámetros de corte se ajustan para reducir la carga sobre la herramienta y mejorar la precisión dimensional. Se disminuyen las profundidades y avances para disminuir la generación de vibraciones y mejorar la estabilidad del proceso. El acabado superficial comienza a mejorar, aunque generalmente no se alcanzan los niveles de calidad requeridos para el producto final.
 
-Finalmente, en el acabado se realizan cortes con profundidades muy pequeñas y velocidades de avance reducidas para obtener la máxima precisión dimensional y un acabado superficial óptimo. Se emplean herramientas especializadas, generalmente con filos afilados y geometrías que favorecen un corte limpio y sin marcas. El objetivo principal es cumplir con las tolerancias más estrictas y obtener superficies lisas que cumplan con los requerimientos funcionales y estéticos de la pieza.
+Finalmente, en el acabado se realizan cortes con profundidades muy pequeñas y velocidades de avance reducidas para obtener la máxima precisión dimensional y un acabado superficial óptimo. Se emplean herramientas especializadas, generalmente afiladas y geometrías que favorecen un corte limpio y sin marcas. El objetivo principal es cumplir con las tolerancias más estrictas y obtener superficies lisas que cumplan con los requerimientos funcionales y estéticos de la pieza.
 
-Cada una de estas etapas es fundamental para lograr un balance adecuado entre productividad y calidad, optimizando el ciclo de mecanizado y prolongando la vida útil de las herramientas.
+Estas etapas definen de manera fundamental el equilibrio entre productividad y calidad en el proceso de mecanizado, determinadas directamente por parámetros como el \textit{stock to leave}, la profundidad de corte y el \textit{stepover}.
 
+El parámetro \textit{stock to leave} representa la cantidad de material residual que se deja intencionalmente sobre la geometría final. Este valor asegura un margen para las siguientes etapas de mecanizado, facilitando un acabado más preciso. Habitualmente, se procura mantener este valor bajo, con el fin de minimizar la carga de trabajo en las herramientas de acabado, que suelen ser más delicadas y costosas.
+
+Por su parte, la profundidad de corte afecta directamente el tiempo total de operación, ya que determinará el número de niveles o pasadas necesarias para completar el mecanizado. Además, su influencia sobre la resolución geométrica dependerá en gran medida de la estrategia de corte empleada, pudiendo impactar en la calidad dimensional de la pieza.
+
+Finalmente, el \textit{stepover} o solape lateral incide directamente en la calidad superficial de la pieza mecanizada, al influir en la rugosidad generada. Este efecto es particularmente evidente en fresas de bola, donde un \textit{stepover} inadecuado puede dar lugar a patrones de crestas y valles, tal como se ilustra en la Figura \ref{bols}.
+ 
 \subsection{Operaciones 2D}
 
-Contorneado
+En el fresado CNC bidimensional (2D), la herramienta se desplaza principalmente en los ejes \textit{X} e \textit{Y}, con profundidades constantes en el eje \textit{Z}. Estas operaciones son las más sencillas y frecuentes en corte CNC, especialmente al momento de trabajar con planchas de material. Las más comunes son:
 
-Careado Facing
-
-Drilling
+\begin{itemize}
+	
+	\item \textbf{Contorneado (Contour):} Esta operación consiste en un movimiento de la herramienta tangencial a un contorno por el exterior o interior de una geometría, permitiendo cortar la pieza a lo largo de su perímetro. Puede realizarse a distintas profundidades por pasos sucesivos.
+	
+	\item \textbf{Refrentado (Facing):} También conocido como \comillas{careado}, esta operación elimina material de la parte superior de una pieza para obtener una superficie plana. Se utiliza generalmente como operación inicial para nivelar la superficie del material antes de otras operaciones más precisas.
+	
+	\item \textbf{Cajoneras (Pocketing):} Esta operación desbasta material dentro de una región cerrada, sin cortar completamente el perímetro exterior de la pieza. Se emplea para crear cavidades, alojamientos o áreas huecas.
+	
+	\item \textbf{Taladrado (Drilling):} Consiste en crear un orificio cilíndrico en el material mediante una broca. Puede realizarse en una sola pasada o en pasos sucesivos si el orificio es profundo.
+	
+	 \item \textbf{Roscado (Tapping):} Consiste en crear una rosca interna (hilo) en un orificio para permitir la inserción de tornillos o pernos. Puede realizarse mediante machos de roscar (taps) o herramientas de roscado helicoidal, coordinando la rotación del cabezal y el paso en Z.
+	
+\end{itemize}
 
 \subsection{Operaciones 3D}
 
-\subsection{Calidad}
+En el fresado tridimensional, la trayectoria de la herramienta se adapta a la geometría de superficies complejas, permitiendo el mecanizado de formas libres u orgánicas. Los sistemas CAM ofrecen diversas estrategias de generación de trayectorias, que definen el patrón de desplazamiento de la herramienta sobre la pieza. La elección adecuada de la estrategia impacta directamente en la eficiencia del mecanizado, la calidad del corte y la duración de la herramienta.
+
+A continuación se describen las estrategias más comunes:
+
+\begin{itemize}
+	\item \textbf{Movimiento paralelo a un plano (Parallel / Raster):} La herramienta se desplaza en líneas paralelas dentro de un plano definido (usualmente XY), ajustando su posición en el eje Z según la geometría de la superficie. Es eficiente para superficies de curvatura suave y amplia.
+	
+	\item \textbf{Movimiento por niveles de altura (Z-Level / Contour):} Se generan trayectorias horizontales a diferentes alturas Z, siguiendo las secciones horizontales de la superficie. Es especialmente útil para paredes inclinadas o escalonadas.
+	
+	\item \textbf{Movimiento en espiral (Spiral):} La herramienta sigue una trayectoria helicoidal continua, desde el centro hacia los bordes (o viceversa), adaptándose a la forma tridimensional. Esta estrategia reduce los cambios de dirección y puede mejorar la estabilidad del corte.
+	
+	\item \textbf{Movimiento radial (Radial):} Las trayectorias se extienden desde un punto central hacia el exterior como radios. Es adecuada para superficies con simetría circular o geometrías centradas.
+	
+	\item \textbf{Festoneado (Scallop):} Se genera una trayectoria que mantiene constante la distancia entre pasadas a lo largo de la superficie, siguiendo su forma natural. Produce un patrón de corte más uniforme en superficies curvas, y se adapta bien a transiciones complejas.
+	
+	\item \textbf{Rampa (Ramp):} La herramienta penetra progresivamente en el material siguiendo una trayectoria inclinada, en lugar de descender verticalmente. Esta estrategia se utiliza tanto para ingresar al material como para realizar cortes continuos, minimizando esfuerzos axiales y reduciendo el riesgo de daño en herramientas frágiles.
+\end{itemize}
+
+
+\section{Calidad}
+
+Una vez finalizado el mecanizado, se miden los siguientes parámetros para verificar la conformidad de la pieza con las especificaciones técnicas:
+
+\begin{itemize}
+	\item \textbf{Tolerancias dimensionales:} Se determina la conformidad de dimensiones críticas (longitudes, diámetros, espesores, radios) con los valores establecidos en el diseño. La medición se realiza utilizando micrómetros, pie de metro y máquinas de medición por coordenadas (CMM).\\
+	\textit{Ajuste:} En caso de desviaciones dimensionales, se puede ajustar la velocidad de giro (RPM), reducir la velocidad de avance, disminuir la profundidad de corte o utilizar herramientas de menor diámetro para mejorar la precisión. También se revisa la fijación de la pieza y la calibración de la máquina para minimizar vibraciones y movimientos no deseados.
+	
+	\item \textbf{Rugosidad superficial:} Se cuantifica la textura superficial mediante parámetros como Ra, utilizando rugosímetros o profilómetros. Este parámetro describe las irregularidades y variaciones de la superficie en escala micrométrica.\\
+	\textit{Ajuste:} Para reducir la rugosidad, se puede disminuir el avance por diente, aumentar las RPM, seleccionar herramientas con geometría de corte más adecuada (por ejemplo, fresas de mayor filo o con recubrimiento especial) o implementar pases de acabado con menor profundidad y \textit{stepover}. También es posible añadir procesos secundarios como pulido o rectificado.
+	
+	\item \textbf{Defectos superficiales:} Se inspeccionan visualmente o con métodos ópticos defectos tales como quemaduras, marcas de herramientas, rebabas y grietas. Estos se asocian a condiciones del proceso de corte y del estado de la herramienta.\\
+	\textit{Ajuste:} Se recomienda aumentar el flujo y tipo de refrigerante, reducir la velocidad de corte y avance para disminuir la generación de calor, cambiar o afilar la herramienta para evitar desgastes y vibraciones, y mejorar la sujeción de la pieza para evitar movimientos durante el mecanizado.
+	
+	\item \textbf{Propiedades mecánicas y microestructurales:} En ciertos casos, se evalúan características como dureza y estructura interna a través de ensayos destructivos o no destructivos, para verificar la integridad del material tras el mecanizado.\\
+	\textit{Ajuste:} Si se detectan alteraciones, se pueden aplicar tratamientos térmicos posteriores (recozido, temple, revenido), controlar la temperatura y la velocidad de corte para evitar sobrecalentamiento, y seleccionar estrategias de mecanizado que reduzcan tensiones residuales, como cortes más suaves y menos profundos.
+	
+\end{itemize}
