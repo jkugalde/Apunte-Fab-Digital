@@ -8,6 +8,13 @@ La fabricación sustractiva por corte se basa en la remoción controlada de mate
 
 Este tipo de tecnología es la automatización de máquinas tradicionales de manufactura metalmecánica, principalmente tornos y fresadoras. Un torno produce piezas con simetría cilíndrica mediante la rotación del material base, mientras que una fresadora ofrece una mayor versatilidad en cuanto a las geometrías que puede alcanzar, al usar una herramienta rotativa móvil en varios ejes. Así, las máquinas CNC más comunes son los tornos y fresadoras CNC, o bien los centros de mecanizado, que combinan ambas capacidades en una sola unidad. 
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/tornoyfresa.png}
+	\caption{Fresado a la izquierda, torneado a la derecha. \href{https://www.weerg.com/}{Fuente}}
+	\label{tornoyfresafig}
+\end{figure}
+
 La acción de la herramienta sobre el material puede derivar en 3 mecanismos de corte, dependiendo de las propiedades del material, la herramienta y los \textbf{parámetros de corte}, los cuales son:
 
 \begin{enumerate}
@@ -18,9 +25,9 @@ La acción de la herramienta sobre el material puede derivar en 3 mecanismos de 
 	\item \textbf{Abrasión}: Remoción superficial del material por desgaste mecánico, sin necesidad de fractura macroscópica o fluencia plástica. Característico de procesos como rectificado o pulido.
 \end{enumerate}
 
-Por lo general, los modelos de corte se referirán al primer mecanismo, pues es más fácil de modelar, y se le denominará \textbf{arranque de viruta} (Figura \ref{virutafig}).
+Por lo general, los modelos de corte se referirán al primer mecanismo, pues es más fácil de modelar, y se le denominará \textbf{arranque de viruta}.
 
-Para que ocurra efectivamente el corte, es decir, la generación de viruta y la penetración de la herramienta en el material, deben cumplirse ciertas condiciones fundamentales, principalmente una \textbf{condición geométrica}, una \textbf{cinemática} y otra de \textbf{resistencia del material}.
+Para que ocurra efectivamente el corte, es decir, la generación de viruta y la penetración de la herramienta en el material, deben cumplirse ciertas condiciones fundamentales, principalmente una \textbf{condición geométrica} (que deriva en una condición \textbf{cinemática}) y otra de \textbf{resistencia del material}.
 
 La condición geométrica para que se inicie el arranque de viruta, exige que el espesor de corte supere un umbral mínimo que permita activar el mecanismo plástico de corte. En primera aproximación, esta condición se expresa como:
 
@@ -28,13 +35,20 @@ La condición geométrica para que se inicie el arranque de viruta, exige que el
 	h > 0
 \end{equation}
 
-donde $h$ es el \textbf{espesor no deformado de la viruta}, que depende del avance y la geometría de la herramienta. Sin embargo, en la práctica (especialmente en procesos de microfabricación) existe un espesor mínimo efectivo, $h_{\text{min}}$, por debajo del cual el material no se corta adecuadamente. En lugar de producirse una viruta, el filo genera:
+donde $h$ es el \textbf{espesor no deformado de la viruta}, que depende del avance y la geometría de la herramienta. Sin embargo, en la práctica (especialmente en procesos de microfabricación) existe un espesor mínimo efectivo, $h_{\text{min}}$, por debajo del cual el material no se corta adecuadamente (Figura \ref{filofig}). En lugar de producirse una viruta, el filo genera:
 
 \begin{itemize}
 	\item \textbf{Rubbing} (frotamiento): contacto superficial sin corte, con generación de calor por fricción.
 	\item \textbf{Ploughing} (arado): desplazamiento plástico del material hacia los lados, sin separación efectiva.
-	\item \textbf{Elastic recovery} (recuperación elástica): deformación reversible del material sin remoción.
 \end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/filo.png}
+	\caption{Comportamiento del material frente a la profundidad de corte: a) Frotamiento b) arado y c) corte. \href{https://link.springer.com/article/10.1007/s40684-020-00199-2/figures/5}{Fuente}}
+	\label{filofig}
+\end{figure}
+
 
 Estas condiciones aumentan el desgaste de la herramienta, deterioran la calidad superficial y reducen la eficiencia del proceso de mecanizado. De esta forma, la condición se transforma en:
 
@@ -56,7 +70,7 @@ donde:
 	\item $N$ es la \textbf{velocidad de rotación} [rpm].
 \end{itemize}
 
-Este parámetro representa la distancia que avanza cada diente en una revolución, y por tanto determina el \textbf{espesor no deformado de viruta} $h$. Si $f_z$ es menor que el espesor mínimo de corte $h_{\text{min}}$, no se genera viruta adecuadamente, y el proceso entra en los regímenes no deseados de \textit{rubbing}, \textit{ploughing} o \textit{elastic recovery}, ya mencionados.
+Este parámetro representa la distancia que avanza cada diente en una revolución, y por tanto determina el \textbf{espesor no deformado de viruta} $h$. Si $f_z$ es menor que el espesor mínimo de corte $h_{\text{min}}$, no se genera viruta adecuadamente, y el proceso entra en los regímenes no deseados de rubbing o ploughing.
 
 En consecuencia, el avance por diente debe mantenerse por encima de ese umbral mínimo, el cual depende del material, la geometría del filo y las condiciones de corte. No obstante, $f_z$ también está limitado por la capacidad de la herramienta y por los requisitos de \textbf{calidad superficial} y \textbf{tolerancias}. Un avance excesivo puede generar virutas muy gruesas, sobrecargar el filo y deteriorar la precisión del mecanizado. Por tanto, se debe encontrar un equilibrio adecuado que permita un corte efectivo sin comprometer la calidad ni la integridad de la herramienta.
 
@@ -73,6 +87,16 @@ donde:
 	\item $\tau_s$ es el esfuerzo de corte específico del material.
 	\item $A = h \cdot b$ es el área de corte, siendo $b$ el ancho de contacto de la herramienta con el material.
 \end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{imgs/fpt.png}
+	\caption{Diagrama del avance de la herramienta. \href{https://fmcarbide.com/pages/milling-feed-rate}{Fuente}}
+	\label{fptfig}
+\end{figure}
+
+
+Nótese que esta condición está relacionada con la dureza, pues estamos ante un fenómeno de indentación local. Así, mientras más duro es una material, menor es su \textbf{maquinabilidad}, una característica que indica la facilidad de mecanizado.
 
 Estas condiciones son las mínimas para que el fenómeno de remoción ocurra, no obstante, no puede ser llevado a cabo por cualquier maquinaria. De esta manera, el proceso va a ser viable además si es que la potencia de la maquinaria lo permite. La potencia de corte requerida se calcula como:
 

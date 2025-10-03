@@ -1036,3 +1036,168 @@ Las piezas fabricadas mediante tecnología SLA no se limitan a funciones protot�
 \end{figure}
 
 Finalmente, como cualquier tecnología de fabricación aditiva, puede ser una opción para la manufactura en serie de un componente o producto, mientras los costos y el volumen lo justifiquen, antes de pasar a métodos más convencionales. El esquema de costos en SLA es más complejo que el caso FDM, por el manejo del material y las etapas en el flujo de fabricación.
+
+\section{Otros procesos de fabricación aditiva}
+
+En esta sección se describirán de manera concisa otras tecnologías de fabricación aditiva, ya que no se encuentran en la infraestructura del Campus y su disponibilidad comercial es más limitada respecto a FDM y SLA.
+
+\subsection{Sinterizado láser}
+
+El sinterizado es un proceso de \textbf{unión de materiales granulares}, donde el material en polvo se cohesiona por la \textbf{aplicación de calor} desde una fuente, activando la unión por \textbf{difusión atómica en estado sólido} entre las superficies en contacto, y/o además, a través de una \textbf{fusión parcial}.
+
+El proceso de impresión 3D por sinterizado láser selectivo (Selective Laser Sintering, SLS) consiste en la unión de polvos mediante la acción localizada de un láser, capa por capa, tal como se ilustra en la Figura \ref{sinterfig}. En cada ciclo, una capa de polvo se extiende sobre una cama, y el láser traza la sección transversal correspondiente a la geometría deseada, similar al mecanismo utilizado en SLA. Al completar la exposición de cada capa, la cama desciende una distancia equivalente al espesor de capa y un rodillo deposita nuevo polvo sobre la superficie, reiniciando el proceso. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/difuss.png}
+	\caption{Unión por difusión en la superficie promovido por calor, se observan cuellos entre partículas que crecen a medida que el proceso avanza.}
+	\label{difussfig}
+\end{figure}
+
+
+Este proceso es aplicable tanto a \textbf{polímeros termoplásticos como a metales} pulverizados, lo que lo hace atractivo para diversas industrias, dado que permite fabricar piezas con propiedades mecánicas adecuadas para aplicaciones que requieren alta resistencia.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/sinter.png}
+	\caption{Esquema de funcionamiento del proceso SLS.}
+	\label{sinterfig}
+\end{figure}
+
+El sinterizado láser, patentado en la década de 1980 bajo el nombre SLS, utiliza una fusión parcial debido a la complejidad del control térmico del proceso, especialmente cuando se manejan flujos de calor bajos para evitar la deformación y controlar la solidificación.
+
+Como consecuencia, las piezas obtenidas mediante SLS suelen presentar una \textbf{estructura porosa inherente} en \comillas{verde}, una debilidad mecánica. Por ello, es habitual realizar tratamientos térmicos posteriores (post-sinterizado o recocido) para \textbf{densificar} la pieza, mejorar la cohesión entre partículas y reducir la porosidad mediante contracción controlada. Además, las superficies suelen ser rugosas, por lo que procesos complementarios como el pulido o el mecanizado CNC pueden ser necesarios según la aplicación final (Figura \ref{treatedfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/treated.png}
+	\caption{Álabe de turbina impreso por SLS, antes y después de pulir. \href{https://www.3dnatives.com/en/different-methods-for-surface-finishing-in-3d-printing-060920234/}{Fuente}}
+	\label{treatedfig}
+\end{figure}
+
+Con los avances tecnológicos, han surgido técnicas como el sinterizado láser de metal directo (Direct Metal Laser Sintering, DMLS) o el sinterizado selectivo por fusión láser (Selective Laser Melting, SLM), que promueven la \textbf{fusión completa del polvo} para obtener piezas con mayor densidad y propiedades mecánicas superiores.
+
+Si bien el polvo no sinterizado actúa como soporte natural durante la impresión, en algunas geometrías, y sobretodo para metales, es necesario agregar estructuras de soporte. Estas no se requieren para evitar colapsos gravitacionales, sino para facilitar el flujo de calor y \textbf{evitar la acumulación de tensiones térmicas} que puedan deformar la pieza. Estos soportes requieren un proceso de postprocesado de remoción, el cual podría requerir el uso de herramientas especializadas. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/suporsls.png}
+	\caption{Pieza impresa en SLS, se observan los soportes. \href{https://www.hubs.com/knowledge-base/introduction-metal-3d-printing/}{Fuente}}
+	\label{suporslsfig}
+\end{figure}
+
+Así, la gestión térmica durante el proceso es crítica, ya que la dilatación y la contracción pueden inducir tensiones residuales que provoquen deformaciones, cambios dimensionales o delaminaciones. Uno de los errores más críticos es la deformación (warping), que puede interferir con el rodillo depositador de polvo y causar fallas en el proceso.
+
+El flujo de calor muy bajo en SLS produce una fusión parcial, por lo que la morfología del polvo influye directamente en la calidad superficial de la pieza. En contraste, un flujo de calor excesivo puede provocar la formación de aglomerados por fusión y efectos superficiales indeseados, como el fenómeno conocido como \textit{balling}, causado por la tensión superficial durante la solidificación.
+
+De la misma manera, luego de imprimirse la pieza, esta debe pasar por un \textbf{enfriamiento controlado}, pues se podrían generar tensiones residuales.
+
+Además, en la fabricación con metales, el proceso requiere atmósferas inertes (usualmente argón o nitrógeno) para evitar la oxidación del material, lo que incrementa la complejidad y el costo del proceso. En conjunto, la alta potencia necesaria, los sistemas de seguridad y el costo del material hacen que esta tecnología no sea accesible para pequeñas empresas.
+
+Otro aspecto importante es la gestión del polvo. A medida que la granulometría disminuye, aumenta la dificultad en su manejo y los riesgos asociados, como la autoignición, absorción de humedad o volatilidad. Además, la distribución de tamaño de partícula no es monodispersiva, variando según el fabricante y afectando las propiedades del proceso y del producto final.
+
+\subsection{Jet de aglomerante}
+
+La impresión 3D por inyección de aglomerante, conocida como \textit{Binder Jetting} (BJ), es un proceso aditivo en el cual se deposita un \textbf{aglutinante líquido sobre un lecho de polvo}, de forma selectiva y capa por capa, con el fin de unir las partículas sólidas mediante adhesión química. 
+
+Este proceso tiene un mecanismo similar al SLS respecto al manejo del polvo, pero en lugar de un láser se utilizar un inyector de aglutinante, similar a como sería el cabezal de tinta para una impresora de papel.
+
+Este método es compatible con una amplia gama de materiales en polvo, incluyendo metales, cerámicas, arenas y algunos polímeros. La elección del aglomerante depende del material base, pudiendo consistir en adhesivos orgánicos, soluciones salinas o resinas curables, entre otros.
+
+Dado que el aglomerante no proporciona una unión definitiva, es necesario aplicar un \textbf{tratamiento térmico posterior} para consolidar la pieza en verde (Figura \ref{binderfigfig}). En el caso de piezas metálicas, se realiza una etapa de sinterizado en horno para densificar la estructura, e incluso puede aplicarse infiltración con metales de bajo punto de fusión (como bronce en matrices de acero inoxidable) para mejorar la resistencia final. En el caso de materiales cerámicos o poliméricos, el postprocesamiento puede incluir curado térmico, endurecimiento por UV o simplemente secado, según el sistema.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/binderfig.png}
+	\caption{Pieza impresa en por BJ, antes y después del tratamiento térmico. Nótese la contracción por densificación. \href{https://www.lyafs.com/binder-jetting-stainless-steel}{Fuente}}
+	\label{binderfigfig}
+\end{figure}
+
+Una ventaja clave del \textit{Binder Jetting} es la elevada velocidad de producción, ya que el cabezal de impresión puede cubrir grandes áreas simultáneamente. Además, el proceso no es de carácter térmico, lo cual lo hace más sencillo en términos de control y de menor costo.
+
+El polvo no aglomerado actúa como soporte natural durante la impresión, lo que elimina la necesidad de estructuras auxiliares. 
+
+No obstante, el proceso presenta limitaciones. La resolución dimensional y la calidad superficial son menores que en otras tecnologías, debido a la absorción del aglomerante, la difusión en el lecho de polvo y la contracción durante el postprocesado térmico. Además, la resistencia mecánica de la pieza en verde es baja, lo que dificulta su manipulación antes del sinterizado.
+
+La manipulación y reciclaje del polvo también requieren atención. Si bien parte del material puede reutilizarse, la contaminación con aglomerante residual y el envejecimiento del polvo pueden afectar la reproducibilidad del proceso y la calidad final.
+
+\subsection{Jet de material}
+
+La impresión 3D por inyección de material, conocida como \textit{Material Jetting} (MJ), es un proceso de fabricación aditiva en el cual el material de construcción se deposita directamente sobre una plataforma de trabajo en forma de \textbf{gotas líquidas}, que luego se solidifican capa por capa para dar forma a la pieza final. Este proceso se asemeja conceptualmente a una impresora de inyección de tinta tradicional, pero en lugar de tinta, utiliza fotopolímeros o ceras que se curan de forma selectiva \textit{in situ}.
+
+Durante la impresión, uno o varios cabezales de inyección depositan pequeñas gotas del material sobre la plataforma o sobre la capa previamente solidificada, siguiendo la geometría definida por el modelo 3D. Inmediatamente después de cada deposición, una lámpara UV integrada en el cabezal  \textbf{cura el material de manera localizada}, lo que permite una solidificación casi instantánea y una adhesión controlada entre capas sucesivas. El proceso se repite capa por capa hasta completar la pieza (ver Figura \ref{matjetfig}). Las máquinas pueden contar un cuchillo o rodillo que pasa entrecapas para nivelar la superficie.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/matjet.png}
+	\caption{Diagrama de funcionamiento para MJ.}
+	\label{matjetfig}
+\end{figure}
+
+Una de las principales ventajas de este proceso es su alta resolución y precisión dimensional, lo que permite fabricar piezas con detalles finos y excelente acabado superficial, sin necesidad de posprocesado extenso. Además, permite la deposición simultánea de múltiples materiales, incluyendo fotopolímeros rígidos, flexibles o translúcidos, lo cual lo hace adecuado para aplicaciones como prototipos visuales, modelos médicos o piezas funcionales de baja carga. También se pueden mezclar distintos materiales con diferentes pigmentos para generar piezas estéticas multicolor Figura \ref{calacafig}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/calaca.png}
+	\caption{Pieza impresa por MJ, multicolor. \href{https://facfox.com/materials/polyjet-full-color-resin/}{Fuente}}
+	\label{calacafig}
+\end{figure}
+
+
+El sistema suele incluir un \textbf{segundo cabezal} que deposita un material de soporte, típicamente una cera o gel soluble, el cual permite fabricar geometrías complejas, voladizos y cavidades internas. Este soporte puede ser retirado posteriormente mediante calor, disolución química o métodos mecánicos suaves, según el material utilizado.
+
+El proceso requiere el uso de materiales que puedan mantenerse en estado líquido dentro del cabezal y solidificarse de forma controlada durante la impresión. Los más comunes son resinas fotocurables y ceras de modelado. Debido a ello, la resistencia térmica y mecánica de las piezas impresas es limitada, por lo que el proceso se emplea principalmente en la fabricación de prototipos estéticos, modelos para fundición (cera perdida) y prototipado.
+
+Entre las limitaciones del proceso se encuentra la dependencia de materiales específicos desarrollados para cada equipo, así como su costo relativamente alto en comparación con tecnologías más accesibles como FDM. 
+
+\section{Diseño funcional para impresión 3D}
+
+Una gran parte del diseño de productos industriales ha estado tradicionalmente condicionado por las tecnologías de manufactura sustractivas, como el mecanizado o el moldeado. En estos casos, las restricciones geométricas impuestas por las herramientas y procesos limitan la libertad formal del diseñador, quien suele verse forzado a simplificar formas para facilitar la fabricación o reducir costos.
+
+La irrupción de las tecnologías de fabricación aditiva ha modificado este paradigma, permitiendo la generación de geometrías complejas sin un incremento proporcional en los costos ni en la dificultad del proceso. Esta libertad geométrica habilita el desarrollo de piezas cuyo diseño responde directamente a \textbf{criterios funcionales}, como la optimización estructural, térmica o dinámica, resultando en \textbf{formas orgánicas} o no convencionales que antes eran impracticables.
+
+Un referente natural de este tipo de eficiencia morfológica es la biología. Los organismos vivos no presentan estructuras basadas en prismas o cilindros regulares, sino que exhiben geometrías adaptadas a funciones específicas. Por ejemplo, los árboles desarrollan una arquitectura que les permite resistir cargas de viento y maximizar la captación solar mediante la distribución de ramas y hojas. Del mismo modo, los huesos de los mamíferos combinan una estructura externa rígida con un núcleo interno poroso, optimizando la relación entre rigidez y peso según las cargas biomecánicas esperadas (Figura \ref{femurfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/femur.png}
+	\caption{Árbol y sección transversal de un fémur.}
+	\label{femurfig}
+\end{figure}
+
+Los métodos analíticos de diseño estructural, basados en modelos simplificados, difícilmente pueden manejar este tipo de geometrías, ya que su resolución matemática se vuelve intratable para formas complejas. Por ello, tradicionalmente en el diseño mecánico se han utilizado estrategias de optimización a partir de secciones constantes, como el ajuste de espesores o áreas transversales en componentes simples.
+
+En cambio, el desarrollo de herramientas computacionales, particularmente los métodos de elementos finitos (FEM), ha permitido simular el comportamiento de geometrías arbitrarias bajo distintas condiciones de carga y contorno. Esto ha dado lugar a métodos de \textbf{optimización topológica}, que consisten en algoritmos matemáticos capaces de redistribuir material dentro de un volumen definido, agregando o eliminando regiones según su contribución estructural.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/algori.png}
+	\caption{Optimización de viga empotrada simple con carga puntual en la punta. Se observa una representación matricial del algoritmo al agregar/remover material. Abajo, el resultado del proceso, en forma directa y luego suavizado para fabricación.}
+	\label{algorifig}
+\end{figure}
+
+En términos generales, estos métodos definen una \textbf{función objetivo}, como minimizar la deformación o la masa, y ajustan iterativamente los parámetros geométricos hasta alcanzar una solución óptima dentro de las restricciones impuestas. Algunas formulaciones se basan en densidades de material (como el método SIMP), mientras que otras emplean enfoques evolutivos (como ESO/BESO) o de frontera (Level Set), pero todas comparten el principio de utilizar la simulación como guía para modificar la forma.
+
+Actualmente, estas técnicas están integradas en plataformas de CAD avanzadas bajo el concepto más amplio de \textbf{diseño generativo} (Figura \ref{solidedgefig}). Este paradigma combina algoritmos de optimización con criterios de manufacturabilidad y multifuncionalidad para generar automáticamente múltiples variantes de un diseño, evaluadas según criterios estructurales, económicos o estéticos. Así, se facilita al diseñador un abanico de soluciones viables dentro del espacio de diseño definido, muchas de las cuales serían difíciles de concebir manualmente.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/solidedge.png}
+	\caption{Pieza original y resultados de optimización en el software CAD Solid Edge. \href{https://grabcad.com/library/topology-optimization-with-solid-edge-generative-design-1}{Fuente}}
+	\label{solidedgefig}
+\end{figure}
+
+Además, estos algoritmos pueden considerar restricciones propias del proceso de fabricación. Por ejemplo, en impresión FDM se pueden definir limitaciones de ángulo, resolución del extrusor o necesidad de soportes, permitiendo generar formas optimizadas que no solo cumplen con requisitos funcionales, sino que además de alta imprimibilidad.
+
+Una vez finalizado el proceso de optimización, las geometrías resultantes suelen presentar ruido superficial o elementos no funcionales a escala fina. Por ello, es habitual aplicar procesos de suavizado digital o limpieza geométrica, con el fin de mejorar la calidad superficial, reducir el peso del archivo y facilitar su posterior manipulación o impresión.
+
+Esto habilita el desarrollo de componentes más livianos, resistentes y eficientes, por ejemplo, particularmente relevantes en industrias como la aeroespacial, donde el ahorro de masa y la complejidad geométrica tienen un impacto directo en el rendimiento del sistema.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/spacecomp.png}
+	\caption{Optimización de componente espacial. Agencia espacial europea (ESA).}
+	\label{spacefig}
+\end{figure}
+
