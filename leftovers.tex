@@ -1,0 +1,147 @@
+\section{Flujo del proceso}
+
+\subsection{Consideraciones previas}
+
+La planificación de una operación CNC puede abordarse de diversas maneras, dependiendo de las capacidades de las máquinas, las herramientas disponibles y las propiedades del material a mecanizar. Estas restricciones, en muchos casos, pueden condicionar decisiones de diseño geométrico o incluso la selección del material base.
+
+Incluso en ausencia de limitaciones técnicas, el diseño debe ser evaluado en función de las condiciones mínimas que impone el mecanizado. Entre ellas se encuentran evitar bordes internos perfectamente rectos —que no pueden generarse con herramientas rotativas—, garantizar accesibilidad en todas las zonas a cortar, y considerar la disponibilidad comercial del formato de material seleccionado.
+
+El formato del stock debe presentar una dimensión característica (espesor, diámetro) ligeramente superior a la requerida por la pieza final, permitiendo el mecanizado de las superficies funcionales sin comprometer sus dimensiones ni aumentar innecesariamente el tiempo de corte. Alternativamente, puede optarse por adaptar el diseño a espesores comerciales estándar. En este sentido, es importante considerar que, a medida que aumenta el espesor del material, su costo se incrementa considerablemente y su disponibilidad en el mercado local puede verse limitada. Particularmente, planchas de más de 20~mm en ciertos materiales pueden no estar fácilmente disponibles, dependiendo del contexto geográfico y de los proveedores existentes.
+
+La accesibilidad a las zonas de corte es uno de los factores más determinantes para la efectividad y eficiencia del fresado. Las tecnologías sustractivas, especialmente aquellas con arquitectura cartesiana, presentan limitaciones claras para ejecutar trayectorias de corte en planos oblicuos o perpendiculares a la superficie de trabajo.
+
+Por ejemplo, en una fresadora CNC cartesiana, una operación en el plano superior de la pieza puede realizarse sin dificultad. Sin embargo, un patrón de perforaciones laterales, aunque geométricamente simple, requerirá rotar el material para dar acceso a esa cara. Esto implica tiempos adicionales de reconfiguración, necesidad de fijaciones auxiliares (\textit{fixtures}) y riesgo de pérdida de precisión en la referencia de origen. Por esta razón, estas fresadoras son habitualmente denominadas \textbf{máquinas 2.5D}, aludiendo a su capacidad limitada de acceso volumétrico.
+
+Esta limitación no se presenta en fresadoras de 4 o 5 ejes, donde el cabezal o la pieza pueden rotarse para acceder a múltiples caras sin cambiar la referencia de origen. No obstante, estas máquinas implican un mayor costo, complejidad operativa y requerimientos de programación más avanzados, lo que restringe su uso principalmente a entornos industriales o especializados.
+
+
+\subsection{CAM}
+
+La mayoría de los softwares CAD actuales integran un CAM para corte CNC, luego, será sencillo pasar de la revisión del diseño al entorno de manufactura (y viceversa). Los pasos en el CAM tendrán el siguiente orden general:
+
+\begin{enumerate}
+	\item Definir el tamaño del stock y su posición relativa con la pieza.
+	\item Definir el origen y las direcciones del sistema de coordenadas relativo.
+	\item Definir operaciones, herramientas y parámetros de corte.
+	\item Chequear simulaciones.
+	\item Postprocesar el código G respecto a la máquina a utilizar.
+\end{enumerate}
+
+En general, el stock puede representarse como el formato comercial real que se montará en la máquina, o bien como un volumen virtual mínimo que contenga completamente la geometría de la pieza. No obstante, utilizar el formato completo del material disponible es lo más recomendable, ya que obliga a considerar desde el inicio aspectos prácticos del proceso, como la estrategia de fijación y la interacción del stock con el sistema de sujeción. Además, incorporar este volumen en el modelo facilita la simulación y la verificación del mecanizado.
+
+El \textbf{origen relativo} (también llamado \textit{punto cero de pieza} o \textit{workpiece zero}) es la referencia a partir de la cual se calcularán todas las trayectorias de herramienta en el entorno CAM. Este debe ser un punto físicamente alcanzable por la herramienta o por los accesorios de sondaje utilizados para la referencia en la máquina CNC. Comúnmente, se selecciona un vértice del stock debido a su facilidad de acceso y consistencia geométrica. 
+
+Es fundamental que el sistema de coordenadas definido en el software CAM coincida con la orientación real del sistema de la máquina CNC a utilizar. Una mala correspondencia entre ambos sistemas puede derivar en errores de simulación, colisiones o cortes fuera de la pieza. 
+
+Una vez definido el sistema de coordenadas, se procede a establecer las distintas \textbf{operaciones de mecanizado}, seleccionando para cada una:
+\begin{itemize}
+	\item La estrategia de corte 
+	\item Los parámetros de corte apropiados (avances, profundidades, velocidades).
+	\item La herramienta correspondiente, intentando reducir al mínimo el número total de herramientas diferentes, lo cual optimiza los tiempos de cambio. 
+\end{itemize}
+
+A cada herramienta se le asigna un identificador único (ID), el cual será reconocido por el control de la máquina y permitirá realizar cambios automáticos o manuales de manera organizada. Idealmente, se agrupan en secuencia todas las operaciones que involucren a la misma herramienta.
+
+Al finalizar la definición de cada operación, se ejecuta una \textbf{simulación parcial} del trayecto de herramienta, lo que permite:
+\begin{itemize}
+	\item Verificar visualmente la trayectoria generada.
+	\item Detectar colisiones potenciales con el stock, fijaciones o la propia herramienta.
+	\item Confirmar el volumen de material removido, que será tenido en cuenta para las operaciones posteriores.
+\end{itemize}
+
+Estas simulaciones pueden mejorarse al incorporar modelos del portaherramientas, del husillo e incluso del sistema de sujeción, lo cual permite realizar simulaciones más fieles al entorno real de trabajo. También es posible integrar parámetros específicos de la máquina seleccionada, lo que ayuda a predecir comportamientos dinámicos como límites de velocidad, aceleraciones y movimientos de seguridad.
+
+El proceso se repite iterativamente hasta que la simulación global sea coherente con los objetivos de calidad superficial, precisión y tiempo de mecanizado estimado.
+
+Finalmente, se genera el \textbf{código G}, ya sea como un archivo único o como una serie de bloques independientes según las operaciones programadas. Es fundamental asegurarse de utilizar el \textbf{postprocesador correcto}, que adapta el código generado al dialecto específico del controlador CNC correspondiente (como Fanuc, Haas, Siemens, etc.), garantizando así la compatibilidad y el correcto funcionamiento en la máquina de destino.
+
+\subsection{Preparación del corte}
+
+Antes de ejecutar cualquier trayecto de herramienta en la máquina CNC, es necesario llevar a cabo una serie de actividades fundamentales que permiten garantizar la precisión, seguridad y repetibilidad del proceso. Esta etapa se conoce como la \textbf{preparación del corte} o \textbf{set-up del proceso}, y puede involucrar tanto tareas físicas en la máquina como procedimientos de medición y calibración.
+
+El primer paso es montar correctamente la materia prima (\textbf{stock}) sobre la mesa de trabajo de la máquina. Para ello se emplea un \textbf{sistema de fijación} adecuado a la geometría y características del material: mordazas, placas de vacío, bridas, sistemas modulares, tornillos de sujeción o fijaciones personalizadas. Es crucial que la fijación:
+\begin{itemize}
+	\item Sea suficientemente rígida para evitar desplazamientos durante el mecanizado.
+	\item No interfiera con las trayectorias de la herramienta.
+	\item Permita el acceso a las caras que deben ser trabajadas.
+\end{itemize}
+
+En caso de requerirse múltiples operaciones o cambios de orientación de la pieza, deben planificarse también los métodos de realineación y fijación secundaria.
+
+Cada herramienta de corte debe montarse sobre su correspondiente portaherramientas (collet, pinza ER, mandril hidráulico, etc.), y luego en el husillo o en el almacén automático de la máquina (ATC). Es fundamental identificar correctamente cada herramienta con un número de herramienta (T) correspondiente al ID asignado en el programa CAM.
+
+A continuación, se deben \textbf{calibrar los offsets de herramienta}, es decir, registrar la longitud efectiva de cada herramienta con respecto a un punto de referencia fijo. Esta operación se puede realizar:
+
+\begin{itemize}
+	\item Manualmente, tocando con la herramienta una superficie de referencia y registrando la distancia.
+	\item Usando un \textbf{dispositivo de medición automática} (tool setter), que mide la longitud y opcionalmente el diámetro de forma automatizada.
+\end{itemize}
+
+Para que el programa de mecanizado se ejecute correctamente, es necesario alinear el sistema de coordenadas del programa con el de la máquina. Esto se logra a través de un procedimiento de \textbf{sondaje} o \textbf{referenciación}, donde se determina el \textbf{cero pieza} o \textit{workpiece zero}.
+
+Este punto de origen debe coincidir con el definido en el CAM y puede ubicarse en:
+\begin{itemize}
+	\item Una esquina del stock (común en fresado).
+	\item El centro de una cara (común en torneado).
+	\item Una superficie intermedia determinada por una sonda táctil o medidor de altura.
+\end{itemize}
+
+El cero pieza se define normalmente utilizando una sonda, un reloj comparador o métodos manuales de aproximación con herramientas de referencia (papel, bloques patrón, etc.).
+
+Una vez completado el montaje y la referenciación, se recomienda realizar una \textbf{simulación en seco} o \textit{dry run}, es decir, una ejecución del programa sin contacto con la pieza (con la herramienta elevada), para verificar:
+
+\begin{itemize}
+	\item Que no existan colisiones.
+	\item Que los desplazamientos y cambios de herramienta sean correctos.
+	\item Que el origen y los offsets estén correctamente definidos.
+\end{itemize}
+
+Esta etapa es crítica para prevenir errores que puedan dañar la pieza, la herramienta o la máquina.
+
+
+\subsection{Ejecución}
+
+Una vez que la máquina ha sido preparada, se procede a cargar el programa de mecanizado (código G) mediante la interfaz del controlador. Antes de iniciar, se verifica que los identificadores de las herramientas utilizados en el CAM correspondan con los efectivamente montados en la máquina, tanto en términos de posición como de offset. Confirmada esta correspondencia, se puede ejecutar la primera operación.
+
+El nivel de automatización de la máquina determina el grado de intervención del operador. En sistemas manuales o semiautomáticos, el operador puede estar encargado de:
+
+\begin{itemize}
+	\item Realizar el cambio de herramientas entre operaciones.
+	\item Marcar o redefinir el origen de coordenadas tras cada reconfiguración.
+	\item Reorientar la pieza de trabajo según sea necesario para acceder a otras caras.
+\end{itemize}
+
+En sistemas con cambiadores automáticos de herramientas (ATC) y sondas de palpado, estas tareas pueden realizarse sin intervención directa. Sin embargo, se debe seguir asegurando la correcta correspondencia entre el programa y los elementos montados.
+
+Durante la ejecución, la interfaz HMI permite el monitoreo de variables relevantes como:
+
+\begin{itemize}
+	\item Avance del programa (línea actual del código G).
+	\item Estados del husillo, ejes y refrigeración.
+	\item Alarmas o advertencias del sistema.
+\end{itemize}
+
+En ciertos controladores es posible modificar parámetros en tiempo real, como la velocidad de avance o la velocidad del husillo. Estas modificaciones pueden utilizarse para ajustar el comportamiento del proceso frente a condiciones no previstas o cambios en el material.
+
+En caso de detectar inconsistencias durante la ejecución, ya sea visuales, sonoras o mediante advertencias del sistema, el operador puede pausar o detener el proceso mediante los controles disponibles, según el protocolo de operación de la máquina.
+
+
+\subsection{Postprocesado}
+
+Las operaciones de \textbf{postprocesado} en una pieza mecanizada tienen como objetivo ajustar sus características finales, especialmente cuando el mecanizado principal no alcanza por sí solo los requisitos dimensionales, funcionales o estéticos especificados.
+
+Entre las tareas más comunes de postprocesado se incluyen:
+
+\begin{itemize}
+	\item \textbf{Rectificación}: proceso de remoción fina de material mediante abrasivos, utilizado para alcanzar tolerancias dimensionales estrictas, corregir deformaciones menores o mejorar la geometría final de la pieza.
+	
+	\item \textbf{Acabado superficial}: se aplican técnicas como lijado, pulido o chorro abrasivo para alcanzar el nivel de rugosidad requerido, ya sea por motivos funcionales (fricción, contacto, adherencia) o estéticos.
+	
+	\item \textbf{Suavizado de bordes}: mediante operaciones como biselado o redondeo (manual o automatizado), se eliminan aristas vivas que podrían generar problemas de ensamblaje, acumulación de tensiones o riesgo de corte.
+	
+	\item \textbf{Remoción de rebabas y \textit{tabs}}: especialmente comunes en procesos de corte 2D o en piezas fijadas mediante \textit{tabs}, estas protuberancias deben eliminarse mediante corte secundario, limado o fresado puntual, seguido de una corrección local del acabado superficial.
+	
+	\item \textbf{Limpieza}: se retiran residuos como viruta, refrigerante, polvo metálico o aceites de corte, mediante métodos mecánicos, térmicos o químicos, dependiendo del material de la pieza y los requerimientos del proceso posterior (como pintura, ensamblaje o control dimensional).
+\end{itemize}
+
+Un aspecto fundamental del postprocesado es el \textbf{control metrológico}, el cual permite verificar que la pieza final cumpla con las tolerancias y especificaciones dimensionales establecidas en el diseño. Para ello, se emplean instrumentos como calibres, micrómetros, relojes comparadores, proyectores de perfiles o sistemas de medición por coordenadas (CMM, \textit{Coordinate Measuring Machines}).
