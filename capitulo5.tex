@@ -331,8 +331,6 @@ Las herramientas pueden ser fabricadas en una sola pieza o mediante un cuerpo po
 
 La rigidez estructural y dureza de la herramienta no sólo es fundamental para mantener las condiciones ideales de corte, sino que determinan directamente la fuerza máxima de corte que puede ejercer, y luego, el MRR máximo. Una herramienta flexible o inadecuada puede inducir vibraciones, desviaciones geométricas y deterioro prematuro de la pieza y del filo (incluso fractura temprana), comprometiendo la precisión del mecanizado.
 
-En procesos que exigen alta estabilidad térmica, pueden emplearse fresas con refrigeración interna, las cuales canalizan el fluido refrigerante directamente hacia la zona de corte, mejorando la evacuación de viruta y el control de temperatura.
-
 \begin{table}[h!]
 	\centering
 	\caption{Características geométricas típicas de la herramienta en fresado a definir en el CAM.}
@@ -582,7 +580,7 @@ Una vez finalizado el mecanizado y las etapas de postprocesado, se miden los sig
 
 \subsection{Etapas de mecanizado}
 
-El proceso de mecanizado generalmente se divide en tres etapas principales que permiten optimizar la eficiencia, la precisión y la calidad superficial de la pieza fabricada: \textbf{desbaste} (\textit{roughing}), \textbf{semifinishing} y \textbf{acabado} (\textit{finishing}).
+El proceso de mecanizado generalmente se divide en tres etapas principales que permiten optimizar la eficiencia, la precisión y la calidad superficial de la pieza fabricada: \textbf{desbaste} (\textit{roughing}), \textbf{semifiacabado} (\textit{semi-finishing}) y \textbf{acabado} (\textit{finishing}).
 
 En el desbaste se realiza la remoción de grandes volúmenes de material con el objetivo de aproximar la forma final de la pieza. Las condiciones de corte son agresivas, con profundidades y avances altos, buscando maximizar la tasa de arranque de material. Debido a la alta carga sobre la herramienta y las mayores vibraciones presentes, la precisión dimensional y el acabado superficial no son prioritarios en esta fase. Se emplean herramientas robustas y estrategias que priorizan la rapidez y la eficiencia en la eliminación del material sobrante.
 
@@ -600,9 +598,9 @@ Finalmente, el \textit{stepover} o solape lateral incide directamente en la cali
  
 \subsection{Operaciones 2D}
 
-En el fresado CNC bidimensional (2D), la herramienta se desplaza principalmente en los ejes \textit{X} e \textit{Y}, con profundidades constantes en el eje \textit{Z}. Estas operaciones son las más sencillas y frecuentes en corte CNC, especialmente al momento de trabajar con planchas de material. Las más comunes son:
+En el fresado CNC bidimensional (2D), la herramienta se desplaza principalmente en los ejes \textit{X} e \textit{Y}, con profundidades constantes en el eje \textit{Z}. Estas operaciones son las más sencillas y frecuentes en corte CNC, especialmente al momento de trabajar con planchas de material. Las más comunes son (Figura \ref{2dopfig}):
 
-\begin{itemize}
+\begin{enumerate}
 	
 	\item \textbf{Contorneado (Contour):} Esta operación consiste en un movimiento de la herramienta tangencial a un contorno por el exterior o interior de una geometría, permitiendo cortar la pieza a lo largo de su perímetro. Puede realizarse a distintas profundidades por pasos sucesivos.
 	
@@ -612,17 +610,21 @@ En el fresado CNC bidimensional (2D), la herramienta se desplaza principalmente 
 	
 	\item \textbf{Taladrado (Drilling):} Consiste en crear un orificio cilíndrico en el material mediante una broca. Puede realizarse en una sola pasada o en pasos sucesivos si el orificio es profundo.
 	
-	 \item \textbf{Roscado (Tapping):} Consiste en crear una rosca interna (hilo) en un orificio para permitir la inserción de tornillos o pernos. Puede realizarse mediante machos de roscar (taps) o herramientas de roscado helicoidal, coordinando la rotación del cabezal y el paso en Z.
-	
-\end{itemize}
+\end{enumerate}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/2dop.png}
+	\caption{Operaciones 2D comunes, las trayectorias de corte aparecen en azul, mientras que los movimientos de aproximación en amarillo. Fuente: Fusion Autodesk 360.}
+	\label{2dopfig}
+\end{figure}
+
 
 \subsection{Operaciones 3D}
 
-En el fresado tridimensional, la trayectoria de la herramienta se adapta a la geometría de superficies complejas, permitiendo el mecanizado de formas libres u orgánicas. Los sistemas CAM ofrecen diversas estrategias de generación de trayectorias, que definen el patrón de desplazamiento de la herramienta sobre la pieza. La elección adecuada de la estrategia impacta directamente en la eficiencia del mecanizado, la calidad del corte y la duración de la herramienta.
+En este tipo de operaciones, la herramienta suele desplazarse en trayectorias tridimensionales que siguen el perfil de la pieza. A continuación se describen las estrategias más comunes (Figura \ref{3dopsfig}):
 
-A continuación se describen las estrategias más comunes:
-
-\begin{itemize}
+\begin{enumerate}
 	\item \textbf{Movimiento paralelo a un plano (Parallel / Raster):} La herramienta se desplaza en líneas paralelas dentro de un plano definido (usualmente XY), ajustando su posición en el eje Z según la geometría de la superficie. Es eficiente para superficies de curvatura suave y amplia.
 	
 	\item \textbf{Movimiento por niveles de altura (Z-Level / Contour):} Se generan trayectorias horizontales a diferentes alturas Z, siguiendo las secciones horizontales de la superficie. Es especialmente útil para paredes inclinadas o escalonadas.
@@ -634,7 +636,14 @@ A continuación se describen las estrategias más comunes:
 	\item \textbf{Festoneado (Scallop):} Se genera una trayectoria que mantiene constante la distancia entre pasadas a lo largo de la superficie, siguiendo su forma natural. Produce un patrón de corte más uniforme en superficies curvas, y se adapta bien a transiciones complejas.
 	
 	\item \textbf{Rampa (Ramp):} La herramienta penetra progresivamente en el material siguiendo una trayectoria inclinada, en lugar de descender verticalmente. Esta estrategia se utiliza tanto para ingresar al material como para realizar cortes continuos, minimizando esfuerzos axiales y reduciendo el riesgo de daño en herramientas frágiles.
-\end{itemize}
+\end{enumerate}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/3dops.png}
+	\caption{Operaciones 3D comunes, las trayectorias de corte aparecen en azul, mientras que los movimientos de aproximación en amarillo. Fuente: Fusion Autodesk 360.}
+	\label{3dopsfig}
+\end{figure}
 
 
 
