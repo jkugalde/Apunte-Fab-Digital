@@ -529,7 +529,7 @@ Estas propiedades influyen de forma directa sobre la selección de herramientas,
 	\item \textbf{Coeficiente de dilatación térmica:} En materiales como el aluminio 6061, con alto coeficiente de expansión térmica, pueden observarse cambios dimensionales durante el mecanizado prolongado, especialmente en piezas de gran volumen o cuando no se emplea refrigeración efectiva.
 \end{itemize}
 
-La acumulación de viruta sobre el filo de corte, también conocida como formación de borde de aportación (\textit{built-up edge}), representa una condición crítica en el fresado, especialmente en materiales dúctiles como aleaciones de aluminio o termoplásticos. Esta acumulación modifica la geometría efectiva de la herramienta, alterando el ángulo de ataque y reduciendo la capacidad de corte. Como consecuencia, se generan fuerzas de corte inestables, incremento en la generación de calor y deterioro de la calidad superficial de la pieza. Además, el desprendimiento intermitente del material adherido puede producir defectos en la superficie mecanizada y acelerar el desgaste por impacto en el filo activo. 
+La acumulación de viruta sobre el filo de corte (Figura \ref{edgefig}), también conocida como formación de borde de aportación (\textit{built-up edge}), representa una condición crítica en el fresado, especialmente en materiales dúctiles como aleaciones de aluminio o termoplásticos. Esta acumulación modifica la geometría efectiva de la herramienta, alterando el ángulo de ataque y reduciendo la capacidad de corte. Como consecuencia, se generan fuerzas de corte inestables, incremento en la generación de calor y deterioro de la calidad superficial de la pieza. Además, el desprendimiento intermitente del material adherido puede producir defectos en la superficie mecanizada y acelerar el desgaste por impacto en el filo activo. 
 
 \begin{figure}[h!]
 	\centering
@@ -538,7 +538,7 @@ La acumulación de viruta sobre el filo de corte, también conocida como formaci
 	\label{edgefig}
 \end{figure}
 
-La acumulación de viruta puede minimizarse mediante el uso de herramientas con recubrimientos de baja adhesión, control de la temperatura mediante refrigeración, y ajustes en los parámetros de corte para evitar el régimen de corte discontinuo que favorece este fenómeno.
+La acumulación de viruta puede minimizarse mediante el uso de herramientas con recubrimientos de baja adhesión, refrigeración, y ajustes en los parámetros de corte para evitar el régimen discontinuo que favorece este fenómeno.
 
 \subsection{Recomendaciones según material}
 
@@ -580,21 +580,49 @@ Una vez finalizado el mecanizado y las etapas de postprocesado, se miden los sig
 
 \subsection{Etapas de mecanizado}
 
-El proceso de mecanizado generalmente se divide en tres etapas principales que permiten optimizar la eficiencia, la precisión y la calidad superficial de la pieza fabricada: \textbf{desbaste} (\textit{roughing}), \textbf{semifiacabado} (\textit{semi-finishing}) y \textbf{acabado} (\textit{finishing}).
+El mecanizado generalmente se divide en tres etapas principales que permiten optimizar la eficiencia del proceso, la precisión y la calidad superficial de la pieza fabricada (Figura \ref{rofifig} y \ref{topofig}): \textbf{desbaste} (\textit{roughing}), \textbf{semiacabado} (\textit{semi-finishing}) y \textbf{acabado} (\textit{finishing}).
 
-En el desbaste se realiza la remoción de grandes volúmenes de material con el objetivo de aproximar la forma final de la pieza. Las condiciones de corte son agresivas, con profundidades y avances altos, buscando maximizar la tasa de arranque de material. Debido a la alta carga sobre la herramienta y las mayores vibraciones presentes, la precisión dimensional y el acabado superficial no son prioritarios en esta fase. Se emplean herramientas robustas y estrategias que priorizan la rapidez y la eficiencia en la eliminación del material sobrante.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/rofi.png}
+	\caption{Proceso de desbaste y acabado. En el desbaste se observa una herramienta gruesa aproximando la forma desde el material base. En el acabado se observa la pieza en sus últimas etapas, siendo maquinada por una herramienta pequeña. \href{https://www.boyiprototyping.com/cnc-machining-guide/roughing-vs-finishing-in-cnc-machining/}{Fuente}}
+	\label{rofifig}
+\end{figure}
 
-El semifinishing busca refinar la geometría aproximada obtenida durante el desbaste, eliminando las irregularidades y preparando la pieza para la etapa final. Los parámetros de corte se ajustan para reducir la carga sobre la herramienta y mejorar la precisión dimensional. Se disminuyen las profundidades y avances para disminuir la generación de vibraciones y mejorar la estabilidad del proceso. El acabado superficial comienza a mejorar, aunque generalmente no se alcanzan los niveles de calidad requeridos para el producto final.
+En el desbaste se realiza la remoción de grandes volúmenes de material con el objetivo de aproximar la forma final de la pieza desde el material base. Las condiciones de corte son agresivas, con profundidades y avances altos, buscando maximizar la tasa de arranque de material. Debido a la alta carga sobre la herramienta y las mayores vibraciones presentes, la precisión dimensional y el acabado superficial no son prioritarios en esta fase. Se emplean herramientas robustas y estrategias que priorizan la rapidez y la eficiencia en la eliminación del material sobrante.
 
-Finalmente, en el acabado se realizan cortes con profundidades muy pequeñas y velocidades de avance reducidas para obtener la máxima precisión dimensional y un acabado superficial óptimo. Se emplean herramientas especializadas, generalmente afiladas y geometrías que favorecen un corte limpio y sin marcas. El objetivo principal es cumplir con las tolerancias más estrictas y obtener superficies lisas que cumplan con los requerimientos funcionales y estéticos de la pieza.
+El semifinishing busca refinar la geometría aproximada obtenida durante el desbaste, eliminando las irregularidades y preparando la pieza para la etapa final, generalmente disminuyendo el diámetro de la herramienta. Los parámetros de corte se ajustan para reducir la carga sobre la herramienta y mejorar la precisión dimensional. Se disminuyen las profundidades y avances para disminuir la generación de vibraciones y mejorar la estabilidad del proceso. El acabado superficial comienza a mejorar, aunque generalmente no se alcanzan los niveles de calidad requeridos para el producto final.
+
+Finalmente, en el acabado se utilizan herramientas pequeñas, reduciendo velocidades de avance y pasos de profundidad, aumentando la precisión dimensional y el acabado superficial. El objetivo principal es cumplir con las tolerancias más estrictas y obtener superficies lisas que cumplan con los requerimientos funcionales y estéticos de la pieza.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/topo.png}
+	\caption{Fresado de topología, a la derecha se observa una etapa de mecanizado más avanzada, alcanzando mayor resolución que su símil izquierdo. \href{https://es.pinterest.com/pin/807973989371688121/}{Fuente}}
+	\label{topofig}
+\end{figure}
 
 Estas etapas definen de manera fundamental el equilibrio entre productividad y calidad en el proceso de mecanizado, determinadas directamente por parámetros como el \textit{stock to leave}, la profundidad de corte y el \textit{stepover}.
 
-El parámetro \textit{stock to leave} representa la cantidad de material residual que se deja intencionalmente sobre la geometría final. Este valor asegura un margen para las siguientes etapas de mecanizado, facilitando un acabado más preciso. Habitualmente, se procura mantener este valor bajo, con el fin de minimizar la carga de trabajo en las herramientas de acabado, que suelen ser más delicadas y costosas.
+El parámetro \textit{stock to leave} (Figura \ref{stokfig}) representa la cantidad de material residual que se deja intencionalmente sobre la geometría final, pudiendo ser radial (hacia los lados) o axial (hacia arriba). Este valor asegura un margen para las siguientes etapas de mecanizado, facilitando un acabado más preciso. Habitualmente, se procura mantener este valor bajo, con el fin de minimizar la carga de trabajo en las herramientas de acabado, que suelen ser más delicadas y costosas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/stokto.png}
+	\caption{Stock to leave o sobrematerial. A la izquierda se observa un límite del mecanizado desplazado radialmente hacia el interior de la geometría objetivo, a la derecha, hacia el exterior. Fuente: Autodesk Fusion360}
+	\label{stokfig}
+\end{figure}
 
 Por su parte, la profundidad de corte afecta directamente el tiempo total de operación, ya que determinará el número de niveles o pasadas necesarias para completar el mecanizado. Además, su influencia sobre la resolución geométrica dependerá en gran medida de la estrategia de corte empleada, pudiendo impactar en la calidad dimensional de la pieza.
 
 Finalmente, el \textit{stepover} o solape lateral incide directamente en la calidad superficial de la pieza mecanizada, al influir en la rugosidad generada. Este efecto es particularmente evidente en fresas de bola, donde un \textit{stepover} inadecuado puede dar lugar a patrones de crestas y valles, tal como se ilustra en la Figura \ref{bols}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/estepoper.png}
+	\caption{Se observa el error dimensional inducido por el tamaño del paso en vertical u horizontal al maquinar con una fresa de bola. \href{https://zero-divide.net/?article_id=4509_tips-on-surface-milling-with-ballnose-endmills}{Fuente}}
+	\label{bols}
+\end{figure}
  
 \subsection{Operaciones 2D}
 
