@@ -1,9 +1,277 @@
 \chapter{Procesos láser}
 
-\section{Conceptos básicos}
+\section{Conceptos básicos de tecnología láser}
 
-\section{Mecanismos de interacción}
+\subsection{Introducción}
 
-\section{Lásers industriales}
+Fundamentalmente, un láser es luz, es decir, un flujo de partículas denominadas \textbf{fotones}. La forma más común con la que nos relacionamos con esta radiación electromagnética es la \textbf{luz difusa}, que nos permite percibir el mundo que nos rodea.
 
-\section{Corte láser}
+Esta luz difusa se compone de múltiples ondas electromagnéticas, cada una con su propia frecuencia, amplitud y fase, resultantes de la interacción de fotones generados por alguna fuente, como el Sol, con la materia. La luz visible, es decir, la que nuestros ojos pueden detectar, se encuentra aproximadamente entre los 380 y 750 nanómetros de longitud de onda, lo que determina los colores que percibimos en los objetos.
+
+En contraste con la luz difusa, un láser presenta tres propiedades fundamentales: es \textbf{monocromático}, compuesto por ondas de una única frecuencia; \textbf{coherente}, con ondas en fase entre sí; y \textbf{direccional}, ya que se propaga predominantemente en un solo sentido y dirección. 
+
+El término \textbf{LASER} es un acrónimo del inglés \textit{Light Amplification by Stimulated Emission of Radiation}, que en español significa \textit{amplificación de luz por emisión estimulada de radiación}. Como indica el acrónimo, el principio clave detrás de un láser es la \textbf{emisión estimulada}, fenómeno predicho por Albert Einstein en 1917.
+
+De manera simplificada, la emisión estimulada ocurre cuando un fotón incide sobre un átomo o molécula que se encuentra en un estado energético excitado. Este impacto provoca que la partícula decaiga a un nivel energético inferior, emitiendo un fotón con \textbf{las mismas características} (frecuencia, fase y dirección) que el fotón incidente. La superposición de estos fotones idénticos genera \textbf{interferencia constructiva}, resultando en la amplificación de la luz, base del funcionamiento de cualquier láser.
+
+Si bien el principio de emisión estimulada fue predicho por Albert Einstein en 1917, en el contexto de sus estudios sobre la radiación del cuerpo negro y la formulación de la ley de Planck, no fue hasta 1960 cuando Theodore H. Maiman construyó el primer láser propiamente tal. Este dispositivo utilizaba un cristal de rubí (\textit{Al$_2$O$_3$:Cr$^{3+}$}) como medio activo, excitado mediante una lámpara de destello, y emitía un haz de luz roja con una longitud de onda de aproximadamente 694 nm.
+
+Al momento de su desarrollo, el láser no respondía a una necesidad tecnológica específica, por lo que fue descrito por algunos como \comillas{una solución en busca de un problema}. Sin embargo, su potencial pronto se reconoció en múltiples campos, desde las comunicaciones ópticas hasta la manufactura de alta precisión, siendo este último el campo de interés para este curso.
+
+El haz láser puede generarse y amplificarse hasta alcanzar altas densidades de energía; sin embargo, la generación constituye solo una parte del proceso. Para que esta energía se utilice de manera efectiva, es necesario guiar, enfocar y controlar la propagación de la luz, tareas propias de la \textbf{óptica}. Mediante sistemas de espejos, lentes, prismas o fibras ópticas, el haz puede dirigirse con gran precisión y concentrarse en áreas extremadamente pequeñas.
+
+De esta manera, un láser puede considerarse como una herramienta capaz de concentrar una alta densidad de energía en un punto extremadamente reducido, el cual llamaremos \textbf{spot láser}, y así, modificar materiales —ya sea mediante corte, grabado o tratamientos superficiales— a través de mecanismos predominantemente térmicos.
+
+El principio de este proceso presenta ventajas significativas, ya que posibilita trabajar una amplia variedad de materiales sin depender de su resistencia o dureza mecánica, y sin aplicar fuerzas de contacto, a diferencia de los procesos de mecanizado convencionales, como el corte por CNC. No obstante, la naturaleza térmica de la interacción puede generar efectos no deseados en el material, tales como la alteración de la microestructura, la formación de zonas afectadas por el calor o la aparición de defectos que comprometen la calidad final de la pieza.
+
+\subsection{Partes de un sistema láser}
+
+Una máquina de corte láser combina los subsistemas típicos de una máquina de control numérico (CNC) con los componentes específicos necesarios para el funcionamiento de la herramienta láser. Entre los principales se incluyen:
+
+\begin{itemize}
+	\item \textbf{Fuente láser}: conjunto de componentes encargados de transformar la energía eléctrica en radiación láser mediante los procesos de \textbf{emisión estimulada}. Existen diferentes tipos de fuentes, cada una con características particulares de potencia, longitud de onda y eficiencia.
+	
+	\item \textbf{Sistema de transmisión óptica}: conjunto de elementos que permiten guiar y enfocar el haz de fotones desde la fuente hasta la superficie de trabajo. Dependiendo del tipo de láser, esta transmisión puede realizarse mediante \textbf{espejos, lentes y/o fibras ópticas}.
+\end{itemize}
+
+La integración de estos subsistemas hace necesaria la inclusión de otros subsistemas auxiliares importantes:  
+
+\begin{itemize}
+	\item \textbf{Sistema de refrigeración:} Disipa las altas cantidades de calor generadas tanto en la fuente como en los elementos ópticos. En equipos industriales modernos, los láseres más avanzados pueden alcanzar potencias de salida superiores a \textbf{120 kW}, con eficiencias eléctricas entre \textbf{30\% y 45\%}, según la tecnología empleada. Esto refleja la gran densidad energética involucrada y la necesidad de un control térmico riguroso para mantener la estabilidad y calidad del haz.  
+	
+	\item \textbf{Sistema de ventilación y extracción de gases:} el trabajo con láser puede generar vapores y gases tóxicos o corrosivos que afectan tanto la salud humana como la maquinaria. Particularmente crítica es la protección de los elementos ópticos cercanos a la zona de trabajo, que pueden dañarse por la acumulación de partículas o condensados.
+\end{itemize}
+
+Además, las máquinas incluyen los subsistemas comunes de cualquier equipo de fabricación digital, tales como sistema de control, servomotores, transmisión, chasis y dispositivos de seguridad.  
+
+Por lo general, las máquinas de corte láser operan sobre un sistema cartesiano de movimiento en el plano XY, mediante el cual se desplaza el cabezal óptico sobre la pieza de trabajo. Esta configuración permite realizar cortes bidimensionales (2D) con gran precisión y es la más común en aplicaciones industriales de corte y grabado.  
+
+Mantener la distancia focal óptima es esencial para asegurar un proceso estable y controlado. Por ello, muchos equipos incorporan ajustes en el eje Z, ya sea mediante el movimiento de la bandeja de trabajo, el desplazamiento del cabezal o modificaciones en el sistema óptico de enfoque. Esta distancia puede regularse en tiempo real mediante distintos tipos de sensores: capacitivos, para materiales metálicos, o ópticos e infrarrojos, para materiales no metálicos.  
+
+Finalmente, las propiedades del material determinan qué \textbf{tecnología láser} resulta más adecuada. En la práctica industrial, estas se clasifican de manera coloquial como \textbf{láser de $\mathrm{CO_2}$}, utilizado principalmente para materiales no metálicos, o \textbf{láser de fibra}, orientado a metales, aunque estas denominaciones simplifican conceptos más complejos sobre la generación y transmisión del haz láser.
+
+\subsection{Generación del láser}
+
+La \textbf{fuente láser} es el subsistema encargado de generar y amplificar el haz de luz coherente que caracteriza a cualquier sistema láser. Esta fuente se compone principalmente de tres elementos fundamentales: el \textbf{medio activo}, el \textbf{mecanismo de bombeo} o excitador, y el \textbf{resonador óptico}.
+
+El \textbf{medio activo} es el material en el cual se produce la emisión estimulada, y determina las características fundamentales del láser, en particular su frecuencia o longitud de onda. Esta propiedad es esencial al seleccionar la tecnología láser adecuada para un proceso específico, ya que condiciona la absorción de energía por parte del material a trabajar.
+
+El medio activo puede encontrarse en distintos estados de la materia (sólido, líquido o gaseoso), cada uno con ventajas particulares según la aplicación. En el Cuadro \ref{tab:medios} se presenta un resumen de los medios activos más comúnmente utilizados en la industria.
+
+\begin{table}[h!]
+	\centering
+	\small
+	\caption{Medios activos más utilizados en láseres industriales}
+	\label{tab:medios}
+	\begin{tabular}{|l|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		 & \textbf{Diodo láser} & \textbf{Nd:YAG} & \textbf{Fibra Yb} & \textbf{CO$_2$} \\ \hline
+		Estado & Sólido / Semiconductor & Sólido & Sólido / Fibra & Gas \\ \hline
+		$\lambda$ ($\mu$m) & 0.4–2.0 & 1.064 & 1.03–1.08 & 10.6 \\ \hline
+		Bombeo & Eléctrico & Óptico / Eléctrico & Eléctrico / Diodo & Eléctrico (descarga) \\ \hline
+		Aplicaciones & Grabado, comunicaciones ópticas, bombeo de otros láseres & Corte y soldadura de metales, grabado industrial & Corte y soldadura de metales, alta eficiencia & Corte y grabado de materiales no metálicos \\ \hline
+	\end{tabular}
+\end{table}
+
+
+Para que el medio activo emita fotones mediante \textbf{emisión estimulada}, primero es necesario elevar los electrones de sus átomos o iones a estados energéticos superiores. Según la teoría cuántica de Planck, estos niveles de energía son discretos. En la práctica, en materiales reales los niveles no son estrictamente discretos, sino que se presentan como \textbf{bandas energéticas} que facilitan la interacción entre partículas.
+
+El proceso que suministra la energía necesaria para excitar a los electrones se denomina \textbf{mecanismo de bombeo} o excitador. Este puede ser de naturaleza óptica o eléctrica, según la fuente utilizada:
+
+\begin{itemize}
+	\item \textbf{Excitación óptica:} consiste en la inyección de luz externa, generalmente proveniente de lámparas de destello o diodos láser.
+	\item \textbf{Excitación eléctrica:} se logra mediante descargas eléctricas que transfieren energía directamente al medio activo, común en láseres de gas o de semiconductor.
+\end{itemize}
+
+El bombeo debe ser suficiente para alcanzar un fenómeno crítico denominado \textbf{inversión de población}, en el cual el número de partículas en estado excitado supera al de las partículas en estado fundamental. La inversión de población es la condición indispensable para que la emisión estimulada predomine sobre la emisión espontánea y permita la amplificación coherente de la luz.
+
+Al inicio del proceso láser, una pequeña fracción de electrones decae espontáneamente, generando los primeros fotones. Estos fotones actúan como \textbf{semillas}, estimulando a otros electrones excitados y dando lugar a un efecto en cadena que produce el haz coherente característico del láser. 
+
+No todos los electrones excitados experimentan emisión estimulada. Algunos decaen de manera espontánea hacia otros estados, incluidos estados metaestables, o liberan su energía sin generar fotones, por ejemplo, mediante la creación de fonones, que se manifiestan como calor. Estos procesos representan una fuente de pérdidas e ineficiencia en el sistema láser, ya que el aumento de temperatura reduce la proporción de decaimientos estimulados efectivos. Por esta razón, la refrigeración adecuada del medio activo y de los elementos ópticos es fundamental para mantener la eficiencia y la estabilidad del haz láser durante su operación.
+
+Dado que la probabilidad de interacción entre los fotones y los electrones es relativamente baja, se incorpora el \textbf{resonador óptico}. Este componente, conformado típicamente por espejos, refleja repetidamente el haz dentro del medio activo, incrementando la probabilidad de emisiones estimuladas y, por ende, la densidad de fotones coherentes. Uno de los espejos del resonador es parcialmente reflectante, permitiendo que parte del haz generado escape y constituya el láser útil, que posteriormente se dirige a través del sistema óptico hacia la aplicación deseada.
+
+\section{Óptica}
+
+\subsection{Interacción con la materia}
+
+Al incidir sobre un material, una onda electromagnética puede experimentar tres fenómenos principales, que dependen tanto de las propiedades de la luz como de las características del material: \textbf{absorción} (\(A\)), \textbf{reflexión} (\(R\)) y \textbf{transmisión o refracción} (\(T\)). Normalizando la energía del rayo incidente, se cumple:
+
+\begin{equation}
+	A + R + T = 1
+\end{equation}
+
+En el caso de materiales opacos, la transmisión es despreciable (\(T \approx 0\)), de modo que la energía se distribuye únicamente entre absorción y reflexión. Por lo tanto, el coeficiente de absorción \(A\) de un material se suele determinar de manera indirecta, midiendo la energía reflejada.  
+
+En las Figuras \ref{m1} y \ref{m2} se muestran los coeficientes de absorción de distintos materiales en función de la longitud de onda de varias fuentes láser. Se observa claramente la preferencia del láser de \(\mathrm{CO_2}\) para materiales inorgánicos, mientras que el láser de fibra Yb es más eficiente con metales.  
+
+Desde el punto de vista de la eficiencia, la absorción constituye un parámetro crítico en la selección de un sistema láser, ya que se busca maximizarla en la pieza de trabajo. Por el contrario, los mecanismos de transmisión óptica están diseñados para minimizar la absorción en los componentes, buscando maximizar la reflexión (en espejos) o la transmisión (en lentes y fibras ópticas).  
+
+El calor generado por la absorción en los elementos ópticos puede inducir deformaciones geométricas y cambios en la trayectoria del haz, afectando la precisión del sistema. Por ello, la refrigeración de estos componentes es fundamental. Este principio es análogo al de la óptica en grandes telescopios astronómicos, donde la estabilidad térmica de los lentes se controla estrictamente para evitar errores de medida inducidos por dilataciones térmicas.  
+
+En el caso de los láseres de \(\mathrm{CO_2}\), la transmisión del haz se realiza mediante espejos, siguiendo la ley de reflexión: el ángulo de incidencia es simétrico al ángulo de reflexión respecto a la normal del espejo. Así, la trayectoria del láser se controla modificando la orientación o posición de los espejos.  
+
+\begin{equation}
+	|\theta_{i}|=|\theta_{r}|
+\end{equation}
+
+Nótese que el valor es el mismo pero el signo debiese estrictamente ser opuesto, por el sentido en el cual se mide respecto en la vertical.
+
+Estos espejos, típicamente de cobre para el caso de \(\mathrm{CO_2}\), se desplazan junto con las estructuras montadas en los ejes CNC del cabezal de la máquina. Dado que parte de la energía se absorbe en los espejos, estos suelen incorporar mecanismos de refrigeración, como canales de agua, para mantener la estabilidad térmica y preservar la precisión del haz. El material del espejo dependerá entonces del tipo de láser a utilizar y la capacidad para refrigeración.
+
+\subsection{Lentes}
+
+Los lentes en los sistemas láser son componentes ópticos diseñados para modificar la dirección del haz de luz mediante el fenómeno de la refracción, determinado por la diferencia de índices de refracción entre medios y la geometría del lente. 
+
+Como se mencionó anteriormente, un láser genera un haz coherente con divergencia muy reducida. Sin embargo, al salir de la fuente o al emerger de una fibra óptica, el haz puede presentar cierta divergencia. Esta divergencia se corrige mediante un \textbf{lente colimador}, cuya función es transformar el haz en un conjunto de rayos prácticamente paralelos.
+
+El colimador se caracteriza principalmente por dos parámetros: su diámetro $d_{c}$ y su distancia focal $f_{col}$. Para lograr una colimación óptima, el lente debe colocarse a una distancia $f_{col}$ respecto al origen del haz, de modo que los rayos emergentes sean paralelos y mantengan la uniformidad del perfil del haz.
+
+El haz colimado se dirige posteriormente hacia el \textbf{lente de enfoque}, que determina finalmente el diámetro del spot láser sobre el material objetivo. Este lente, con diámetro $d_{f}$, hace converger los rayos paralelos hacia un punto focal a una distancia denominada \textbf{distancia focal} $f_{foc}$, concentrando así la máxima intensidad del haz en la región de trabajo y asegurando la precisión del corte o procesamiento.
+
+Un requisito fundamental en el diseño de lentes para sistemas láser es su tamaño. El diámetro efectivo del lente debe ser al menos igual o mayor que el diámetro del haz que se desea manipular; de lo contrario, parte de la energía del haz se perderá por recorte, afectando tanto la eficiencia como la uniformidad del perfil de intensidad. En este sentido, el tamaño del haz a la salida de la fuente láser constituye un factor determinante para la selección del calibre de la óptica, ya que condiciona no solo la transmisión completa de la energía, sino también la calidad del enfoque y la minimización de aberraciones ópticas.
+
+\subsection{Fibra óptica}
+
+La fibra óptica es un componente transparente y flexible que permite la transmisión de un haz láser a lo largo de trayectorias arbitrarias, actuando como una guía de luz. 
+Su principio de funcionamiento se basa en la \textbf{reflexión interna total}, que confina la luz dentro del material.
+
+El comportamiento de la luz al propagarse en distintos medios depende del \textbf{índice de refracción} \(n\), definido como
+
+\begin{equation}
+	n = \frac{c}{v}
+\end{equation}
+
+donde \(c\) es la velocidad de la luz en el vacío y \(v\) la velocidad de la luz en el medio considerado. 
+Un índice de refracción mayor indica que la luz se desvía más al pasar de un medio a otro.
+
+Para acoplar la luz al interior de la fibra, frecuentemente se utiliza una \textbf{lente de enfoque} que concentra el haz sobre la entrada. 
+La eficiencia del acoplamiento depende del ángulo de incidencia de los rayos en la fibra, de acuerdo con la \textbf{Ley de Snell}:
+
+\begin{equation}
+	n_0 \sin\theta_i = n \sin\theta_t
+\end{equation}
+
+donde \(n_0 \approx 1\) es el índice de refracción del aire, \(\theta_i\) es el ángulo de incidencia en la entrada, 
+y \(\theta_t\) el ángulo dentro de la fibra. Para que toda la luz sea transmitida, se busca minimizar la reflectancia en la entrada (\(R \approx 0\)).
+
+No toda la luz transmitida permanece guiada dentro de la fibra; solo aquellos rayos cuyo ángulo de propagación permite la \textbf{reflexión interna total} quedan confinados. 
+En un escenario ideal, si la fibra estuviera rodeada de aire, el ángulo crítico \(\theta_c\) para la reflexión interna total se definiría como:
+
+\begin{equation}
+	\theta_c = \arcsin \frac{n_{\text{aire}}}{n}
+\end{equation}
+
+Sin embargo, en la práctica, la fibra puede ensuciarse o dañarse, alterando la interfaz aire–fibra y comprometiendo la reflexión interna total. 
+Para evitar esto, el núcleo de la fibra se recubre con un material llamado \textbf{cladding}, de índice de refracción \(n_{clad} < n_{core}\), que reemplaza al aire y protege ópticamente el haz. 
+En este caso, el ángulo crítico queda determinado por la interfaz núcleo–cladding:
+
+\begin{equation}
+	\theta_c = \arcsin \frac{n_{clad}}{n_{core}}
+\end{equation}
+
+De esta manera, se define un \textbf{cono de aceptación} con semiángulo máximo \(\theta_{\text{max}}\), que determina los rayos que entran en la fibra y se mantienen guiados:
+
+\begin{equation}
+	\theta_{\text{max}} = \arcsin \sqrt{n_{core}^2 - n_{clad}^2} = \arcsin(\text{NA})
+\end{equation}
+
+donde \(\text{NA}\) es la \textbf{apertura numérica} de la fibra:
+
+\begin{equation}
+	\text{NA} = \sqrt{n_{core}^2 - n_{clad}^2}
+\end{equation}
+
+Finalmente, este conjunto de fibras concéntricas se recubre con un material denominado \textbf{buffer}, cuya función no es óptica, sino mecánica: protege la fibra, que es un material frágil y de diámetro muy pequeño. 
+Típicamente, los núcleos de la fibra tienen diámetros del orden de 50~\(\mu\)m, por lo que el buffer resulta fundamental para evitar daños durante su manejo e instalación.
+
+
+Dado que la luz puede incidir en distintos ángulos dentro de la fibra, los rayos recorren trayectorias ópticas diferentes y pueden emerger con desfase. 
+A esto se le denomina \textbf{dispersión intermodal}, relacionada con la existencia de distintos \textbf{modos de propagación} \(M\), cuyo número aproximado depende del tamaño del núcleo y la longitud de onda:
+
+\begin{equation}
+	M \approx \frac{V^2}{2}, \quad V = \frac{2\pi a}{\lambda}\,\text{NA}
+\end{equation}
+
+donde \(a = d_{core}/2\) es el radio del núcleo. Las fibras monomodo cumplen \(V < 2.405\), con núcleos típicamente entre 5 y 15~\(\mu\)m en el infrarrojo cercano. 
+Finalmente, perfiles de índice escalonado o gradual pueden diseñarse para controlar la dispersión y mantener la coherencia del haz.
+
+\section{Características de un láser}
+
+Algunos atributos del láser dependen de forma inherente de las características de la fuente de emisión, la cual puede ser modulada tanto en potencia como en frecuencia de pulsación. Por su parte, la óptica de transmisión juega un papel determinante en las propiedades finales del \textbf{spot láser}, como su tamaño, forma y divergencia.
+
+Un láser transporta la potencia suministrada por la fuente hasta la superficie del material de trabajo. 
+Considerando las pérdidas del sistema, denotaremos esta potencia como $P$. 
+
+Dicha potencia se distribuye sobre el área del \textbf{spot láser}, y este parámetro se conoce como \textbf{irradiancia} $I$, usualmente expresada en \si{\watt\per\centi\meter\squared}. 
+Se define como:
+
+\begin{equation}
+	I_{avg}=\frac{P}{A_{spot}}=\frac{4P}{d_{0}^{}\pi}
+	\label{intensi}
+\end{equation}
+
+\subsection{Distribución espacial y temporal}
+
+La sección transversal del \textbf{spot láser} generalmente no presenta una distribución de energía uniforme. 
+La forma de la distribución espacial está determinada por los modos transversales del campo electromagnético, denominados $TEM_{mn}$ (\textit{Transverse Electromagnetic Modes}), 
+donde $m$ y $n$ son los índices que definen la geometría del modo (ver Figura \ref{tems}).
+
+Los modos $TEM_{mn}$ se generan debido a las condiciones de contorno impuestas por el resonador del láser o el núcleo de la fibra, que permiten únicamente ciertas distribuciones de campo estables. El láser monomodo ($TEM_{00}$) presenta una distribución gaussiana, y produce un spot denso en el centro y altamente enfocable, mientras que un láser multimodo genera un spot más amplio y con variaciones de intensidad.
+
+Así, el láser monomodo se denomina **gaussiano**, y representa el modo fundamental TEM$_{00}$, siendo el más importante para estudiar procesos láser debido a que permite **alta precisión** en la entrega de energía. Asumiendo un spot circular, la **irradiancia** de un láser gaussiano ideal en función del radio \(r\) se expresa como:
+
+\begin{equation}
+	I(r) = I_0 \exp\Big(-\frac{r^2}{r_g^2}\Big)
+\end{equation}
+
+donde:  
+- \(r\) es la posición radial desde el centro del haz,  
+- \(I_0\) es la intensidad máxima en el centro,  
+- \(r_g\) es el **radio gaussiano**, correspondiente al parámetro matemático del modo TEM$_{00}$ ideal.  
+
+El **diámetro gaussiano** del haz se define como:
+
+\begin{equation}
+	d_{0g} = 2 r_g
+\end{equation}
+
+En la práctica, la potencia de un láser real se concentra principalmente dentro de un **spot efectivo**, definido por el radio \(r_0\) y el diámetro:
+
+\begin{equation}
+	d_0 = 2 r_0
+\end{equation}
+
+El radio efectivo \(r_0\) está relacionado con \(r_g\) mediante:
+
+\begin{equation}
+	r_0 = \sqrt{2} \, r_g
+\end{equation}
+
+Este **spot efectivo** contiene aproximadamente el **86\% de la potencia total** del haz, lo que lo convierte en un parámetro práctico para definir el área del spot y calcular la intensidad promedio.
+
+Para un láser real, que puede contener modos superiores o no ser perfectamente monomodo, se introduce el **factor de calidad del haz \(M^2\)**. Este factor ajusta el diámetro gaussiano ideal para reflejar la dispersión real del haz:
+
+\begin{equation}
+	d_{\text{real}} = M \, d_{0g} = M \, 2 r_g
+\end{equation}
+
+De esta forma, \(r_g\) y \(d_{0g}\) representan la **distribución gaussiana ideal**, mientras que \(r_0\) y \(d_0\) corresponden al **spot efectivo** que se mide en aplicaciones reales, y el factor \(M^2\) permite cuantificar la desviación de la idealidad.
+
+La **intensidad promedio** sobre el área del spot efectivo se puede definir como:
+
+\begin{equation}
+	I_\text{avg} = \frac{P}{A_\text{spot}} = \frac{P}{\pi r_0^2} \quad [\mathrm{W/cm^2}]
+\end{equation}
+
+donde \(P\) es la potencia entregada por la fuente después de las pérdidas del sistema, y \(A_\text{spot} = \pi r_0^2\) es el área del spot efectivo.
+
+
+\subsection{Geometría}
+
+\section{Interacción térmica}
+
+\subsection{Modelo simple}
+
+\subsection{Mecanismos de corte}
+
