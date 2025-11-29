@@ -8,13 +8,27 @@ Fundamentalmente, un láser es luz, es decir, un flujo de partículas denominada
 
 Esta luz difusa se compone de múltiples ondas electromagnéticas, cada una con su propia frecuencia, amplitud y fase, resultantes de la interacción de fotones generados por alguna fuente, como el Sol, con la materia. La luz visible, es decir, la que nuestros ojos pueden detectar, se encuentra aproximadamente entre los 380 y 750 nanómetros de longitud de onda, formando el espectro de colores observable.
 
-En contraste con la luz difusa, un láser presenta tres propiedades fundamentales: es \textbf{monocromático}, compuesto por ondas de una única frecuencia; \textbf{coherente}, con ondas en fase entre sí; y \textbf{direccional}, ya que se propaga predominantemente en un solo sentido y dirección. 
+En contraste con la luz difusa, un láser presenta tres propiedades fundamentales: es \textbf{monocromático}, compuesto por ondas de una única frecuencia; \textbf{coherente}, con ondas en fase entre sí; y \textbf{direccional}, ya que se propaga predominantemente en un solo sentido y dirección (Figura \ref{laigfig}). 
 
 El término \textbf{LASER} es un acrónimo del inglés \textit{Light Amplification by Stimulated Emission of Radiation}, que en español significa \textit{amplificación de luz por emisión estimulada de radiación}. Como indica el acrónimo, el principio clave detrás de un láser es la \textbf{emisión estimulada}, fenómeno predicho por Albert Einstein en 1917.
 
-De manera simplificada, la emisión estimulada ocurre cuando un fotón incide sobre un átomo o molécula que se encuentra en un estado energético excitado. Este impacto provoca que la partícula decaiga a un nivel energético inferior, emitiendo un fotón con \textbf{las mismas características} (frecuencia, fase y dirección) que el fotón incidente. La superposición de estos fotones idénticos genera \textbf{interferencia constructiva}, resultando en la amplificación de la luz, base del funcionamiento de cualquier láser.
+De manera simplificada, la emisión estimulada ocurre cuando un fotón incide sobre un átomo o molécula que se encuentra en un estado energético excitado. Este impacto provoca que la partícula decaiga a un nivel energético inferior, emitiendo un fotón con \textbf{las mismas características} (frecuencia, fase y dirección) que el fotón incidente. La superposición de estos fotones idénticos genera \textbf{interferencia constructiva}, resultando en la amplificación de la luz, base del funcionamiento de cualquier láser (Figura \ref{emisfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/laig.png}
+	\caption{Luz difusa comparada con luz láser. \href{https://triumphlaser.com/differences-ordinary-light-laser-beams/}{Fuente}}
+	\label{laigfig}
+\end{figure}
 
 Si bien el principio de emisión estimulada fue predicho por Albert Einstein en 1917, en el contexto de sus estudios sobre la radiación del cuerpo negro y la formulación de la ley de Planck, no fue hasta 1960 cuando Theodore H. Maiman construyó el primer láser propiamente tal. Este dispositivo utilizaba un cristal de rubí (\textit{Al$_2$O$_3$:Cr$^{3+}$}) como medio activo, excitado mediante una lámpara de destello, y emitía un haz de luz roja con una longitud de onda de aproximadamente 694 nm.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/emstimu.png}
+	\caption{Emisión estimulada de luz. \href{https://en.wikipedia.org/wiki/Stimulated_emission}{Fuente}}
+	\label{emisfig}
+\end{figure}
 
 Al momento de su desarrollo, el láser no respondía a una necesidad tecnológica específica, por lo que fue descrito por algunos como \comillas{una solución en busca de un problema}. Sin embargo, su potencial pronto se reconoció en múltiples campos, desde las comunicaciones ópticas hasta la manufactura de alta precisión.
 
@@ -26,7 +40,17 @@ El principio de este proceso presenta ventajas significativas, ya que posibilita
 
 \subsection{Partes de un sistema láser}
 
-Una máquina de corte láser combina los subsistemas típicos de una máquina de control numérico (CNC) con los componentes específicos necesarios para el funcionamiento de la herramienta láser. Entre los principales se incluyen:
+Una máquina de corte láser combina los subsistemas típicos de una máquina de control numérico (CNC) con los componentes específicos necesarios para el funcionamiento de la herramienta láser (Figura \ref{lasisfig}). 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/lasis.png}
+	\caption{Diagrama general de un sistema láser.}
+	\label{lasisfig}
+\end{figure}
+
+
+Entre los principales se incluyen:
 
 \begin{itemize}
 	\item \textbf{Fuente láser}: conjunto de componentes encargados de transformar la energía eléctrica en radiación láser mediante los procesos de \textbf{emisión estimulada}. Existen diferentes tipos de fuentes, cada una con características particulares de potencia, longitud de onda y eficiencia.
@@ -44,7 +68,7 @@ La integración de estos subsistemas hace necesaria la inclusión de otros subsi
 
 Además, las máquinas incluyen los subsistemas comunes de cualquier equipo de fabricación digital, tales como controlador, servomotores, transmisión, chasis y dispositivos de seguridad.  
 
-Por lo general, las máquinas de corte láser operan sobre un sistema cartesiano de movimiento en el plano XY, mediante el cual se desplaza el cabezal óptico sobre la pieza de trabajo. Esta configuración permite realizar cortes bidimensionales (2D) con gran precisión y es la más común en aplicaciones industriales de corte y grabado.  
+Por lo general, las máquinas de corte láser operan sobre un sistema cartesiano de movimiento en el plano XY, mediante el cual se desplaza el cabezal óptico sobre la pieza de trabajo. Esta configuración permite realizar cortes bidimensionales y es la más común en aplicaciones industriales de corte y grabado.  
 
 Mantener la distancia focal óptima es esencial para asegurar un proceso estable y controlado. Por ello, muchos equipos incorporan ajustes en el eje Z, ya sea mediante el movimiento de la bandeja de trabajo, el desplazamiento del cabezal o modificaciones en el sistema óptico de enfoque. Esta distancia puede regularse en tiempo real mediante distintos tipos de sensores: capacitivos, para materiales metálicos, u ópticos e infrarrojos, para materiales no metálicos.  
 
@@ -54,7 +78,15 @@ Finalmente, las propiedades del material determinan qué \textbf{tecnología lá
 
 La \textbf{fuente láser} es el subsistema encargado de generar y amplificar el haz de luz coherente que caracteriza a cualquier sistema láser. Esta fuente se compone principalmente de tres elementos fundamentales: el \textbf{medio activo}, el \textbf{mecanismo de bombeo} o excitador, y el \textbf{resonador óptico}.
 
-El \textbf{medio activo} es el material en el cual se produce la emisión estimulada, y determina las características fundamentales del láser, en particular su frecuencia o longitud de onda. Esta propiedad es esencial al seleccionar la tecnología láser adecuada para un proceso específico, ya que condiciona la absorción de energía por parte del material a trabajar.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/laspart.png}
+	\caption{Partes de una fuente láser. \href{https://www.researchgate.net/publication/281235580_Laser_Physics}{Fuente}}
+	\label{laspartfig}
+\end{figure}
+
+
+El \textbf{medio activo} es el material en el cual se produce la emisión estimulada, y determina las características fundamentales del láser, en particular su frecuencia o longitud de onda. Esta propiedad es esencial al seleccionar la tecnología láser adecuada para un proceso específico, pues la interacción con el material objetivo depende de la frecuencia.
 
 El medio activo puede encontrarse en distintos estados de la materia (sólido, líquido o gaseoso), cada uno con ventajas particulares según la aplicación. En el Cuadro \ref{tab:medios} se presenta un resumen de los medios activos más comúnmente utilizados en la industria.
 
@@ -65,7 +97,7 @@ El medio activo puede encontrarse en distintos estados de la materia (sólido, l
 	\label{tab:medios}
 	\begin{tabular}{|l|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
 		\hline
-		 & \textbf{Diodo láser} & \textbf{Nd:YAG} & \textbf{Fibra Yb} & \textbf{CO$_2$} \\ \hline
+		& \textbf{Diodo láser} & \textbf{Nd:YAG} & \textbf{Fibra Yb} & \textbf{CO$_2$} \\ \hline
 		Estado & Sólido / Semiconductor & Sólido & Sólido / Fibra & Gas \\ \hline
 		$\lambda$ ($\mu$m) & 0.4–2.0 & 1.064 & 1.03–1.08 & 10.6 \\ \hline
 		Bombeo & Eléctrico & Óptico / Eléctrico & Eléctrico / Diodo & Eléctrico (descarga) \\ \hline
@@ -83,7 +115,15 @@ El proceso que suministra la energía necesaria para excitar a los electrones se
 	\item \textbf{Excitación eléctrica:} se logra mediante descargas eléctricas que transfieren energía directamente al medio activo, común en láseres de gas o de semiconductor.
 \end{itemize}
 
-El bombeo debe ser suficiente para alcanzar un fenómeno crítico denominado \textbf{inversión de población}, en el cual el número de partículas en estado excitado supera al de las partículas en estado fundamental. La inversión de población es la condición indispensable para que la emisión estimulada predomine sobre la emisión espontánea y permita la amplificación coherente de la luz.
+El bombeo debe ser suficiente para alcanzar un fenómeno crítico denominado \textbf{inversión de población}, en el cual el número de partículas en estado excitado supera al de las partículas en estado fundamental (Figura \ref{invpopfig}). La inversión de población es la condición indispensable para que la emisión estimulada predomine sobre la emisión espontánea y permita la amplificación coherente de la luz.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/invpop.png}
+	\caption{Inversión de población hacia estado estimulado. \href{https://www.youtube.com/watch?v=Gw0fvPeVh9s}{Fuente}}
+	\label{invpopfig}
+\end{figure}
 
 Al inicio del proceso láser, una pequeña fracción de electrones decae espontáneamente, generando los primeros fotones. Estos fotones actúan como \textbf{semillas}, estimulando a otros electrones excitados y dando lugar a un efecto en cadena que produce el haz coherente característico del láser. 
 
@@ -95,13 +135,22 @@ Dado que la probabilidad de interacción entre los fotones y los electrones es r
 
 \subsection{Interacción con la materia}
 
-Al incidir sobre un material, una onda electromagnética puede experimentar tres fenómenos principales, que dependen tanto de las propiedades de la luz como de las características del material: \textbf{absorción} (\(A\)), \textbf{reflexión} (\(R\)) y \textbf{transmisión o refracción} (\(T\)). Normalizando la energía del rayo incidente, se cumple:
+Al incidir sobre un material, una onda electromagnética puede experimentar tres fenómenos principales, que dependen tanto de las propiedades de la luz como de las características del material: \textbf{absorción} (\(A\)), \textbf{reflexión} (\(R\)) y \textbf{transmisión o refracción} (\(T\)) (Figura \ref{reflepfig}). Normalizando la energía del rayo incidente como el total, se cumple:
 
 \begin{equation}
 	A + R + T = 1
 \end{equation}
 
-En el caso de materiales opacos, la transmisión es despreciable (\(T \approx 0\)), de modo que la energía se distribuye únicamente entre absorción y reflexión. Por lo tanto, el coeficiente de absorción \(A\) de un material se suele determinar de manera indirecta, midiendo la energía reflejada.  
+La distribución de estos valores dependerá en gran parte de la frecuencia de la onda y de las propiedades del material. Así, si un material no transmite la radiación incidente, se dirá que es \textbf{opaco} a esa longitud. Mientras que si transmite la mayor parte, se llamará \textbf{transparente} a esa longitud.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/reflep.png}
+	\caption{Diagrama de interacción de la radiación con materia semitransparente.}
+	\label{reflepfig}
+\end{figure}
+
+En el caso de materiales opacos, como la transmisión es despreciable (\(T \approx 0\)), la energía se distribuye únicamente entre absorción y reflexión. Por lo tanto, el coeficiente de absorción \(A\) de un material se suele determinar de manera indirecta, midiendo la energía reflejada.  
 
 En las Figuras \ref{m1} y \ref{m2} se muestran los coeficientes de absorción de distintos materiales en función de la longitud de onda de varias fuentes láser. Se observa claramente la preferencia del láser de \(\mathrm{CO_2}\) para materiales inorgánicos, mientras que el láser de fibra Yb es más eficiente con metales.  
 
@@ -199,7 +248,7 @@ De manera simétrica, esto definirá entonces el ángulo máximo para los rayos 
 Como la luz puede propagarse en distintos ángulos dentro del núcleo, los rayos recorren trayectorias ópticas distintas y pueden emerger con desfase. Este fenómeno se denomina \textbf{dispersión intermodal} y está asociado a la existencia de múltiples \textbf{modos de propagación} $M$, cuyo número depende del tamaño del núcleo y de la longitud de onda. Para mitigar este efecto, las fibras pueden presentar un índice escalonado o gradiente, como se ilustra en la Figura \ref{fig:modosm}.
 
 Cabe notar que a pesar del diseño óptico de la fibra, no toda la energía se transporta, pues una pequeña parte de esta se absorbe, luego cada fibra presentará una pérdida relacionada a su longitud, con unidades típicamente de $dB/km$.
- 
+
 \section{Características de un láser}
 
 Algunos atributos del láser dependen de forma inherente de las características de la fuente de emisión. Por su parte, la óptica de transmisión juega un papel determinante en las propiedades finales del spot láser, como su tamaño, forma y divergencia.
@@ -267,8 +316,8 @@ Otra forma de caracterizar la calidad de un láser es a través del \textit{beam
 
 \begin{equation}
 	BPP=\theta w_{0g}=M^{2}\frac{\lambda}{\pi}
-	\end{equation}
-	
+\end{equation}
+
 Esta divergencia debe ser tratada para la manipulación posterior del láser, para esto, usamos un lente colimador, el cual debe cumplir con la relación para evitar clipping (asumiendo la distribución gaussiana):
 
 \begin{equation}
@@ -391,12 +440,12 @@ Por ello, utilizamos la \textbf{fluencia} del sistema para compararla con los um
 
 \begin{table}[h!]
 	\centering
-	\caption{Rangos típicos de fluencia en $\si{\J\per\centi\meter\squared}$ para mecanismos de acción en acero al carbono (A36–1020).}
+	\caption{Rangos típicos de fluencia en $\si{\J\per\centi\meter\squared}$ para mecanismos de acción predominante en acero al carbono (A36–1020).}
 	\label{fluencias}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\textbf{Calentamiento} &
-		\textbf{Microestructura} &
+		\textbf{Cambio de microestructura} &
 		\textbf{Fusión} &
 		\textbf{Vaporización} &
 		\textbf{Ablación} \\
@@ -410,5 +459,94 @@ Por ello, utilizamos la \textbf{fluencia} del sistema para compararla con los um
 	\end{tabular}
 \end{table}
 
-\subsection{Corte láser}
+El tipo de mecanismo para definir el setup depende del proceso que se desee realizar. Por ejemplo, en soldadura se busca fundir el material sin removerlo, mientras que un corte limpio se obtiene en el régimen de vaporización, y aún más, mediante \textbf{ablación}.
+
+La ablación es un mecanismo en el cual la energía incidente sobre el material es lo suficientemente intensa como para romper los enlaces interatómicos sin que se produzca una difusión significativa del calor. Esto permite un maquinado muy preciso, de alta calidad y con una zona afectada por el calor (HAZ) mínima. Este tipo de mecanismo es característico de los sistemas láser pulsados.
+
+\subsection{Modelos térmicos}
+
+Hasta ahora, hemos mencionado parámetros de interacción y propios de la máquina para caracterizar al láser, los cuales corresponden a la herramienta de este proceso. A diferencia de otras tecnologías abordadas en este texto, no es directo definir el ancho y la profundidad de corte que se obtienen con el láser.
+
+Como se sabe, el láser entrega energía al material, elevando su temperatura y, eventualmente, generando algún cambio deseado, ya sea fusión, vaporización o ablación. Por lo tanto, se requiere un modelo térmico que permita estimar el campo de temperaturas para cuantificar y precisar los efectos de los parámetros configurados.
+
+Los modelos de transferencia de calor para este tipo de procesos suelen ser multivariables, iterativos y con altos tiempos de cómputo. No obstante, existen modelos simplificados que permiten aproximar de manera efectiva ciertos tipos de interacción.
+
+Uno de los más utilizados es el \textbf{modelo conductivo}, basado en la Ley de Fourier y una serie de supuestos sobre el comportamiento del material y la distribución de energía del láser. En este modelo, la distribución espacial del láser se representa mediante la función $\mathrm{ierfc}$, la integral del error complementario:
+
+\begin{equation}
+	T(x,y,z,t) = T_0 + \frac{I}{k \sqrt{\pi \alpha t}} \, 
+	\mathrm{ierfc}\left(\frac{\sqrt{x^2 + y^2 + (c_z z)^2}}{2\sqrt{\alpha t}}\right),
+\end{equation}
+
+donde $T(x,y,z,t)$ es la temperatura en la posición $(x,y,z)$ y tiempo $t$, $T_0$ la temperatura inicial del material, $I$ la irradiancia del láser, $k$ la conductividad térmica, $\alpha$ la difusividad térmica y $c_z$ un factor de corrección en la dirección $z$. Esta formulación permite obtener un perfil tridimensional aproximado de temperatura bajo ciertas condiciones de conducción térmica dominante.
+
+A través de este modelo, podemos hacer comparaciones como la que se observa en la Figura \ref{profundi}
+
+Una adaptación de este enfoque es el \textbf{modelo de Rosenthal}, que estima la geometría del área afectada por un láser mediante un modelo de conducción semi-estacionario:
+
+\begin{equation}
+	\begin{aligned}
+		T(x, y, z) =& T_0 + \frac{P}{2 \pi k R} \exp\left(-\frac{v (x + R)}{2 \alpha}\right), \\[0.5em]
+		R =& \sqrt{x^2 + y^2 + (c_z z)^2},
+	\end{aligned}
+\end{equation}
+
+donde $T_0$ es la temperatura inicial, $P$ la potencia del láser, $k$ la conductividad térmica del material, $v$ la velocidad de desplazamiento del láser en dirección $x$ y $\alpha$ la difusividad térmica del material. La variable $R$ representa la distancia efectiva desde el punto de aplicación de energía y $c_z$ ajusta la propagación en profundidad. Este modelo no requiere iteración: propaga la ecuación de calor directamente en el dominio espacial y temporal.
+
+El resultado son campos de temperatura, como se observa en la Figura \ref{rosen}. A través de las curvas de nivel, es posible estimar el ancho del corte, así como la profundidad, tras calibrar el modelo con datos experimentales.
+
+Estos modelos simplificados proporcionan una aproximación o metodología para abordar nuevas condiciones de trabajo. No obstante, en la práctica, las empresas suelen generar sus propios datos basándose en experiencia y establecen configuraciones estándar para cada proceso.
+
+Actualmente, las nuevas máquinas láser incluyen \textbf{settings precalibrados} para una biblioteca de materiales y espesores, sobre los cuales el usuario puede realizar ajustes adicionales. Esto refleja que predecir de manera exacta la acción del corte con láser sigue siendo una tarea compleja y dependiente de múltiples variables.
+
+
+\subsection{Procesos de corte láser}
+
+En la industria, los procesos de remoción láser más comunes utilizan las siguientes operaciones básicas:
+
+\begin{itemize}
+	\item \textbf{Contorneado:} El láser sigue $n$ pasadas sobre el contorno de una geometría para separarla del material base. Esta operación puede incluir \emph{tabs}, al igual que ocurre en el contorneado con fresado.
+	\item \textbf{Grabado de contorno:} Similar al contorneado, pero con menor profundidad, destinado a generar una diferencia visual o marca superficial sin atravesar completamente el material.
+	\item \textbf{Grabado de área:} En este caso, también de baja profundidad, se define un patrón de rasterizado que cubre toda el área objetivo. Este patrón puede ser preconfigurado o vectorizado de manera personalizada, controlando el \emph{overlap} entre pasadas y la dirección de barrido.
+\end{itemize}
+
+Por lo general, las máquinas láser de escritorio presentan limitaciones en la configuración de parámetros. Típicamente, es posible modular la potencia $P$, la velocidad de avance $v$ y el número de pasadas $n$. El material se suele enfocar previamente a la ejecución del corte, y únicamente los modelos de mayor costo permiten un ajuste automático de la distancia focal durante la operación.
+
+Un modelo sencillo para estimar los parámetros de corte se basa en la \textbf{capacidad térmica} del material:
+
+\begin{equation}
+	P = w \, h \, v \, \rho \left[ c_{p}(T_{m}-T_{0}) + L_{m} + m' L_{v} \right],
+\end{equation}
+
+donde:  
+\begin{itemize}
+	\item $w$ es el ancho de corte, que puede aproximarse mediante el diámetro del haz $d_s$.
+	\item $h$ es la profundidad de corte.
+	\item $\rho$ es la densidad del material.
+	\item $c_p$ es la capacidad calorífica.
+	\item $T_m$ y $T_0$ son la temperatura de fusión y la temperatura inicial, respectivamente.
+	\item $L_m$ y $L_v$ son las entalpías de fusión y vaporización.
+	\item $m'$ representa la fracción de material que se evapora.
+\end{itemize}
+
+De esta manera, dado un \emph{setup} fijo, es posible determinar las velocidades admisibles para la operación deseada, como se observa en la Figura \ref{metalscort}.
+
+
+
+
+\subsection{Sistemas de corte láser}
+
+Respecto a los métodos de corte láser, los sistemas pueden clasificarse en dos tipos según la proximidad del cabezal con el material: \textbf{de proximidad} y \textbf{remotos}. Esta distinción influye directamente en la calidad del corte, la velocidad de operación y la elección del gas de asistencia.
+
+En los sistemas de \textbf{proximidad}, el cabezal mantiene una distancia \textbf{stand-off} de algunos milímetros respecto al material. Desde este cabezal se inyectan gases de asistencia, que pueden ser \textbf{inertes} o \textbf{reactivos}.  
+
+Los gases \textbf{inertes} cumplen varias funciones: evacuar el material fundido y vaporizado, prevenir la oxidación en metales y proteger la óptica del sistema. Su uso permite obtener un acabado superficial más limpio y una zona afectada por calor (\textbf{HAZ}) mínima.  
+
+Por otro lado, los gases \textbf{reactivos}, como el oxígeno, inducen oxidación en el material, generando una reacción exotérmica que incrementa la energía disponible para el corte. En este caso, el láser solo debe suministrar periódicamente la energía de activación necesaria para mantener la reacción. Como se observa en la Figura \ref{react}, el uso de un gas reactivo puede aumentar la velocidad de corte, aunque la terminación superficial suele ser menos uniforme y el \textbf{HAZ} más amplio que en el caso de gases inertes.
+
+La terminación de un corte por contorno generalmente presenta un estriado, así como una fracción de material fundido que puede escurrir hacia el borde inferior de la sección (Figura \ref{corte}), facilitada por los gases de evacuación. Tanto el inicio como el final del corte suelen mostrar una acumulación triangular de material donde la penetración es incompleta respecto al resto del perímetro. Esto ocurre porque, en estas zonas, la velocidad del cabezal cambia y el campo de temperaturas es relativamente más bajo. Estas irregularidades se corrigen mediante estrategias específicas, como pasadas adicionales, variación de la potencia del láser o el uso de \emph{tabs} temporales.
+
+En los sistemas \textbf{remotos}, el láser se propaga a través de espejos y el cabezal se mantiene a mayor distancia del material, sin necesidad de gases de asistencia, aunque pueden tener esa opción. Esta configuración reduce la inercia del cabezal, lo que permite alcanzar mayores velocidades de desplazamiento y ofrece mayor seguridad, al mantener el cabezal alejado de la zona de corte.  
+
+Los sistemas remotos requieren un enfoque óptico más preciso, ya sea mediante una distancia focal elevada o una divergencia pequeña del haz. Por lo general, se aplican en procesos de alta velocidad sobre materiales planos o en geometrías extensas, donde la precisión de posicionamiento es crítica y la interacción con gases de asistencia no es necesaria. Además, permiten cortes rápidos con menor desgaste mecánico del cabezal, aunque la densidad de energía del haz debe controlarse cuidadosamente para garantizar la penetración adecuada.
 
