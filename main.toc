@@ -69,21 +69,21 @@
 \contentsline {chapter}{\numberline {5}Procesos láser}{126}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Conceptos básicos de tecnología láser}{126}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Introducción}{126}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Partes de un sistema láser}{128}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Partes de un de corte sistema láser}{128}{subsection.5.1.2}%
 \contentsline {subsection}{\numberline {5.1.3}Generación del láser}{129}{subsection.5.1.3}%
 \contentsline {section}{\numberline {5.2}Óptica}{132}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Interacción con la materia}{132}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Lentes}{133}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Fibra óptica}{134}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Características de un láser}{136}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Distribución espacial}{136}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Distribución temporal}{139}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Interacción láser}{140}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Mecanismos de acción}{140}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Modelos térmicos}{141}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Procesos de corte láser}{143}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Sistemas de corte láser}{144}{subsection.5.4.4}%
-\contentsline {chapter}{\numberline {6}Procesos no convencionales}{145}{chapter.6}%
-\contentsline {section}{\numberline {6.1}EDM}{145}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Waterjet}{145}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Corte por plasma}{145}{section.6.3}%
+\contentsline {subsection}{\numberline {5.2.2}Lentes}{134}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Fibra óptica}{135}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Características de un láser}{137}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Distribución espacial}{138}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Distribución temporal}{141}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Interacción láser}{142}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Mecanismos de acción}{142}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Modelos térmicos}{143}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Procesos de corte láser}{144}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Sistemas de corte láser}{145}{subsection.5.4.4}%
+\contentsline {chapter}{\numberline {6}Procesos no convencionales}{147}{chapter.6}%
+\contentsline {section}{\numberline {6.1}EDM}{147}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Waterjet}{147}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Corte por plasma}{147}{section.6.3}%

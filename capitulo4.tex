@@ -38,7 +38,7 @@ De esta manera, un láser puede considerarse como una herramienta capaz de conce
 
 El principio de este proceso presenta ventajas significativas, ya que posibilita trabajar una amplia variedad de materiales sin depender de su resistencia o dureza mecánica, y sin aplicar fuerzas de contacto, a diferencia de los procesos de mecanizado convencionales, como el corte por CNC. No obstante, la naturaleza térmica de la interacción puede generar efectos no deseados en el material, tales como la alteración de la microestructura, la formación de zonas afectadas por el calor o la aparición de defectos que comprometen la calidad final de la pieza.
 
-\subsection{Partes de un sistema láser}
+\subsection{Partes de un de corte sistema láser}
 
 Una máquina de corte láser combina los subsistemas típicos de una máquina de control numérico (CNC) con los componentes específicos necesarios para el funcionamiento de la herramienta láser (Figura \ref{lasisfig}). 
 
@@ -152,9 +152,25 @@ La distribución de estos valores dependerá en gran parte de la frecuencia de l
 
 En el caso de materiales opacos, como la transmisión es despreciable (\(T \approx 0\)), la energía se distribuye únicamente entre absorción y reflexión. Por lo tanto, el coeficiente de absorción \(A\) de un material se suele determinar de manera indirecta, midiendo la energía reflejada.  
 
-En las Figuras \ref{m1} y \ref{m2} se muestran los coeficientes de absorción de distintos materiales en función de la longitud de onda de varias fuentes láser. Se observa claramente la preferencia del láser de \(\mathrm{CO_2}\) para materiales inorgánicos, mientras que el láser de fibra Yb es más eficiente con metales.  
+En la Figura \ref{absfig} se muestran los coeficientes de absorción de distintos materiales en función de la longitud de onda de varias fuentes láser. Se observa claramente la preferencia del láser de \(\mathrm{CO_2}\) para materiales inorgánicos, mientras que el láser de fibra Yb es más eficiente con metales. 
+
+Como se muestra en la Figura \ref{hotafig}, el coeficiente de absorción puede aumentar radicalmente con el cambio de fase de un material. Esto se explica por el reordenamiento en la estructura molecular, y por tanto, de la configuración electrónica, creando nuevos niveles de energía y permitiendo absorber fotones que antes eran incompatibles.
 
 Desde el punto de vista de la eficiencia, la absorción constituye un parámetro crítico en la selección de un sistema láser, ya que se busca maximizarla en la pieza de trabajo. Por el contrario, los mecanismos de transmisión óptica están diseñados para minimizar la absorción en los componentes, buscando maximizar la reflexión (en espejos) o la transmisión y luego reflexión (en lentes y fibras ópticas).  
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imgs/abs.png}
+	\caption{Coeficientes de absorción para diferentes familias de materiales.}
+	\label{absfig}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\linewidth]{imgs/hota.png}
+	\caption{Cambio en el coeficiente de absorción con el aumento de temperatura en un metal.}
+	\label{hotafig}
+\end{figure}
 
 El calor generado por la absorción en los elementos ópticos puede inducir deformaciones geométricas y cambios en la trayectoria del haz, afectando la precisión del sistema, por lo que nuevamente reconocemos la importancia de la refrigeración. Este principio es análogo al de la óptica en grandes telescopios astronómicos, donde la estabilidad térmica de los lentes se controla estrictamente para evitar errores de medida inducidos por dilataciones térmicas.  
 
@@ -174,7 +190,14 @@ Los lentes en los sistemas láser son componentes ópticos diseñados para modif
 
 Como se mencionó anteriormente, un láser genera un haz coherente con divergencia muy reducida. Sin embargo, al salir de la fuente o al emerger de una fibra óptica, el haz puede presentar cierta divergencia. Esta divergencia se corrige mediante un \textbf{lente colimador}, cuya función es transformar el haz en un conjunto de rayos prácticamente paralelos.
 
-El colimador se caracteriza principalmente por dos parámetros: su diámetro $d_{c}$ y su distancia focal $f_{col}$. Para lograr una colimación óptima, el lente debe colocarse a una distancia $f_{col}$ respecto al origen del haz, de modo que los rayos emergentes sean paralelos y mantengan la uniformidad del perfil.
+El colimador se caracteriza principalmente por dos parámetros: su diámetro $d_{c}$ y su distancia focal $f_{col}$. Para lograr una colimación óptima, el lente debe colocarse a una distancia $f_{col}$ respecto al origen del haz, de modo que los rayos emergentes sean paralelos y mantengan la uniformidad del perfil (Figura \ref{lensesfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/lenses.png}
+	\caption{Lente colimador y lente de enfoque.}
+	\label{lensesfig}
+\end{figure}
 
 El haz colimado se dirige posteriormente hacia el \textbf{lente de enfoque}, que determina finalmente el diámetro del spot láser sobre el material objetivo. Este lente, con diámetro $d_{f}$, hace converger los rayos paralelos hacia un punto focal a una distancia denominada \textbf{distancia focal} $f_{foc}$, concentrando así la máxima intensidad del haz en la región de trabajo y asegurando la precisión del corte o procesamiento.
 
@@ -197,7 +220,7 @@ Para ángulos pequeños, como suele ser el caso en lásers, se puede aproximar l
 
 La fibra óptica es un componente transparente y flexible que permite la transmisión de un haz de luz a lo largo de trayectorias arbitrarias, actuando como una guía óptica. Su principio de funcionamiento se basa en la \textbf{reflexión total interna}, que confina la luz dentro de la fibra.
 
-Para comprender la transmisión en la fibra óptica, introducimos la \textbf{Ley de Snell} (Figura \ref{fig:snell}):
+Para comprender la transmisión en la fibra óptica, introducimos la \textbf{Ley de Snell} (Figura \ref{snelsfig}):
 
 \begin{equation}
 	n_i \sin\theta_i = n_t \sin\theta_t 
@@ -214,6 +237,13 @@ siendo $c$ la velocidad de la luz en el vacío y $v$ la velocidad de la luz en e
 \begin{equation}
 	\sin\theta_1 = \frac{\sin\theta_0}{n_1} 
 \end{equation}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.55\linewidth]{imgs/snels.png}
+	\caption{Ley de Snell.}
+	\label{snelsfig}
+\end{figure}
 
 Una vez que el rayo ha ingresado a la fibra, este puede refractarse hacia el medio externo al llegar a la pared interna. Para impedir que escape, se requiere que la luz incidente sobre esa interfaz se refracte paralelo a la fibra. Así, el \textbf{ángulo crítico} $\theta_c$ del rayo moviéndose hacia la pared se obtiene imponiendo que el ángulo transmitido sea $\pi/2$:
 
