@@ -245,13 +245,13 @@ siendo $c$ la velocidad de la luz en el vacío y $v$ la velocidad de la luz en e
 	\label{snelsfig}
 \end{figure}
 
-Una vez que el rayo ha ingresado a la fibra, este puede refractarse hacia el medio externo al llegar a la pared interna. Para impedir que escape, se requiere que la luz incidente sobre esa interfaz se refracte paralelo a la fibra. Así, el \textbf{ángulo crítico} $\theta_c$ del rayo moviéndose hacia la pared se obtiene imponiendo que el ángulo transmitido sea $\pi/2$:
+Una vez que el rayo ha ingresado a la fibra, este puede refractarse hacia el medio externo al llegar a la pared interna. Para impedir que escape, se requiere que la luz incidente sobre esa interfaz se refracte paralelo a la fibra. Así, el \textbf{ángulo crítico} $\theta_c$ del rayo moviéndose hacia la pared se obtiene imponiendo que el ángulo transmitido sea $\pi/2$ (Figura \ref{tirfig}):
 
 \begin{equation}
-	n_1 \sin\theta_c = n_2 \sin\theta_{\frac{\pi}{2}}
+	n_1 \sin\theta_c = n_2 \sin{\frac{\pi}{2}}
 \end{equation}
 
-de donde se obtiene:
+De donde se obtiene:
 
 \begin{equation}
 	\sin\theta_c = \frac{n_2}{n_1} 
@@ -259,7 +259,22 @@ de donde se obtiene:
 
 Para asegurar esta condición, la fibra se recubre con un material concéntrico de índice ligeramente menor, denominado \textit{cladding} o \textbf{revestimiento}. Sobre el revestimiento se coloca una tercera capa de protección mecánica denominada \textit{buffer}. La parte de la fibra responsable del guiado óptico es entonces el \textbf{núcleo}.
 
-A partir de la geometría de acoplamiento, se observa que la luz externa puede ingresar a la fibra solo si su ángulo de incidencia $\theta_0$ se encuentra dentro de un rango permitido, pues tiene relación con el $\theta_{c}$ que a su vez depende de los materiales de la fibra. Esto define el \textbf{cono de aceptación}, caracterizado por un semiángulo máximo $\theta_{\text{max}}$. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/tir.png}
+	\caption{Caso general y caso de ángulo crítico para reflexión total interna.}
+	\label{tirfig}
+\end{figure}
+
+A partir de la geometría de acoplamiento, se observa que la luz externa puede ingresar a la fibra solo si su ángulo de incidencia $\theta_0$ se encuentra dentro de un rango permitido, pues tiene relación con el $\theta_{c}$ que a su vez depende de los materiales de la fibra. Esto define el \textbf{cono de aceptación}, caracterizado por un semiángulo máximo $\theta_{\text{max}}$ (Figura \ref{fibropfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/fibrop.png}
+	\caption{Estructura de la fibra óptica y cono de aceptación. }
+	\label{fibropfig}
+\end{figure}
+
 
 Una forma conveniente de calcular este límite es mediante la \textbf{apertura numérica} (NA), definida como:
 
@@ -275,7 +290,15 @@ de modo que:
 
 De manera simétrica, esto definirá entonces el ángulo máximo para los rayos en la salida de la fibra.
 
-Como la luz puede propagarse en distintos ángulos dentro del núcleo, los rayos recorren trayectorias ópticas distintas y pueden emerger con desfase. Este fenómeno se denomina \textbf{dispersión intermodal} y está asociado a la existencia de múltiples \textbf{modos de propagación} $M$, cuyo número depende del tamaño del núcleo y de la longitud de onda. Para mitigar este efecto, las fibras pueden presentar un índice escalonado o gradiente, como se ilustra en la Figura \ref{fig:modosm}.
+Como la luz puede propagarse en distintos ángulos dentro del núcleo, los rayos recorren trayectorias ópticas distintas y pueden emerger con desfase. Este fenómeno se denomina \textbf{dispersión intermodal} y está asociado a la existencia de múltiples \textbf{modos de propagación} $M$, cuyo número depende del tamaño del núcleo y de la longitud de onda. Para mitigar este efecto, las fibras pueden presentar un índice escalonado o gradiente, como se ilustra en la Figura \ref{fig:modosm}. Esto se obtiene a través de un control de dopaje en la fabricación del núcleo.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/mods.png}
+	\caption{Perfiles de índice de refracción. \href{https://www.thefoa.org/tech/ref/basic/fiber.html}{Fuente}}
+	\label{fig:modosm}
+\end{figure}
+
 
 Cabe notar que a pesar del diseño óptico de la fibra, no toda la energía se transporta, pues una pequeña parte de esta se absorbe, luego cada fibra presentará una pérdida relacionada a su longitud, con unidades típicamente de $dB/km$.
 
@@ -296,6 +319,13 @@ Como veremos a continuación, $I$ está lejos de ser una constante, pues present
 La sección transversal del spot láser generalmente no presenta una distribución de energía uniforme. 
 Esta distribución está determinada por los modos transversales del campo electromagnético del resonador, denominados $TEM_{mn}$ (\textit{Transverse Electromagnetic Modes}), 
 donde $m$ y $n$ definen la geometría del modo (ver Figura \ref{tems}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/tem.png}
+	\caption{Modos transversales del campo electromagnético.}
+	\label{tems}
+\end{figure}
 
 En la mayoría de los láseres empleados para fibras o procesos de propagación controlada, domina el modo fundamental $TEM_{00}$.
 Este modo presenta una distribución gaussiana, muy concentrada en el centro e ideal para el enfoque.
@@ -321,7 +351,14 @@ Evaluando la distribución en $r = w_{0g}$:
 	I(w) = I_0 e^{-2} \approx 0.135\, I_0,
 \end{equation}
 
-por lo que dentro del diámetro $d_{0g}$ se concentra aproximadamente el 86.5\% de la energía del haz gaussiano ideal.
+por lo que dentro del diámetro $d_{0g}$ se concentra aproximadamente el 86.5\% de la energía del haz gaussiano ideal (Figura \ref{gaussfig}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imgs/gauss.png}
+	\caption{Perfil gaussiano de irradiancia.}
+	\label{gaussfig}
+\end{figure}
 
 Para un láser real, que puede contener modos superiores o desviarse del comportamiento gaussiano ideal, se introduce el \textbf{factor de calidad} del haz $M^2$. 
 Este factor corrige el diámetro ideal para reflejar la propagación real del haz:
@@ -370,7 +407,7 @@ Para el caso de la transmisión por fibra se tiene la siguiente expresión:
 	d_{0}=d_{f}\frac{f_{foc}}{f_{col}}=MA d_{f}
 \end{equation}
 
-Donde $MA$ es el factor de magnificación.
+Donde $MA$ es el factor de magnificación y $d_{f}$ el diámetro de la fibra.
 
 El diámetro del spot láser será mínimo en la cintura, ubicada a $f_{foc}$ de distancia respecto al lente convergente, y presenta una variación simétrica en ambas direcciones. Desde este punto mediremos profundidad $z$, y será positivo en la dirección de propagación del láser. Si aproximamos el hiperboloide a un perfil triangular, para simplificar cálculos, llegamos a la siguiente expresión para estimar el diámetro del spot $d_{s}(z)$:
 
@@ -386,27 +423,44 @@ Nótese que, mediante la aproximación de ángulos pequeños y siendo $d_{c}$ el
 
 Luego, naturalmente, un mayor ángulo de convergencia (o menor $d_{c}$ o menor $f_{foc}$) genera una  mayor variación del diámetro al moverse en la profundidad $z$. Esta variación es importante, pues es deseable que el láser mantenga un nivel de irradiancia en cierto $\Delta z$ para poder trabajar con condiciones constantes en materiales de distinto espesor, por ejemplo. 
 
-De esta manera, se define el \textbf{Diámetro de Rayleigh} (típicamente se encuentra como radio en las referencias) como:
+De esta manera, se define el \textbf{rango de Rayleigh} $z_{r}$ (Figura \ref{railifig}) a la distancia donde:
 
 \begin{equation}
-	d_{r}=\sqrt{2}d_{0}
+	r_{r}=\sqrt{2}w_{0}
 \end{equation}
 
-Lo cual corresponde al diámetro en el cual el área del spot se duplica. Desarrollando los cálculos, se tiene entonces que la \textbf{profundidad de campo} (\textit{depth of field}) corresponde a:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imgs/raili.png}
+	\caption{Perfil de hiperboloide para el láser en la salida y diagrama para la profundidad de campo.}
+	\label{railifig}
+\end{figure}
+
+Lo cual corresponde al radio en el cual el área del spot se duplica. Desarrollando los cálculos, se tiene entonces que el rango de Rayleigh corresponde a:
 
 \begin{equation}
-	\Delta z_{dof} = \frac{\pi d_{0}^{2}}{2 \lambda M^{2}}=2 \frac{d_{0} f_{foc}}{d_{c}}
+	z_{r} = \frac{\pi d_{0}^{2}}{2 \lambda M^{2}}=2 \frac{d_{0} f_{foc}}{d_{c}}
 \end{equation}
 
-Debe notarse que de desarrollar los cálculos sólo se llega a la mitad del valor descrito en la ecuación anterior, pero este debe multiplicarse por un factor de 2 para dar cuenta de la simetría de la distribución. 
+Por la simetría de la distribución, podemos entonces introducir la \textbf{profundidad de campo} (\textit{depth of field}), el cual indicará el espesor máximo de materiales que podemos tratar de manera efectiva:
 
-Este parámetro $\Delta z_{dof}$ de la óptica de un sistema láser nos indica hasta que espesor de materiales podemos tratar de manera efectiva. 
+\begin{equation}
+DOF=2z_{r}
+\end{equation}
 
 \subsection{Distribución temporal}
 
-El haz de luz se puede presentar en dos formas respecto a la naturaleza de la onda, pudiendo ser \textbf{continua} (\textit{CW, continuous wave}) o \textbf{pulsada} (\textit{PW, pulsed wave}).
+El haz de luz se puede presentar en dos formas respecto a la naturaleza de la onda, pudiendo ser \textbf{continua} (\textit{CW, continuous wave}) o \textbf{pulsada} (\textit{PW, pulsed wave}) (Figura \ref{pulsedfig}).
 
-La onda continua es naturalmente la más sencilla de tratar. Su potencia puede ser modulada previamente a la aplicación, y el perfil temporal es constante, luego:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\linewidth]{imgs/pulsed.png}
+	\caption{Perfil de onda continuo y pulsada.}
+	\label{pulsedfig}
+\end{figure}
+
+
+La onda continua es naturalmente la más sencilla de tratar. Su potencia puede ser modulada previamente a la aplicación, y el perfil temporal es constante (con la potencia de salida igual a la promedio y al peak), luego:
 
 \begin{equation}
 	I = \frac{P_{out}}{A_{spot}}
@@ -426,10 +480,10 @@ El pulso puede tener distintas formas, pero para simplificación de los cálculo
 	\delta = \frac{t_{on}}{t_{tot}} = \frac{t_{on}}{t_{on}+t_{off}}
 \end{equation}
 
-De esta manera, si $\tau$ corresponde al tiempo de encendido de la onda, la \textbf{potencia peak} en ese lapso es:
+De esta manera, si $t_{on}$ corresponde al tiempo de encendido de la onda, la \textbf{potencia peak} en ese lapso es:
 
 \begin{equation}
-	P_{peak} = \frac{E}{\tau} = P_{out}\delta 
+	P_{peak} = \frac{E}{t_{on}} = P_{out}\delta 
 \end{equation}
 
 Las potencias peak que alcanza un láser pulsado van desde los W hasta los MW, por lo que se separa la duración de los pulsos en categorías, pues generan distintas interacciones con la materia.
@@ -466,7 +520,7 @@ Al tratarse de un proceso térmico, la energía depositada por el láser se dist
 
 Un mayor tiempo de interacción implica naturalmente una mayor energía entregada, pero también permite una mayor difusión térmica hacia regiones no deseadas. Esto incrementa la zona afectada térmicamente (\textit{heat-affected zone}, HAZ), lo cual suele ser indeseable.
 
-Por ello, utilizamos la \textbf{fluencia} del sistema para compararla con los umbrales característicos del material y determinar cuál será el mecanismo de interacción predominante, como se ilustra en el Cuadro \ref{fluencias}.
+Por ello, utilizamos la \textbf{fluencia} del sistema para compararla con los umbrales característicos del material y determinar cuál será el mecanismo de interacción predominante (Figura \ref{mechsfig}), como se ilustra en el Cuadro \ref{fluencias}.
 
 \begin{table}[h!]
 	\centering
@@ -489,6 +543,13 @@ Por ello, utilizamos la \textbf{fluencia} del sistema para compararla con los um
 	\end{tabular}
 \end{table}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/mechs.png}
+	\caption{Mecanismos térmicos donde se genera remoción.Nótese que en fusión el material fluye hacia abajo, mientras que en vaporizacion y ablación difunde hacia arriba.}
+	\label{mechsfig}
+\end{figure}
+
 El tipo de mecanismo para definir el setup depende del proceso que se desee realizar. Por ejemplo, en soldadura se busca fundir el material sin removerlo, mientras que un corte limpio se obtiene en el régimen de vaporización, y aún más, mediante \textbf{ablación}.
 
 La ablación es un mecanismo en el cual la energía incidente sobre el material es lo suficientemente intensa como para romper los enlaces interatómicos sin que se produzca una difusión significativa del calor. Esto permite un maquinado muy preciso, de alta calidad y con una zona afectada por el calor (HAZ) mínima. Este tipo de mecanismo es característico de los sistemas láser pulsados.
@@ -510,7 +571,7 @@ Uno de los más utilizados es el \textbf{modelo conductivo}, basado en la Ley de
 
 donde $T(x,y,z,t)$ es la temperatura en la posición $(x,y,z)$ y tiempo $t$, $T_0$ la temperatura inicial del material, $I$ la irradiancia del láser, $k$ la conductividad térmica, $\alpha$ la difusividad térmica y $c_z$ un factor de corrección en la dirección $z$. Esta formulación permite obtener un perfil tridimensional aproximado de temperatura bajo ciertas condiciones de conducción térmica dominante.
 
-A través de este modelo, podemos hacer comparaciones como la que se observa en la Figura \ref{profundi}
+A través de este modelo, podemos hacer comparaciones teóricas, como la que se observa en la Figura \ref{stilgoldfig}. Aquí se puede notar que el acero alcanza mayores temperaturas cerca de la superficie, mientras que el oro difunde la energía con mayor efectividad, aumentando la profundidad afectada pero disminuyendo el valor máximo.
 
 Una adaptación de este enfoque es el \textbf{modelo de Rosenthal}, que estima la geometría del área afectada por un láser mediante un modelo de conducción semi-estacionario:
 
@@ -523,12 +584,25 @@ Una adaptación de este enfoque es el \textbf{modelo de Rosenthal}, que estima l
 
 donde $T_0$ es la temperatura inicial, $P$ la potencia del láser, $k$ la conductividad térmica del material, $v$ la velocidad de desplazamiento del láser en dirección $x$ y $\alpha$ la difusividad térmica del material. La variable $R$ representa la distancia efectiva desde el punto de aplicación de energía y $c_z$ ajusta la propagación en profundidad. Este modelo no requiere iteración: propaga la ecuación de calor directamente en el dominio espacial y temporal.
 
-El resultado son campos de temperatura, como se observa en la Figura \ref{rosen}. A través de las curvas de nivel, es posible estimar el ancho del corte, así como la profundidad, tras calibrar el modelo con datos experimentales.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/stilgold.png}
+	\caption{Valores de temperatura en función de la profundidad para dos materiales.}
+	\label{stilgoldfig}
+\end{figure}
+
+El resultado son campos de temperatura, como se observa en la Figura \ref{contorfig}. A través de las curvas de nivel, es posible estimar el ancho del corte, así como la profundidad, tras calibrar el modelo con datos experimentales.
 
 Estos modelos simplificados proporcionan una aproximación o metodología para abordar nuevas condiciones de trabajo. No obstante, en la práctica, las empresas suelen generar sus propios datos basándose en experiencia y establecen configuraciones estándar para cada proceso.
 
 Actualmente, las nuevas máquinas láser incluyen \textbf{settings precalibrados} para una biblioteca de materiales y espesores, sobre los cuales el usuario puede realizar ajustes adicionales. Esto refleja que predecir de manera exacta la acción del corte con láser sigue siendo una tarea compleja y dependiente de múltiples variables.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/contor.png}
+	\caption{Campo de temperaturas simulado mediante el modelo de Rosenthal.}
+	\label{contorfig}
+\end{figure}
 
 \subsection{Procesos de corte láser}
 
@@ -542,10 +616,10 @@ En la industria, los procesos de remoción láser más comunes utilizan las sigu
 
 Por lo general, las máquinas láser de escritorio presentan limitaciones en la configuración de parámetros. Típicamente, es posible modular la potencia $P$, la velocidad de avance $v$ y el número de pasadas $n$. El material se suele enfocar previamente a la ejecución del corte, y únicamente los modelos de mayor costo permiten un ajuste automático de la distancia focal durante la operación.
 
-Un modelo sencillo para estimar los parámetros de corte se basa en la \textbf{capacidad térmica} del material:
+Un modelo sencillo para estimar los parámetros de corte se basa en la \textbf{capacidad térmica} del material y el dimensionamiento del volumen a remover (Figura \ref{kreffig}):
 
 \begin{equation}
-	P = w \, h \, v \, \rho \left[ c_{p}(T_{m}-T_{0}) + L_{m} + m' L_{v} \right],
+	P = w \, h \, v \, \rho \left[ c_{p}(T_{m}-T_{0}) + L_{m} + m' L_{v} \right]
 \end{equation}
 
 donde:  
@@ -559,24 +633,50 @@ donde:
 	\item $m'$ representa la fracción de material que se evapora.
 \end{itemize}
 
-De esta manera, dado un \emph{setup} fijo, es posible determinar las velocidades admisibles para la operación deseada, como se observa en la Figura \ref{metalscort}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/kref.png}
+	\caption{Material removido mediante el corte.}
+	\label{kreffig}
+\end{figure}
 
-
+De esta manera, dado un \emph{setup} fijo, es posible estimar velocidades admisibles de referencia para la operación deseada.
 
 
 \subsection{Sistemas de corte láser}
 
-Respecto a los métodos de corte láser, los sistemas pueden clasificarse en dos tipos según la proximidad del cabezal con el material: \textbf{de proximidad} y \textbf{remotos}. Esta distinción influye directamente en la calidad del corte, la velocidad de operación y la elección del gas de asistencia.
+Respecto a los métodos de corte láser, los sistemas pueden clasificarse en dos tipos según la proximidad del cabezal con el material: \textbf{de proximidad} y \textbf{remotos} (Figura \ref{proxfig}). Esta distinción influye directamente en la calidad del corte, la velocidad de operación y la elección del gas de asistencia.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prox.png}
+	\caption{Material removido mediante el corte.}
+	\label{proxfig}
+\end{figure}
 
 En los sistemas de \textbf{proximidad}, el cabezal mantiene una distancia \textbf{stand-off} de algunos milímetros respecto al material. Desde este cabezal se inyectan gases de asistencia, que pueden ser \textbf{inertes} o \textbf{reactivos}.  
 
 Los gases \textbf{inertes} cumplen varias funciones: evacuar el material fundido y vaporizado, prevenir la oxidación en metales y proteger la óptica del sistema. Su uso permite obtener un acabado superficial más limpio y una zona afectada por calor (\textbf{HAZ}) mínima.  
 
-Por otro lado, los gases \textbf{reactivos}, como el oxígeno, inducen oxidación en el material, generando una reacción exotérmica que incrementa la energía disponible para el corte. En este caso, el láser solo debe suministrar periódicamente la energía de activación necesaria para mantener la reacción. Como se observa en la Figura \ref{react}, el uso de un gas reactivo puede aumentar la velocidad de corte, aunque la terminación superficial suele ser menos uniforme y el \textbf{HAZ} más amplio que en el caso de gases inertes.
+Por otro lado, los gases \textbf{reactivos}, como el oxígeno, inducen oxidación en el material, generando una reacción exotérmica que incrementa la energía disponible para el corte. En este caso, el láser solo debe suministrar periódicamente la energía de activación necesaria para mantener la reacción. Como se observa en la Figura \ref{reactfig}, el uso de un gas reactivo puede aumentar la velocidad de corte, aunque la terminación superficial suele ser menos uniforme y el \textbf{HAZ} más amplio que en el caso de gases inertes.
 
-La terminación de un corte por contorno generalmente presenta un estriado, así como una fracción de material fundido que puede escurrir hacia el borde inferior de la sección (Figura \ref{corte}), facilitada por los gases de evacuación. Tanto el inicio como el final del corte suelen mostrar una acumulación triangular de material donde la penetración es incompleta respecto al resto del perímetro. Esto ocurre porque, en estas zonas, la velocidad del cabezal cambia y el campo de temperaturas es relativamente más bajo. Estas irregularidades se corrigen mediante estrategias específicas, como pasadas adicionales, variación de la potencia del láser o el uso de \emph{tabs} temporales.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/blow.png}
+	\caption{Comparación de parámetros de corte para un mismo material, por evacuación y por reacción.}
+	\label{reactfig}
+\end{figure}
 
-En los sistemas \textbf{remotos}, el láser se propaga a través de espejos y el cabezal se mantiene a mayor distancia del material, sin necesidad de gases de asistencia, aunque pueden tener esa opción. Esta configuración reduce la inercia del cabezal, lo que permite alcanzar mayores velocidades de desplazamiento y ofrece mayor seguridad, al mantener el cabezal alejado de la zona de corte.  
+La terminación de un corte por contorno generalmente presenta un estriado, así como una fracción de material fundido que puede escurrir hacia el borde inferior de la sección (Figura \ref{qualityfig}), facilitada por los gases de evacuación. Tanto el inicio como el final del corte suelen mostrar una acumulación triangular de material donde la penetración es incompleta respecto al resto del perímetro. Esto ocurre porque, en estas zonas, la velocidad del cabezal cambia y el campo de temperaturas es relativamente más bajo. Estas irregularidades se corrigen mediante estrategias específicas, como pasadas adicionales, variación de la potencia del láser o el uso de \emph{tabs} temporales.
 
-Los sistemas remotos requieren un enfoque óptico más preciso, ya sea mediante una distancia focal elevada o una divergencia pequeña del haz. Por lo general, se aplican en procesos de alta velocidad sobre materiales planos o en geometrías extensas, donde la precisión de posicionamiento es crítica y la interacción con gases de asistencia no es necesaria. Además, permiten cortes rápidos con menor desgaste mecánico del cabezal, aunque la densidad de energía del haz debe controlarse cuidadosamente para garantizar la penetración adecuada.
+En los sistemas \textbf{remotos}, el láser se propaga a través de espejos y el cabezal se mantiene a mayor distancia del material, sin necesidad de gases de asistencia, aunque pueden tener esa opción. Esta configuración reduce la inercia del cabezal, lo que permite alcanzar mayores velocidades de desplazamiento. También, ofrece mayor seguridad al mantener el cabezal alejado de la zona de corte.  
+
+Los sistemas remotos requieren un enfoque óptico más preciso, ya sea mediante una distancia focal elevada o una divergencia pequeña del haz. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/quality.png}
+	\caption{Calidad de un corte láser.}
+	\label{qualityfig}
+\end{figure}
 
