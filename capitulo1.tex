@@ -1,6 +1,6 @@
 \chapter{Conceptos básicos de ingeniería mecánica}
 
-En este capítulo se especificarán los conceptos mínimos necesarios para la comprensión de los siguientes, tópicos que se suelen ver en los primeros años en un programa de ingeniería mecánica, por lo que puede ser obviado en caso de ya haber pasado por una formación similar. La descripción matemática y física de los fenómenos se entrega de manera simple para ejemplificar, evitando la complejidad de las expresiones más generales.
+En este capítulo se especificarán los conceptos mínimos necesarios para la comprensión de los siguientes. Estos tópicos se suelen ver en los primeros años en un programa de ingeniería mecánica, por lo que puede ser obviado en caso de ya haber pasado por una formación similar. La descripción matemática y física de los fenómenos se entrega de manera simple para ejemplificar, evitando la complejidad de las expresiones más generales.
 
 \section{Esfuerzo y deformación}
 
@@ -8,20 +8,20 @@ En este capítulo se especificarán los conceptos mínimos necesarios para la co
 
 Uno de los principales intereses de la ingeniería mecánica es predecir, identificar y prevenir \textbf{mecanismos de falla} en componentes y sistemas. Entenderemos como la falla de un componente a un estado en el cual no puede cumplir con su \textbf{solicitud de carga o servicio} de acuerdo a diferentes perspectivas. Claramente, un componente fracturado (separado en dos partes) correspondería a una falla, sin embargo, también hablaremos de falla en otros casos en los que se comprometa funcionalidad o seguridad.
 
-De la experiencia, sabemos que al aplicar una fuerza sobre un cuerpo este podría deformarse hasta romperse, sin embargo sabemos que existe una clara diferencia entre quebrar la rama de un árbol que el tronco entero, a pesar de estar constituidos del mismo material. Luego, es claro que la geometría juega un papel importante en la resistencia y debe ser normalizada para el análisis del \textbf{estrés mecánico}.
+De la experiencia, sabemos que al aplicar una fuerza sobre un cuerpo este podría deformarse hasta romperse, sin embargo sabemos que existe una clara diferencia entre, por ejemplo, quebrar la rama de un árbol que el tronco entero, a pesar de estar constituidos del mismo material. Luego, es claro que la geometría juega un papel importante en la resistencia y debe ser normalizada para el análisis del \textbf{estrés mecánico}.
 
-A este estrés lo llamaremos esfuerzo. Podemos expresar un tipo de esfuerzo $\sigma$, como por ejemplo el axial, de manera simple como:
+A este estrés lo llamaremos \textbf{esfuerzo}, y por lo general se denota con la letra griega sigma $\sigma$. Los tipos de esfuerzos los podemos clasificar por la manera en que actúan sobre un cuerpo. Por ejemplo, si un esfuerzo actúa únicamente en dirección perpendicular a una superficie del cuerpo lo llamamos axial, y se describe como:
 
 \begin{equation}
     \sigma = \frac{F}{A}\,\mathrm{[Pa]}
     \label{eq1}
 \end{equation}
 
-Con $F$ la fuerza aplicada sobre un cuerpo y $A$ la sección normal en la cual actúa esta fuerza. Esta medida da cuenta de la distribución de la fuerza sobre un área, y es una medida clave para el análisis mecánico de un cuerpo. 
+Con $F$ la fuerza aplicada sobre el cuerpo y $A$ la sección normal en la cual actúa esta fuerza. La medida de esfuerzo entonces da cuenta de la distribución de la fuerza sobre un área, y es una medida clave para el análisis mecánico de un cuerpo, asociada a la unidad Pascales $\mathrm{Pa}$ del sistema internacional.
 
-Dadas las condiciones de un problema, el esfuerzo se comparará con diferentes valores, propios del material, impuestas como parámetro de diseño, o de las normas. A partir de tales métricas se podrá estimar si el componente cumple con la solicitación mecánica o falla.
+Dadas las condiciones de un problema, el esfuerzo se comparará con diferentes valores: propios del material, impuestos como parámetros de diseño, o de acuerdo a normas. A partir de tales métricas se podrá cuantificar la performance del componente respecto a la solicitación mecánica.
 
-De la experiencia de romper una rama, también sabemos que importa la forma en que actúa la fuerza, pues claramente es más sencillo romper la rama flectándola que tirándola. Así, el cálculo del esfuerzo dependerá de 3 factores clave: \textbf{Geometría}, \textbf{tipo de carga} y \textbf{condiciones de apoyo}. En la Figura \ref{fig:1} se ven tipos de carga sobre un cuerpo, en la \ref{fig:2}, de apoyo. La ecuación \ref{eq1} corresponde a una condición de carga axial. 
+De la experiencia de romper una rama, también sabemos que importa la forma en que actúa la fuerza, pues claramente es más sencillo romper la rama flectándola desde sus extremos que tirándola. Así, el cálculo del esfuerzo dependerá de 3 factores clave: \textbf{Geometría}, \textbf{tipo de carga} y \textbf{condiciones de apoyo}. En la Figura \ref{fig:1} se ven tipos de carga sobre un cuerpo, en la \ref{fig:2}, de apoyo. La ecuación \ref{eq1} corresponde a una condición de carga axial. 
 
 \begin{figure}[h!]
     \centering
@@ -39,9 +39,13 @@ De la experiencia de romper una rama, también sabemos que importa la forma en q
 
 \subsection{Deformación}
 
-Entenderemos como deformación al cambio geométrico de un cuerpo. Una forma de categorizar los tipos de deformación es respecto a la permanencia del cambio, donde si es reversible (al dejar de aplicar la carga), se le llama \textbf{deformación elástica}, y en caso contrario, \textbf{deformación plástica}. La parte elástica es resultado de interacciones atómicas y/o moleculares (atracción, repulsión, desenrrollamiento de cadenas) con la fuerza aplicada, mientras que lo plástico está relacionado con el desplazamiento permanente de átomos o moléculas en la estructura. Por lo anterior, siempre existe deformación elástica antes de que se dé deformación plástica a medida que incrementa el esfuerzo.
+Entenderemos como deformación al cambio geométrico de un cuerpo, no relacionado con la pérdida de materia, por ejemplo, por una reacción química, corrosión, o ciertos cambios microestructurales, entre otros. Siendo más específico, son de particular interés para la ingeniería mecánica las deformaciones ocasionadas por alguna carga física o térmica.
 
-En el caso de la deformación elástica, esta se suele modelar como una relación entre átomos contiguos mediante resortes a través de la Ley de Hooke. La fuerza correspondería entonces a:
+Una forma de categorizar los tipos de deformación por carga es respecto a la permanencia del cambio, donde si es reversible (al dejar de aplicar la carga), se le llama \textbf{deformación elástica}, y en caso contrario, \textbf{deformación plástica}. La parte elástica es resultado de interacciones atómicas y/o moleculares (atracción, repulsión, desenrrollamiento de cadenas) con la fuerza aplicada, mientras que lo plástico está relacionado con el desplazamiento permanente de átomos o moléculas en la estructura. Por lo anterior, siempre existe deformación elástica antes de que se dé deformación plástica a medida que incrementa el esfuerzo. La deformación se denotará con la letra griega epsilon $\varepsilon$. 
+
+La relación entre esfuerzo y deformación ($\sigma - \varepsilon$) en la materia se estudia particularmente en el marco general que establece la disciplina de Mecánica de Medios Contínuos, donde se formulan \textbf{ecuaciones constitutivas} para representar esta relación. Frecuentemente, sobre este marco realizan simplificaciones con el fin de facilitar el análisis, como la linealidad en deformaciones elásticas en sólidos. 
+
+Probablemente ya has estudiado una de estas representaciones sencillas asociada a la deformación en resortes, la Ley de Hooke:
 
 \begin{equation}
     F=k\Delta l \mathrm{[N]}
@@ -59,13 +63,20 @@ Donde $E$ es el \textbf{módulo de Young} o de elasticidad del material y $\vare
     \varepsilon = \frac{\Delta l}{l_{0}}=\frac{l_{f}-l_{0}}{l_{0}}
 \end{equation}
 
-Lo anterior es una aproximación lineal muy conveniente y que se sostiene en varios casos, sin embargo el comportamiento real de los materiales puede variar significativamente del régimen lineal. Para estos casos existen modelos más complejos con dependencias multivariable. Los modelos para la deformación plástica tampoco son sencillos y quedan fuera del alcance de este apunte.
+Con $l_{0}$ y $l_{f}$ la longitud inicial y final respectivamente. Lo anterior es una aproximación lineal muy conveniente y que se sostiene en varios casos, sin embargo el comportamiento real de los materiales puede variar significativamente del régimen lineal. Para estos casos existen modelos más complejos con dependencias multivariable. Los modelos para la deformación plástica tampoco son sencillos y quedan fuera del alcance de este apunte.
 
-Las ecuaciones mostradas describen el caso ideal de deformación unidimensional, en el que un sólido se deforma exclusivamente a lo largo de un eje. La conservación de volumen implica que toda elongación longitudinal vaya acompañada de una contracción transversal (y viceversa), de modo que al estirar el material éste se estrecha en las direcciones perpendiculares. El \textbf{coeficiente de Poisson} $\nu$ cuantifica precisamente esta relación entre deformaciones longitudinal y transversal (adimensional). Sin embargo, ciertos materiales conocidos como \textbf{auxéticos} presentan un comportamiento opuesto: al someterse a tracción, también ensanchan su sección transversal, lo que se traduce en un valor negativo de $\nu$.
+Las ecuaciones mostradas describen el caso ideal de deformación unidimensional, en el que un sólido se deforma exclusivamente a lo largo de un eje. La conservación de volumen implica que toda elongación longitudinal vaya acompañada de una contracción transversal (y viceversa), de modo que al estirar el material éste se estrecha en las direcciones perpendiculares. El \textbf{coeficiente de Poisson} $\nu$ cuantifica precisamente esta relación entre deformaciones longitudinal y transversal (adimensional). Sin embargo, ciertos materiales conocidos como \textbf{auxéticos} presentan un comportamiento opuesto: al someterse a tracción, también ensanchan su sección transversal, lo que se traduce en un valor negativo de $\nu$, como se ilustra en la Figura \ref{fig:auxetic}. Los materiales porosos, como espumas y esponjas, suelen presentar un comportamiento auxético, al colapsar sus poros bajo cargas.
+
+\begin{figure}[h!]
+	\centering	
+	\includegraphics[width=0.8\linewidth]{imgs/auxe1.eps}
+	\caption{Material convencional y material auxético.}
+	\label{fig:auxetic}
+\end{figure}
 
 \subsection{Ensayo de tracción}
 
-Una forma de caracterizar la relación esfuerzo-deformación es mediante el ensayo de tracción, como se observa en la Figura \ref{fig:2}. Como indica el nombre, una muestra de material con forma determinada es traccionado hasta la fractura, midiendo la fuerza y el desplazamiento de las mordazas que ejercen la fuerza, con cierto ajuste, o directamente a través de un extensómetro. Estos datos luego son transformados a su equivalente en esfuerzo y deformación, logrando las curvas observadas. 
+Una forma de caracterizar la relación esfuerzo-deformación es mediante el ensayo de tracción, como se observa en la Figura \ref{fig:2}. Como indica el nombre, una muestra de material con forma determinada es traccionada a velocidad constante hasta la fractura, midiendo la fuerza y el desplazamiento de las mordazas que ejercen la fuerza, con cierto ajuste, o directamente a través de un extensómetro. Estos datos luego son transformados a su equivalente en esfuerzo y deformación, logrando las curvas observadas. 
 
 \begin{figure}[h!]
     \centering
@@ -74,9 +85,9 @@ Una forma de caracterizar la relación esfuerzo-deformación es mediante el ensa
     \label{fig:2}
 \end{figure}
 
-Para el material exhibido en la Figura \ref{fig:2}, se observa una región inicial lineal, la cual corresponderá a la parte elástica. Al límite de esta región se le conoce como \textbf{esfuerzo de fluencia} o límite elástico (yield strength), simbolizado como $\sigma_{y}$, y es una \textbf{propiedad mecánica} de los materiales. La pendiente es entonces el módulo de Young $E$.
+Para el material exhibido en la Figura \ref{fig:2}, se observa una región inicial lineal, la cual corresponderá a la parte elástica. Al límite de esta región se le conoce como \textbf{esfuerzo de fluencia} o límite elástico (\textit{yield strength}), simbolizado como $\sigma_{y}$, y es una \textbf{propiedad mecánica} de los materiales. La pendiente es entonces el módulo de Young $E$.
 
-De la misma manera, al esfuerzo máximo en la curva le llamaremos \textbf{resistencia última a la tracción} $\sigma_{UTS}$ (ultimate strength). Más allá de este punto, se da un modo de deformación local conocido como \textbf{estrangulamiento} o \textit{necking} hasta la fractura del espécimen. Si bien, se observa que el esfuerzo baja en la curva, esto es así porque para el cálculo se considera el área inicial $A_{0}$ en lugar de la real. Con tal corrección, se observaría que el esfuerzo sigue aumentando.
+De la misma manera, al esfuerzo máximo en la curva le llamaremos \textbf{resistencia última a la tracción} $\sigma_{UTS}$ (\textit{ultimate strength}). Más allá de este punto, se da un modo de deformación local conocido como \textbf{estrangulamiento} o \textit{necking}, donde el área transversal se reduce, hasta la fractura del espécimen. Si bien, se observa que el esfuerzo baja en la curva, esto es así porque para el cálculo se considera el área inicial $A_{0}$ en lugar de la real. Con tal corrección, se observaría que el esfuerzo sigue aumentando.
 
 La forma de esta curva no es igual para cada tipo de material, y también existen variaciones dentro de las mismas familias. En la Figura \ref{fig:3} se observan curvas representativas de cada tipo de material. De aquí se podría inferir, por ejemplo que en general los cerámicos son los materiales más rígidos y presentan un comportamiento elástico bastante lineal, mientras que los polímeros serían los menos resistentes. Entraremos en detalle respecto a los valores y comparaciones entre materiales en los próximos capítulos.
 
@@ -105,13 +116,11 @@ Considerando que estos modelos físicos surgen de aproximaciones y simplificacio
    \frac{\sigma_{y}}{\sigma} = f_{s}>1.0
 \end{equation}
 
-Esto aumenta la solicitud al material. La magnitud de este factor dependerá de normas y de la certeza en los cálculos empleados, intentando mantener el valor lo más reducido posible, pues su consecuencia podría implicar un sobredimensionamiento costoso del componente o sistema.
+Esto aumenta la solicitud al material. La magnitud de este factor dependerá de normas y de la certeza en los cálculos empleados, intentando mantener el valor lo más reducido posible, pues su consecuencia podría implicar un \textbf{sobredimensionamiento} costoso del componente o sistema.
 
 Una restricción sobre el diseño que podría ser más fuerte es limitar la deformación. Para aplicaciones de precisión o de tolerancias ajustadas, una deformación pequeña puede generar contactos indeseados entre componentes o modificar la trayectoria de otros.
 
-Los criterios ejemplificados anteriormente son estáticos, es decir, no consideran fenómenos asociados al daño acumulado con el avance del tiempo.
-
-Una de estas formas de daño acumulado es la \textbf{fatiga}, y está relacionada con el crecimiento de grietas o defectos en la estructura del material hasta generar una fractura (Figura \ref{crack}). Una \textbf{grieta} es una discontinuidad que no permite la distribución uniforme del esfuerzo, sino que lo concentra en su reducida geometría local, fracturando secuencialmente el material.
+Los criterios ejemplificados anteriormente son estáticos, es decir, no consideran fenómenos asociados al daño acumulado con el avance del tiempo. Una de estas formas de daño acumulado es la \textbf{fatiga}, y está relacionada con el crecimiento de grietas o defectos en la estructura del material hasta generar una fractura (Figura \ref{crack}). Una \textbf{grieta} es una discontinuidad que no permite la distribución uniforme del esfuerzo, sino que lo concentra en su reducida geometría local, fracturando secuencialmente el material.
 
 \begin{figure}[h!]
     \centering
@@ -120,7 +129,7 @@ Una de estas formas de daño acumulado es la \textbf{fatiga}, y está relacionad
     \label{crack}
 \end{figure}
 
-Este crecimiento de grieta a través de la fatiga está relacionado con \textbf{cargas cíclicas} y debilita al material, reduciendo su vida útil a pesar de que los esfuerzos no sean superiores a $\sigma_{y}$. El origen, velocidad y daño inducido por estas cargas depende de múltiples variables, por ejemplo:
+Este crecimiento de grieta a través de la fatiga está relacionado con \textbf{cargas cíclicas} y debilita al material, reduciendo su vida útil a pesar de que los esfuerzos no sean superiores a $\sigma_{y}$. El origen, tasa de crecimiento y daño inducido por estas cargas depende de múltiples variables, por ejemplo:
 
 \begin{itemize}
     \item Propiedades intrínsecas del material.
@@ -130,7 +139,7 @@ Este crecimiento de grieta a través de la fatiga está relacionado con \textbf{
     \item Condiciones ambientales: Humedad, temperatura, agentes químicos.
 \end{itemize}
 
-La fatiga como parámetro de diseño permite calcular la \textbf{vida útil} del material, mediante el uso de la curva de vida amplitud-ciclos o diagrama de Wöhler (Figura \ref{fig:4}).
+La fatiga como parámetro de diseño permite calcular la \textbf{vida útil} del componente, mediante, por ejemplo, el uso de la curva de vida amplitud-ciclos o diagrama de Wöhler (Figura \ref{fig:4}).
 
 \begin{figure}[h!]
     \centering
@@ -139,9 +148,9 @@ La fatiga como parámetro de diseño permite calcular la \textbf{vida útil} del
     \label{fig:4}
 \end{figure}
 
-En el ejemplo se observan 2 aleaciones metálicas ampliamente estudiadas. Nótese el \textit{endurance limit} (límite de fatiga, frecuentemente simbolizado como $\sigma_{ew}$), el cual indica que para amplitudes inferiores a este el material tiene vida infinita.
+En el ejemplo se observan 2 aleaciones metálicas ampliamente estudiadas, acero y aluminio. Nótese el \textit{endurance limit} (límite de fatiga, frecuentemente simbolizado como $\sigma_{ew}$), el cual indica que para amplitudes de esfuerzo inferiores a este el material tiene \textbf{vida infinita}.
 
-Dado que esto depende en parte de un tamaño de grieta, el material también podría fallar de manera estática si es que posee una grieta inicial. Esta grieta avanzaría de forma rápida e inestable hasta la ruptura, sin necesidad de ciclos de carga en función de la \textbf{resistencia a la propagación de grietas} del material.
+Dado que esto depende en parte del tamaño de grieta, el material también podría fallar de manera estática si es que posee una grieta inicial. Esta grieta avanzaría de forma rápida e inestable hasta la ruptura, sin necesidad de ciclos de carga en función de la \textbf{resistencia a la propagación de grietas} del material.
 
 El parámetro $K_{IC}$, determinado mediante ensayos cuantifica la resistencia intrínseca del material al crecimiento de grietas (bajo ciertas condiciones específicas, como régimen elástico) y resulta fundamental para diseñar y evaluar componentes con concentradores de esfuerzo, pues define el umbral crítico que evita fallas frágiles. Una forma de usar este parámetro es comparándolo con el \textbf{factor de intensidad de la grieta} $K$ $(\mathrm{[Mpa\sqrt{m}]})$: 
 
@@ -158,7 +167,11 @@ Con $\beta$ un parámetro geométrico y $a$ el tamaño de la grieta. Si bien, es
     \label{fig:5}
 \end{figure}
 
-Otra causa para la falla de materiales es la \textbf{termofluencia} o \textbf{creep}, que corresponde a deformación progresiva y dependiente del tiempo que sufre un material bajo carga constante a temperaturas elevadas, que puede culminar en falla sin necesidad de aumentar la tensión aplicada. 
+Entenderemos como concentrador de esfuerzo en ingeniería mecánica a cualquier discontinuidad geométrica o cambio abrupto de sección, como orificios, estrechamientos, cambios de diámetro, chaveteros, roscas, entre otros, que provocan una distribución no uniforme de esfuerzos en su vecindad, generando peaks de esfuerzo local muy superiores al esfuerzo nominal calculado mediante fórmulas elementales de resistencia de materiales. 
+
+Esta amplificación se cuantifica mediante el \textbf{factor de concentración de esfuerzos} $K_t$, definido como la razón entre el esfuerzo máximo local y el esfuerzo nominal ($K_t = \sigma_{max}/\sigma_{nom}$), y su magnitud depende principalmente de la geometría de la discontinuidad y no del material. Los concentradores de esfuerzo son particularmente críticos en el diseño frente a fatiga, ya que las grietas por fatiga nuclean preferentemente en estas zonas de alto gradiente de esfuerzo, incluso cuando el esfuerzo nominal permanece muy por debajo del límite de fluencia del material.
+
+Otra causa para la falla de materiales es la \textbf{termofluencia} o \textbf{creep}, que corresponde a una deformación progresiva y dependiente del tiempo que sufre un material bajo carga constante a temperaturas que superan cierto umbral respecto a su temperatura de fusión, lo que puede culminar en falla sin necesidad de aumentar la tensión aplicada. 
 
 \section{Dureza}
 
@@ -167,7 +180,7 @@ La dureza es una propiedad mecánica de los materiales que mide la capacidad de 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\linewidth]{imgs/indent.png}
-    \caption{Ensayo de dureza Brinell, indentador esférico.}
+    \caption{Esquema para el ensayo de dureza Brinell con indentador esférico.}
     \label{dur}
 \end{figure}
 
@@ -177,7 +190,7 @@ Un material de alta dureza evita la deformación plástica localizada y la conce
 
 Por otro lado, un material frágil presenta baja tenacidad y prácticamente nula ductilidad, de modo que se fractura de forma repentina al superar su límite elástico. Esto conlleva fallos catastróficos sin señal previa, mala absorción de energía ante impactos o vibraciones y alta susceptibilidad a la propagación de grietas, lo que limita su uso en aplicaciones donde la seguridad y la fiabilidad sean críticas.
 
-Dado que estos fenómenos se presentan principalmente en la superficie de un material, se han desarrollado técnicas o \textbf{tratamientos de endurecimiento superficial} que generan una capa externa de elevada dureza y resistencia al desgaste, mientras el núcleo conserva la ductilidad y tenacidad necesarias, optimizando así la durabilidad y seguridad de componentes.
+Dado que estos fenómenos se presentan principalmente en la superficie de un material, se han desarrollado técnicas o \textbf{tratamientos de endurecimiento superficial} que generan una capa externa de elevada dureza y resistencia al desgaste, mientras el núcleo conserva ductilidad y tenacidad, optimizando así la durabilidad y seguridad de componentes.
 
 La dureza es una medida especialmente útil para caracterizar elastómeros porque cuantifica su resistencia a la deformación por indentación y, por ende, su facilidad para deformarse bajo carga. Esta propiedad se reporta habitualmente en subescalas de la escala Shore, cada una diseñada para un rango de rigidez diferente: Shore OO para materiales muy blandos como geles y espumas suaves; Shore A para elastómeros blandos a semiduros, gomas y muchos cueros; y Shore D para materiales duros, termoplásticos rígidos y gomas estructurales (Figura \ref{smutfig}). 
 
@@ -202,7 +215,7 @@ Los fenómenos de transferencia térmica están determinados por las propiedades
 
 \begin{itemize}
   \item Densidad, $\rho\,\mathrm{[kg/m^{3}]}$, masa por unidad de volumen.
-  \item Calor específico, $c_p\,\mathrm{[J/(kg\,K)]}$, energía necesaria para elevar 1 K la temperatura de 1 kg.
+  \item Calor específico, $c_p\,\mathrm{[J/(kg\,K)]}$, energía necesaria para elevar 1 K la temperatura de 1 kg del material.
   \item Conductividad térmica, $k\,\mathrm{[W/(mK)]}$, capacidad de transmitir el flujo de calor por unidad de gradiente de temperatura.
 \end{itemize}
 
@@ -213,7 +226,7 @@ Los fenómenos de transferencia térmica están determinados por las propiedades
     \label{calors}
 \end{figure}
 
-La difusividad térmica, \(\alpha\), sintetiza estas tres magnitudes y mide la rapidez con que se propaga una perturbación térmica:
+La \textbf{difusividad térmica}, \(\alpha\), sintetiza estas tres magnitudes y mide la rapidez con que se propaga una perturbación térmica:
 
 \begin{equation}
   \alpha = \frac{k}{\rho\,c_p}
@@ -428,7 +441,7 @@ Los polímeros son macromoléculas formadas por la \textbf{repetición de unidad
   \item \textbf{Termoestables}: resinas que, mediante un proceso de curado o reticulación, forman una red tridimensional de enlaces cruzados. Esta estructura impide que el material vuelva a fundirse tras el calentamiento, garantizando rigidez y resistencia térmica. Ejemplos: resinas epoxi, fenol-formaldehído, poliéster insaturado.
 \end{itemize}
 
-Un caso particular en los polímeros es el de los elastómeros, los cuales poseen macromoléculas en una red desordenada y móvil, con una baja densidad de enlaces entrecruzados. Los entrecruzamientos actúan como puntos de anclaje que fijan la longitud máxima de cada cadena, evitando el flujo plástico, pero al mismo tiempo permiten el desenredo y replegado elástico de segmentos bajo tensión. Dependiendo del tipo de enlace entrecruzado, un elastómero puede ser termoplástico (enlace débil) o termoestable (enlace covalente).
+Un caso particular en los polímeros es el de los \textbf{elastómeros}, los cuales poseen macromoléculas en una red desordenada y móvil, con una baja densidad de enlaces entrecruzados. Los entrecruzamientos actúan como puntos de anclaje que fijan la longitud máxima de cada cadena, evitando el flujo plástico, pero al mismo tiempo permiten el desenredo y replegado elástico de segmentos bajo tensión. Dependiendo del tipo de enlace entrecruzado, un elastómero puede ser termoplástico (enlace débil) o termoestable (enlace covalente).
 
 La síntesis de polímeros suele iniciarse en fase líquida, en disolución, suspensión o masa fundida, donde los monómeros reaccionan por adición o condensación para generar oligómeros de bajo peso molecular. A medida que avanza la reacción y aumentan la longitud y, en el caso de los termoestables, la densidad de enlaces cruzados, la mezcla evoluciona de un estado fluido o viscoso hacia un estado semisólido y, finalmente, sólido. Este comportamiento se ilustra en el Cuadro \ref{tab:etapas_polimeros}.
 
@@ -458,11 +471,11 @@ En ingeniería, aunque los polímeros suelen exhibir una resistencia mecánica i
 
 Los polímeros muestran una marcada dependencia de la temperatura, lo cual puede limitar su rango de servicio pero al mismo tiempo facilita enormemente su conformado (moldeo, extrusión, inyección). Esta sensibilidad térmica se traduce en variaciones drásticas del módulo de elasticidad y acota los rangos operativos prácticos. 
 
-El fenómeno principal que rige el comportamiento mecánico de los polímeros a bajas y medias temperaturas es la \textbf{transición vítrea} (Figura \ref{vitr}). Se trata de un cambio abrupto en la rigidez y en las propiedades viscoelásticas cuando se supera la \textbf{temperatura de transición vítrea} (\(T_{g}\)). 
+El fenómeno principal que rige el comportamiento mecánico de los polímeros a bajas y medias temperaturas es la \textbf{transición vítrea} (\(T_{g}\)) (Figura \ref{vitr}). Se trata de un cambio abrupto en la rigidez y en las propiedades viscoelásticas cuando el material pasa el umbral establecido por dicha temperatura.
 
 Por debajo de \(T_{g}\), las cadenas poliméricas están \comillas{congeladas} en un estado rígido y frágil, con muy escasa movilidad. Al pasar por \(T_{g}\), se activan movimientos de rotación y traslación local de los segmentos de cadena, dando lugar a un estado gomoso o viscoelástico con mayor capacidad de deformación y absorción de energía. Esta transición se explica por el incremento de la energía térmica disponible para vencer las barreras conformacionales de los enlaces simples a lo largo de la macromolécula.
 
-La \textbf{cristalinidad} de un polímero determina sus propiedades térmicas, mecánicas y ópticas. Según el grado de ordenamiento de las cadenas, se pueden distinguir dos grandes familias:
+La \textbf{cristalinidad de un polímero} determina sus propiedades térmicas, mecánicas y ópticas. Según el grado de ordenamiento de las cadenas, se pueden distinguir dos grandes familias:
 
 \begin{itemize}
   \item \textbf{Semicristalino:} combinan regiones cristalinas ordenadas (cristalitas) con zonas amorfas. Exhiben un punto de fusión (\(T_m\)) correspondiente a desorganización de las porciones cristalinas y un \(T_g\) asociado a las zonas amorfas. La presencia de cristalinidad aporta mayor rigidez, resistencia química y mejor barrera a gases. Ejemplos típicos: polietileno (PE), polipropileno (PP) y tereftalato de polietileno (PET).
@@ -476,9 +489,9 @@ La \textbf{cristalinidad} de un polímero determina sus propiedades térmicas, m
     \label{vitr}
 \end{figure}
 
-No es posible alcanzar cristalinidad total en polímeros porque sus largas cadenas presentan irregularidades (extremos libres, ramificaciones y defectos) que impiden el empaquetamiento ordenado a lo largo de toda la macromolécula. Además, los entrelazamientos moleculares generan zonas amorfas donde las cadenas no pueden reordenarse en redes cristalinas. Como resultado, siempre coexisten regiones rígidas y ordenadas con áreas desordenadas. En general, los termoestables serán amorfos, pues los enlaces cruzados limita el ordenamiento regular de las cadeas.
+No es posible alcanzar cristalinidad total en polímeros porque sus largas cadenas presentan irregularidades (extremos libres, ramificaciones y defectos) que impiden el empaquetamiento ordenado a lo largo de toda la macromolécula. Además, los entrelazamientos moleculares generan zonas amorfas donde las cadenas no pueden reordenarse en redes cristalinas. Como resultado, siempre coexisten regiones rígidas y ordenadas con áreas desordenadas. En general, los termoestables serán amorfos, pues los enlaces cruzados limitan el ordenamiento regular de las cadenas.
 
-En los polímeros semicristalinos, el nivel de cristalinidad (habitualmente un 30–70$\%$) influye en la densidad, la tenacidad y la capacidad de absrober agua (higroscopicidad). Por el contrario, los amorfos suelen presentar una amplia ventana térmica de procesado, lo que facilita operaciones como moldeo por inyección o extrusión.
+En los polímeros semicristalinos, el nivel de cristalinidad (habitualmente un 30–70$\%$) influye en la densidad, la tenacidad y la capacidad de absorber agua (higroscopicidad). Por el contrario, los amorfos suelen presentar una amplia ventana térmica de procesado, lo que facilita operaciones como moldeo por inyección o extrusión.
 
 Cuando un polímero se somete a esfuerzo mecánico, su deformación avanza en varias etapas (Figura \ref{plastens}). Estas dependerán del \textbf{grado de reticulación} (enlaces cruzados) pues limitarán el movimiento de las cadenas, definiendo en parte la ductilidad o fragilidad de un material.
 
@@ -488,7 +501,7 @@ Cuando un polímero se somete a esfuerzo mecánico, su deformación avanza en va
 
 \item \textbf{Límite de fluencia:} al superar el esfuerzo lineal máximo, la curva se aplanará o caerá ligeramente. Aquí las cadenas amorfas empiezan a deslizarse unas sobre otras y se inicia la deformación plástica. La muestra ya no recupera completamente su forma al descargar.
 
-\item \textbf{Deformación plástica y necking inicial:} la carga adicional provoca la formación de un cuello en una región localizada. La sección transversal disminuye y las cadenas se reorientan alineándose con la dirección de tracción. El esfuerzo se mantiene alrededor de un valor medio mientras avanza el estrechameiento.
+\item \textbf{Deformación plástica y necking inicial:} la carga adicional provoca la formación de un cuello en una región localizada. La sección transversal disminuye y las cadenas se reorientan alineándose con la dirección de tracción. El esfuerzo se mantiene alrededor de un valor medio mientras avanza el estrechamiento.
 
 \item \textbf{Endurecimiento por orientación molecular:} tras el necking, la contínua alineación de las cadenas genera un aumento de rigidez. El esfuerzo vuelve a ascender porque las macromoléculas orientadas resisten mejor la carga, exhibiendo un refuerzo mecánico visible en la curva.
 
@@ -520,4 +533,4 @@ En términos de susceptibilidad química, los termoplásticos suelen ser más vu
 
 En contraste, los termoestables presentan una estructura reticulada rígida que limita la movilidad molecular y la capacidad de reordenamiento. Esto reduce su susceptibilidad química inicial, pero una vez iniciada la degradación, su fragilidad mecánica aumenta rápidamente debido a la incapacidad de relajar tensiones internas. Así, la resistencia a la propagación de grietas es menor en termoestables que en termoplásticos.
 
-Para reducir el daño potencial asociado a la fotodegradación, es habitual incorporar aditivos estabilizantes durante la fotopolimerización. Estos compuestos actúan como protectores frente a la radiación UV, absorbiendo o disipando la energía dañina y prolongando la vida útil del polímero.
+Para reducir el daño potencial asociado a la fotodegradación, es habitual incorporar \textbf{aditivos estabilizantes} durante la fotopolimerización. Estos compuestos actúan como protectores frente a la radiación UV, absorbiendo o disipando la energía dañina y prolongando la vida útil del polímero.

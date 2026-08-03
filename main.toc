@@ -2,88 +2,88 @@
 \contentsline {chapter}{\numberline {1}Conceptos básicos de ingeniería mecánica}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Esfuerzo y deformación}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Esfuerzo}{5}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Deformación}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.2}Deformación}{7}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.1.3}Ensayo de tracción}{8}{subsection.1.1.3}%
-\contentsline {section}{\numberline {1.2}Falla de componentes}{9}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Dureza}{12}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Transferencia de calor}{13}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Materiales de ingeniería}{15}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Clasificación}{15}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Materiales y valores típicos}{17}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.5.3}Polímeros}{20}{subsection.1.5.3}%
-\contentsline {chapter}{\numberline {2}Máquinas CNC}{26}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Flujo del proceso de fabricación digital}{26}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Sistema}{27}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Motores stepper}{28}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Parámetros}{32}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Toolpath}{33}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Código G}{35}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Capacidades y calidad}{37}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Prototipado rápido}{41}{section.2.8}%
-\contentsline {chapter}{\numberline {3}Tecnologías de manufactura aditiva}{43}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introducción}{43}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Tipos de tecnologías}{46}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Slicer}{47}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Modelado por deposición fundida}{49}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Introducción}{49}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Morfología de una impresión FDM}{54}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Comportamiento mecánico de piezas FDM}{57}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Parámetros operativos}{60}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Procesamiento en CAM}{63}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Imprecisiones y defectos en FDM}{64}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Otras tecnologías de deposición}{67}{subsection.3.2.7}%
-\contentsline {subsubsection}{Impresión FDM con pellets}{67}{section*.73}%
-\contentsline {subsubsection}{Impresión de pastas}{69}{section*.75}%
-\contentsline {subsubsection}{Impresión liquid-on-liquid}{70}{section*.77}%
-\contentsline {section}{\numberline {3.3}Impresión 3D por fotopolimerización}{72}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Fotopolimerización}{72}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Estereolitografía}{73}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Soportes y orientación}{77}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Procesamiento en CAM}{79}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Flujo del proceso}{80}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Resinas para 3DP}{83}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Comportamiento mecánico}{85}{subsection.3.3.7}%
-\contentsline {subsection}{\numberline {3.3.8}Casos de uso}{85}{subsection.3.3.8}%
-\contentsline {section}{\numberline {3.4}Otros procesos de fabricación aditiva}{88}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Sinterizado láser}{89}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Jet de aglomerante}{92}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Jet de material}{93}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Diseño funcional para impresión 3D}{95}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Corte CNC}{98}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introducción}{98}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Fabricación por corte de viruta}{99}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Subsistemas, herramientas y accesorios}{105}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Subsistemas}{105}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Herramientas de corte en fresado}{108}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Accesorios}{111}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Parámetros del proceso}{112}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Materiales y comportamiento frente al fresado}{117}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Maquinabilidad}{117}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Materiales comunes y su respuesta al fresado}{118}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Recomendaciones según material}{119}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Medición de calidad}{120}{subsection.4.5.4}%
-\contentsline {section}{\numberline {4.6}Operaciones comunes}{121}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Etapas de mecanizado}{121}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Operaciones 2D}{123}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}Operaciones 3D}{124}{subsection.4.6.3}%
-\contentsline {chapter}{\numberline {5}Procesos láser}{126}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conceptos básicos de tecnología láser}{126}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Introducción}{126}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Partes de un de corte sistema láser}{128}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Generación del láser}{129}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Óptica}{132}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Interacción con la materia}{132}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Lentes}{134}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Fibra óptica}{135}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Características de un láser}{138}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Distribución espacial}{139}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Distribución temporal}{143}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Interacción láser}{144}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Mecanismos de acción}{144}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Modelos térmicos}{146}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Procesos de corte láser}{148}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Sistemas de corte láser}{149}{subsection.5.4.4}%
-\contentsline {chapter}{\numberline {6}Procesos no convencionales}{152}{chapter.6}%
-\contentsline {section}{\numberline {6.1}EDM}{152}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Waterjet}{152}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Corte por plasma}{152}{section.6.3}%
+\contentsline {section}{\numberline {1.2}Falla de componentes}{10}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Dureza}{13}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Transferencia de calor}{14}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Materiales de ingeniería}{16}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Clasificación}{16}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Materiales y valores típicos}{18}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Polímeros}{21}{subsection.1.5.3}%
+\contentsline {chapter}{\numberline {2}Máquinas de fabricación CNC}{27}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Flujo del proceso de fabricación digital}{27}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Sistema}{28}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Motores stepper}{29}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Parámetros}{33}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Toolpath}{34}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Código G}{36}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Capacidades y calidad}{38}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Prototipado rápido}{42}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Tecnologías de manufactura aditiva}{44}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introducción}{44}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Tipos de tecnologías}{47}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Slicer}{48}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Modelado por deposición fundida}{50}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Introducción}{50}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Morfología de una impresión FDM}{55}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Comportamiento mecánico de piezas FDM}{58}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Parámetros operativos}{61}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Procesamiento en CAM}{64}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Imprecisiones y defectos en FDM}{65}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Otras tecnologías de deposición}{68}{subsection.3.2.7}%
+\contentsline {subsubsection}{Impresión FDM con pellets}{68}{section*.74}%
+\contentsline {subsubsection}{Impresión de pastas}{70}{section*.76}%
+\contentsline {subsubsection}{Impresión liquid-on-liquid}{71}{section*.78}%
+\contentsline {section}{\numberline {3.3}Impresión 3D por fotopolimerización}{73}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Fotopolimerización}{73}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Estereolitografía}{74}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Soportes y orientación}{78}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Procesamiento en CAM}{80}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Flujo del proceso}{81}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Resinas para 3DP}{84}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Comportamiento mecánico}{86}{subsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.3.8}Casos de uso}{86}{subsection.3.3.8}%
+\contentsline {section}{\numberline {3.4}Otros procesos de fabricación aditiva}{89}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Sinterizado láser}{90}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Jet de aglomerante}{93}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Jet de material}{94}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Diseño funcional para impresión 3D}{96}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Corte CNC}{99}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introducción}{99}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Fabricación por corte de viruta}{100}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Subsistemas, herramientas y accesorios}{106}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Subsistemas}{106}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Herramientas de corte en fresado}{109}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Accesorios}{112}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Parámetros del proceso}{113}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Materiales y comportamiento frente al fresado}{118}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Maquinabilidad}{118}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Materiales comunes y su respuesta al fresado}{119}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Recomendaciones según material}{120}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Medición de calidad}{121}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Operaciones comunes}{122}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Etapas de mecanizado}{122}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Operaciones 2D}{124}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Operaciones 3D}{125}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5}Procesos láser}{127}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conceptos básicos de tecnología láser}{127}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Introducción}{127}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Partes de un de corte sistema láser}{129}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Generación del láser}{130}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Óptica}{133}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Interacción con la materia}{133}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Lentes}{135}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Fibra óptica}{136}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Características de un láser}{139}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Distribución espacial}{140}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Distribución temporal}{144}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Interacción láser}{145}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Mecanismos de acción}{145}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Modelos térmicos}{147}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Procesos de corte láser}{149}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Sistemas de corte láser}{150}{subsection.5.4.4}%
+\contentsline {chapter}{\numberline {6}Procesos no convencionales}{153}{chapter.6}%
+\contentsline {section}{\numberline {6.1}EDM}{153}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Waterjet}{153}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Corte por plasma}{153}{section.6.3}%

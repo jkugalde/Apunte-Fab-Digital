@@ -1,10 +1,10 @@
-\chapter{Máquinas CNC}
+\chapter{Máquinas de fabricación CNC}
 
-Las máquinas automatizadas de fabricación digital o CNCs son \textbf{sistemas mecatrónicos} programables que ejecutan procesos de fabricación mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado y corte láser, entre otros. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite \textbf{fabricar piezas diversas y complejas de manera sencilla}. En este capítulo se tratarán las características generales de una máquina de este tipo.
+Las máquinas automatizadas de fabricación digital o CNCs son \textbf{sistemas mecatrónicos} programables que ejecutan procesos de fabricación mediante un set de instrucciones definido en un programa. Incluyen tecnologías como la impresión 3D, torneado, fresado y corte láser, entre otros. Se caracterizan por su precisión, repetibilidad y autonomía operativa, lo que les permite \textbf{fabricar piezas diversas y complejas de manera sencilla}. En este capítulo se tratarán las características generales de una máquina de este tipo, así como los conceptos técnicos clave para describir sus procesos.
 
 \section{Flujo del proceso de fabricación digital}
 
-Las tecnologías de fabricación digital se fundamentan en un \textbf{proceso computarizado} que abarca desde el diseño hasta la producción de la pieza final (Figura \ref{digfab}). Este proceso comienza con la modelación de la componente deseada mediante un software de \textbf{diseño asistido por computadora} (CAD, Computer-Aided Design). Este tipo de herramientas no solo permite crear y visualizar el modelo tridimensional de la pieza, sino también analizar su integración dentro de un sistema ensamblado y evaluar su desempeño mecánico mediante técnicas como el análisis por elementos finitos (FEA, Finite Element Analysis).
+Las tecnologías de fabricación digital se fundamentan en un \textbf{proceso computarizado} que abarca desde el diseño hasta la producción de la pieza final (Figura \ref{digfab}). Este proceso comienza con la modelación de la componente deseada mediante un software de \textbf{diseño asistido por computadora} (CAD, Computer-Aided Design). Este tipo de herramientas no solo permite crear y visualizar el modelo tridimensional de la pieza, sino también analizar su integración dentro de un sistema ensamblado y evaluar su desempeño mecánico mediante técnicas como el \textbf{análisis por elementos finitos} (FEA, Finite Element Analysis).
 
 \begin{figure}[h!]
     \centering
@@ -57,7 +57,7 @@ Entre estos subsistemas primarios se tiene:
 
 \section{Motores stepper}
 
-El control de la posición de un componente o sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un \textbf{lazo cerrado} (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off por la complejidad y costos adquiridos podría no ser conveniente.
+El control de la posición de un componente o de un sistema electromecánico suele ser actuado mediante motores eléctricos. La mayoría de los motores eléctricos no otorgan un control directo de la posición de su eje o rotor, sino que es necesario instrumentalizar el sistema con un sensor de tipo \textit{encoder} que mida esta posición y la retroalimente al sistema de control, estableciendo un \textbf{lazo cerrado} (Figura \ref{controlup}). Si bien, esto permitiría un control preciso, el trade-off por la complejidad y costos adquiridos podría no ser conveniente.
 
 \begin{figure}[h!]
     \centering
@@ -66,7 +66,7 @@ El control de la posición de un componente o sistema electromecánico suele ser
     \label{controlup}
 \end{figure}
 
-El eje de un motor eléctrico de tipo \textbf{stepper} (Figura \ref{stpi}) rotan un \textbf{arco constante} (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de \textbf{lazo abierto} (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla de control. 
+El eje de un motor eléctrico de tipo \textbf{stepper} (Figura \ref{stpi}) rota un \textbf{arco constante} (o un paso, típicamente 1.8$^\circ$) cuando reciben una señal de control. De esta manera, es posible establecer un sistema de control de \textbf{lazo abierto} (sin la parte inferior del loop en la Figura \ref{controlup}) para imponer el perfil cinemático del rotor y la posición final, ofreciendo una opción más sencilla y económica de control. 
 
 \begin{figure}[h!]
     \centering
@@ -77,9 +77,7 @@ El eje de un motor eléctrico de tipo \textbf{stepper} (Figura \ref{stpi}) rotan
 
 Esto se debe al diseño del motor, en el que el rotor (la parte móvil) está compuesto por un conjunto de imanes permanentes dispuestos de manera intercalada. Estos imanes interactúan con el estator, que consta de bobinas que reciben la señal eléctrica de control. La polarización secuencial de las bobinas genera un campo magnético variable, que provoca el movimiento del rotor, posicionándolo en diferentes puntos de equilibrio. En cada uno de estos puntos, las fuerzas de atracción y repulsión magnéticas se equilibran, permitiendo que el rotor se desplace con precisión o permanezca en una posición fija.
 
-La corriente a través de estas bobinas determinará el torque que puede ejercer el motor contra la carga. En caso de que la carga supere el torque del motor, este no rotará cuando corresponda o se moverá en la dirección opuesta, perdiendo pasos sin que el controlador lo note directamente, induciendo un error en el proceso.
-
-Por lo anterior, versiones más costosas de estos motores incluyen un sistema de sensado, en caso de que la precisión sea crítica o no se trabaje necesariamente en condiciones completamente determinadas.
+La corriente a través de estas bobinas determinará el torque que puede ejercer el motor contra la carga. En caso de que la carga supere el torque del motor, este no rotará cuando corresponda o se moverá en la dirección opuesta, perdiendo pasos sin que el controlador lo note directamente, induciendo un error en el proceso. Por lo anterior, versiones más costosas de estos motores incluyen un sistema de sensado, en caso de que la precisión sea crítica o no se trabaje necesariamente en condiciones completamente determinadas.
 
 Los motores paso a paso se clasifican comúnmente según un estándar que define sus dimensiones físicas, particularmente el tamaño de la cara de montaje. Esta clasificación, establecida por la National Electrical Manufacturers Association (NEMA, Figura \ref{nmas}), utiliza números como NEMA 17, NEMA 23, NEMA 34, entre otros, que indican el ancho del marco en décimas de pulgada. Es importante destacar que esta designación solo hace referencia a las dimensiones externas del motor, por lo que dos motores con el mismo número NEMA pueden presentar diferencias significativas en cuanto a torque, corriente nominal, tipo de conexión y otras características eléctricas o mecánicas.
 
@@ -120,7 +118,7 @@ Donde $\Delta x$ es el desplazamiento en la dirección objetivo, $R$ es la relac
 
 \section{Parámetros}
 
-Los procesos de fabricación digital ejecutan una serie de operaciones destinadas a conformar las piezas requeridas. Cada operación se implementa mediante trayectorias de herramienta o toolpaths, las que a su vez se definen por los parámetros configurables en el CAM o definidos en el firmware de la máquina. El grado de control sobre estos parámetros depende del nivel funcional del CAM: algunos sistemas exponen decenas o cientos de variables, mientras que otros ofrecen sólo los parámetros esenciales.
+Los procesos de fabricación digital ejecutan una serie de operaciones destinadas a conformar las piezas requeridas. Cada operación se implementa mediante trayectorias de herramienta o \textbf{toolpaths}, las que a su vez se definen por los parámetros configurables en el CAM o definidos en el firmware de la máquina. El grado de control sobre estos parámetros depende del nivel funcional del CAM: algunos sistemas exponen decenas o cientos de variables, mientras que otros ofrecen sólo los parámetros esenciales.
 
 Aunque es posible ajustar finamente la mayoría de esas variables para optimizar la salida del proceso, en la práctica suele ser suficiente intervenir un subconjunto reducido para que la operación sea factible y repetible. Agruparemos esos parámetros en las siguientes categorías:
 
@@ -128,7 +126,7 @@ Aunque es posible ajustar finamente la mayoría de esas variables para optimizar
 	
 	\item \textbf{Parámetros de máquina (hardware)}: vinculados a las capacidades físicas y geométricas del equipo, por ejemplo volumen de trabajo, offsets geométricos, límites de velocidad y aceleración, número de ejes y sistemas de sujeción. 
 	\item \textbf{Parámetros de proceso (operativos)}: definen la ejecución de las operaciones: velocidades de avance, aceleraciones, perfiles de aceleración/jerk, caudal o spindle speed, temperaturas de trabajo y secuencias de movimiento; estos parámetros dependen estrechamente del material y de la herramienta. 
-	\item \textbf{Parámetros de pieza (estructurales)}: específicos de la salida geométrica y funcional, especialmente en aditivo: altura de capa, ancho de pasada, porcentaje y patrón de relleno, espesor de pared y estrategias de soporte. \end{itemize}
+	\item \textbf{Parámetros de pieza (estructurales)}: específicos de la salida geométrica y funcional, especialmente en fabricación aditiva: altura de capa, ancho de pasada, porcentaje y patrón de relleno, espesor de pared y estrategias de soporte. \end{itemize}
 
 Las tres categorías tienen distinta criticidad: los límites y compensaciones del hardware condicionan de forma irrevocable la factibilidad geométrica y la seguridad (p. ej., evitar colisiones); los parámetros de proceso afectan directamente la integridad de la herramienta y el material (p. ej., rotura por avance excesivo, defectos por temperaturas inapropiadas); y los parámetros estructurales gobiernan la calidad final y el rendimiento funcional de la pieza (densidad, rigidez, acabado). 
 
@@ -147,7 +145,7 @@ Cada proceso estará definido por sus propios parámetros relacionados con su te
 
 \section{Toolpath}
 
-El \textbf{toolpath} es la ruta que seguirá la herramienta para ejecutar las distintas operaciones definidas en el CAM. Estas rutas dependen del principio de funcionamiento del proceso y son específicas de cada tecnología; no obstante, comparten características comunes que permiten su análisis y parametrización. 
+El toolpath es la ruta que seguirá la herramienta para ejecutar las distintas operaciones definidas en el CAM. Estas rutas dependen del principio de funcionamiento del proceso y son específicas de cada tecnología; no obstante, comparten características comunes que permiten su análisis y parametrización. 
 
 Cuando una operación implica añadir o retirar material mediante una herramienta, la conformación del área objetivo suele requerir varias \comillas{pasadas} en el plano para barrerlo o \textbf{escanearlo}. A la descripción y parametrización de ese conjunto de pasadas lineales la denominaremos \textbf{raster} o \textbf{hatch}. Es importante aclarar que esos términos se usan para referirse específicamente al conjunto de pasadas paralelas, mas no a la descripción de algún algoritmo de relleno, como es el caso del infill en fabricación aditiva.
 
@@ -161,7 +159,7 @@ El raster está gobernado por los siguientes parámetros principales:
 	\item \textbf{Otros}: ancho efectivo de pasada (\(w\)), orden de recorrido (islas, perímetros primero/último), reglas de entrada/salida de herramienta y parámetros cinemáticos asociados (velocidad de avance, aceleración).
 \end{itemize}
 
-Esta estrategia de relleno o de corte debe optimizar no solo la eficiencia cinemática del trazado, sino también la integridad y la calidad del proceso. En operaciones que generan calor, la distribución de las pasadas condiciona las zonas de concentración térmica y, por ende, la degradación o alteración microestructural del material. En procesos que producen anisotropía (por ejemplo, fabricación aditiva o mecanizado por capas), la geometría y orientación del patrón de relleno influyen directamente en la respuesta mecánica de la pieza, su rigidez y su resistencia a la fatiga, además de otros atributos funcionales y superficiales. Se observan distintas estrategias de escaneo en la Figura \ref{scansfig}.
+Esta estrategia de relleno o de corte debe optimizar no solo la eficiencia cinemática del trazado, sino también la integridad y la calidad del proceso. En operaciones que generan calor, la distribución de las pasadas condiciona las \textbf{zonas de concentración térmica} y, por ende, la degradación o alteración microestructural del material. En procesos que producen anisotropía (por ejemplo, fabricación aditiva o mecanizado por capas), la geometría y orientación del patrón de relleno influyen directamente en la respuesta mecánica de la pieza, su rigidez y su resistencia a la fatiga, además de otros atributos funcionales y superficiales. Se observan distintas estrategias de escaneo en la Figura \ref{scansfig}.
 
 \begin{figure}[h!]
 	\centering
