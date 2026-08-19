@@ -1,0 +1,26 @@
+name: Compilar y subir PDF
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+      - name: Upload to rolling release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: latest
+          name: "PDF"
+          artifacts: main.pdf
+          allowUpdates: true
+          replacesArtifacts: true
+          token: ${{ secrets.GITHUB_TOKEN }}

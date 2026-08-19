@@ -12,6 +12,8 @@ La edición actual aún no posee un formato definido para las Figuras. Se explic
 
 Ediciones futuras contendrán ejercicios propuestos y ejemplos
 
+La ultima version del documento puede ser descargada con este [link](https://github.com/jkugalde/Apunte-Fab-Digital/releases/download/latest/main.pdf)
+
 # Indice
 
 - Conceptos básicos de ingenierpia mecánica
