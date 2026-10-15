@@ -4,4 +4,208 @@
 
 \section{Waterjet}
 
-\section{Corte por plasma}
+\subsection{Introducción}
+
+El \textit{waterjet} es un proceso de \textbf{corte en frío} cuyo principio de funcionamiento mecánico es la erosión generada por el impacto de un chorro de agua a alta presión sobre el material, fenómeno conocido como \textbf{hidroerosión}. La operación más frecuente de este proceso es el corte de geometrías planas en planchas.
+
+La naturaleza del proceso no implica fuerzas de corte notables ni gradientes térmicos significativos, por lo que es compatible con una amplia gama de materiales, incluyendo metales, polímeros, cerámicos, compuestos y vidrios. Al no ser un proceso térmico, se evita la aparición de HAZ donde el gradiente térmico puede causar oxidación, dilatación y errores dimensionales o de calidad en el área de corte. Esto convierte al waterjet en una alternativa competitiva para el corte de materiales de espesores elevados, aunque a costa de ser un proceso relativamente lento en comparación con otros métodos de corte.
+
+Un caso particularmente relevante es el corte de materiales compuestos  reforzados con fibra (fibra de vidrio, fibra de carbono), dado que estos materiales presentan serias dificultades con otros procesos de corte. El mecanizado convencional (como el fresado) tiende a generar delaminación entre capas, desprendimiento de fibras y astillado del refuerzo, debido a las elevadas fuerzas de corte involucradas y a la naturaleza anisótropa y heterogénea del material. El corte láser, por su parte, entrega resultados mixtos: dado que la matriz polimérica y las fibras de refuerzo poseen propiedades termofísicas muy distintas entre sí (conductividad térmica, temperatura de degradación o fusión), la energía térmica del láser tiende a degradar o carbonizar la matriz en torno a la zona de corte antes de lograr remover completamente las fibras, generando una HAZ irregular, decoloración y pérdida de propiedades mecánicas en el borde cortado. Al ser un proceso atérmico, el waterjet evita estos problemas, siendo por ello una de las técnicas preferidas para el corte de materiales compuestos en industrias como la aeroespacial.
+
+Para espesores bajos, el corte láser suele preferirse como alternativa más económica. En general, los sistemas de waterjet presentan costos de operación más elevados que otros sistemas de corte, debido a la necesidad de componentes auxiliares (intensificación de presión, abrasivo, mantenimiento de boquillas, entre otros) requeridos para generar el chorro de corte.
+
+Adicionalmente, el waterjet se utiliza en el corte de alimentos, al tratarse de un proceso limpio. Cuando el corte se realiza únicamente con el chorro de agua, el proceso se denomina \textbf{waterjet puro} (\textit{WJC, water jet cutting}), aplicable principalmente a materiales blandos o de baja resistencia (espumas, textiles, papel, alimentos, algunos polímeros). Cuando se requiere aumentar la capacidad de remoción de material (por ejemplo, para cortar metales, cerámicos o vidrio), el chorro de agua se mezcla con partículas abrasivas (comúnmente granate), dando lugar al proceso conocido como \textbf{waterjet abrasivo} (\textit{AWJ, abrasive water jet}).
+
+\subsection{Sistema de waterjet}
+Dado que el principio activo de esta máquina es la generación de un chorro de agua a alta presión, el sistema requiere de una serie de elementos para la generación de dicho chorro.
+
+Primero, el agua se trata mediante un sistema de filtrado (mecánico y, en muchos casos, de ósmosis inversa o desionización), con el fin de remover partículas sólidas y minerales disueltos que puedan dañar por erosión o incrustación los componentes de alta presión aguas abajo (bomba, intensificador, boquilla), además de prolongar la vida útil de estos.
+
+Luego, el agua pasa por un sistema de intensificación de presión, típicamente de naturaleza oleohidráulica, el cual puede clasificarse en tres configuraciones:
+
+\begin{itemize}
+	\item \textbf{Bombeo directo}: un motor eléctrico acciona mediante un cigüeñal un conjunto de pistones (usualmente tres) que presurizan el agua de forma cíclica, de manera análoga a una bomba de desplazamiento positivo convencional. Presenta mayor eficiencia energética (típicamente sobre 80\%), es más compacto y económico, pero genera un flujo con mayor pulsación de presión y no permite almacenar presión cuando el sistema está inactivo.
+	\item \textbf{Intensificador simple}: la presurización se realiza mediante un pistón hidráulico de gran área, accionado por aceite a baja presión relativa (del orden de 3000-5000 psi), acoplado mecánicamente a un pistón de agua de área mucho menor. La relación de áreas entre ambos pistones (típicamente del orden de 20:1) determina la razón de intensificación de presión. Este principio permite alcanzar presiones muy elevadas de forma confiable, aunque con menor eficiencia energética (del orden de 55\%) debido a las pérdidas del circuito hidráulico intermedio.
+	\item \textbf{Intensificador doble}: corresponde a dos cilindros intensificadores dispuestos en paralelo y desfasados en su ciclo de trabajo (uno en carrera de compresión mientras el otro se encuentra en carrera de retorno/llenado), lo que permite obtener un flujo de salida más continuo y con menor pulsación que un intensificador simple, a costa de mayor complejidad y tamaño del sistema.
+\end{itemize}
+
+El agua a alta presión luego llega a un \textbf{acumulador}, cuyo objetivo es otorgar capacitancia hidráulica y amortiguar las oscilaciones de presión inherentes al proceso de bombeo cíclico, entregando así continuidad y estabilidad al chorro de salida en la boquilla.
+
+En el caso de los intensificadores, dado que la presurización del agua se realiza mediante un circuito oleohidráulico auxiliar, el sistema incorpora además una bomba de aceite de baja presión y un acumulador de aceite, cuya función es mantener presión y caudal constantes en el circuito hidráulico que acciona el pistón intensificador, independientemente del circuito de agua de alta presión.
+
+La transmisión del fluido se hace a través de mangueras reforzadas y tuberías de acero rígido. Para poder soportar las altas presioens del proceso (cerca del límite de fluencia de varios aceros), las tuberías pasan por un tratamiento especial denominado \textbf{autofretaje}, el cual describiremos en la subsección siguiente.
+
+El \textbf{cabezal} (o \textit{cutting head}) es donde se ubican la boquilla de alta presión (\textit{orifice}) y el tubo de enfoque (\textit{focusing tube} o \textit{mixing tube}). En la boquilla —normalmente fabricada de un material de alta dureza como zafiro, rubí o diamante, dado el desgaste erosivo al que está sometida— la reducción brusca de sección en el orificio primario (de diámetro típicamente entre 0.1 y 0.5 mm) transforma la energía de presión del fluido en energía cinética, generando el chorro de alta velocidad responsable del corte del material.
+
+Adicionalmente, cuando se utilizan abrasivos, se incorpora al sistema un \textbf{alimentador de partículas abrasivas} (\textit{abrasive hopper/feeder}), el cual dosifica e introduce el abrasivo (comúnmente granate, \textit{garnet}) al chorro de agua en el tubo de enfoque, donde ambos se mezclan antes de incidir sobre la pieza.
+
+Finalmente, la \textbf{cama de trabajo} (\textit{catcher tank} o \textit{worktable}) cumple la función de disipar la energía remanente del chorro de agua tras atravesar el material, además de reducir el ruido generado por el impacto del chorro y contener el agua y los residuos (abrasivo usado, partículas de material cortado) producidos durante el corte.
+
+\subsection{Autofretaje}
+
+El diseño de la tubería que conduce el agua a presiones altas no puede abordarse únicamente aumentando el espesor de pared del tubo, como sugeriría la intuición para un tubo de pared gruesa sometido a presión interna. Considerando la solución elástica de Lamé para un cilindro de pared gruesa con radio interior $a$ y radio exterior $b$, sometido a una presión interna $p_i$ (y presión externa nula), el esfuerzo circunferencial (\textit{hoop stress}) es máximo en la superficie interior del tubo ($r=a$):
+
+\begin{equation}
+	\sigma_{\theta}(a) = p_i \cdot \frac{a^2+b^2}{b^2-a^2}
+\end{equation}
+
+Aplicando el criterio de fluencia de Tresca ($\sigma_\theta - \sigma_r = \sigma_y$) en la superficie interior, donde $\sigma_r(a) = -p_i$, se obtiene la presión interna que provoca el inicio de la fluencia en el borde interior del tubo:
+
+\begin{equation}
+	p_y = \frac{\sigma_y}{2}\left(1 - \frac{a^2}{b^2}\right)
+\end{equation}
+
+donde $\sigma_y$ es el límite de fluencia del acero, por ejemplo. Esta expresión revela una limitación fundamental del diseño puramente elástico: cuando $b/a \to \infty$ (pared infinitamente gruesa), la presión de fluencia tiende asintóticamente a $p_y \to \sigma_y/2$. Es decir, \textbf{ningún aumento de espesor de pared permite superar la mitad del límite de fluencia del material} bajo un diseño puramente elástico.
+
+Como ejemplo numérico, para un acero aleado de alta resistencia (por ejemplo, AISI 4340 templado y revenido, con $\sigma_y \approx 900$ MPa) y una presión de trabajo típica de un sistema waterjet de $p_i = 400$ MPa ($\approx 4000$ bar), el límite asintótico elástico es:
+
+\begin{equation}
+	p_{y,\text{máx}} = \frac{\sigma_y}{2} = 450 \text{ MPa}
+\end{equation}
+
+Para alcanzar, por ejemplo, un 90\% de ese límite ($p_y = 405$ MPa, apenas por sobre la presión de trabajo y sin ningún factor de seguridad), la ecuación (2) exige:
+
+\begin{equation}
+	\frac{a^2}{b^2} = 1 - \frac{2p_y}{\sigma_y} = 0.1 \quad \Rightarrow \quad \frac{b}{a} \approx 3.16
+\end{equation}
+
+es decir, un diámetro exterior más de tres veces el diámetro interior, y aun así sin margen de seguridad real ni consideración de fatiga, crítica en este caso, dado el carácter cíclico de la presurización generada por bombas de pistones. Esto hace inviable, tanto en términos de peso y volumen como de seguridad, sostener las presiones de trabajo del waterjet mediante diseño elástico convencional.
+
+El \textbf{autofretaje} (\textit{autofrettage}) resuelve esta limitación mediante un pre-tensionado controlado: el tubo se presuriza intencionalmente por sobre $p_y$, provocando fluencia plástica progresiva desde la superficie interior hacia un radio elasto-plástico $c$ ($a < c < b$), mientras el material exterior permanece en régimen elástico. Al liberar la presión, el material exterior (elástico) restringe el retorno completo del material interior (que fluyó plásticamente), generando un estado de \textbf{esfuerzos residuales de compresión} en la superficie interior del tubo. Cuando el tubo vuelve a presurizarse durante su operación normal, estos esfuerzos residuales compresivos se superponen a los esfuerzos de tracción generados por la presión de trabajo, reduciendo el esfuerzo neto en la zona crítica del borde interior. Esto permite que la misma geometría y material del tubo soporten de forma segura presiones de trabajo muy por encima del límite elástico convencional, además de mejorar significativamente la vida a fatiga del componente frente a la carga cíclica propia del sistema de bombeo.
+
+
+
+\subsection{Mecanismo de corte}
+
+El mecanismo de remoción de material en el WJ depende de si el proceso es asistido por partículas abrasivas o no.
+
+En el WJC, la remoción de material se produce por la acción hidrodinámica directa del chorro de agua a alta velocidad, generando esfuerzos de corte y erosión localizada suficientes para separar el material en piezas de baja resistencia mecánica (espumas, textiles, alimentos, algunos polímeros), sin necesidad de partículas sólidas que aporten energía de impacto adicional.
+
+En el AWJ, en cambio, la remoción de material ocurre principalmente por la energía cinética transferida por las partículas abrasivas arrastradas por el chorro al impactar la superficie de la pieza, siendo el agua el medio de aceleración y transporte del abrasivo más que el agente erosivo principal. Este mecanismo de erosión por impacto de partículas puede clasificarse, según el ángulo de incidencia y el comportamiento del material, en dos regímenes:
+
+\begin{itemize}
+	\item \textbf{Desgaste por corte}: ocurre en ángulos de impacto bajos, donde las partículas abrasivas actúan de forma similar a micro-herramientas de corte, removiendo material mediante deformación plástica y arranque de viruta a escala microscópica. Este mecanismo es dominante en materiales dúctiles, cuya capacidad de deformación plástica permite este tipo de remoción.
+	\item \textbf{Desgaste por deformación}: se da en ángulos de impacto cercanos a la normal, donde la energía del impacto se traduce en fractura frágil y desprendimiento de fragmentos del material, en lugar de deformación plástica. Este mecanismo es dominante en materiales frágiles, como cerámicos y vidrio.
+\end{itemize}
+
+En la práctica, ambos regímenes coexisten en distintas proporciones a lo largo del espesor de la pieza durante el corte, ya que el ángulo efectivo de incidencia de las partículas varía conforme el chorro pierde energía y se desvía al penetrar el material.
+
+\subsection{Modelos físicos}
+
+La intensificación de presión sigue la ecuación del equilibrio de fuerzas:
+\begin{equation}
+	F_{1}=F_{2} \implies A_{1}P_{1}=A_{2}P_{2} \implies P_{2}=\frac{P_{1}A_{1}}{A_{2}}
+	\label{eq:pres}
+\end{equation}
+
+La ecuación principal para estudiar este proceso es la ecuación de Bernoulli, la cual, en su forma ideal isentrópica (flujo permanente, sin fricción, sin intercambio de energía con el entorno, fluido incompresible), comparando un punto 1 aguas arriba de la boquilla (interior de la cámara de alta presión) y un punto 2 en la salida del chorro (a presión atmosférica), corresponde a:
+\begin{equation}
+	P_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = P_2 + \frac{1}{2}\rho v_2^2 + \rho g z_2
+	\label{eq:bernoulli}
+\end{equation}
+
+No obstante, para el caso del waterjet podemos simplificar esta ecuación considerando que: (i) la diferencia de cota $z$ entre ambos puntos es despreciable frente a los términos de presión y velocidad; (ii) la velocidad $v_1$ en el interior de la cámara es despreciable frente a $v_2$, dado que el área de la cámara es órdenes de magnitud mayor que el área del orificio ($A_1 \gg A_2$); y (iii) la presión $P_2$ en la salida corresponde a la presión atmosférica, que en términos manométricos se toma como cero. Bajo estas simplificaciones, la ecuación~\eqref{eq:bernoulli} se reduce a:
+\begin{equation}
+	v_{ji} = \sqrt{\frac{2P_1}{\rho_0}}
+	\label{eq:vj_incomp}
+\end{equation}
+
+donde $v_{ji}$ es la velocidad ideal del chorro y $\rho_0$ la densidad del agua a presión atmosférica. Esta corresponde a la \textbf{velocidad incompresible}, lo cual constituye una idealización imprecisa, pues las presiones de trabajo del waterjet (miles de bar) son suficientemente altas como para ocasionar una compresión no despreciable del fluido, incrementando su densidad respecto de $\rho_0$.
+
+Para corregir esto, se emplea una ecuación de estado de tipo Tait, que relaciona la densidad del agua con la presión mediante:
+\begin{equation}
+	\rho(P) = \rho_0 \left(1+\frac{P}{L}\right)^{C}
+	\label{eq:tait}
+\end{equation}
+
+donde $C=0.1368$ y $L=300$ MPa son constantes empíricas del agua. Sustituyendo la ecuación~\eqref{eq:tait} en la integral de la ecuación de energía (reemplazando el término $dP/\rho$ constante por su forma dependiente de la presión) e integrando entre $P_2\approx0$ y $P_1$, se obtiene la \textbf{velocidad compresible} del chorro:
+\begin{equation}
+	v_{jc} = \sqrt{\frac{2L}{\rho_0(1-C)}\left[\left(1+\frac{P_1}{L}\right)^{1-C}-1\right]}
+	\label{eq:vj_comp}
+\end{equation}
+
+Esta expresión entrega una velocidad de chorro menor que la predicha por la ecuación~\eqref{eq:vj_incomp}, dado que parte de la energía de presión se invierte en comprimir el fluido en lugar de acelerarlo.
+
+Además de la corrección por compresibilidad, deben considerarse las pérdidas reales asociadas al flujo a través de la boquilla, mediante los siguientes coeficientes adimensionales:
+
+\begin{itemize}
+	\item \textbf{Coeficiente de compresibilidad} $\psi$: razón entre la velocidad compresible real (ecuación~\eqref{eq:vj_comp}) y la velocidad ideal incompresible (ecuación~\eqref{eq:vj_incomp}), cuantificando la desviación respecto del caso incompresible:
+	\begin{equation}
+		\psi = \frac{v_{jc}}{v_{jc}}
+	\end{equation}
+	\item \textbf{Coeficiente de velocidad} $C_v$: razón entre la velocidad real del chorro $v_{j}$ (afectada por fricción viscosa dentro de la boquilla) y la velocidad ideal incompresible, típicamente en el rango $0.95$-$0.99$ para boquillas bien diseñadas.
+	\begin{equation}
+		C_{v}=\frac{v_{j}}{v_{ji}}
+	\end{equation}
+	\item \textbf{Coeficiente de contracción} $C_c$: razón entre el área efectiva del chorro en la vena contracta $A_{j}$ y el área geométrica del orificio $A_{0}$: 
+	\begin{equation}
+		C_c = A_{j}/A_{o}
+	\end{equation} 
+	
+	cercano a la unidad en boquillas de perfil convergente.
+	
+	\item \textbf{Coeficiente de descarga} $C_d$: coeficiente global que combina las pérdidas anteriores, definido como:
+	\begin{equation}
+		C_d = C_v \cdot C_c \cdot \psi
+	\end{equation}
+	
+	típicamente entre $0.6$ y $0.9$ para boquillas de waterjet, y utilizado para relacionar el caudal real con el caudal ideal.
+\end{itemize}
+
+Con esto, el caudal de agua a través de la boquilla se calcula como:
+\begin{equation}
+	Q = C_d \cdot A_o \cdot v_{ji}
+	\label{eq:caudal}
+\end{equation}
+
+La potencia hidráulica (cinética) entregada por el chorro de agua es:
+\begin{equation}
+	P_{kin} = \dot{m}_w \cdot \frac{1}{2}v_j^2
+	\label{eq:pkin}
+\end{equation}
+
+donde el flujo másico de agua se obtiene de:
+\begin{equation}
+	\dot{m}_w = \rho_1 \cdot Q_w
+	\label{eq:mdot}
+\end{equation}
+
+siendo $Q_w$ el caudal volumétrico de agua (ecuación~\eqref{eq:caudal}) y $\rho_1$ la densidad del agua a la presión de trabajo. Trabajando las expresiones anteriores, podemos llegar también a la siguiente expresión para el caudal (con $d_{n}$ el diámetro de la boquilla):
+
+\begin{equation}
+	Q=A_{j}v_{j}=C_{c}C_{v}\psi \frac{d_{n}^{2}\pi}{4}\sqrt{\frac{2p }{\rho_{1}}}
+\end{equation}
+
+Para el caso del AWJ, dentro del tubo de enfoque se mezclan tres corrientes: el chorro de agua a alta velocidad, el abrasivo alimentado (inicialmente en reposo) y el aire arrastrado desde el ambiente hacia la cámara de mezcla (efecto Venturi generado por la depresión que produce el chorro de agua). Considerando el balance de cantidad de movimiento entre estas corrientes entrantes y el chorro de salida (agua+abrasivo+aire = jet), y despreciando el aporte de momentum del aire por su masa comparativamente insignificante, se obtiene:
+\begin{equation}
+	\dot{m}_w \cdot v_j = (\dot{m}_w + \dot{m}_a)\cdot v_{j,a}
+	\label{eq:momentum}
+\end{equation}
+
+donde $\dot m_a$ es el flujo másico de abrasivo y $v_{j,a}$ la velocidad del chorro abrasivo resultante tras la transferencia de momentum. Despejando, y definiendo la razón másica abrasivo/agua $r=\dot m_a/\dot m_w$ (parámetro conocido y controlado en el alimentador de abrasivo):
+\begin{equation}
+	v_{j,a} = \frac{v_j}{1+r}
+	\label{eq:vja}
+\end{equation}
+
+De esta manera, la energía en el jet abrasivo se puede calcular como:
+
+\begin{equation}
+	P_{abr}=\frac{1}{2}(\dot{m}_{w}+\dot{a})v_{j,a}^{2}
+\end{equation}
+
+A partir de la relación $\dot m_w \propto d_{nozzle}^2 \cdot v_j$ (flujo másico proporcional al área del orificio y a la velocidad del chorro) y de $v_j \propto \sqrt{P}$ (ecuación~\eqref{eq:vj_incomp}), la potencia asociada al chorro escala como $P_{kin}\propto \dot m_w v_j^2 \propto d_{nozzle}^2 \cdot P^{3/2}$. De esta forma, se puede estimar la \textbf{potencia abrasiva} disponible para el corte mediante la relación empírica:
+\begin{equation}
+	P_{abr} = k \cdot d_{nozzle}^2 \cdot P^{3/2}
+	\label{eq:pabr}
+\end{equation}
+
+donde $k$ es una constante empírica que agrupa las propiedades del fluido y los coeficientes de pérdida antes descritos.
+
+Finalmente, la tasa de remoción de material (\textit{material removal rate}, MRR) se estima como:
+\begin{equation}
+	MRR = \eta \frac{P_{abr}}{e_c}
+	\label{eq:mrr}
+\end{equation}
+
+donde $\eta$ es un factor de eficiencia del proceso de corte y $e_c$ corresponde a la energía específica de corte del material (energía requerida para remover una unidad de volumen), parámetro característico de cada material que depende de su dureza, tenacidad y comportamiento frente al mecanismo de erosión (cutting wear o deformation wear) descrito anteriormente.

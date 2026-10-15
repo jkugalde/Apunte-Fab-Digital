@@ -86,4 +86,8 @@
 \contentsline {chapter}{\numberline {6}Procesos no convencionales}{153}{chapter.6}%
 \contentsline {section}{\numberline {6.1}EDM}{153}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Waterjet}{153}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Corte por plasma}{153}{section.6.3}%
+\contentsline {subsection}{\numberline {6.2.1}Introducción}{153}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Sistema de waterjet}{154}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Autofretaje}{155}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Mecanismo de corte}{157}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Modelos físicos}{157}{subsection.6.2.5}%
