@@ -8,7 +8,7 @@ Las tecnologías de fabricación digital se fundamentan en un \textbf{proceso co
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/digfab.png}
+    \includegraphics[width=0.9\linewidth]{imgs/cnc.pdf}
     \caption{Flujo de trabajo para un proceso de fabricación digital.}
     \label{digfab}
 \end{figure}
@@ -25,7 +25,7 @@ Cualquier máquina CNC está compuesta de un conjunto de subsistemas primarios (
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/cnc.png}
+    \includegraphics[width=0.9\linewidth]{imgs/cnc.pdf}
     \caption{Subsistemas en una máquina CNC.}
     \label{cncsis}
 \end{figure}
@@ -61,7 +61,7 @@ El control de la posición de un componente o de un sistema electromecánico sue
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.0\linewidth]{imgs/controlup.png}
+    \includegraphics[width=1.0\linewidth]{imgs/controlup.pdf}
     \caption{Diagrama de control cerrado para controlar la posición de un sistema mediante un motor.}
     \label{controlup}
 \end{figure}
@@ -170,11 +170,11 @@ Esta estrategia de relleno o de corte debe optimizar no solo la eficiencia cinem
 
 El solapamiento ilustra bien un trade‑off operativo: intuitivamente convendría emplear exactamente el ancho de herramienta para evitar repetir áreas y ahorrar tiempo, pero un solapamiento controlado aporta beneficios relevantes. En fresado, reduce la carga puntual por diente y mejora la estabilidad del corte; en procesos térmicos aditivos, facilita la coalescencia entre pasadas y asegura una unión más homogénea.
 
-En la Figura \ref{hashfig} se observa un patrón de ráster bidireccional (líneas en una dirección y luego en la inversa) para cubrir un área cuadrada. Se observa que dado el diámetro de la herramienta $d$ y el área objetivo, se requieren 3 pasadas, implicando algo de solapamiento. Parte del área no logra cubrirse con esta estrategia dada la forma de la herramienta (redonda) y la del área (rectangular).
+En la Figura \ref{hashfig} se observa un patrón de ráster bidireccional (líneas en una dirección y luego en la inversa) para cubrir un área cuadrada. Se observa que dado el diámetro de la herramienta $D$ y el área objetivo, se requieren 3 pasadas, implicando algo de solapamiento. Parte del área no logra cubrirse con esta estrategia dada la forma de la herramienta (redonda) y la del área (rectangular).
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/hash.png}
+	\includegraphics[width=0.6\linewidth]{imgs/hash.pdf}
 	\caption{Patrón de ráster bidireccional. Toolpath en negro, superficie objetivo en rojo, herramienta en azul, pasadas en celeste, overlap en verde.}
 	\label{hashfig}
 \end{figure}
@@ -243,7 +243,7 @@ En la Figura \ref{g1} se observa un ejemplo sencillo del uso de G1. La herramien
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\linewidth]{imgs/g1.png}
+    \includegraphics[width=0.85\linewidth]{imgs/g1.pdf}
     \caption{A la izquierda, la instrucción: G1 X100 Y50, interpolación lineal de velocidades para trayectoria recta. A la derecha, segmento de un código para impresión 3D.}
     \label{g1}
 \end{figure}
@@ -259,7 +259,7 @@ En general, en los procesos de fabricación, un aumento en los requisitos de \te
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{imgs/qual.png}
+	\includegraphics[width=0.5\linewidth]{imgs/quality.pdf}
 	\caption{La inversión en tiempo crece de manera no lineal con la calidad en un proceso de fabricación.}
 	\label{qualfig}
 \end{figure}
@@ -294,7 +294,7 @@ Estos fenómenos están directamente relacionados con la construcción de la má
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{imgs/gears.png}
+    \includegraphics[width=0.7\linewidth]{imgs/gears.pdf}
     \caption{Juego mecánico entre dos engranajes, marcado en rojo.}
     \label{gears}
 \end{figure}
@@ -305,7 +305,7 @@ Otra característica deseada en un proceso de fabricación es la precisión, nue
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/press.png}
+    \includegraphics[width=0.9\linewidth]{imgs/press.pdf}
     \caption{Precisión y exactitud. La precisión se mide como la dispersión entre puntos, y la exactitud respecto al objetivo.}
     \label{press1}
 \end{figure}
@@ -326,7 +326,7 @@ En las primeras fases del desarrollo de un producto, el prototipado transforma i
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/prototip.png}
+    \includegraphics[width=0.9\linewidth]{imgs/prototip.pdf}
     \caption{Flujo de la metodología de prototipado rápido.}
     \label{propro}
 \end{figure}

@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 Reallocating 'name_of_file' (item size: 1) to 9 items.
@@ -34,47 +34,49 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: main-blx.bib
 Database file #2: bibliografia.bib
-Biblatex version: 3.19
+Warning--I didn't find a database entry for "propb"
+Biblatex version: 3.21
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 14 entries,
-            6399 wiz_defined-function locations,
-            1295 strings with 12286 characters,
-and the built_in function-call counts, 139023 in all, are:
-= -- 11863
-> -- 1801
-< -- 394
-+ -- 4553
-- -- 785
-* -- 10306
-:= -- 17308
+You've used 13 entries,
+            6402 wiz_defined-function locations,
+            1290 strings with 12031 characters,
+and the built_in function-call counts, 124014 in all, are:
+= -- 10486
+> -- 1650
+< -- 362
++ -- 4117
+- -- 715
+* -- 9081
+:= -- 15434
 add.period$ -- 0
-call.type$ -- 14
-change.case$ -- 117
-chr.to.int$ -- 98
-cite$ -- 26
-duplicate$ -- 14537
-empty$ -- 11400
-format.name$ -- 1117
-if$ -- 27263
+call.type$ -- 13
+change.case$ -- 110
+chr.to.int$ -- 92
+cite$ -- 24
+duplicate$ -- 13214
+empty$ -- 10129
+format.name$ -- 1017
+if$ -- 24287
 int.to.chr$ -- 0
-int.to.str$ -- 28
+int.to.str$ -- 26
 missing$ -- 0
-newline$ -- 549
-num.names$ -- 524
-pop$ -- 5112
+newline$ -- 501
+num.names$ -- 486
+pop$ -- 4715
 preamble$ -- 1
-purify$ -- 234
+purify$ -- 216
 quote$ -- 0
-skip$ -- 2450
+skip$ -- 2263
 stack$ -- 0
-substring$ -- 22776
-swap$ -- 2173
-text.length$ -- 422
+substring$ -- 19814
+swap$ -- 1984
+text.length$ -- 387
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 464
+type$ -- 430
 warning$ -- 0
-while$ -- 2171
+while$ -- 1970
 width$ -- 0
-write$ -- 536
+write$ -- 489
+(There was 1 warning)

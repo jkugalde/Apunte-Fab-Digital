@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,8 +16,8 @@
   {}
 \endgroup
 
-\datalist[entry]{none/global//global/global}
-  \entry{incrop}{article}{}
+\datalist[entry]{none/global//global/global/global}
+  \entry{incrop}{article}{}{}
     \name{author}{1}{}{%
       {{hash=IF}{%
          family={Incropera},
@@ -36,7 +36,7 @@
     \field{year}{1985}
   \endentry
 
-  \entry{tempyoung}{article}{}
+  \entry{tempyoung}{article}{}{}
     \name{author}{3}{}{%
       {{hash=DP}{%
          family={Dong},
@@ -72,7 +72,7 @@
     \field{year}{2014}
   \endentry
 
-  \entry{acers}{article}{}
+  \entry{acers}{article}{}{}
     \name{author}{7}{}{%
       {{hash=LX}{%
          family={Li},
@@ -132,7 +132,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{tensileplastic}{article}{}
+  \entry{tensileplastic}{article}{}{}
     \name{author}{3}{}{%
       {{hash=CC}{%
          family={Comelli},
@@ -170,7 +170,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{jumimi}{inproceedings}{}
+  \entry{jumimi}{inproceedings}{}{}
     \name{author}{3}{}{%
       {{hash=HRA}{%
          family={Hamid},
@@ -209,7 +209,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{kinematic}{article}{}
+  \entry{kinematic}{article}{}{}
     \name{author}{6}{}{%
       {{hash=SH}{%
          family={Schwenke},
@@ -264,7 +264,7 @@
     \field{year}{2008}
   \endentry
 
-  \entry{escaninb}{article}{}
+  \entry{escaninb}{article}{}{}
     \name{author}{2}{}{%
       {{hash=RA}{%
          family={Rajurkar},
@@ -297,7 +297,7 @@
     \field{year}{2023}
   \endentry
 
-  \entry{rokeke}{article}{}
+  \entry{rokeke}{article}{}{}
     \name{author}{3}{}{%
       {{hash=KF}{%
          family={Kerstens},
@@ -333,7 +333,7 @@
     \field{year}{2021}
   \endentry
 
-  \entry{porob}{inproceedings}{}
+  \entry{porob}{inproceedings}{}{}
     \name{author}{2}{}{%
       {{hash=AMA}{%
          family={Alam},
@@ -358,7 +358,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{leyerb}{article}{}
+  \entry{leyerb}{article}{}{}
     \name{author}{5}{}{%
       {{hash=PGA}{%
          family={Payami\bibnamedelima Golhin},
@@ -408,7 +408,7 @@
     \field{year}{2023}
   \endentry
 
-  \entry{strenb}{article}{}
+  \entry{strenb}{article}{}{}
     \name{author}{4}{}{%
       {{hash=PB}{%
          family={Podsiadly},
@@ -454,7 +454,7 @@
     \field{year}{2021}
   \endentry
 
-  \entry{tensiler}{article}{}
+  \entry{tensiler}{article}{}{}
     \name{author}{7}{}{%
       {{hash=PS}{%
          family={Pitjamit},
@@ -513,55 +513,6 @@
     \field{journaltitle}{Journal of Applied Engineering and Technological
   Science (JAETS)}
     \field{month}{12}
-    \field{year}{2024}
-  \endentry
-
-  \entry{propb}{article}{}
-    \name{author}{5}{}{%
-      {{hash=MRA}{%
-         family={Martínez\bibnamedelima Raya},
-         familyi={M\bibinitperiod\bibinitdelim R\bibinitperiod},
-         given={Antonio},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=ARJ}{%
-         family={Aranda-Ruiz},
-         familyi={A\bibinithyphendelim R\bibinitperiod},
-         given={Josué},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=SAG}{%
-         family={Sal\bibnamedelima Anglada},
-         familyi={S\bibinitperiod\bibinitdelim A\bibinitperiod},
-         given={Gastón},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=JS}{%
-         family={Jaureguizahar},
-         familyi={J\bibinitperiod},
-         given={Sebastián},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=BM}{%
-         family={Braun},
-         familyi={B\bibinitperiod},
-         given={Matias},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MRA+1}
-    \strng{fullhash}{MRAARJSAGJSBM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.3390/app14209529
-    \endverb
-    \field{pages}{9529}
-    \field{title}{Effect of Printing Orientation on the Mechanical Properties
-  of Low-Force Stereolithography-Manufactured Durable Resin}
-    \field{volume}{14}
-    \field{journaltitle}{Applied Sciences}
-    \field{month}{10}
     \field{year}{2024}
   \endentry
 \enddatalist
