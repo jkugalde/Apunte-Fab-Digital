@@ -64,7 +64,7 @@ donde $h$ es el \textbf{espesor no deformado de la viruta}, que depende del avan
 
 Estas condiciones aumentan el desgaste de la herramienta, deterioran la calidad superficial y reducen la eficiencia del proceso de mecanizado. 
 
-Esta penetración mínima está determinada por la \textbf{cinemática del corte}, es decir, por la relación entre la velocidad de avance de la herramienta y su velocidad de rotación. Esta relación se expresa a través del parámetro conocido como \textbf{avance por diente}, definido como:
+Esta penetración mínima está determinada por la \textbf{cinemática del corte}, es decir, por la relación entre la velocidad de avance de la herramienta y su velocidad de rotación. Esta relación en fresado se expresa a través del parámetro conocido como \textbf{avance por diente}, definido como:
 
 \begin{equation}
 	f_z = \frac{v_f}{z \cdot N}
@@ -78,7 +78,9 @@ donde:
 	\item $N$ es la \textbf{velocidad de rotación} [rpm]
 \end{itemize}
 
-Este parámetro representa la distancia que avanza cada diente en una revolución, y por tanto determina el \textbf{espesor no deformado de viruta} $h$. Si $f_z$ es menor que el espesor mínimo de corte $h_{\text{min}}$, no se genera viruta adecuadamente, y el proceso entra en los regímenes no deseados de rubbing o ploughing.
+Este parámetro representa la distancia que avanza cada diente por revolución de la herramienta, y por tanto determina el \textbf{espesor no deformado de viruta} $h$. Si $f_z$ es menor que el espesor mínimo de corte $h_{\text{min}}$, no se genera viruta adecuadamente, y el proceso entra en los regímenes no deseados de rubbing o ploughing. 
+
+En las operaciones de torneado, la herramienta posee un solo filo que corta al material contínuamente, luego la expresión anterior es válida considerando siempre $z=1$, pasando a denominarse \textbf{avance por revolución}. 
 
 En consecuencia, el avance por diente debe mantenerse por encima de ese umbral mínimo, el cual depende del material, la geometría del filo y las condiciones de corte. No obstante, $f_z$ también está limitado por la capacidad de la herramienta y por los requisitos de \textbf{calidad superficial} y \textbf{tolerancias}, es decir, existe un $h_{max}$, luego:
 
@@ -87,7 +89,7 @@ En consecuencia, el avance por diente debe mantenerse por encima de ese umbral m
 	h_{min}<f_{z}<h_{max}
 \end{equation}
 
- Un avance excesivo puede generar virutas muy gruesas, sobrecargar el filo y deteriorar la precisión del mecanizado. Por tanto, se debe encontrar un equilibrio adecuado que permita un corte efectivo sin comprometer la calidad ni la integridad de la herramienta.
+ Un avance excesivo puede generar virutas muy gruesas, sobrecargar el filo y deteriorar la precisión del mecanizado. Por tanto, se busca un equilibrio adecuado que permita un corte efectivo que no comprometa la calidad del corte ni la integridad de la herramienta.
  
 La \textbf{velocidad de corte} ($v_c$) representa la velocidad relativa entre el filo de la herramienta y la superficie de la pieza durante el mecanizado, es decir, la velocidad a la que efectivamente se ataca al material. Este parámetro es fundamental, ya que influye directamente en la generación de viruta, la temperatura de corte y el desgaste de la herramienta. Para un fresado circular, se calcula como:
 
@@ -98,68 +100,98 @@ La \textbf{velocidad de corte} ($v_c$) representa la velocidad relativa entre el
 donde:
 \begin{itemize}
 	\item $D$ es el diámetro de la fresa [mm],
-	\item $N$ es la velocidad de rotación [rpm].
+	\item $N$ es la velocidad de rotación [rpm]. 
+	\item el factor $\pi$ aparece en este caso por tratar con revoluciones en lugar de radianes.
 \end{itemize}
+
+Esta definición no representa estrictamente la velocidad relativa real entre la arista y el material, pues esta depende, entre otros factores, de la posición efectiva del punto de contacto sobre la herramienta y de la composición vectorial con la velocidad de avance. Dado que $$v_f \ll v_c$$ en la mayoría de los procesos de mecanizado, la diferencia es despreciable y la definición nominal resulta adecuada para seleccionar condiciones de corte
+
 
 La selección de $v_c$ debe complementarse con el avance por diente $f_z$, ya que juntos determinan el espesor de corte efectivo y la eficiencia del mecanizado. Un avance o velocidad de corte inadecuados pueden inducir regímenes de rubbing o ploughing, mientras que valores apropiados permiten un corte estable y controlado.
 
-Por otro lado, la herramienta debe aplicar una fuerza tangencial suficiente para vencer la resistencia del material a ser cortado. Esta condición se expresa como:
+Para que exista remoción de material, la componente de la fuerza resultante que actúa a lo largo del plano de corte debe alcanzar la resistencia al cizallamiento del material:
 
 \begin{equation}
-	F_c \geq \tau_s \cdot A
+	F_s \geq \tau_s \, A_s
 \end{equation}
 
 donde:
 
 \begin{itemize}
-	\item $F_c$ es la fuerza de corte aplicada.
-	\item $\tau_s$ es el esfuerzo de corte específico del material.
-	\item $A = a \cdot b$ es el área de corte, siendo $a$ la profundidad y $b$ el ancho de contacto de la herramienta con el material.
+	\item $F_s$ es la componente de la fuerza resultante paralela al plano de corte.
+	\item $\tau_s$ es la tensión de fluencia en cizalle del material.
+	\item $A_s$ es el área del plano de corte.
 \end{itemize}
+
+La fuerza de corte $F_c$, aplicada en la dirección de la velocidad de corte y que es la que determina la potencia, se relaciona con $F_s$ a través de la geometría del corte (modelo de Merchant):
+
+\begin{equation}
+	F_c = F_s \, \frac{\cos(\beta - \alpha)}{\cos(\phi + \beta - \alpha)}
+\end{equation}
+
+con $\phi$ el ángulo del plano de cizalle, $\beta$ el ángulo de fricción en la cara de ataque y $\alpha$ el ángulo de ataque de la herramienta.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{imgs/fpt.png}
-	\caption{Diagrama del avance de la herramienta. \href{https://fmcarbide.com/pages/milling-feed-rate}{Fuente}}
+	\caption{Diagrama del avance por diente $f_z$. \href{https://fmcarbide.com/pages/milling-feed-rate}{Fuente}}
 	\label{fptfig}
 \end{figure}
 
-Nótese que esta condición está relacionada con la dureza, pues estamos ante un fenómeno de indentación local. Así, mientras más duro es una material, menor es su \textbf{maquinabilidad}, una característica que indica la facilidad de mecanizado. Cómo veremos más adelante, este atributo dependerá además de otras propiedades del material base. 
-
-Estas condiciones son las mínimas para que el fenómeno de remoción ocurra, no obstante, no puede ser llevado a cabo por cualquier maquinaria. De esta manera, el proceso va a ser viable además si es que la potencia de la maquinaria lo permite. La potencia de corte requerida se calcula como:
+El área del plano de corte depende de varios parámetros geométricos de la herramienta y cambia continuamente mientras el diente entra y sale del material, por lo que los modelos precisos tienden a ser complejos. Una estimación de primer orden consiste en suponer un espesor de viruta constante e igual al avance por diente $f_z$ (Figura~\ref{fptfig}). Como el espesor instantáneo de viruta nunca supera $f_z$, esta hipótesis es conservadora en cuanto al espesor. Así, la fuerza de corte por diente se puede expresar como:
 
 \begin{equation}
-	P_{\text{corte}} = F_c \cdot v_c
+	F_{c,z} \approx \tau_s \, a_p \, f_z
 \end{equation}
 
-donde:
+donde $a_p$ es la profundidad de corte axial. Cabe notar que esta expresión desprecia la inclinación del plano de cizalle y la fricción en la cara de ataque, por lo que tiende a subestimar la fuerza real. En la práctica estos efectos se incorporan mediante la fuerza específica de corte, como se verá más adelante. Asimismo, en la realidad el ángulo de hélice del filo genera componentes radial y axial de fuerza, las cuales se omiten en este análisis para mantener la simplicidad.
 
-\begin{itemize}
-	\item $v_c$ es la velocidad de corte (tangencial),
-	\item $F_c$ es la fuerza de corte.
-\end{itemize}
-
-Así, la condición energética sobre el hardware se expresa como:
+Dado que esta es la fuerza por diente, la fuerza de corte total máxima se estima considerando cuántos dientes interactúan simultáneamente con el material:
 
 \begin{equation}
-	P_{\text{disponible}} \geq P_{\text{corte}}
+	F_c = F_{c,z} \, B
 \end{equation}
 
-Si se expanden los términos de la ecuación (4.5) utilizando la relación (4.4), se obtiene:
+donde $B$ es el número de dientes activos. Esta expresión es una cota superior, pues supone que todos los dientes engranados cortan con el espesor máximo y que sus fuerzas tangenciales se suman en la misma dirección. Esta fuerza de corte se utilizará posteriormente para dimensionar la potencia mínima requerida del husillo.
+
+Nótese que la tensión de fluencia en cizalle se correlaciona con la dureza del material, pues el corte involucra una deformación plástica localizada. Así, mientras más duro es un material, menor tiende a ser su \textbf{maquinabilidad}, una característica que indica la facilidad de mecanizado. Sin embargo, la dureza no es el único factor: como veremos más adelante, este atributo depende además de otras propiedades, como la conductividad térmica, la tendencia al endurecimiento por deformación y la abrasividad.
+
+Estas condiciones son las mínimas para que el fenómeno de remoción ocurra; no obstante, el proceso no puede ser llevado a cabo por cualquier máquina. Para que sea viable, la potencia de la máquina debe además permitirlo. La potencia de corte requerida se calcula como:
 
 \begin{equation}
-	P_{\text{corte}} = \tau_{s} \cdot A \cdot v_{f} = \tau_{s} \cdot MRR
+	P_{\text{corte}} = F_c \, v_c
 \end{equation}
 
-donde $MRR$ es la \textbf{tasa de remoción de material} (\textit{Material Removal Rate}), expresada en $\mathrm{[mm^{3}/s]}$ o $\mathrm{[mm^{3}/min]}$, según el sistema de unidades empleado.
+con $v_c$ la velocidad de corte (en m/s si $F_c$ está en N y $P$ en W). La condición energética sobre el hardware se expresa entonces como:
 
-La \textbf{condición de potencia disponible} puede formularse de manera más específica como:
+\begin{equation}
+	\eta \, P_{\text{disponible}} \geq P_{\text{corte}}
+\end{equation}
+
+donde $\eta$ es la eficiencia de la transmisión del husillo.
+
+Otra forma de dimensionar la potencia requerida es a través de la energía de corte específica del material $K_s$, que indica la energía necesaria para remover una unidad de volumen de dicho material. La tasa de remoción de material (MRR) se calcula como:
+
+\begin{equation}
+	\text{MRR} = A \, v_f
+\end{equation}
+
+donde $A = a_p \, w$ es el área de la sección transversal del material removido por unidad de avance, con $w$ el ancho de corte. De esta manera, la potencia requerida se puede expresar como:
+
+\begin{equation}
+	P_{\text{corte}} = K_s \, \text{MRR}
+\end{equation}
+
+y la condición de viabilidad es nuevamente $\eta\,P_{\text{disponible}} \geq P_{\text{corte}}$.
+
+Sabemos también que la potencia puede formularse como:
 
 \begin{equation}
 	P_{\text{disp}} = N \cdot T
 \end{equation}
 
 donde:
+
 \begin{itemize}
 	\item $N$ es la \textbf{velocidad de rotación del motor} [rpm o rev/s]
 	\item $T$ es el \textbf{par de torsión} [N$\cdot$m], típicamente expresado en [hp] o [kW].
@@ -310,8 +342,9 @@ Dentro de las fresas, que constituyen las herramientas más utilizadas en centro
 Las características principales de una herramienta de corte se ilustran en la Figura \ref{anatomifig}, y en el Cuadro \ref{tab:tool_characteristics} algunos de los parámetros más típicos, como por ejemplo: 
 
 \begin{itemize}
-	\item \textbf{Diámetro}: determina tanto la resolución geométrica alcanzable como la tasa máxima de remoción de material. El diámetro de corte puede diferir del diámetro del vástago (shank), relevante para fijar la herramienta al portaherramienta.
-	\item \textbf{Longitud total y longitud útil}: definen la profundidad máxima de corte y la rigidez efectiva de la herramienta durante la operación.
+	\item \textbf{Diámetro}: determina tanto la resolución geométrica alcanzable como la tasa máxima de remoción de material. El diámetro de corte puede diferir del diámetro del vástago, relevante para fijar la herramienta al portaherramienta.
+	\item \textbf{Longitud total}: El largo total de la herramienta.
+	\item \textbf{Longitud de corte}: La longitud con filo útil de la herrmienta.
 	\item \textbf{Filos}: El número de filos (flutes) y la dirección de la helice, influyen en la evacuación de viruta, la calidad de superficie y la eficiencia del corte.
 \end{itemize}
 
@@ -325,7 +358,7 @@ La geometría de corte de una herramienta se define principalmente por tres áng
 	\label{anatomifig}
 \end{figure}
 
-Respecto a la dirección de hélice, las \textbf{hélices derechas} son las más comunes y expulsan la viruta hacia arriba (fuera del corte), mientras que las \textbf{hélices izquierdas} la empujan hacia abajo, siendo preferidas cuando se busca aumentar la estabilidad de la pieza, o evitar el levantamiento en piezas delgadas, o delaminación en materiales compuestos. 
+Respecto a la dirección de la hélice, y considerando una herramienta con giro horario visto desde el husillo, las \textbf{hélices derechas} son las más comunes. Evacuan la viruta hacia arriba, fuera de la zona de corte, lo que mejora la evacuación en ranurados profundos. Como contrapartida, generan una componente axial que tiende a levantar la pieza y a extraer la herramienta del portaherramientas. Las \textbf{hélices izquierdas} invierten este efecto: empujan la viruta hacia abajo y presionan la pieza contra la mesa, por lo que se prefieren en piezas delgadas o poco rígidas, donde se busca evitar el levantamiento, y en materiales compuestos laminados, para reducir la delaminación de la capa superior. Su desventaja es que la viruta queda atrapada en el fondo del corte, por lo que se recomiendan en cortes pasantes o poco profundos. Para combinar ambos efectos existen las fresas de compresión, que incorporan hélices de ambos sentidos. Finalmente, el filo también puede ser \textbf{recto}, caso en que la fuerza axial es nula, aunque el corte resulta más intermitente y la evacuación de viruta es menos eficiente; es una opción habitual en el mecanizado de plásticos y metales blandos.
 
 Las herramientas pueden ser fabricadas en una sola pieza o mediante un cuerpo portador con \textbf{insertos de corte reemplazables}. Estos insertos, fabricados generalmente de carburo sinterizado o materiales cerámicos, permiten extender la vida útil del cuerpo de la herramienta y optimizar los costos operativos. En cuanto a materiales, las herramientas suelen estar hechas de acero rápido (HSS), carburo cementado (WC-Co), cerámicos o incluso diamante policristalino (PCD), según los requerimientos de velocidad, durabilidad y resistencia al desgaste.
 
@@ -424,13 +457,6 @@ Aunque la mayor parte del calor generado en el corte se transfiere a la viruta, 
 
 Por ello, otro parámetro importante a considerar es el \textbf{control del refrigerante}, que aunque limitado desde el software CAM, puede activarse o desactivarse y configurarse en distintos modos de expulsión: refrigeración por inundación (\textit{flood}), nebulización (\textit{mist}), aire comprimido o refrigeración interna a través del husillo (\textit{through spindle coolant}, \textit{TSC}).
 
-El \textit{toolpath} completo está compuesto por distintas fases de movimiento:
-\begin{itemize}
-	\item \textbf{Movimientos rápidos} (G0), utilizados para ubicar la herramienta en posición, fuera de contacto con la pieza;
-	\item \textbf{Movimientos de aproximación o transición}, con velocidades reducidas para entrar en contacto con el material de forma controlada;
-	\item \textbf{Movimientos de corte} (G1), donde se aplican los parámetros calculados para remover material.
-\end{itemize}
-
 Una consideración importante al momento de definir la estrategia de mecanizado en el entorno CAM es el uso de \textbf{tabs}, especialmente en el trabajo con planchas o placas delgadas. Un \textit{tab} es una pequeña porción del material que no se corta durante la operación, con el fin de mantener temporalmente un segmento de la pieza unido al stock. En la práctica, actúa como un punto de fijación pasivo.
 
 \begin{figure}[h!]
@@ -445,17 +471,7 @@ El uso de tabs permite conservar la rigidez del sistema durante el mecanizado, e
 
 Sin embargo, su utilización implica ciertas desventajas: aumenta el tiempo total de mecanizado y requiere operaciones de \textbf{postprocesado} manual, tales como la remoción del tab y la rectificación o acabado de la zona afectada para restaurar la geometría o el acabado superficial deseado.
 
-Los parámetros mencionados tendrán un efecto directo en el tiempo de maquinado, no obstante, los tiempos de mecanizado CNC incluyen otras acciones de carácter preparativo o logístico, y se pueden separar como:
-
-\begin{enumerate}
-	\item \textbf{Tiempos de operación}: Corresponden al tiempo efectivo de corte durante cada trayecto programado en el CAM, según las estrategias seleccionadas y los parámetros de mecanizado.
-	
-	\item \textbf{Tiempos de preparación y montaje}: Incluyen el tiempo requerido para fijar/remover el stock a la mesa de trabajo, instalar sistemas de sujeción, alinear y referenciar la pieza, cambiar herramientas entre operaciones, realizar inspecciones intermedias y reorientar la pieza si es necesario.
-	
-	\item \textbf{Tiempos auxiliares e improductivos}: Agrupan todas aquellas pausas o actividades que, sin formar parte directa del mecanizado, afectan la duración total del proceso. Esto puede incluir tiempos de espera entre operaciones, limpieza de viruta, calibraciones, tiempos de calentamiento de la máquina, movimientos rápidos fuera de corte (reposicionamiento) y otros tiempos muertos asociados al entorno de trabajo.
-\end{enumerate}
-
-Finalmente, cualquier incremento en los parámetros que aumentan la potencia requerida —como mayor profundidad o ancho de corte— afectará la calidad del mecanizado, al incrementar la dificultad de controlares fenómenos indeseables como la generación de calor, vibraciones, deflexión de la herramienta y desgaste prematuro. Estos efectos impactan la precisión, el acabado superficial y la capacidad del hardware, por lo que es fundamental equilibrar productividad, calidad y viabilidad técnica.
+Finalmente, cualquier incremento en los parámetros que aumentan la potencia requerida, como mayor profundidad o ancho de corte, afectará la calidad del mecanizado, al incrementar la dificultad de controlares fenómenos indeseables como la generación de calor, vibraciones, deflexión de la herramienta y desgaste prematuro. Estos efectos impactan la precisión, el acabado superficial y la capacidad del hardware, por lo que es fundamental equilibrar productividad, calidad y viabilidad técnica.
 
 Sin embargo, un aumento de potencia no siempre implica peor calidad; parámetros demasiado bajos pueden ser insuficientes para alcanzar la penetración mínima necesaria para generar viruta efectiva, provocando rubbing o ploughing. La optimización de los parámetros de corte es compleja debido a la naturaleza multivariable del proceso y la interacción de las distintas condiciones de operación.
 
@@ -540,41 +556,8 @@ La acumulación de viruta sobre el filo de corte (Figura \ref{edgefig}), tambié
 
 La acumulación de viruta puede minimizarse mediante el uso de herramientas con recubrimientos de baja adhesión, refrigeración, y ajustes en los parámetros de corte para evitar el régimen discontinuo que favorece este fenómeno.
 
-\subsection{Recomendaciones según material}
-
-Las propiedades anteriores se traducen en decisiones concretas sobre herramientas, geometrías, recubrimientos y parámetros de corte. A continuación, se presentan algunos valores representativos:
-
-\begin{itemize}
-	\item \textbf{Acero al carbono (AISI 1045):} Se mecaniza con fresas de carburo con recubrimiento TiAlN o similar. Velocidades de corte típicas entre 90 y 140 m/min, con avances por diente de 0{,}05--0{,15} mm. Requiere refrigeración continua para controlar el calor y prolongar la vida de la herramienta.
-	
-	\item \textbf{Acero inoxidable (AISI 304):} Material austenítico con baja conductividad térmica y tendencia a la deformación por endurecimiento. Se recomiendan herramientas de carburo recubiertas con geometrías de corte positivas. Velocidades de corte más bajas (60--100 m/min) y avances moderados. La refrigeración es obligatoria para evitar acumulación térmica.
-	
-	\item \textbf{Aluminio 6061:} Permite altas velocidades de corte (300--600 m/min) debido a su baja dureza y alta conductividad térmica. Se recomiendan fresas de 2 o 3 filos, sin recubrimiento o con recubrimientos que reduzcan la adhesión (ZrN, DLC). El uso de refrigerante depende de la velocidad y de la evacuación de viruta.
-	
-	\item \textbf{Nylon (PA6):} Material blando, de baja rigidez y alta tenacidad. Requiere filos agudos, avances reducidos y velocidades intermedias (80--150 m/min). El mecanizado en seco puede generar acumulación de viruta por electrificación o fusión localizada; se recomienda aire comprimido o refrigeración con MQL.
-	
-	\item \textbf{Composites reforzados (GF30, CFRP):} Presentan abrasividad alta. Se emplean herramientas PCD o fresas de carburo con recubrimientos duros. Velocidades de corte bajas, avances moderados y mínima profundidad de corte para evitar delaminación o desintegración del material.
-\end{itemize}
 
 
-\subsection{Medición de calidad}
-
-Una vez finalizado el mecanizado y las etapas de postprocesado, se miden los siguientes parámetros para verificar la conformidad de la pieza con las especificaciones técnicas:
-
-\begin{itemize}
-	\item \textbf{Tolerancias dimensionales:} Se determina la conformidad de dimensiones críticas (longitudes, diámetros, espesores, radios) con los valores establecidos en el diseño. La medición se realiza utilizando micrómetros, pie de metro y máquinas de medición por coordenadas (CMM).\\
-	\textit{Ajuste:} En caso de desviaciones dimensionales, se puede ajustar la velocidad de giro (RPM), reducir la velocidad de avance, disminuir la profundidad de corte o utilizar herramientas de menor diámetro para mejorar la precisión. También se revisa la fijación de la pieza y la calibración de la máquina para minimizar vibraciones y movimientos no deseados.
-	
-	\item \textbf{Rugosidad superficial:} Se cuantifica la textura superficial mediante parámetros como Ra, utilizando rugosímetros o profilómetros. Este parámetro describe las irregularidades y variaciones de la superficie en escala micrométrica.\\
-	\textit{Ajuste:} Para reducir la rugosidad, se puede disminuir el avance por diente, aumentar las RPM, seleccionar herramientas con geometría de corte más adecuada (por ejemplo, fresas de mayor filo o con recubrimiento especial) o implementar pases de acabado con menor profundidad y \textit{stepover}. También es posible añadir procesos secundarios como pulido o rectificado.
-	
-	\item \textbf{Defectos superficiales:} Se inspeccionan visualmente o con métodos ópticos defectos tales como quemaduras, marcas de herramientas, rebabas y grietas. Estos se asocian a condiciones del proceso de corte y del estado de la herramienta.\\
-	\textit{Ajuste:} Se recomienda aumentar el flujo y tipo de refrigerante, reducir la velocidad de corte y avance para disminuir la generación de calor, cambiar o afilar la herramienta para evitar desgastes y vibraciones, y mejorar la sujeción de la pieza para evitar movimientos durante el mecanizado.
-	
-	\item \textbf{Propiedades mecánicas y microestructurales:} En ciertos casos, se evalúan características como dureza y estructura interna a través de ensayos destructivos o no destructivos, para verificar la integridad del material tras el mecanizado.\\
-	\textit{Ajuste:} Si se detectan alteraciones, se pueden aplicar tratamientos térmicos posteriores (recozido, temple, revenido), controlar la temperatura y la velocidad de corte para evitar sobrecalentamiento, y seleccionar estrategias de mecanizado que reduzcan tensiones residuales, como cortes más suaves y menos profundos.
-	
-\end{itemize}
 
 \section{Operaciones comunes}
 
@@ -652,6 +635,13 @@ En el fresado CNC bidimensional (2D), la herramienta se desplaza principalmente 
 
 En este tipo de operaciones, la herramienta suele desplazarse en trayectorias tridimensionales que siguen el perfil de la pieza. A continuación se describen las estrategias más comunes (Figura \ref{3dopsfig}):
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/3dops.png}
+	\caption{Operaciones 3D comunes, las trayectorias de corte aparecen en azul, mientras que los movimientos de aproximación en amarillo. Fuente: Fusion Autodesk 360.}
+	\label{3dopsfig}
+\end{figure}
+
 \begin{enumerate}
 	\item \textbf{Movimiento paralelo a un plano (Parallel / Raster):} La herramienta se desplaza en líneas paralelas dentro de un plano definido (usualmente XY), ajustando su posición en el eje Z según la geometría de la superficie. Es eficiente para superficies de curvatura suave y amplia.
 	
@@ -666,12 +656,7 @@ En este tipo de operaciones, la herramienta suele desplazarse en trayectorias tr
 	\item \textbf{Rampa (Ramp):} La herramienta penetra progresivamente en el material siguiendo una trayectoria inclinada, en lugar de descender verticalmente. Esta estrategia se utiliza tanto para ingresar al material como para realizar cortes continuos, minimizando esfuerzos axiales y reduciendo el riesgo de daño en herramientas frágiles.
 \end{enumerate}
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{imgs/3dops.png}
-	\caption{Operaciones 3D comunes, las trayectorias de corte aparecen en azul, mientras que los movimientos de aproximación en amarillo. Fuente: Fusion Autodesk 360.}
-	\label{3dopsfig}
-\end{figure}
+
 
 
 

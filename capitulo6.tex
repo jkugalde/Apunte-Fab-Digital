@@ -2,6 +2,164 @@
 
 \section{EDM}
 
+\subsection{Introducción}
+
+El mecanizado por electroerosión, o EDM por sus siglas en inglés (\textit{Electrical Discharge Machining}), es un proceso térmico de remoción de material. Su principio físico consiste en generar descargas eléctricas controladas entre una herramienta (electrodo) y un volumen muy pequeño de la pieza, producidas por una intensa corriente eléctrica en un fluido dieléctrico. Cada descarga funde y evapora una porción mínima de material, lo que permite alcanzar resoluciones del orden de $1\,\mu\mathrm{m}$. Dado que el proceso depende del paso de corriente, solo es aplicable a materiales conductores.
+
+Una consecuencia importante es que la dureza del material no limita su maquinabilidad, ya que las propiedades relevantes son las termofísicas (punto de fusión, conductividad térmica y calor específico, entre otras). Esto hace del EDM una alternativa para materiales muy duros o difíciles de mecanizar por métodos convencionales.
+
+Por otro lado, la pequeña escala de cada descarga y la naturaleza cíclica del proceso (descargas sucesivas separadas por intervalos de pausa) se traducen en una baja tasa de remoción de material (o MRR) en comparación con otros procesos. Por ello, el EDM resulta viable cuando se requiere alta resolución o cuando el material objetivo presenta baja maquinabilidad, como ocurre en los moldes de inyección.
+
+Distinguiremos dos variantes del proceso: EDM por hilo (\textit{wire EDM}) y EDM por penetración (\textit{plunge EDM}, también llamado \textit{sinker EDM}).
+
+En el EDM por hilo, la herramienta es un alambre muy delgado (típicamente entre 0,2 y 0,3 mm de diámetro) que remueve material a lo largo de su longitud mientras atraviesa la pieza. Esta forma de maquinar es conveniente para trabajos de contorneado y, si la máquina permite inclinar el hilo, también para geometrías de tipo 2,5D, como contornos con conicidad.
+
+En el EDM por penetración, un electrodo con la forma deseada, maquinada previamente, se hunde progresivamente en la pieza, removiendo material en la superficie más cercana. De este modo, la pieza termina replicando, en negativo, la geometría del electrodo.
+
+\subsection{Principio físico}
+
+El proceso requiere de tres elementos clave: un ánodo (electrodo positivo, hacia el cual fluyen los electrones), un cátodo (electrodo negativo, que los cede) y un fluido dieléctrico (aislante). La función de ánodo o cátodo puede ser desempeñada por la pieza o por la herramienta, según el enfoque del proceso. Cada descarga sigue la siguiente secuencia:
+
+\begin{enumerate}
+	\item Se aplica una diferencia de potencial (voltaje) entre el ánodo y el cátodo. Como el fluido interpuesto es aislante, inicialmente no circula corriente.
+	\item A medida que el voltaje aumenta, el campo eléctrico supera la rigidez dieléctrica del fluido, que se ioniza localmente, formando un canal conductor por el que comienza a circular corriente.
+	\item Al aumentar la corriente, el voltaje cae, los iones fluyen entre los electrodos y ambos materiales comienzan a calentarse. Se genera un canal de plasma rodeado por una burbuja de vapor.
+	\item El canal de plasma se ensancha y tanto la tensión como la corriente se estabilizan. La temperatura puede alcanzar los $10\,000\,^{\circ}\mathrm{C}$ y la presión del vapor cerca de $20\,\mathrm{MPa}$.
+	\item La burbuja de vapor sigue creciendo y la corriente alcanza su máximo. Transcurrido el tiempo de pulso, la corriente se interrumpe.
+	\item El sistema se enfría y el material fundido que fue expulsado solidifica en forma de micro esferas.
+	\item La burbuja de vapor colapsa (cavita), lo que desplaza el material removido fuera del cráter generado.
+	\item El dieléctrico evacúa el material removido (proveniente del ánodo, del cátodo y del propio fluido) y el ciclo vuelve a comenzar.
+\end{enumerate}
+
+Así, definiremos los tiempos característicos del proceso como:
+
+\begin{equation}
+	t_{t}=t_{on}+t_{off}
+\end{equation}
+
+donde $t_{t}$ es el tiempo total de un ciclo, $t_{on}$ es la fase donde hay corriente (generando chispa), y $t_{off}$ cuando ya no hay flujo de corriente. Así, podemos definir el factor de ocupación de manera estándar:
+
+\begin{equation}
+	\delta= \frac{t_{on}}{t_{on}+t_{off}}
+\end{equation}
+
+
+\subsection{Sistema de EDM}
+
+Los componentes de una máquina de EDM dependen del tipo de proceso (\textit{plunge} o \textit{wire}), pero ambos comparten una arquitectura base: una cuba de trabajo llena de fluido dieléctrico, que es bombeado, filtrado y termorregulado de manera continua, y dentro de la cual se fija la pieza de trabajo sobre la mesa. El dieléctrico cumple cuatro funciones: aislar el espacio entre electrodos hasta alcanzar el voltaje de ruptura, confinar el canal de plasma, refrigerar las superficies y arrastrar los residuos (\textit{debris}) fuera de la zona de trabajo. En procesos \textit{plunge} se utilizan típicamente hidrocarburos (aceites), mientras que en \textit{wire} se emplea agua desionizada.
+
+En el proceso \textit{plunge}, la herramienta es un electrodo conformado (generalmente de grafito o cobre) montado en el cabezal del eje Z. Este eje es servocontrolado y la hace descender progresivamente sobre la pieza, de modo que la geometría del electrodo queda reproducida en negativo.
+
+Una variante de este tipo de EDM es el \textit{EDM de perforación} (\textit{small-hole EDM drilling}), orientado a producir agujeros y canales pequeños de alta razón de aspecto. En este caso la herramienta es un electrodo tubular delgado y hueco, generalmente de latón o cobre, que suele rotar durante el proceso. A diferencia de las configuraciones anteriores, la pieza no está sumergida en el dieléctrico: este se inyecta a alta presión a través del interior del electrodo y sale por su extremo, enfriando la zona de descarga y arrastrando el \textit{debris} fuera del agujero, lo que permite perforar a grandes profundidades. Los diámetros de electrodo habituales van de $0{,}3$ a $3$~mm, con equipos que llegan a $0{,}1$~mm y hasta cerca de $6$~mm, y razones de aspecto (profundidad/diámetro) que pueden superar $100{:}1$. Se utiliza, por ejemplo, para perforar los canales de refrigeración de álabes de turbinas o para iniciar cortes en \textit{wire} EDM sobre piezas ya endurecidas.
+
+En el proceso \textit{wire}, la herramienta es un hilo delgado (decenas a pocas centenas de micrómetros de diámetro, usualmente de latón o latón recubierto) que atraviesa la pieza y la corta siguiendo una trayectoria en el plano XY. Como el hilo se desgasta durante el proceso, se alimenta continuamente desde un carrete y se recoge tras su uso, pasando por un sistema de guías, poleas y rodillos que controlan su posición y tensión. Para generar cortes inclinados (conicidad), el posicionamiento XY de la guía superior debe ser independiente del de la guía inferior, lo que añade ejes adicionales (U y V) a la cinemática de la máquina.
+
+En ambos casos, un servomecanismo regula la distancia entre electrodos (\textit{gap}, del orden de decenas de micrómetros) a partir de la señal eléctrica medida. Además, los sistemas de EDM cuentan con una unidad especializada en la generación y control de dicha señal, que define en gran medida el desempeño del proceso.
+
+\subsection{Señal de control}
+
+El control del tiempo y la intensidad del pulso eléctrico es fundamental, pues determina la energía por descarga y, con ello, la resolución, el desgaste de herramienta y la tasa de remoción de material (MRR) del proceso. Un pulso normal comienza con el aumento del voltaje hasta el voltaje de circuito abierto; tras un tiempo de retardo de ignición $t_d$ ocurre la ruptura del dieléctrico, el voltaje cae al voltaje de trabajo (del orden de $20$--$30$ V) y circula la corriente durante el tiempo de descarga $t_{on}$. Luego, un tiempo de apagado $t_{off}$ permite desionizar el canal y evacuar residuos antes del siguiente pulso.
+
+Observando las señales de voltaje y corriente de la Figura~\ref{fig:senales-edm} es posible identificar el estado del \textit{gap}:
+\begin{itemize}
+	\item \textbf{Descarga normal:} existe retardo de ignición, caída de voltaje y corriente controlada. Es la única condición que produce remoción útil.
+	\item \textbf{Circuito abierto:} el voltaje alcanza su valor máximo y no se produce ruptura, ya sea por una distancia excesiva o por dieléctrico aún no ionizable. No hay remoción.
+	\item \textbf{Cortocircuito:} el voltaje cae casi a cero por contacto directo (o puenteo por \textit{debris}) entre electrodos. No hay descarga controlada ni remoción útil, y la corriente no está regulada por el proceso.
+	\item \textbf{Arco:} descarga sin retardo de ignición, localizada de forma repetida en un mismo punto, con voltaje bajo. Es perjudicial, pues daña la pieza y la herramienta.
+\end{itemize}
+Las máquinas están equipadas para responder a estas condiciones: si predominan los circuitos abiertos, el servo reduce el \textit{gap}; si aparecen cortocircuitos o arcos, retrae la herramienta, aumenta $t_{off}$ y/o intensifica el flujo de dieléctrico para evacuar el \textit{debris}.
+
+La energía entregada por un pulso se puede estimar como
+\begin{equation}
+	E_p = \int_{0}^{t_{on}} u_e(t)\, i_e(t)\, dt \approx u_e\, i_e\, t_{on},
+\end{equation}
+donde $u_e$ e $i_e$ son el voltaje y la corriente durante la descarga. La MRR crece, en primera aproximación, con la energía por pulso y con la frecuencia de descargas efectivas.
+
+La generación de la señal se realiza principalmente mediante dos tipos de circuitos: el circuito RC y el de transistores.
+
+El circuito RC, de relajación o de Lazarenko (por sus inventores), consta de una resistencia y un condensador alimentados por una fuente DC. La fuente carga el condensador a través de la resistencia, elevando su voltaje según
+\begin{equation}
+	v_c(t) = V_s\left(1 - e^{-t/RC}\right).
+\end{equation}
+Cuando $v_c$ alcanza el voltaje de ruptura $V_b$ del dieléctrico para el \textit{gap} existente, el condensador se descarga en un tiempo muy breve (del orden de microsegundos), generando la chispa que remueve material. La energía por descarga queda determinada por
+\begin{equation}
+	E_p = \tfrac{1}{2}\, C\, V_b^2 .
+\end{equation}
+Por lo tanto, los tiempos de carga ($t_{off}$) son bastante mayores que los de descarga ($t_{on}$), lo que limita la frecuencia y, con ello, la MRR. Además, como $V_b$ depende del \textit{gap}, la energía del pulso no es controlable de forma independiente. Por otro lado, con capacitancias pequeñas se obtienen descargas muy breves y de baja energía, por lo que este circuito es adecuado para acabados finos.
+
+Los circuitos modernos utilizan arreglos de transistores que conmutan la fuente de manera controlada. Esto permite fijar de forma independiente $t_{on}$, $t_{off}$, el voltaje y la corriente de pico, y dar forma a la onda del pulso. Se obtiene así mayor control de la energía por descarga, frecuencias más altas y mayor eficiencia, además de poder adaptar los parámetros en tiempo real según el estado del \textit{gap}.
+
+\subsection{Curva de remoción}
+
+La energía del pulso no solo remueve material de la pieza, sino que también desgasta la herramienta. Cuál de los dos electrodos actúa como ánodo y cuál como cátodo depende de la polaridad configurada para el proceso. La proporción de energía que recibe cada electrodo depende fuertemente de la duración del pulso: en pulsos cortos, los electrones (livianos y rápidos) alcanzan primero el ánodo y bombardean su superficie, por lo que este recibe más energía; en pulsos largos, los iones positivos (más pesados) alcanzan el cátodo, y su bombardeo, junto con la expansión del canal de plasma, aumenta la remoción en el cátodo y reduce la del ánodo.
+
+La Figura~\ref{fig:curva-remocion} muestra curvas típicas de remoción en ánodo y cátodo en función del tiempo de descarga $t_{on}$. Algunos puntos de interés son:
+\begin{itemize}
+	\item La remoción en el ánodo comienza antes que en el cátodo. Por lo tanto, a tiempos de descarga muy cortos solo uno de los electrodos se ve afectado de manera apreciable.
+	\item Posteriormente, el desgaste del cátodo crece rápidamente respecto al del ánodo, existiendo un punto de cruce donde ambos son equivalentes (primera línea vertical).
+	\item La segunda línea vertical indica el $t_{on}$ que maximiza la remoción en el ánodo. Este punto es relevante cuando la pieza cumple el rol de ánodo, pues se maximiza la MRR y esta compensa el desgaste del cátodo (la herramienta).
+	\item La tercera línea vertical indica el $t_{on}$ que maximiza la remoción en el cátodo, mientras la del ánodo ya decrece. Este punto es útil cuando el material a remover actúa como cátodo y la integridad de la herramienta (ánodo) no se compromete en gran medida.
+\end{itemize}
+
+Cabe destacar que, tras alcanzar un máximo, la remoción de material cae para ambos electrodos al seguir aumentando $t_{on}$, lo que puede parecer contraintuitivo, ya que la corriente continúa circulando y la energía por pulso $E_p$, sigue creciendo. La explicación es que a mayores $t_{on}$ el canal de plasma y vapor se ensancha, de modo que la misma potencia se reparte sobre un área mayor del electrodo y disminuye la densidad de potencia en el punto de descarga. Como consecuencia, una fracción creciente de la energía se disipa por conducción hacia el interior del material y hacia el dieléctrico, en lugar de fundir y vaporizar material. Además, el cráter resultante es más ancho y superficial, lo que reduce la presión del canal sobre la poza fundida y dificulta su expulsión. Así, la energía adicional aporta cada vez menos a la remoción, y la eficiencia energética del pulso decae.
+
+Para cuantificar el compromiso entre remoción y desgaste se utiliza la razón de desgaste
+\begin{equation}
+	\theta = \frac{V_{h}}{V_{p}},
+\end{equation}
+donde $V_h$ y $V_p$ son los volúmenes removidos de la herramienta y de la pieza, respectivamente. En la práctica, la polaridad se elige para minimizar $\theta$ según el régimen de operación. Con pulsos cortos (acabado, \textit{wire} EDM, donde el hilo suele ser el cátodo) se prefiere la pieza como ánodo. Con pulsos largos en desbaste con aceite como dieléctrico, suele emplearse la herramienta como ánodo (polaridad inversa), lo que además favorece la deposición de carbono pirolítico sobre ella, que la protege del desgaste.
+
+Así, el tiempo de descarga $t_{on}$ es uno de los parámetros operativos más influyentes para determinar la eficiencia y los indicadores del proceso (MRR, desgaste relativo, rugosidad), junto con la corriente de peak, el tiempo $t_{off}$ y la polaridad.
+
+
+\subsection{Modelo de remoción}
+
+A diferencia de los procesos de maquinado convencionales, el EDM no depende de la resistencia mecánica del material, sino de sus propiedades térmicas y eléctricas: la temperatura de fusión, la conductividad y difusividad térmicas, y la entalpía de erosión, además de que el material sea eléctricamente conductor. Por el lado del proceso, la remoción depende de la polaridad, la corriente, la duración del pulso y su frecuencia.
+
+En polaridad directa, la tasa de remoción en cátodo puede estimarse de forma empírica mediante la fórmula de Weller, omitiendo el factor de ocupación:
+\begin{equation}
+	\mathrm{MRR} = 664\,\frac{I}{T_{m}^{1.23}} \;\; \mathrm{[mm^{3}/min]},
+\end{equation}
+donde $I$ es la corriente en amperes y $T_m$ la temperatura de fusión del material en $^\circ$C. Se trata de una correlación empírica, por lo que solo es válida con estas unidades y como estimación de orden de magnitud.
+
+Tras cada pulso, la forma aproximada que queda sobre la superficie es la de un cráter. Como el calor requiere tiempo para propagarse en el material, la profundidad del cráter queda gobernada principalmente por el tiempo de encendido $t_{on}$, a través de la longitud de difusión $\sqrt{\alpha\,t_{on}}$, mientras que la corriente se relaciona más con el diámetro del cráter. En consecuencia, a energía de pulso comparable, corrientes altas con tiempos de encendido cortos generan cráteres anchos pero superficiales, es decir, menor rugosidad y mejor terminación superficial. Corrientes bajas con tiempos de encendido largos generan lo contrario, aunque en la práctica ambos parámetros aumentan el tamaño del cráter.
+
+El tiempo de encendido también puede modificarse mediante la frecuencia de la señal, $f = 1/(t_{on}+t_{off})$. Definiendo el factor de ocupación (\textit{duty factor}) como
+\begin{equation}
+	\delta = \frac{t_{on}}{t_{on}+t_{off}}
+\end{equation}
+a $\delta$ constante se cumple $t_{on} = \delta/f$. Por lo tanto, un aumento de la frecuencia reduce $t_{on}$ y la energía por pulso, resultando en cráteres más pequeños, mientras que frecuencias bajas implican $t_{on}$ largos y cráteres mayores.
+
+Un modelo simple que incorpora estos parámetros es
+\begin{equation}
+	\mathrm{MRR} = \frac{U\,W_{s}\,I\,\delta}{\rho\, h_{ef}}
+\end{equation}
+donde $\rho$ es la densidad del material, $h_{ef}$ es la entalpía de erosión, $U = F_{c}V$ es la tensión efectiva, con $V$ el voltaje de descarga y $F_{c}$ la fracción de la potencia que llega al electrodo que se erosiona (cátodo en este desarrollo; para el ánodo corresponde $F_a$), y $W_{s}$ es un factor adimensional que representa la fracción de la energía que efectivamente se usa para erosionar. Este factor se expresa como
+\begin{equation}
+	W_{s} = \frac{2}{\pi}\left(\tan^{-1}\Big(\sqrt{\frac{1-f_{s}}{f_{s}}}\Big) - \sqrt{f_{s}\,(1-f_{s})}\right), \qquad 0 < f_s \le 1,
+\end{equation}
+donde $f_{s}$ es un parámetro de fusión adimensional:
+\begin{equation}
+	f_{s} = \frac{\pi}{4\,\alpha \,t_{on}}\left[\frac{(T_{m}-T_{0})\,\lambda}{j\,U}\right]^{2}.
+\end{equation}
+Aquí $T_0$ es la temperatura inicial, $\lambda$ la conductividad térmica y $\alpha$ la difusividad térmica del material, con $c_p$ su calor específico. Si $f_s \to 0$ (pulsos largos o altas densidades de potencia), $W_s \to 1$ y casi toda la energía se aprovecha. Si $f_s \ge 1$ no se alcanza la temperatura de fusión y $W_s = 0$, es decir, no hay remoción.
+
+La densidad de corriente $j$ se calcula en función del radio de la chispa $r$:
+\begin{equation}
+	j = \frac{I}{\pi r^{2}}.
+\end{equation}
+Una relación empírica entre el radio de la chispa y el radio del cráter $R_{f}$ es
+\begin{equation}
+	r = 0.3\,R_{f}^{0.82},
+\end{equation}
+que, al ser empírica, es válida solo en las unidades en que fue ajustada. Debe indicarse la unidad de la fuente consultada.
+
+Para estimar el radio de fusión, se puede asumir una fuente puntual de potencia constante $q = UI$ sobre un sólido semi-infinito. La distribución de temperatura a una distancia $R$ del punto de descarga es
+\begin{equation}
+	T(R,t_{on}) = T_{0} + \frac{UI}{2\pi\lambda R}\,\operatorname{erfc}\!\left(\frac{R}{2\sqrt{a\,t_{on}}}\right),
+\end{equation}
+donde $\operatorname{erfc}$ es la función de error complementaria. El radio del cráter $R_f$ corresponde a la isoterma de fusión, es decir, a la solución de $T(R_f,t_{on}) = T_m$, que debe resolverse numéricamente. Como primera aproximación, el volumen del cráter puede tomarse como un casquete hemisférico, $V_c \approx \tfrac{2}{3}\pi R_f^{3}$, y la remoción como $\mathrm{MRR} \approx \eta\, f\, V_c$, con $\eta<1$ la fracción de material fundido que realmente es expulsada, el resto se resolidifica como capa refundida.
+
 \section{Waterjet}
 
 \subsection{Introducción}
@@ -15,6 +173,8 @@ Un caso particularmente relevante es el corte de materiales compuestos  reforzad
 Para espesores bajos, el corte láser suele preferirse como alternativa más económica. En general, los sistemas de waterjet presentan costos de operación más elevados que otros sistemas de corte, debido a la necesidad de componentes auxiliares (intensificación de presión, abrasivo, mantenimiento de boquillas, entre otros) requeridos para generar el chorro de corte.
 
 Adicionalmente, el waterjet se utiliza en el corte de alimentos, al tratarse de un proceso limpio. Cuando el corte se realiza únicamente con el chorro de agua, el proceso se denomina \textbf{waterjet puro} (\textit{WJC, water jet cutting}), aplicable principalmente a materiales blandos o de baja resistencia (espumas, textiles, papel, alimentos, algunos polímeros). Cuando se requiere aumentar la capacidad de remoción de material (por ejemplo, para cortar metales, cerámicos o vidrio), el chorro de agua se mezcla con partículas abrasivas (comúnmente granate), dando lugar al proceso conocido como \textbf{waterjet abrasivo} (\textit{AWJ, abrasive water jet}).
+
+
 
 \subsection{Sistema de waterjet}
 Dado que el principio activo de esta máquina es la generación de un chorro de agua a alta presión, el sistema requiere de una serie de elementos para la generación de dicho chorro.

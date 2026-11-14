@@ -320,6 +320,7 @@ Así, en la fabricación por CNC, el componente real rara vez reproduce con exac
 
 Finalmente, la elección entre una tecnología u otra depende de la estructura de costos de la empresa y del equilibrio que esta desee lograr entre el nivel de calidad requerido (y su valor agregado) y el volumen de producción alcanzable. Esta decisión implica considerar no solo los aspectos técnicos del proceso, sino también su viabilidad económica, de modo que se maximice la eficiencia sin comprometer los estándares del producto ni la competitividad en el mercado.
 
+
 \section{Prototipado rápido}
 
 En las primeras fases del desarrollo de un producto, el prototipado transforma ideas y bocetos en modelos físicos de baja fidelidad que evolucionan progresivamente hacia versiones cada vez más representativas. Este proceso culmina en un nivel de confianza suficiente para validar el producto y planificar la producción con seguridad. El prototipado rápido (Figura \ref{propro}) destaca como una metodología ágil al emplear máquinas de fabricación digital capaces de materializar directamente diseños CAD.
@@ -336,3 +337,66 @@ La visualización 3D en el CAD complementada con los módulos de análisis y sim
 Según la tecnología de fabricación digital empleada, ya sea una impresora 3D FDM de escritorio o un centro de mecanizado industrial, se pueden obtener diferentes tipos de prototipos adaptados a cada objetivo: maquetas para validar ensamblajes e interacción, piezas de alta fidelidad con acabado superficial equiparable al de un molde de inyección, o réplicas en el material definitivo para ensayos de servicio, o incluso, de manufactura.
 
 La selección del proceso de manufactura definitiva es un paso esencial para cerrar el diseño de un producto. Aunque la fabricación digital acelera la validación de conceptos, rara vez resulta competitiva en costes al escalar a producción en serie. Sin embargo, la flexibilidad de estas tecnologías permite crear prototipos cuyas geometrías incorporan de antemano las restricciones y oportunidades de los métodos productivos finales, poniendo en práctica un enfoque de \textbf{diseño orientado a la manufactura}.
+
+
+\section{Tiempos y costos}
+
+La elección de una tecnología de manufactura no depende solo de que su resolución y los materiales que procesa sean compatibles con lo requerido. Los plazos de entrega y, con mayor peso aún, los costos del proyecto suelen inclinar la balanza hacia la solución final. Por ello, resulta fundamental contar con modelos de tiempos y costos que apoyen la toma de decisiones.
+
+Desde una perspectiva industrial, obtener una pieza o sistema requiere múltiples actividades además de las operaciones de manufactura propiamente tales: operaciones de apoyo, secundarias, de control, entre otras. En general, cada actividad tiene un costo directamente proporcional al tiempo que toma ejecutarla. En primera instancia, separaremos el tiempo total en dos categorías:
+
+\begin{equation}
+	t_{t}=t_{f}+t_{nf}
+	\label{eq:tiempo_total}
+\end{equation}
+
+donde $t_{t}$ es el tiempo total, $t_{f}$ el tiempo de fabricación (o de máquina) y $t_{nf}$ el tiempo asociado a actividades fuera de la máquina. Este desglose es fundamental para identificar qué etapa de la secuencia de operaciones constituye el cuello de botella de la producción, que no siempre está relacionado con las capacidades de la máquina. Además, puede volver indiferente la elección entre dos tecnologías que, a primera vista, parecen muy distintas.
+
+A su vez, el tiempo de máquina se separa en dos componentes: el tiempo de fabricación efectiva $t_{fe}$, durante el cual ocurre el proceso de deformación, adición o sustracción de material, y el tiempo de reposicionamiento $t_{r}$, en que la herramienta se desplaza sin interactuar con el material, siguiendo rutas seguras hasta el inicio de la siguiente trayectoria de operación:
+
+\begin{equation}
+	t_{f}=t_{fe}+t_{r}
+	\label{eq:tiempo_maquina}
+\end{equation}
+
+Ambos tiempos dependen de los parámetros operativos definidos en el procesamiento CAM. Los tiempos de fabricación efectiva son los que por lo general se busca optimizar, mediante el conocimiento de las tecnologías de manufactura y de la interrelación entre las variables de proceso.
+
+Los tiempos de no fabricación $t_{nf}$ dependen de cada tecnología. Por ejemplo, en un proceso de corte es necesario cargar y descargar planchas de la máquina, probablemente exista una unidad de metrología para el control de calidad y, en ocasiones, se requiera el postprocesado de las piezas. Otras actividades que entran en esta categoría son la limpieza de la máquina, las paradas de mantención y los cambios de herramienta (cuando no son automáticos), entre varias más.
+
+Dado que estas actividades de naturaleza miscelánea pueden requerir un operario, si no son tareas automáticas, y además consumir insumos, constituyen una arista adicional de costos en la planificación total del proyecto.
+
+Por otro lado, las actividades de fabricación tienen costos más concretos y de particular interés para la ingeniería mecánica, como:
+
+\begin{itemize}
+	\item Costo por energía eléctrica.
+	\item Costo por consumibles.
+	\item Costo por desgaste de componentes.
+\end{itemize}
+
+Estos costos están ligados proporcionalmente al tiempo de operación, pero también dependen de los parámetros del proceso tecnológico en cuestión. Por ejemplo, aumentar la potencia de corte de una máquina CNC permite alcanzar mayores velocidades de producción y, por tanto, reducir el tiempo del proceso. Sin embargo, no es evidente que el costo total de la energía eléctrica ni el de los consumibles disminuyan, y el desgaste de las herramientas podría incluso acelerarse más que linealmente.
+
+En términos sencillos, podemos plantear un modelo simple para el costo total del proceso:
+
+\begin{equation}
+	c_{t}=c_{f}(t_{f})+c_{nf}(t_{nf})
+	\label{eq:costo_total}
+\end{equation}
+
+donde $c_{t}$ es el costo total, $c_{f}$ una función de costos asociada a la fabricación y $c_{nf}$ una función de costos asociada a las actividades de no fabricación. Si los tiempos se parametrizan por pieza o por unidad de material base tratado, este modelo puede escalar linealmente con el número de unidades $N$.
+
+Una forma de estimar el tiempo de fabricación efectiva de un proceso es conocer la longitud total $L$ que debe recorrer el cabezal en una operación de manufactura (generalmente conocida por diseño, como un contorno) y su velocidad promedio $v_{prom}$:
+
+\begin{equation}
+	t_{fe}=\frac{L}{v_{prom}}
+	\label{eq:tiempo_efectivo}
+\end{equation}
+
+Cabe notar que esta simplificación usa una velocidad promedio, que no es necesariamente la velocidad de avance (\textit{feed}) o velocidad transversal de la herramienta. Esto se debe a que una operación puede estar definida por varias velocidades y, además, verse afectada por los cambios de aceleración. Por ello, la aproximación resulta mejor en procesos de geometría sencilla. Además, esta estimación corresponde solo al tiempo de fabricación efectiva y no contempla el resto de los movimientos de la máquina.
+
+Para proyectar un proyecto de manufactura entran en juego otras variables, como las jornadas de trabajo reales. Un indicador clave es el tiempo disponible $t_{disp}$, que puede expresarse, por ejemplo, como el tiempo efectivo de trabajo en un mes o en un año. Así, aunque una semana tiene 168 horas, si se trabaja 5 días a la semana en jornadas de 8 horas, el tiempo disponible semanal es $t_{disp}=40$ h.
+
+Las actividades ocurren en un espacio físico, de modo que, una vez reconocida el área necesaria para llevar a cabo el proyecto industrial, también puede ser de interés considerar el costo de arriendo mensual del espacio y de sus servicios básicos.
+
+Finalmente, es necesario reconocer que los procesos no son completamente eficientes. Para mejorar la precisión del modelo y establecer holguras, puede utilizarse un factor de eficiencia $\eta$, definido como la fracción de piezas aceptables. De esta manera, para obtener $N$ piezas conformes deben fabricarse $N/\eta$ piezas.
+
+Como se observa, estos modelos y elementos de análisis pueden volverse más específicos y complejos en función de la precisión que se desee alcanzar, y podrían aparecer factores que no han sido nombrados en este capítulo.
