@@ -4,13 +4,21 @@
 
 \subsection{Introducción}
 
-El mecanizado por electroerosión, o EDM por sus siglas en inglés (\textit{Electrical Discharge Machining}), es un proceso térmico de remoción de material. Su principio físico consiste en generar descargas eléctricas controladas entre una herramienta (electrodo) y un volumen muy pequeño de la pieza, producidas por una intensa corriente eléctrica en un fluido dieléctrico. Cada descarga funde y evapora una porción mínima de material, lo que permite alcanzar resoluciones del orden de $1\,\mu\mathrm{m}$. Dado que el proceso depende del paso de corriente, solo es aplicable a materiales conductores.
+El mecanizado por electroerosión, o EDM por sus siglas en inglés (\textit{Electrical Discharge Machining}), es un proceso térmico de remoción de material mediante descarga de plasma. Su principio físico consiste en generar descargas eléctricas controladas entre una herramienta (electrodo) y un volumen muy pequeño de la pieza, producidas por una intensa corriente eléctrica en un fluido dieléctrico. Cada descarga funde y evapora una porción mínima de material, lo que permite alcanzar resoluciones del orden de $1\,\mu\mathrm{m}$. Dado que el proceso depende del paso de corriente, solo es aplicable a materiales conductores.
 
 Una consecuencia importante es que la dureza del material no limita su maquinabilidad, ya que las propiedades relevantes son las termofísicas (punto de fusión, conductividad térmica y calor específico, entre otras). Esto hace del EDM una alternativa para materiales muy duros o difíciles de mecanizar por métodos convencionales.
 
 Por otro lado, la pequeña escala de cada descarga y la naturaleza cíclica del proceso (descargas sucesivas separadas por intervalos de pausa) se traducen en una baja tasa de remoción de material (o MRR) en comparación con otros procesos. Por ello, el EDM resulta viable cuando se requiere alta resolución o cuando el material objetivo presenta baja maquinabilidad, como ocurre en los moldes de inyección.
 
-Distinguiremos dos variantes del proceso: EDM por hilo (\textit{wire EDM}) y EDM por penetración (\textit{plunge EDM}, también llamado \textit{sinker EDM}).
+Distinguiremos dos variantes del proceso (Figura \ref{edmtipsfig}): EDM por hilo (\textit{wire EDM}) y EDM por penetración (\textit{plunge EDM}, también llamado \textit{sinker EDM}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/edmtips.png}
+	\caption{Tipos de maquinado por electroerosión}
+	\label{edmtipsfig}
+\end{figure}
+
 
 En el EDM por hilo, la herramienta es un alambre muy delgado (típicamente entre 0,2 y 0,3 mm de diámetro) que remueve material a lo largo de su longitud mientras atraviesa la pieza. Esta forma de maquinar es conveniente para trabajos de contorneado y, si la máquina permite inclinar el hilo, también para geometrías de tipo 2,5D, como contornos con conicidad.
 
@@ -18,11 +26,12 @@ En el EDM por penetración, un electrodo con la forma deseada, maquinada previam
 
 \subsection{Principio físico}
 
-El proceso requiere de tres elementos clave: un ánodo (electrodo positivo, hacia el cual fluyen los electrones), un cátodo (electrodo negativo, que los cede) y un fluido dieléctrico (aislante). La función de ánodo o cátodo puede ser desempeñada por la pieza o por la herramienta, según el enfoque del proceso. Cada descarga sigue la siguiente secuencia:
+El proceso requiere de tres elementos clave: un ánodo (electrodo positivo, hacia el cual fluyen los electrones), un cátodo (electrodo negativo, que los cede) y un fluido dieléctrico (aislante). La función de ánodo o cátodo puede ser desempeñada por la pieza o por la herramienta, según el enfoque del proceso. Cada descarga sigue la siguiente secuencia (Figurta \ref{pdfpart}):
 
 \begin{enumerate}
 	\item Se aplica una diferencia de potencial (voltaje) entre el ánodo y el cátodo. Como el fluido interpuesto es aislante, inicialmente no circula corriente.
-	\item A medida que el voltaje aumenta, el campo eléctrico supera la rigidez dieléctrica del fluido, que se ioniza localmente, formando un canal conductor por el que comienza a circular corriente.
+	\item Cargas negativas comienzan a fluir desde el cátodo. El dieléctrico comienza a ionizarse.
+	\item A medida que el voltaje aumenta, el campo eléctrico supera la resistencia dieléctrica del fluido, que se ioniza localmente, formando un canal conductor por el que empieza a circular corriente.
 	\item Al aumentar la corriente, el voltaje cae, los iones fluyen entre los electrodos y ambos materiales comienzan a calentarse. Se genera un canal de plasma rodeado por una burbuja de vapor.
 	\item El canal de plasma se ensancha y tanto la tensión como la corriente se estabilizan. La temperatura puede alcanzar los $10\,000\,^{\circ}\mathrm{C}$ y la presión del vapor cerca de $20\,\mathrm{MPa}$.
 	\item La burbuja de vapor sigue creciendo y la corriente alcanza su máximo. Transcurrido el tiempo de pulso, la corriente se interrumpe.
@@ -31,7 +40,15 @@ El proceso requiere de tres elementos clave: un ánodo (electrodo positivo, haci
 	\item El dieléctrico evacúa el material removido (proveniente del ánodo, del cátodo y del propio fluido) y el ciclo vuelve a comenzar.
 \end{enumerate}
 
-Así, definiremos los tiempos característicos del proceso como:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\linewidth]{imgs/fasesedm.pdf}
+	\caption{Fases del proceso de EDM.}
+	\label{pdfpart}
+\end{figure}
+
+
+Definiremos los tiempos característicos del proceso como:
 
 \begin{equation}
 	t_{t}=t_{on}+t_{off}
