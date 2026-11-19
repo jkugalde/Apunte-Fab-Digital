@@ -65,11 +65,11 @@ donde $t_{t}$ es el tiempo total de un ciclo, $t_{on}$ es la fase donde hay corr
 
 Los componentes de una máquina de EDM dependen del tipo de proceso (\textit{plunge} o \textit{wire}), pero ambos comparten una arquitectura base: una cuba de trabajo llena de fluido dieléctrico, que es bombeado, filtrado y termorregulado de manera continua, y dentro de la cual se fija la pieza de trabajo sobre la mesa. El dieléctrico cumple cuatro funciones: aislar el espacio entre electrodos hasta alcanzar el voltaje de ruptura, confinar el canal de plasma, refrigerar las superficies y arrastrar los residuos (\textit{debris}) fuera de la zona de trabajo. En procesos \textit{plunge} se utilizan típicamente hidrocarburos (aceites), mientras que en \textit{wire} se emplea agua desionizada.
 
-En el proceso \textit{plunge}, la herramienta es un electrodo conformado (generalmente de grafito o cobre) montado en el cabezal del eje Z. Este eje es servocontrolado y la hace descender progresivamente sobre la pieza, de modo que la geometría del electrodo queda reproducida en negativo.
+En el proceso \textit{plunge}, la herramienta es un electrodo conformado montado en el cabezal del eje Z. Este eje es servocontrolado y la hace descender progresivamente sobre la pieza, de modo que la geometría del electrodo queda reproducida en negativo.
 
 Una variante de este tipo de EDM es el \textit{EDM de perforación} (\textit{small-hole EDM drilling}), orientado a producir agujeros y canales pequeños de alta razón de aspecto. En este caso la herramienta es un electrodo tubular delgado y hueco, generalmente de latón o cobre, que suele rotar durante el proceso. A diferencia de las configuraciones anteriores, la pieza no está sumergida en el dieléctrico: este se inyecta a alta presión a través del interior del electrodo y sale por su extremo, enfriando la zona de descarga y arrastrando el \textit{debris} fuera del agujero, lo que permite perforar a grandes profundidades. Los diámetros de electrodo habituales van de $0{,}3$ a $3$~mm, con equipos que llegan a $0{,}1$~mm y hasta cerca de $6$~mm, y razones de aspecto (profundidad/diámetro) que pueden superar $100{:}1$. Se utiliza, por ejemplo, para perforar los canales de refrigeración de álabes de turbinas o para iniciar cortes en \textit{wire} EDM sobre piezas ya endurecidas.
 
-En el proceso \textit{wire}, la herramienta es un hilo delgado (decenas a pocas centenas de micrómetros de diámetro, usualmente de latón o latón recubierto) que atraviesa la pieza y la corta siguiendo una trayectoria en el plano XY. Como el hilo se desgasta durante el proceso, se alimenta continuamente desde un carrete y se recoge tras su uso, pasando por un sistema de guías, poleas y rodillos que controlan su posición y tensión. Para generar cortes inclinados (conicidad), el posicionamiento XY de la guía superior debe ser independiente del de la guía inferior, lo que añade ejes adicionales (U y V) a la cinemática de la máquina.
+En el proceso \textit{wire}, la herramienta es un hilo delgado (decenas a pocas centenas de micrómetros de diámetro, que atraviesa la pieza y la corta siguiendo una trayectoria en el plano XY. Como el hilo se desgasta durante el proceso, se alimenta continuamente desde un carrete y se recoge tras su uso, pasando por un sistema de guías, poleas y rodillos que controlan su posición y tensión. Para generar cortes inclinados (conicidad), el posicionamiento XY de la guía superior debe ser independiente del de la guía inferior, lo que añade ejes adicionales (U y V) a la cinemática de la máquina.
 
 En ambos casos, un servomecanismo regula la distancia entre electrodos (\textit{gap}, del orden de decenas de micrómetros) a partir de la señal eléctrica medida. Además, los sistemas de EDM cuentan con una unidad especializada en la generación y control de dicha señal, que define en gran medida el desempeño del proceso.
 
@@ -176,6 +176,49 @@ Para estimar el radio de fusión, se puede asumir una fuente puntual de potencia
 	T(R,t_{on}) = T_{0} + \frac{UI}{2\pi\lambda R}\,\operatorname{erfc}\!\left(\frac{R}{2\sqrt{a\,t_{on}}}\right),
 \end{equation}
 donde $\operatorname{erfc}$ es la función de error complementaria. El radio del cráter $R_f$ corresponde a la isoterma de fusión, es decir, a la solución de $T(R_f,t_{on}) = T_m$, que debe resolverse numéricamente. Como primera aproximación, el volumen del cráter puede tomarse como un casquete hemisférico, $V_c \approx \tfrac{2}{3}\pi R_f^{3}$, y la remoción como $\mathrm{MRR} \approx \eta\, f\, V_c$, con $\eta<1$ la fracción de material fundido que realmente es expulsada, el resto se resolidifica como capa refundida.
+
+Nótese que parte de las relaciones presentadas son de naturaleza empírica, lo cual responde a ciertas condiciones específicas, por lo que para cada caso podrían existir relaciones más exactas.
+
+\subsection{Materiales y aplicaciones}
+
+Como se mencionó previamente, el EDM es una alternativa efectiva para obtener piezas precisas y de alta calidad en materiales duros, que por lo general también presentan un alto punto de fusión, como los aceros para herramientas y las cerámicas conductoras. Dado que el material se remueve por fusión y vaporización localizada, la selección del material del electrodo-herramienta puede guiarse por un parámetro de desgaste ligado a la energía necesaria para fundirlo. A partir de la relación de Weller, se puede establecer un indicador estimativo de resistencia a la erosión como:
+
+\begin{equation}
+	MRR^{-1} \propto T_{m}^{2}\,\rho\, k\, c_{p}
+\end{equation}
+
+donde $T_m$ es la temperatura de fusión, $\rho$ la densidad, $k$ la conductividad térmica y $c_p$ el calor específico. Así, idealmente, para minimizar el desgaste del electrodo en plunge EDM se busca que:
+
+\begin{equation}
+	MRR_{tool} \ll MRR_{mat} \implies T_{m,tool}^{2}\,\rho_{tool}\, k_{tool}\, c_{p,tool} \gg T_{m,mat}^{2}\,\rho_{mat}\, k_{mat}\, c_{p,mat}
+\end{equation}
+
+Es decir, se buscan materiales de electrodo con alto punto de fusión, densidad, capacidad térmica y conductividad en relación con el material de trabajo. En el Cuadro~\ref{tab:edm_materiales} se presentan materiales típicos para electrodos de plunge EDM junto con sus propiedades termofísicas y el valor del indicador, normalizado respecto al acero. Este último se incluye como referencia, ya que su bajo valor del indicador lo hace inadecuado como electrodo para mecanizar piezas del mismo tipo de material. Adicionalmente, se requiere una alta maquinabilidad del electrodo, tanto por los \textit{features} complejos que pueda requerir la pieza como porque a menudo se necesitan varias unidades del electrodo (desbaste y terminación, o desgaste por cavidad).
+
+\begin{table}[h!]
+	\centering
+	\caption{Propiedades termofísicas aproximadas de materiales para electrodos de plunge EDM e indicador de resistencia a la erosión $E = T_m^2\rho k c_p$. Valores indicativos a temperatura ambiente; el grafito sublima en lugar de fundir, y para el Cu-W se consideró la fase refractaria.}
+	\label{tab:edm_materiales}
+	\small
+	\begin{tabular}{lccccc c}
+		\toprule
+		Material & $T_m$ [K] & $\rho$ [kg/m$^3$] & $k$ [W/(m$\cdot$K)] & $c_p$ [J/(kg$\cdot$K)] & $E$ [$10^{15}$] & $E/E_{acero}$ \\
+		\midrule
+		Acero (AISI 1045) & 1783 & 7850  & 50  & 486 & 0{,}60 & 1{,}0 \\
+		Cobre                         & 1358 & 8960  & 390 & 385 & 2{,}48 & 4{,}1 \\
+		Grafito           & 3915 & 1800  & 100 & 710 & 1{,}96 & 3{,}2 \\
+		Aleación Cu-Ag                & 1350 & 9000  & 380 & 385 & 2{,}40 & 4{,}0 \\
+		Aleación Cu-W     & 3695 & 14500 & 200 & 195 & 7{,}72 & 12{,}8 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+El indicador ordena los materiales según su resistencia térmica, pero no es el único criterio de selección. El Cu-W ofrece el menor desgaste, aunque con un costo y una dificultad de maquinado mayores. El grafito, pese a un indicador moderado, presenta bajo desgaste efectivo en la práctica, es liviano y fácil de maquinar, pero genera acabados superficiales más rugosos. El cobre y la aleación Cu-ag permiten buenos acabados superficiales y son adecuados para geometrías finas, a costa de un mayor desgaste relativo.
+
+Las aplicaciones típicas del plunge EDM son la fabricación de moldes para procesos de inyección, matrices de troquelado y forja, entre otros, donde se requiere alta dureza y durabilidad, tolerancias ajustadas y buena calidad superficial. Otras aplicaciones incluyen piezas especializadas para la industria aeroespacial y automotriz, y la fabricación de canales de ventilación o refrigeración mediante microperforado EDM en álabes de turbina y otros dispositivos.
+
+En el caso del wire EDM, el material del alambre debe ser lo suficientemente dúctil y tenaz para obtener un filamento fino capaz de soportar la tensión mecánica durante el corte, además de ser buen conductor eléctrico. Si bien la regla energética anterior sigue siendo válida, la restricción de erosión es menos exigente que en plunge EDM, ya que el alambre se renueva continuamente y no se reutiliza. Por ello, típicamente se emplea latón (Cu-Zn), o variantes recubiertas con zinc para mejorar la velocidad de corte. Sus aplicaciones incluyen punzones, matrices, perfiles complejos y piezas de alta precisión en materiales endurecidos.
+
 
 \section{Waterjet}
 

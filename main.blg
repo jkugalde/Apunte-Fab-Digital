@@ -1,77 +1,67 @@
-This is BibTeX, Version 0.99e
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
-Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: biblatex.bst
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-Reallocating 'name_of_file' (item size: 1) to 13 items.
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo1.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo2.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo3.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo5.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo4.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: capitulo6.aux
-Reallocating 'glb_str_end' (item size: 4) to 20 items.
-Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
-Reallocating 'global_strs' (item size: 1) to 4000000 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'wiz_functions' (item size: 4) to 6000 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: main-blx.bib
 Database file #2: bibliografia.bib
-Warning--I didn't find a database entry for "propb"
-Biblatex version: 3.21
-Reallocating 'wiz_functions' (item size: 4) to 9000 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
+Biblatex version: 3.19
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 13 entries,
-            6402 wiz_defined-function locations,
-            1290 strings with 12031 characters,
-and the built_in function-call counts, 124014 in all, are:
+            6399 wiz_defined-function locations,
+            1289 strings with 12019 characters,
+and the built_in function-call counts, 125206 in all, are:
 = -- 10486
-> -- 1650
-< -- 362
-+ -- 4117
-- -- 715
-* -- 9081
-:= -- 15434
+> -- 1848
+< -- 380
++ -- 4207
+- -- 823
+* -- 9171
+:= -- 15614
 add.period$ -- 0
 call.type$ -- 13
 change.case$ -- 110
 chr.to.int$ -- 92
 cite$ -- 24
-duplicate$ -- 13214
-empty$ -- 10129
-format.name$ -- 1017
-if$ -- 24287
+duplicate$ -- 13220
+empty$ -- 10117
+format.name$ -- 1107
+if$ -- 24541
 int.to.chr$ -- 0
 int.to.str$ -- 26
 missing$ -- 0
 newline$ -- 501
 num.names$ -- 486
-pop$ -- 4715
+pop$ -- 4701
 preamble$ -- 1
-purify$ -- 216
+purify$ -- 234
 quote$ -- 0
-skip$ -- 2263
+skip$ -- 2393
 stack$ -- 0
 substring$ -- 19814
-swap$ -- 1984
-text.length$ -- 387
+swap$ -- 2002
+text.length$ -- 405
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 430
@@ -79,4 +69,3 @@ warning$ -- 0
 while$ -- 1970
 width$ -- 0
 write$ -- 489
-(There was 1 warning)

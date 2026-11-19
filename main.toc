@@ -90,9 +90,10 @@
 \contentsline {subsection}{\numberline {6.1.4}Señal de control}{161}{subsection.6.1.4}%
 \contentsline {subsection}{\numberline {6.1.5}Curva de remoción}{162}{subsection.6.1.5}%
 \contentsline {subsection}{\numberline {6.1.6}Modelo de remoción}{163}{subsection.6.1.6}%
-\contentsline {section}{\numberline {6.2}Waterjet}{165}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Introducción}{165}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Sistema de waterjet}{166}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Autofretaje}{167}{subsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.2.4}Mecanismo de corte}{168}{subsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.2.5}Modelos físicos}{169}{subsection.6.2.5}%
+\contentsline {subsection}{\numberline {6.1.7}Materiales y aplicaciones}{165}{subsection.6.1.7}%
+\contentsline {section}{\numberline {6.2}Waterjet}{166}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Introducción}{166}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Sistema de waterjet}{167}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Autofretaje}{169}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Mecanismo de corte}{170}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Modelos físicos}{171}{subsection.6.2.5}%
