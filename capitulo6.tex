@@ -4,7 +4,7 @@
 
 \subsection{Introducción}
 
-El mecanizado por electroerosión, o EDM por sus siglas en inglés (\textit{Electrical Discharge Machining}), es un proceso térmico de remoción de material mediante descarga de plasma. Su principio físico consiste en generar descargas eléctricas controladas entre una herramienta (electrodo) y un volumen muy pequeño de la pieza, producidas por una intensa corriente eléctrica en un fluido dieléctrico. Cada descarga funde y evapora una porción mínima de material, lo que permite alcanzar resoluciones del orden de $1\,\mu\mathrm{m}$. Dado que el proceso depende del paso de corriente, solo es aplicable a materiales conductores.
+El mecanizado por electroerosión, o EDM por sus siglas en inglés (\textit{Electrical Discharge Machining}), es un proceso térmico de remoción de material mediante descarga de plasma. Su principio físico consiste en generar descargas eléctricas controladas entre una herramienta (electrodo) y un volumen muy pequeño de la pieza, producidas por una intensa corriente eléctrica en un fluido dieléctrico. Cada descarga funde y evapora una porción mínima de material, lo que permite alcanzar resoluciones del orden de $1\,\mu\mathrm{m}$. Estas máquinas cuentan con una alta rigidez en sus mecanismos para asegurar tal nivel de resolución. Dado que el proceso depende del paso de corriente, solo es aplicable a materiales conductores.
 
 Una consecuencia importante es que la dureza del material no limita su maquinabilidad, ya que las propiedades relevantes son las termofísicas (punto de fusión, conductividad térmica y calor específico, entre otras). Esto hace del EDM una alternativa para materiales muy duros o difíciles de mecanizar por métodos convencionales.
 
@@ -60,18 +60,48 @@ donde $t_{t}$ es el tiempo total de un ciclo, $t_{on}$ es la fase donde hay corr
 	\delta= \frac{t_{on}}{t_{on}+t_{off}}
 \end{equation}
 
+Más adelante veremos que el perfil temporal de la señal eléctrica define en gran medida los resultados del proceso. Nótese que la remoción ocurre tanto en el cátodo como en el ánodo. Este desgaste relativo también dependerá del tiempo de encendido de la señal
+
+En la Figura \ref{sinkdiag} se observa un diagrama del proceso de electroerosión por penetración.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/plungediag.pdf}
+	\caption{Diagrama de electroerosión por penetración.}
+	\label{sinkdiag}
+\end{figure}
+
 
 \subsection{Sistema de EDM}
 
-Los componentes de una máquina de EDM dependen del tipo de proceso (\textit{plunge} o \textit{wire}), pero ambos comparten una arquitectura base: una cuba de trabajo llena de fluido dieléctrico, que es bombeado, filtrado y termorregulado de manera continua, y dentro de la cual se fija la pieza de trabajo sobre la mesa. El dieléctrico cumple cuatro funciones: aislar el espacio entre electrodos hasta alcanzar el voltaje de ruptura, confinar el canal de plasma, refrigerar las superficies y arrastrar los residuos (\textit{debris}) fuera de la zona de trabajo. En procesos \textit{plunge} se utilizan típicamente hidrocarburos (aceites), mientras que en \textit{wire} se emplea agua desionizada.
+Los componentes de una máquina de EDM dependen del tipo de proceso (\textit{plunge} o \textit{wire}), pero ambos comparten una arquitectura base: una cuba de trabajo llena de fluido dieléctrico, que es bombeado, filtrado y termorregulado de manera continua, y dentro de la cual se fija la pieza de trabajo sobre la mesa. El dieléctrico cumple cuatro funciones: aislar el espacio entre electrodos hasta alcanzar el voltaje de ruptura, confinar el canal de plasma, refrigerar las superficies y arrastrar los residuos (\textit{debris}) fuera de la zona de trabajo. En procesos \textit{plunge} se utilizan típicamente hidrocarburos (aceites), mientras que en \textit{wire} se emplea agua desionizada. 
 
-En el proceso \textit{plunge}, la herramienta es un electrodo conformado montado en el cabezal del eje Z. Este eje es servocontrolado y la hace descender progresivamente sobre la pieza, de modo que la geometría del electrodo queda reproducida en negativo.
+En el proceso \textit{plunge}, la herramienta es un electrodo conformado montado en el cabezal del eje Z. Este eje es servocontrolado y desciende progresivamente sobre la pieza, de modo que la geometría del electrodo queda reproducida en negativo. Si bien, el código de fabricación tiene una profundidad final objetivo, es la señal eléctrica medida la que va regulando progresivamente el gap entre pieza y herramienta en cada ciclo.
 
-Una variante de este tipo de EDM es el \textit{EDM de perforación} (\textit{small-hole EDM drilling}), orientado a producir agujeros y canales pequeños de alta razón de aspecto. En este caso la herramienta es un electrodo tubular delgado y hueco, generalmente de latón o cobre, que suele rotar durante el proceso. A diferencia de las configuraciones anteriores, la pieza no está sumergida en el dieléctrico: este se inyecta a alta presión a través del interior del electrodo y sale por su extremo, enfriando la zona de descarga y arrastrando el \textit{debris} fuera del agujero, lo que permite perforar a grandes profundidades. Los diámetros de electrodo habituales van de $0{,}3$ a $3$~mm, con equipos que llegan a $0{,}1$~mm y hasta cerca de $6$~mm, y razones de aspecto (profundidad/diámetro) que pueden superar $100{:}1$. Se utiliza, por ejemplo, para perforar los canales de refrigeración de álabes de turbinas o para iniciar cortes en \textit{wire} EDM sobre piezas ya endurecidas.
 
-En el proceso \textit{wire}, la herramienta es un hilo delgado (decenas a pocas centenas de micrómetros de diámetro, que atraviesa la pieza y la corta siguiendo una trayectoria en el plano XY. Como el hilo se desgasta durante el proceso, se alimenta continuamente desde un carrete y se recoge tras su uso, pasando por un sistema de guías, poleas y rodillos que controlan su posición y tensión. Para generar cortes inclinados (conicidad), el posicionamiento XY de la guía superior debe ser independiente del de la guía inferior, lo que añade ejes adicionales (U y V) a la cinemática de la máquina.
 
-En ambos casos, un servomecanismo regula la distancia entre electrodos (\textit{gap}, del orden de decenas de micrómetros) a partir de la señal eléctrica medida. Además, los sistemas de EDM cuentan con una unidad especializada en la generación y control de dicha señal, que define en gran medida el desempeño del proceso.
+Una variante de este tipo de EDM es el \textit{EDM de perforación} (\textit{small-hole EDM drilling}), orientado a producir agujeros y canales pequeños de alta razón de aspecto (Figura \ref{microedm}). En este caso la herramienta es un electrodo tubular delgado y hueco, generalmente de latón o cobre, que suele rotar durante el proceso. A diferencia de las configuraciones anteriores, la pieza no está sumergida en el dieléctrico: este se inyecta a alta presión a través del interior del electrodo y sale por su extremo, enfriando la zona de descarga y arrastrando el \textit{debris} fuera del agujero, lo que permite perforar a grandes profundidades. Los diámetros de electrodo habituales van de $0{,}3$ a $3$~mm, con equipos que llegan a $0{,}1$~mm y hasta cerca de $6$~mm, y razones de aspecto (profundidad/diámetro) que pueden superar $100{:}1$. Se utiliza, por ejemplo, para perforar los canales de refrigeración de álabes de turbinas o para iniciar cortes en \textit{wire} EDM sobre piezas ya endurecidas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/microedm.pdf}
+	\caption{Diagrama de micro perforación con EDM.}
+	\label{microedm}
+\end{figure}
+
+
+En el proceso \textit{wire}, la herramienta es un hilo delgado (decenas a pocas centenas de micrómetros de diámetro, que atraviesa la pieza y la corta siguiendo una trayectoria en el plano XY (Figura \ref{wireedm}). Como el hilo se desgasta durante el proceso, se alimenta continuamente desde un carrete y se recoge tras su uso, pasando por un sistema de guías, poleas y rodillos que controlan su posición y tensión. Para generar cortes inclinados (conicidad), el posicionamiento XY de la guía superior debe ser independiente del de la guía inferior, lo que añade ejes adicionales (U y V) a la cinemática de la máquina.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/wireedm.pdf}
+	\caption{Diagrama de maquinado EDM por alambre.}
+	\label{wireedm}
+\end{figure}
+
+Cabe señalar que el punto de descarga depende de la distancia entre la pieza y la herramienta, la cual varía a medida que esta última avanza en el material, en el caso del plunge EDM. Esta variación genera un espacio de sobrecorte (\textit{overcut}) alrededor de la herramienta (Figura \ref{sinkdiag}), cuya magnitud depende de los parámetros del proceso, como la corriente de descarga y el \textit{gap}. En el wire EDM esto genera un slot o kerf. Por lo tanto, el sobrecorte debe considerarse en el diseño de la herramienta en plunge EDM, reduciendo sus dimensiones en función de este valor, y en la planificación del toolpath en wire EDM.
+
+ Los sistemas de EDM cuentan con una unidad especializada en la generación y control de la señal eléctrica, la cual define en gran medida el desempeño del proceso.
 
 \subsection{Señal de control}
 
@@ -216,6 +246,15 @@ Es decir, se buscan materiales de electrodo con alto punto de fusión, densidad,
 El indicador ordena los materiales según su resistencia térmica, pero no es el único criterio de selección. El Cu-W ofrece el menor desgaste, aunque con un costo y una dificultad de maquinado mayores. El grafito, pese a un indicador moderado, presenta bajo desgaste efectivo en la práctica, es liviano y fácil de maquinar, pero genera acabados superficiales más rugosos. El cobre y la aleación Cu-ag permiten buenos acabados superficiales y son adecuados para geometrías finas, a costa de un mayor desgaste relativo.
 
 Las aplicaciones típicas del plunge EDM son la fabricación de moldes para procesos de inyección, matrices de troquelado y forja, entre otros, donde se requiere alta dureza y durabilidad, tolerancias ajustadas y buena calidad superficial. Otras aplicaciones incluyen piezas especializadas para la industria aeroespacial y automotriz, y la fabricación de canales de ventilación o refrigeración mediante microperforado EDM en álabes de turbina y otros dispositivos.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/edmmould.png}
+	\caption{Herramientas de cobre para fabricación de molde de inyección para cepillo de dientes por plunge EDM. \href{https://www.canadianmetalworking.com/canadianmetalworking/article/metalworking/die-sink-edm-forms-complex-parts}{Fuente}}
+	\label{edmould}
+\end{figure}
+
 
 En el caso del wire EDM, el material del alambre debe ser lo suficientemente dúctil y tenaz para obtener un filamento fino capaz de soportar la tensión mecánica durante el corte, además de ser buen conductor eléctrico. Si bien la regla energética anterior sigue siendo válida, la restricción de erosión es menos exigente que en plunge EDM, ya que el alambre se renueva continuamente y no se reutiliza. Por ello, típicamente se emplea latón (Cu-Zn), o variantes recubiertas con zinc para mejorar la velocidad de corte. Sus aplicaciones incluyen punzones, matrices, perfiles complejos y piezas de alta precisión en materiales endurecidos.
 
