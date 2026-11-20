@@ -93,7 +93,8 @@
 \contentsline {subsection}{\numberline {6.1.7}Materiales y aplicaciones}{168}{subsection.6.1.7}%
 \contentsline {section}{\numberline {6.2}Waterjet}{170}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Introducción}{170}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Sistema de waterjet}{171}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Autofretaje}{173}{subsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.2.4}Mecanismo de corte}{174}{subsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.2.5}Modelos físicos}{175}{subsection.6.2.5}%
+\contentsline {subsection}{\numberline {6.2.2}Sistema de waterjet}{172}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Autofretaje}{174}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Mecanismo de corte}{176}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Modelos físicos}{177}{subsection.6.2.5}%
+\contentsline {subsection}{\numberline {6.2.6}Calidad del corte}{180}{subsection.6.2.6}%

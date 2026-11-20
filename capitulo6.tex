@@ -194,13 +194,13 @@ Para cuantificar el compromiso entre remoción y desgaste se utiliza la razón d
 donde $V_h$ y $V_p$ son los volúmenes removidos de la herramienta y de la pieza, respectivamente. En la práctica, la polaridad se elige para minimizar $\theta$ según el régimen de operación. 
 
 
-En el \textit{plunge} EDM se emplea polaridad directa, con el electrodo como ánodo, y se busca operar en un régimen cercano al descrito en la tercera línea vertical, de modo que el desgaste del electrodo se mantenga controlado. Esto es particularmente relevante porque el electrodo se conforma específicamente para cada geometría a mecanizar y representa un costo significativo del proceso.
+En el \textit{plunge} EDM se emplea polaridad directa, con el electrodo como ánodo, y se busca operar en un régimen cercano al descrito en la tercera línea vertical, de modo que el desgaste de la herramienta se mantenga controlado. Esto es particularmente relevante porque la herramienta se conforma específicamente para cada geometría a mecanizar y representa un costo significativo del proceso.
 
 En el \textit{wire} EDM, en cambio, se utiliza polaridad inversa, con el alambre como cátodo y la pieza como ánodo. Esta configuración produce tasas de remoción de material menores, lo que se traduce en mayor resolución y tolerancias más ajustadas sobre la pieza (Figura \ref{edmr}). El mayor desgaste de la herramienta se justifica por la calidad superficial y dimensional alcanzada, y porque el alambre es un consumible de bajo costo y de uso general en el proceso, a diferencia de los electrodos del \textit{plunge} EDM.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/edmr.pdf}
+	\includegraphics[width=0.7\linewidth]{imgs/manitos.png}
 	\caption{Piezas cortadas por wire EDM, nótese cómo la interfaz entre piezas practicamente se desvanece por la estricta tolerancia en la fabricación. \href{https://www.youtube.com/watch?v=Zd1W_8ZuI4Y}{Fuente}}
 	\label{edmr}
 \end{figure}
@@ -226,10 +226,12 @@ El tiempo de encendido también puede modificarse mediante la frecuencia de la s
 \end{equation}
 a $\delta$ constante se cumple $t_{on} = \delta/f$. Por lo tanto, un aumento de la frecuencia reduce $t_{on}$ y la energía por pulso, resultando en cráteres más pequeños, mientras que frecuencias bajas implican $t_{on}$ largos y cráteres mayores.
 
-Un modelo simple que incorpora estos parámetros es
+Un modelo simple que incorpora estos parámetros es\cite{Sharakhovsky2006}:
+
 \begin{equation}
 	\mathrm{MRR} = \frac{U\,W_{s}\,I\,\delta}{\rho\, h_{ef}}
 \end{equation}
+
 donde $\rho$ es la densidad del material, $h_{ef}$ es la entalpía de erosión, $U = F_{c}V$ es la tensión efectiva, con $V$ el voltaje de descarga y $F_{c}$ la fracción de la potencia que llega al electrodo que se erosiona (cátodo en este desarrollo; para el ánodo corresponde $F_a$), y $W_{s}$ es un factor adimensional que representa la fracción de la energía que efectivamente se usa para erosionar. Este factor se expresa como
 \begin{equation}
 	W_{s} = \frac{2}{\pi}\left(\tan^{-1}\Big(\sqrt{\frac{1-f_{s}}{f_{s}}}\Big) - \sqrt{f_{s}\,(1-f_{s})}\right), \qquad 0 < f_s \le 1,
@@ -299,7 +301,7 @@ Las aplicaciones típicas del plunge EDM son la fabricación de moldes para proc
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{imgs/edmmould.png}
+	\includegraphics[width=0.65\linewidth]{imgs/edmmould.png}
 	\caption{Herramientas de cobre para fabricación de molde de inyección para cepillo de dientes por plunge EDM. \href{https://www.canadianmetalworking.com/canadianmetalworking/article/metalworking/die-sink-edm-forms-complex-parts}{Fuente}}
 	\label{edmould}
 \end{figure}
@@ -314,7 +316,15 @@ En el caso del wire EDM, el material del alambre debe ser lo suficientemente dú
 
 El \textit{waterjet} es un proceso de \textbf{corte en frío} cuyo principio de funcionamiento mecánico es la erosión generada por el impacto de un chorro de agua a alta presión sobre el material, fenómeno conocido como \textbf{hidroerosión}. La operación más frecuente de este proceso es el corte de geometrías planas en planchas.
 
-La naturaleza del proceso no implica fuerzas de corte notables ni gradientes térmicos significativos, por lo que es compatible con una amplia gama de materiales, incluyendo metales, polímeros, cerámicos, compuestos y vidrios. Al no ser un proceso térmico, se evita la aparición de HAZ donde el gradiente térmico puede causar oxidación, dilatación y errores dimensionales o de calidad en el área de corte. Esto convierte al waterjet en una alternativa competitiva para el corte de materiales de espesores elevados, aunque a costa de ser un proceso relativamente lento en comparación con otros métodos de corte.
+La naturaleza del proceso no implica fuerzas de corte notables ni gradientes térmicos significativos, por lo que es compatible con una amplia gama de materiales, incluyendo metales, polímeros, cerámicos, compuestos y vidrios. Al no ser un proceso térmico, se evita la aparición de HAZ donde el gradiente térmico puede causar oxidación, dilatación y errores dimensionales o de calidad en el área de corte. Esto convierte al waterjet en una alternativa competitiva para el corte de materiales de espesores elevados y duros (Figura \ref{waterjet}), aunque a costa de ser un proceso relativamente lento en comparación con otros métodos de corte.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/waterjet.pdf}
+	\caption{Waterjet sobre acero inoxidable y roca. \href{https://www.thefabricator.com/thefabricator/article/waterjetcutting/six-tips-for-waterjet-troubleshooting-and-repair-1}{Fuente} y \href{https://www.daysteel.co.uk/waterjet-cutting/}{Fuente}}
+	\label{waterjet}
+\end{figure}
+
 
 Un caso particularmente relevante es el corte de materiales compuestos  reforzados con fibra (fibra de vidrio, fibra de carbono), dado que estos materiales presentan serias dificultades con otros procesos de corte. El mecanizado convencional (como el fresado) tiende a generar delaminación entre capas, desprendimiento de fibras y astillado del refuerzo, debido a las elevadas fuerzas de corte involucradas y a la naturaleza anisótropa y heterogénea del material. El corte láser, por su parte, entrega resultados mixtos: dado que la matriz polimérica y las fibras de refuerzo poseen propiedades termofísicas muy distintas entre sí (conductividad térmica, temperatura de degradación o fusión), la energía térmica del láser tiende a degradar o carbonizar la matriz en torno a la zona de corte antes de lograr remover completamente las fibras, generando una HAZ irregular, decoloración y pérdida de propiedades mecánicas en el borde cortado. Al ser un proceso atérmico, el waterjet evita estos problemas, siendo por ello una de las técnicas preferidas para el corte de materiales compuestos en industrias como la aeroespacial.
 
@@ -323,9 +333,17 @@ Para espesores bajos, el corte láser suele preferirse como alternativa más eco
 Adicionalmente, el waterjet se utiliza en el corte de alimentos, al tratarse de un proceso limpio. Cuando el corte se realiza únicamente con el chorro de agua, el proceso se denomina \textbf{waterjet puro} (\textit{WJC, water jet cutting}), aplicable principalmente a materiales blandos o de baja resistencia (espumas, textiles, papel, alimentos, algunos polímeros). Cuando se requiere aumentar la capacidad de remoción de material (por ejemplo, para cortar metales, cerámicos o vidrio), el chorro de agua se mezcla con partículas abrasivas (comúnmente granate), dando lugar al proceso conocido como \textbf{waterjet abrasivo} (\textit{AWJ, abrasive water jet}).
 
 
-
 \subsection{Sistema de waterjet}
-Dado que el principio activo de esta máquina es la generación de un chorro de agua a alta presión, el sistema requiere de una serie de elementos para la generación de dicho chorro.
+
+Dado que el principio activo de esta máquina es la generación de un chorro de agua a alta presión, el sistema requiere de una serie de elementos para la generación de dicho chorro, los cuales se observan en la Figura \ref{waterdiag}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{imgs/waterdiag.pdf}
+	\caption{Componentes principales en un sistema de corte por chorro de agua. El corte puro no requiere alimentador de partículas, cámara de mezcla ni tubo enfocador.}
+	\label{waterdiag}
+\end{figure}
+
 
 Primero, el agua se trata mediante un sistema de filtrado (mecánico y, en muchos casos, de ósmosis inversa o desionización), con el fin de remover partículas sólidas y minerales disueltos que puedan dañar por erosión o incrustación los componentes de alta presión aguas abajo (bomba, intensificador, boquilla), además de prolongar la vida útil de estos.
 
@@ -337,15 +355,34 @@ Luego, el agua pasa por un sistema de intensificación de presión, típicamente
 	\item \textbf{Intensificador doble}: corresponde a dos cilindros intensificadores dispuestos en paralelo y desfasados en su ciclo de trabajo (uno en carrera de compresión mientras el otro se encuentra en carrera de retorno/llenado), lo que permite obtener un flujo de salida más continuo y con menor pulsación que un intensificador simple, a costa de mayor complejidad y tamaño del sistema.
 \end{itemize}
 
+La presión alcanzada por los intensificadores en sistemas de corte por chorro de agua industriales se encuentra en un rango de 200-400 MPa. Nótese que tal magnitud de presión esta cerca del límite de fluencia de varias aleaciones de acero, imponiendo alta exigencia en componentes aguas abajo.
+
+La intensificación de presión sigue la ecuación del equilibrio de fuerzas:
+
+\begin{equation}
+	F_{1}=F_{2} \implies A_{1}P_{1}=A_{2}P_{2} \implies P_{2}=\frac{P_{1}A_{1}}{A_{2}}
+	\label{eq:pres}
+\end{equation}
+
+donde $A$ es el área de los pistones.
+
 El agua a alta presión luego llega a un \textbf{acumulador}, cuyo objetivo es otorgar capacitancia hidráulica y amortiguar las oscilaciones de presión inherentes al proceso de bombeo cíclico, entregando así continuidad y estabilidad al chorro de salida en la boquilla.
 
 En el caso de los intensificadores, dado que la presurización del agua se realiza mediante un circuito oleohidráulico auxiliar, el sistema incorpora además una bomba de aceite de baja presión y un acumulador de aceite, cuya función es mantener presión y caudal constantes en el circuito hidráulico que acciona el pistón intensificador, independientemente del circuito de agua de alta presión.
 
-La transmisión del fluido se hace a través de mangueras reforzadas y tuberías de acero rígido. Para poder soportar las altas presioens del proceso (cerca del límite de fluencia de varios aceros), las tuberías pasan por un tratamiento especial denominado \textbf{autofretaje}, el cual describiremos en la subsección siguiente.
+La transmisión del fluido se hace a través de mangueras reforzadas y tuberías de acero rígido. Para poder soportar las altas presiones del proceso, las tuberías pasan por un tratamiento especial denominado \textbf{autofretaje}, el cual describiremos en la subsección siguiente.
 
-El \textbf{cabezal} (o \textit{cutting head}) es donde se ubican la boquilla de alta presión (\textit{orifice}) y el tubo de enfoque (\textit{focusing tube} o \textit{mixing tube}). En la boquilla —normalmente fabricada de un material de alta dureza como zafiro, rubí o diamante, dado el desgaste erosivo al que está sometida— la reducción brusca de sección en el orificio primario (de diámetro típicamente entre 0.1 y 0.5 mm) transforma la energía de presión del fluido en energía cinética, generando el chorro de alta velocidad responsable del corte del material.
+El \textbf{cabezal} (o \textit{cutting head}) es donde se ubica la boquilla de alta presión (\textit{orifice}). La boquilla requiere ser fabricada a partir de materiales de alta dureza como zafiro, rubí o diamante, dado el desgaste erosivo al que está sometida. La reducción brusca de sección en el orificio (de diámetro típicamente entre 0.1 y 0.5 mm) \textbf{transforma la energía de presión del fluido en energía cinética}, generando el chorro de alta velocidad responsable del corte del material.
 
-Adicionalmente, cuando se utilizan abrasivos, se incorpora al sistema un \textbf{alimentador de partículas abrasivas} (\textit{abrasive hopper/feeder}), el cual dosifica e introduce el abrasivo (comúnmente granate, \textit{garnet}) al chorro de agua en el tubo de enfoque, donde ambos se mezclan antes de incidir sobre la pieza.
+Adicionalmente, cuando se utilizan abrasivos, se incorpora al sistema un \textbf{alimentador de partículas abrasivas} (\textit{abrasive hopper/feeder}), el cual dosifica e introduce el abrasivo (comúnmente granate, \textit{garnet}) al chorro de agua en una cámara de mezcla y luego hacia el tubo de enfoque, donde el agua y las partículas se combinan antes de incidir sobre la pieza. El tubo de enfoque debe tener un largo específico para asegurar que el agua transfiera momentum a las partículas de abrasivo. Esta componente, al igual que las boquillas, presenta un desgaste alto y debe ser reemplazada en un promedio de 100 horas de trabajo, dependiendo de las condiciones de operación·
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/heads2.png}
+	\caption{Cabezales en corte por chorro de agua puro y abrasivo. \href{https://www.researchgate.net/figure/AWJC-head-PWJ-pure-waterjet-AWJ-abrasive-waterjet-3_fig1_365075417}{Fuente}}
+	\label{heads}
+\end{figure}
+
 
 Finalmente, la \textbf{cama de trabajo} (\textit{catcher tank} o \textit{worktable}) cumple la función de disipar la energía remanente del chorro de agua tras atravesar el material, además de reducir el ruido generado por el impacto del chorro y contener el agua y los residuos (abrasivo usado, partículas de material cortado) producidos durante el corte.
 
@@ -379,9 +416,14 @@ Para alcanzar, por ejemplo, un 90\% de ese límite ($p_y = 405$ MPa, apenas por 
 
 es decir, un diámetro exterior más de tres veces el diámetro interior, y aun así sin margen de seguridad real ni consideración de fatiga, crítica en este caso, dado el carácter cíclico de la presurización generada por bombas de pistones. Esto hace inviable, tanto en términos de peso y volumen como de seguridad, sostener las presiones de trabajo del waterjet mediante diseño elástico convencional.
 
-El \textbf{autofretaje} (\textit{autofrettage}) resuelve esta limitación mediante un pre-tensionado controlado: el tubo se presuriza intencionalmente por sobre $p_y$, provocando fluencia plástica progresiva desde la superficie interior hacia un radio elasto-plástico $c$ ($a < c < b$), mientras el material exterior permanece en régimen elástico. Al liberar la presión, el material exterior (elástico) restringe el retorno completo del material interior (que fluyó plásticamente), generando un estado de \textbf{esfuerzos residuales de compresión} en la superficie interior del tubo. Cuando el tubo vuelve a presurizarse durante su operación normal, estos esfuerzos residuales compresivos se superponen a los esfuerzos de tracción generados por la presión de trabajo, reduciendo el esfuerzo neto en la zona crítica del borde interior. Esto permite que la misma geometría y material del tubo soporten de forma segura presiones de trabajo muy por encima del límite elástico convencional, además de mejorar significativamente la vida a fatiga del componente frente a la carga cíclica propia del sistema de bombeo.
+El \textbf{autofretaje} (\textit{autofrettage}) resuelve esta limitación mediante un pre-tensionado controlado: el tubo se presuriza intencionalmente por sobre $p_y$, provocando fluencia plástica progresiva desde la superficie interior hacia un radio elasto-plástico $c$ ($a < c < b$), mientras el material exterior permanece en régimen elástico. Al liberar la presión, el material exterior (elástico) restringe el retorno completo del material interior (que fluyó plásticamente), generando un estado de \textbf{esfuerzos residuales de compresión} en la superficie interior del tubo (Figura \ref{autofret}). Cuando el tubo vuelve a presurizarse durante su operación normal, estos esfuerzos residuales compresivos se superponen a los esfuerzos de tracción generados por la presión de trabajo, reduciendo el esfuerzo neto en la zona crítica del borde interior. Esto permite que la misma geometría y material del tubo soporten de forma segura presiones de trabajo muy por encima del límite elástico convencional, además de mejorar significativamente la vida a fatiga del componente frente a la carga cíclica propia del sistema de bombeo.
 
-
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imgs/autofret.png}
+	\caption{Diagrama para autofretaje \cite{LIautofret}.}
+	\label{autofret}
+\end{figure}
 
 \subsection{Mecanismo de corte}
 
@@ -400,17 +442,20 @@ En la práctica, ambos regímenes coexisten en distintas proporciones a lo largo
 
 \subsection{Modelos físicos}
 
-La intensificación de presión sigue la ecuación del equilibrio de fuerzas:
-\begin{equation}
-	F_{1}=F_{2} \implies A_{1}P_{1}=A_{2}P_{2} \implies P_{2}=\frac{P_{1}A_{1}}{A_{2}}
-	\label{eq:pres}
-\end{equation}
+La ecuación principal para estudiar este proceso es la ecuación de Bernoulli, la cual, en su forma ideal isentrópica (flujo permanente, sin fricción, sin intercambio de energía con el entorno, fluido incompresible), comparando un punto 1 aguas arriba de la boquilla (interior de la cámara de alta presión) y un punto 2 en la salida del chorro (a presión atmosférica), como se representa en la FIgura \ref{boqu}, corresponde a:
 
-La ecuación principal para estudiar este proceso es la ecuación de Bernoulli, la cual, en su forma ideal isentrópica (flujo permanente, sin fricción, sin intercambio de energía con el entorno, fluido incompresible), comparando un punto 1 aguas arriba de la boquilla (interior de la cámara de alta presión) y un punto 2 en la salida del chorro (a presión atmosférica), corresponde a:
 \begin{equation}
 	P_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = P_2 + \frac{1}{2}\rho v_2^2 + \rho g z_2
 	\label{eq:bernoulli}
 \end{equation}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/boqu.pdf}
+	\caption{Supuestos para aplicación de ecuación de Bernoulli y puntos de control en boquilla.}
+	\label{boqu}
+\end{figure}
+
 
 No obstante, para el caso del waterjet podemos simplificar esta ecuación considerando que: (i) la diferencia de cota $z$ entre ambos puntos es despreciable frente a los términos de presión y velocidad; (ii) la velocidad $v_1$ en el interior de la cámara es despreciable frente a $v_2$, dado que el área de la cámara es órdenes de magnitud mayor que el área del orificio ($A_1 \gg A_2$); y (iii) la presión $P_2$ en la salida corresponde a la presión atmosférica, que en términos manométricos se toma como cero. Bajo estas simplificaciones, la ecuación~\eqref{eq:bernoulli} se reduce a:
 \begin{equation}
@@ -438,19 +483,23 @@ Además de la corrección por compresibilidad, deben considerarse las pérdidas 
 
 \begin{itemize}
 	\item \textbf{Coeficiente de compresibilidad} $\psi$: razón entre la velocidad compresible real (ecuación~\eqref{eq:vj_comp}) y la velocidad ideal incompresible (ecuación~\eqref{eq:vj_incomp}), cuantificando la desviación respecto del caso incompresible:
+	
 	\begin{equation}
-		\psi = \frac{v_{jc}}{v_{jc}}
+		\psi = \frac{v_{jc}}{v_{ji}}
 	\end{equation}
-	\item \textbf{Coeficiente de velocidad} $C_v$: razón entre la velocidad real del chorro $v_{j}$ (afectada por fricción viscosa dentro de la boquilla) y la velocidad ideal incompresible, típicamente en el rango $0.95$-$0.99$ para boquillas bien diseñadas.
+	
+	\item \textbf{Coeficiente de velocidad} $C_v$: razón entre la velocidad real del chorro $v_{j}$  y la velocidad compresible, típicamente en el rango $0.95$-$0.99$ para boquillas bien diseñadas.
+	
 	\begin{equation}
-		C_{v}=\frac{v_{j}}{v_{ji}}
+		C_{v}=\frac{v_{j}}{v_{jc}}
 	\end{equation}
-	\item \textbf{Coeficiente de contracción} $C_c$: razón entre el área efectiva del chorro en la vena contracta $A_{j}$ y el área geométrica del orificio $A_{0}$: 
+	
+	\item \textbf{Coeficiente de contracción} $C_c$: razón entre el área efectiva del chorro en la vena contracta $A_{j}$ y el área geométrica del orificio (boquilla) $A_{0}$: 
 	\begin{equation}
 		C_c = A_{j}/A_{o}
 	\end{equation} 
 	
-	cercano a la unidad en boquillas de perfil convergente.
+	cercano a la unidad en boquillas de perfil convergente. La \textit{vena contracta} corresponde a la sección de mínima área del chorro, que se forma inmediatamente aguas abajo de la salida del orificio. Su origen está en la inercia del fluido, pues las líneas de corriente que convergen hacia el orificio no pueden cambiar de dirección de forma abrupta, por lo que continúan convergiendo una vez que el fluido sale y el chorro se estrecha hasta alcanzar un área menor que la del orificio. Como consecuencia, el área efectiva de flujo es menor que la ideal, lo cual reduce el caudal respecto al esperado.
 	
 	\item \textbf{Coeficiente de descarga} $C_d$: coeficiente global que combina las pérdidas anteriores, definido como:
 	\begin{equation}
@@ -499,10 +548,10 @@ donde $\dot m_a$ es el flujo másico de abrasivo y $v_{j,a}$ la velocidad del ch
 De esta manera, la energía en el jet abrasivo se puede calcular como:
 
 \begin{equation}
-	P_{abr}=\frac{1}{2}(\dot{m}_{w}+\dot{a})v_{j,a}^{2}
+	P_{abr}=\frac{1}{2}(\dot{m}_{w}+\dot{m}_{a})v_{j,a}^{2}
 \end{equation}
 
-A partir de la relación $\dot m_w \propto d_{nozzle}^2 \cdot v_j$ (flujo másico proporcional al área del orificio y a la velocidad del chorro) y de $v_j \propto \sqrt{P}$ (ecuación~\eqref{eq:vj_incomp}), la potencia asociada al chorro escala como $P_{kin}\propto \dot m_w v_j^2 \propto d_{nozzle}^2 \cdot P^{3/2}$. De esta forma, se puede estimar la \textbf{potencia abrasiva} disponible para el corte mediante la relación empírica:
+A partir de la relación $\dot m_w \propto d_{nozzle}^2 \cdot v_j$ (flujo másico proporcional al área del orificio y a la velocidad del chorro) y de $v_j \propto \sqrt{P}$ (ecuación~\eqref{eq:vj_incomp}), la potencia asociada al chorro escala como $P_{kin}\propto \dot m_w v_j^2 \propto d_{nozzle}^2 \cdot P^{3/2}$. De esta forma, se podría estimar la \textbf{potencia abrasiva} disponible para el corte mediante la relación empírica:
 \begin{equation}
 	P_{abr} = k \cdot d_{nozzle}^2 \cdot P^{3/2}
 	\label{eq:pabr}
@@ -510,10 +559,49 @@ A partir de la relación $\dot m_w \propto d_{nozzle}^2 \cdot v_j$ (flujo másic
 
 donde $k$ es una constante empírica que agrupa las propiedades del fluido y los coeficientes de pérdida antes descritos.
 
-Finalmente, la tasa de remoción de material (\textit{material removal rate}, MRR) se estima como:
+Finalmente, la tasa de remoción de material (\textit{material removal rate}, MRR) se podría estimar como:
+
 \begin{equation}
 	MRR = \eta \frac{P_{abr}}{e_c}
 	\label{eq:mrr}
 \end{equation}
 
 donde $\eta$ es un factor de eficiencia del proceso de corte y $e_c$ corresponde a la energía específica de corte del material (energía requerida para remover una unidad de volumen), parámetro característico de cada material que depende de su dureza, tenacidad y comportamiento frente al mecanismo de erosión (cutting wear o deformation wear) descrito anteriormente.
+
+A partir de la estimación anterior, el volumen removido por unidad de tiempo puede igualarse a la geometría del corte:
+
+\begin{equation}
+	MRR = \eta \, \frac{P_{abr}}{e_c} = v_f \, w \, h,
+	\label{eq:mrr_geom}
+\end{equation}
+
+donde $v_f$ es la velocidad de avance del cabezal, $w$ es un ancho promedio del \textit{kerf} y $h$ es el espesor del material (o la profundidad de corte, si el corte no es pasante). Esta igualdad permite estimar parámetros de corte; por ejemplo, la velocidad de avance máxima para un espesor dado, $v_f \approx \eta P_{abr}/(e_c\, w\, h)$.
+
+Cabe señalar que esta relación constituye solo una estimación global. En particular, la eficiencia $\eta$ no es constante, sino que disminuye a medida que el chorro penetra en el material, debido a la pérdida progresiva de energía disponible. Entre los fenómenos que contribuyen a esta pérdida se encuentran el atrapamiento de agua y de residuos en el \textit{kerf}, la fricción con las paredes del corte, la fragmentación del abrasivo, las colisiones entre partículas y la divergencia del chorro.
+
+\subsection{Calidad del corte}
+
+La calidad de una pieza fabricada por \textit{waterjet} se caracteriza principalmente por parámetros como: el ángulo de conicidad del \textit{kerf}, su ancho, la tolerancia dimensional, la rugosidad de la pared y el redondeo de los bordes, entre otros. A ellos se suma un modo de falla de otra naturaleza, los cortes incompletos (no pasantes), que aparecen cuando la potencia de corte disponible es insuficiente para el espesor y la velocidad de avance utilizados. Podemos observar parte de estos indicadores en la Figura \ref{qualityw}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/qualityw.png}
+	\caption{Indicadores de calidad en corte por chorro de agua.}
+	\label{qualityw}
+\end{figure}
+
+
+\textbf{Rugosidad y estriación:} La rugosidad es consecuencia de la erosión progresiva que ejerce el chorro a medida que penetra en el material. En la zona superior, donde la energía disponible es mayor, el mecanismo dominante es el desgaste por corte y la superficie resulta más fina. A mayor profundidad, la pérdida de energía del chorro favorece el desgaste por deformación, y la pared se vuelve más rugosa y aparecen estrías marcadas. Debido a la dinámica del chorro y al movimiento relativo del cabezal, estas estrías no son horizontales, sino que se curvan en sentido contrario al avance (\textit{jet lag}). Este mismo retraso explica que, en esquinas y al final de una trayectoria, quede una porción triangular sin cortar en la parte inferior de la pieza.
+
+\textbf{Ancho y conicidad del \textit{kerf}:} El ancho y el ángulo del \textit{kerf} responden a la divergencia del chorro a la salida del tubo enfocador, a la reflexión de las partículas en las paredes y a la pérdida de energía con la profundidad. Por lo general, el corte es más ancho en la superficie de entrada que en la de salida, lo que produce un perfil en forma de V. Esta conicidad aumenta con la velocidad de avance y puede reducirse, e incluso invertirse (por divergencia del chorro), al disminuirla. Asimismo, la distancia de separación entre el tubo enfocador y la pieza (\textit{standoff}) influye en el ancho y en el redondeo del borde de entrada, ya que el chorro se dispersa con la distancia.
+
+\textbf{Redondeo de bordes:} El borde de entrada presenta un pequeño redondeo debido a la divergencia del chorro y a la erosión de las partículas que impactan casi tangencialmente. 
+
+\textbf{Capacidad de corte:} En términos generales, estas deficiencias se mitigan aumentando la capacidad de corte, lo que en \textit{waterjet} equivale a incrementar la presión, aumentar el flujo de abrasivo (dentro del rango en que la mezcla se mantiene eficiente) o reducir la velocidad de avance. Esta última es la variable más utilizada en la práctica, y es la base de los niveles de calidad que definen los fabricantes. El costo es una menor productividad y un mayor consumo de abrasivo y de componentes por pieza.
+
+\textbf{Abrasivo:} La naturaleza de las partículas también es determinante. Las partículas gruesas generan un patrón de erosión más agresivo, con mayor MRR pero mayor rugosidad, mientras que las más finas producen una erosión más homogénea y una mejor terminación. Sin embargo, estas últimas pierden energía con mayor facilidad por su menor inercia y se aceleran peor, por lo que penetran menos. En la práctica se utiliza granate de granulometría intermedia, con tamaños típicos de malla 80 (rango habitual de malla 50 a 120). Es deseable que el material tenga alta dureza y muy baja higroscopicidad, ya que la humedad provoca aglomeraciones que perturban la alimentación y generan un flujo irregular de abrasivo.
+
+\textbf{Condición del hardware:} Finalmente, la calidad depende del estado del equipo. El sistema es intrínsecamente pulsante: la intensificación alternante produce variaciones de presión, y por lo tanto de potencia, que vuelven menos controlado el corte. Para reducir este efecto se requiere una atenuación adecuada, mediante un acumulador (correctamente dimensionado y mantenido, que amortigüe las oscilaciones. Estas oscilaciones, además, promueven la fatiga de componentes como las tuberías y el cuerpo del cabezal, y el desgaste del orificio, lo que a su vez puede alterar el coeficiente de descarga y degradar la estabilidad del chorro.
+
+Por último, aunque las fuerzas que el chorro ejerce sobre la pieza son bajas, la máquina presenta de todos modos movimientos, juegos y vibraciones asociados a la cinemática de los ejes y al soporte de la pieza, los cuales fijan una cota inferior a la tolerancia alcanzable.
+

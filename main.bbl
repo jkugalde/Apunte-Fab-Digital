@@ -515,5 +515,104 @@
     \field{month}{12}
     \field{year}{2024}
   \endentry
+
+  \entry{Sharakhovsky2006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SLI}{%
+         family={Sharakhovsky},
+         familyi={S\bibinitperiod},
+         given={Leonid\bibnamedelima I.},
+         giveni={L\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Marotta},
+         familyi={M\bibinitperiod},
+         given={Amy},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=EAM}{%
+         family={Essiptchouk},
+         familyi={E\bibinitperiod},
+         given={Alexei\bibnamedelima M.},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SLIMAEAM1}
+    \strng{fullhash}{SLIMAEAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1016/j.apsusc.2006.01.013
+    \endverb
+    \field{issn}{0169-4332}
+    \field{number}{2}
+    \field{pages}{797\bibrangedash 804}
+    \field{title}{Model of workpiece erosion for electrical discharge machining
+  process}
+    \field{volume}{253}
+    \field{journaltitle}{Applied Surface Science}
+    \field{month}{11}
+    \field{year}{2006}
+  \endentry
+
+  \entry{LIautofret}{article}{}
+    \name{author}{6}{}{%
+      {{hash=LY}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Yan},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=WW}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Wenhua},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Pan},
+         familyi={P\bibinitperiod},
+         given={Mingpeng},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CW}{%
+         family={Cao},
+         familyi={C\bibinitperiod},
+         given={Wenhong},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=MX}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Xiakang},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=LY}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Yuebing},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \keyw{Autofrettage, Residual stress, Stress ratio, Fatigue crack growth
+  rate}
+    \strng{namehash}{LYWWPM+1}
+    \strng{fullhash}{LYWWPMCWMXLY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.ijpvp.2023.105065
+    \endverb
+    \field{issn}{0308-0161}
+    \field{pages}{105065}
+    \field{title}{Fatigue life analysis of high-pressure seamless steel
+  cylinder for hydrogen using autofrettage design}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0308016123001825
+    \endverb
+    \field{volume}{206}
+    \field{journaltitle}{International Journal of Pressure Vessels and Piping}
+    \field{year}{2023}
+  \endentry
 \enddatalist
 \endinput
