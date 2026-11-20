@@ -107,13 +107,23 @@ Cabe señalar que el punto de descarga depende de la distancia entre la pieza y 
 
 El control del tiempo y la intensidad del pulso eléctrico es fundamental, pues determina la energía por descarga y, con ello, la resolución, el desgaste de herramienta y la tasa de remoción de material (MRR) del proceso. Un pulso normal comienza con el aumento del voltaje hasta el voltaje de circuito abierto; tras un tiempo de retardo de ignición $t_d$ ocurre la ruptura del dieléctrico, el voltaje cae al voltaje de trabajo (del orden de $20$--$30$ V) y circula la corriente durante el tiempo de descarga $t_{on}$. Luego, un tiempo de apagado $t_{off}$ permite desionizar el canal y evacuar residuos antes del siguiente pulso.
 
-Observando las señales de voltaje y corriente de la Figura~\ref{fig:senales-edm} es posible identificar el estado del \textit{gap}:
+Observando las señales de voltaje y corriente de la Figura~\ref{shortopen} es posible identificar el estado del \textit{gap}:
 \begin{itemize}
-	\item \textbf{Descarga normal:} existe retardo de ignición, caída de voltaje y corriente controlada. Es la única condición que produce remoción útil.
-	\item \textbf{Circuito abierto:} el voltaje alcanza su valor máximo y no se produce ruptura, ya sea por una distancia excesiva o por dieléctrico aún no ionizable. No hay remoción.
-	\item \textbf{Cortocircuito:} el voltaje cae casi a cero por contacto directo (o puenteo por \textit{debris}) entre electrodos. No hay descarga controlada ni remoción útil, y la corriente no está regulada por el proceso.
-	\item \textbf{Arco:} descarga sin retardo de ignición, localizada de forma repetida en un mismo punto, con voltaje bajo. Es perjudicial, pues daña la pieza y la herramienta.
+	\item \textbf{a) Descarga normal:} existe retardo de ignición, caída de voltaje y corriente controlada. Es la única condición que produce remoción útil.
+	\item \textbf{b) Circuito abierto:} el voltaje alcanza su valor máximo y no se produce ruptura, ya sea por una distancia excesiva o por dieléctrico aún no ionizable. No hay remoción.
+	\item \textbf{c) Cortocircuito:} el voltaje cae casi a cero por contacto directo (o puenteo por \textit{debris}) entre electrodos. No hay descarga controlada ni remoción útil, y la corriente no está regulada por el proceso.
+	\item \textbf{d) Arco:} descarga sin retardo de ignición, localizada de forma repetida en un mismo punto, con voltaje bajo. Es perjudicial, pues daña la pieza y la herramienta.
 \end{itemize}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/shortopen.pdf}
+	\caption{Tipos de señales en EDM, a) descarga normal b) circuito abierto, c) cortocircuito, d) arco contínuo.}
+	\label{shortopen}
+\end{figure}
+
+
 Las máquinas están equipadas para responder a estas condiciones: si predominan los circuitos abiertos, el servo reduce el \textit{gap}; si aparecen cortocircuitos o arcos, retrae la herramienta, aumenta $t_{off}$ y/o intensifica el flujo de dieléctrico para evacuar el \textit{debris}.
 
 La energía entregada por un pulso se puede estimar como
@@ -124,29 +134,55 @@ donde $u_e$ e $i_e$ son el voltaje y la corriente durante la descarga. La MRR cr
 
 La generación de la señal se realiza principalmente mediante dos tipos de circuitos: el circuito RC y el de transistores.
 
-El circuito RC, de relajación o de Lazarenko (por sus inventores), consta de una resistencia y un condensador alimentados por una fuente DC. La fuente carga el condensador a través de la resistencia, elevando su voltaje según
+El circuito RC (Figura \ref{lazarenko}), de relajación o de Lazarenko (por su inventor), consta de una resistencia y un condensador alimentados por una fuente DC. La fuente carga el condensador a través de la resistencia, elevando su voltaje según:
+
 \begin{equation}
 	v_c(t) = V_s\left(1 - e^{-t/RC}\right).
 \end{equation}
-Cuando $v_c$ alcanza el voltaje de ruptura $V_b$ del dieléctrico para el \textit{gap} existente, el condensador se descarga en un tiempo muy breve (del orden de microsegundos), generando la chispa que remueve material. La energía por descarga queda determinada por
+
+Cuando $v_c$ alcanza el voltaje de ruptura $V_b$ del dieléctrico para el \textit{gap} existente, el condensador se descarga en un tiempo muy breve (del orden de microsegundos), generando la chispa que remueve material. La energía por descarga queda determinada por:
+
 \begin{equation}
 	E_p = \tfrac{1}{2}\, C\, V_b^2 .
 \end{equation}
+
 Por lo tanto, los tiempos de carga ($t_{off}$) son bastante mayores que los de descarga ($t_{on}$), lo que limita la frecuencia y, con ello, la MRR. Además, como $V_b$ depende del \textit{gap}, la energía del pulso no es controlable de forma independiente. Por otro lado, con capacitancias pequeñas se obtienen descargas muy breves y de baja energía, por lo que este circuito es adecuado para acabados finos.
 
-Los circuitos modernos utilizan arreglos de transistores que conmutan la fuente de manera controlada. Esto permite fijar de forma independiente $t_{on}$, $t_{off}$, el voltaje y la corriente de pico, y dar forma a la onda del pulso. Se obtiene así mayor control de la energía por descarga, frecuencias más altas y mayor eficiencia, además de poder adaptar los parámetros en tiempo real según el estado del \textit{gap}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/lazarenko.pdf}
+	\caption{Circuito de control de Lazarenko, diagrama y señal.}
+	\label{lazarenko}
+\end{figure}
+
+Los circuitos modernos utilizan arreglos de transistores que conmutan la fuente de manera controlada (Figura \ref{transistors}). Esto permite fijar de forma independiente $t_{on}$, $t_{off}$, el voltaje y la corriente de pico, y dar forma a la onda del pulso. Se obtiene así mayor control de la energía por descarga, frecuencias más altas y mayor eficiencia, además de poder adaptar los parámetros en tiempo real según el estado del \textit{gap}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/transistors.pdf}
+	\caption{Circuito de control de transistores, diagrama y señal de ejemplo.}
+	\label{transistors}
+\end{figure}
 
 \subsection{Curva de remoción}
 
 La energía del pulso no solo remueve material de la pieza, sino que también desgasta la herramienta. Cuál de los dos electrodos actúa como ánodo y cuál como cátodo depende de la polaridad configurada para el proceso. La proporción de energía que recibe cada electrodo depende fuertemente de la duración del pulso: en pulsos cortos, los electrones (livianos y rápidos) alcanzan primero el ánodo y bombardean su superficie, por lo que este recibe más energía; en pulsos largos, los iones positivos (más pesados) alcanzan el cátodo, y su bombardeo, junto con la expansión del canal de plasma, aumenta la remoción en el cátodo y reduce la del ánodo.
 
-La Figura~\ref{fig:curva-remocion} muestra curvas típicas de remoción en ánodo y cátodo en función del tiempo de descarga $t_{on}$. Algunos puntos de interés son:
+La Figura \ref{mrr} muestra curvas típicas de remoción en ánodo y cátodo en función del tiempo de descarga $t_{on}$. Algunos puntos de interés son:
+
 \begin{itemize}
-	\item La remoción en el ánodo comienza antes que en el cátodo. Por lo tanto, a tiempos de descarga muy cortos solo uno de los electrodos se ve afectado de manera apreciable.
+	\item Que la remoción en el ánodo comienza antes que en el cátodo. Por lo tanto, a tiempos de descarga muy cortos solo uno de los electrodos se ve afectado de manera apreciable.
 	\item Posteriormente, el desgaste del cátodo crece rápidamente respecto al del ánodo, existiendo un punto de cruce donde ambos son equivalentes (primera línea vertical).
 	\item La segunda línea vertical indica el $t_{on}$ que maximiza la remoción en el ánodo. Este punto es relevante cuando la pieza cumple el rol de ánodo, pues se maximiza la MRR y esta compensa el desgaste del cátodo (la herramienta).
-	\item La tercera línea vertical indica el $t_{on}$ que maximiza la remoción en el cátodo, mientras la del ánodo ya decrece. Este punto es útil cuando el material a remover actúa como cátodo y la integridad de la herramienta (ánodo) no se compromete en gran medida.
+	\item La tercera línea vertical indica el $t_{on}$ que maximiza la remoción en el cátodo, mientras la del ánodo ya decrece. Este punto es útil para una alta tasa de remoción del material base ocupando el lugar de cátodo, comprometiendo proporcionalmente poco a la herrmienta en el ánodo.
 \end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/mrr.pdf}
+	\caption{Curva de remoción en ánodo y cátodo en función del tiempo de encendido.}
+	\label{mrr}
+\end{figure}
 
 Cabe destacar que, tras alcanzar un máximo, la remoción de material cae para ambos electrodos al seguir aumentando $t_{on}$, lo que puede parecer contraintuitivo, ya que la corriente continúa circulando y la energía por pulso $E_p$, sigue creciendo. La explicación es que a mayores $t_{on}$ el canal de plasma y vapor se ensancha, de modo que la misma potencia se reparte sobre un área mayor del electrodo y disminuye la densidad de potencia en el punto de descarga. Como consecuencia, una fracción creciente de la energía se disipa por conducción hacia el interior del material y hacia el dieléctrico, en lugar de fundir y vaporizar material. Además, el cráter resultante es más ancho y superficial, lo que reduce la presión del canal sobre la poza fundida y dificulta su expulsión. Así, la energía adicional aporta cada vez menos a la remoción, y la eficiencia energética del pulso decae.
 
@@ -154,9 +190,22 @@ Para cuantificar el compromiso entre remoción y desgaste se utiliza la razón d
 \begin{equation}
 	\theta = \frac{V_{h}}{V_{p}},
 \end{equation}
-donde $V_h$ y $V_p$ son los volúmenes removidos de la herramienta y de la pieza, respectivamente. En la práctica, la polaridad se elige para minimizar $\theta$ según el régimen de operación. Con pulsos cortos (acabado, \textit{wire} EDM, donde el hilo suele ser el cátodo) se prefiere la pieza como ánodo. Con pulsos largos en desbaste con aceite como dieléctrico, suele emplearse la herramienta como ánodo (polaridad inversa), lo que además favorece la deposición de carbono pirolítico sobre ella, que la protege del desgaste.
 
-Así, el tiempo de descarga $t_{on}$ es uno de los parámetros operativos más influyentes para determinar la eficiencia y los indicadores del proceso (MRR, desgaste relativo, rugosidad), junto con la corriente de peak, el tiempo $t_{off}$ y la polaridad.
+donde $V_h$ y $V_p$ son los volúmenes removidos de la herramienta y de la pieza, respectivamente. En la práctica, la polaridad se elige para minimizar $\theta$ según el régimen de operación. 
+
+
+En el \textit{plunge} EDM se emplea polaridad directa, con el electrodo como ánodo, y se busca operar en un régimen cercano al descrito en la tercera línea vertical, de modo que el desgaste del electrodo se mantenga controlado. Esto es particularmente relevante porque el electrodo se conforma específicamente para cada geometría a mecanizar y representa un costo significativo del proceso.
+
+En el \textit{wire} EDM, en cambio, se utiliza polaridad inversa, con el alambre como cátodo y la pieza como ánodo. Esta configuración produce tasas de remoción de material menores, lo que se traduce en mayor resolución y tolerancias más ajustadas sobre la pieza (Figura \ref{edmr}). El mayor desgaste de la herramienta se justifica por la calidad superficial y dimensional alcanzada, y porque el alambre es un consumible de bajo costo y de uso general en el proceso, a diferencia de los electrodos del \textit{plunge} EDM.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/edmr.pdf}
+	\caption{Piezas cortadas por wire EDM, nótese cómo la interfaz entre piezas practicamente se desvanece por la estricta tolerancia en la fabricación. \href{https://www.youtube.com/watch?v=Zd1W_8ZuI4Y}{Fuente}}
+	\label{edmr}
+\end{figure}
+
+El tiempo de descarga $t_{on}$ es entonces uno de los parámetros operativos más influyentes para determinar la eficiencia y los indicadores del proceso (MRR, desgaste relativo, rugosidad), junto con la corriente de peak, el tiempo $t_{off}$ y la polaridad.
 
 
 \subsection{Modelo de remoción}
@@ -169,7 +218,7 @@ En polaridad directa, la tasa de remoción en cátodo puede estimarse de forma e
 \end{equation}
 donde $I$ es la corriente en amperes y $T_m$ la temperatura de fusión del material en $^\circ$C. Se trata de una correlación empírica, por lo que solo es válida con estas unidades y como estimación de orden de magnitud.
 
-Tras cada pulso, la forma aproximada que queda sobre la superficie es la de un cráter. Como el calor requiere tiempo para propagarse en el material, la profundidad del cráter queda gobernada principalmente por el tiempo de encendido $t_{on}$, a través de la longitud de difusión $\sqrt{\alpha\,t_{on}}$, mientras que la corriente se relaciona más con el diámetro del cráter. En consecuencia, a energía de pulso comparable, corrientes altas con tiempos de encendido cortos generan cráteres anchos pero superficiales, es decir, menor rugosidad y mejor terminación superficial. Corrientes bajas con tiempos de encendido largos generan lo contrario, aunque en la práctica ambos parámetros aumentan el tamaño del cráter.
+Tras cada pulso, la forma aproximada que queda sobre la superficie es la de un cráter. Como el calor requiere tiempo para propagarse en el material, la profundidad del cráter queda gobernada principalmente por el tiempo de encendido $t_{on}$, a través de la longitud de difusión $\sqrt{\alpha\,t_{on}}$, mientras que la corriente $I$ se relaciona más con el diámetro del cráter. En consecuencia, a energía de pulso comparable, corrientes altas con tiempos de encendido cortos generan cráteres anchos pero superficiales, es decir, menor rugosidad y mejor terminación superficial. Corrientes bajas con tiempos de encendido largos generan lo contrario, aunque en la práctica ambos parámetros aumentan el tamaño del cráter.
 
 El tiempo de encendido también puede modificarse mediante la frecuencia de la señal, $f = 1/(t_{on}+t_{off})$. Definiendo el factor de ocupación (\textit{duty factor}) como
 \begin{equation}
@@ -195,11 +244,11 @@ La densidad de corriente $j$ se calcula en función del radio de la chispa $r$:
 \begin{equation}
 	j = \frac{I}{\pi r^{2}}.
 \end{equation}
-Una relación empírica entre el radio de la chispa y el radio del cráter $R_{f}$ es
+Una relación empírica entre el radio de la chispa y el radio del cráter $R_{f}$ puede ser
 \begin{equation}
 	r = 0.3\,R_{f}^{0.82},
 \end{equation}
-que, al ser empírica, es válida solo en las unidades en que fue ajustada. Debe indicarse la unidad de la fuente consultada.
+
 
 Para estimar el radio de fusión, se puede asumir una fuente puntual de potencia constante $q = UI$ sobre un sólido semi-infinito. La distribución de temperatura a una distancia $R$ del punto de descarga es
 \begin{equation}
@@ -250,7 +299,7 @@ Las aplicaciones típicas del plunge EDM son la fabricación de moldes para proc
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/edmmould.png}
+	\includegraphics[width=0.5\linewidth]{imgs/edmmould.png}
 	\caption{Herramientas de cobre para fabricación de molde de inyección para cepillo de dientes por plunge EDM. \href{https://www.canadianmetalworking.com/canadianmetalworking/article/metalworking/die-sink-edm-forms-complex-parts}{Fuente}}
 	\label{edmould}
 \end{figure}
